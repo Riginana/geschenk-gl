@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as WarenkorbRouteImport } from './routes/warenkorb'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as KasseRouteImport } from './routes/kasse'
+import { Route as BewertungenRouteImport } from './routes/bewertungen'
 import { Route as BestellungBestaetigtRouteImport } from './routes/bestellung-bestaetigt'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ShopSlugRouteImport } from './routes/shop.$slug'
@@ -29,6 +30,11 @@ const ShopRoute = ShopRouteImport.update({
 const KasseRoute = KasseRouteImport.update({
   id: '/kasse',
   path: '/kasse',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BewertungenRoute = BewertungenRouteImport.update({
+  id: '/bewertungen',
+  path: '/bewertungen',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BestellungBestaetigtRoute = BestellungBestaetigtRouteImport.update({
@@ -50,6 +56,7 @@ const ShopSlugRoute = ShopSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/bestellung-bestaetigt': typeof BestellungBestaetigtRoute
+  '/bewertungen': typeof BewertungenRoute
   '/kasse': typeof KasseRoute
   '/shop': typeof ShopRouteWithChildren
   '/warenkorb': typeof WarenkorbRoute
@@ -58,6 +65,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/bestellung-bestaetigt': typeof BestellungBestaetigtRoute
+  '/bewertungen': typeof BewertungenRoute
   '/kasse': typeof KasseRoute
   '/shop': typeof ShopRouteWithChildren
   '/warenkorb': typeof WarenkorbRoute
@@ -67,6 +75,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/bestellung-bestaetigt': typeof BestellungBestaetigtRoute
+  '/bewertungen': typeof BewertungenRoute
   '/kasse': typeof KasseRoute
   '/shop': typeof ShopRouteWithChildren
   '/warenkorb': typeof WarenkorbRoute
@@ -77,6 +86,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/bestellung-bestaetigt'
+    | '/bewertungen'
     | '/kasse'
     | '/shop'
     | '/warenkorb'
@@ -85,6 +95,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/bestellung-bestaetigt'
+    | '/bewertungen'
     | '/kasse'
     | '/shop'
     | '/warenkorb'
@@ -93,6 +104,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/bestellung-bestaetigt'
+    | '/bewertungen'
     | '/kasse'
     | '/shop'
     | '/warenkorb'
@@ -102,6 +114,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BestellungBestaetigtRoute: typeof BestellungBestaetigtRoute
+  BewertungenRoute: typeof BewertungenRoute
   KasseRoute: typeof KasseRoute
   ShopRoute: typeof ShopRouteWithChildren
   WarenkorbRoute: typeof WarenkorbRoute
@@ -128,6 +141,13 @@ declare module '@tanstack/react-router' {
       path: '/kasse'
       fullPath: '/kasse'
       preLoaderRoute: typeof KasseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bewertungen': {
+      id: '/bewertungen'
+      path: '/bewertungen'
+      fullPath: '/bewertungen'
+      preLoaderRoute: typeof BewertungenRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/bestellung-bestaetigt': {
@@ -167,6 +187,7 @@ const ShopRouteWithChildren = ShopRoute._addFileChildren(ShopRouteChildren)
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BestellungBestaetigtRoute: BestellungBestaetigtRoute,
+  BewertungenRoute: BewertungenRoute,
   KasseRoute: KasseRoute,
   ShopRoute: ShopRouteWithChildren,
   WarenkorbRoute: WarenkorbRoute,
