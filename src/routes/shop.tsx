@@ -62,7 +62,7 @@ function ShopPage() {
     return arr;
   }, [products, search]);
 
-  const update = (patch: Partial<typeof search>) => navigate({ search: (prev) => ({ ...prev, ...patch }) });
+  const update = (patch: Partial<typeof search>) => navigate({ search: (prev: typeof search) => ({ ...prev, ...patch }) });
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-10 lg:py-20">
