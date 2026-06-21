@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useT } from "@/i18n";
 import { useCart } from "@/contexts/cart";
 import { useWishlist } from "@/contexts/wishlist";
+import logoAsset from "@/assets/diginutz-logo.jpeg.asset.json";
 
 export function Header() {
   const { t, locale, setLocale } = useT();
