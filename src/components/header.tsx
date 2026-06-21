@@ -38,11 +38,13 @@ export function Header() {
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:h-20 lg:px-10">
         <Link to="/" className="group flex items-center gap-2">
-          <span className="grid h-9 w-9 place-items-center rounded-full bg-walnut text-cream transition group-hover:bg-walnut/90">
-            <span className="font-serif text-base italic">L</span>
-          </span>
+          <img
+            src={logoAsset.url}
+            alt="DigiNutz"
+            className="h-10 w-10 rounded-full object-contain bg-cream transition group-hover:scale-105"
+          />
           <span className="hidden font-serif text-lg tracking-tight text-walnut sm:inline">
-            DigiNutz <span className="text-brass">Atelier</span>
+            Digi<span className="text-brass">Nutz</span>
           </span>
         </Link>
 
