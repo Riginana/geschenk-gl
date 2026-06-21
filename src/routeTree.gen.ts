@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WunschlisteRouteImport } from './routes/wunschliste'
 import { Route as WarenkorbRouteImport } from './routes/warenkorb'
 import { Route as UeberUnsRouteImport } from './routes/ueber-uns'
 import { Route as ShopRouteImport } from './routes/shop'
@@ -19,6 +20,11 @@ import { Route as BestellungBestaetigtRouteImport } from './routes/bestellung-be
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ShopSlugRouteImport } from './routes/shop.$slug'
 
+const WunschlisteRoute = WunschlisteRouteImport.update({
+  id: '/wunschliste',
+  path: '/wunschliste',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WarenkorbRoute = WarenkorbRouteImport.update({
   id: '/warenkorb',
   path: '/warenkorb',
@@ -74,6 +80,7 @@ export interface FileRoutesByFullPath {
   '/shop': typeof ShopRouteWithChildren
   '/ueber-uns': typeof UeberUnsRoute
   '/warenkorb': typeof WarenkorbRoute
+  '/wunschliste': typeof WunschlisteRoute
   '/shop/$slug': typeof ShopSlugRoute
 }
 export interface FileRoutesByTo {
@@ -85,6 +92,7 @@ export interface FileRoutesByTo {
   '/shop': typeof ShopRouteWithChildren
   '/ueber-uns': typeof UeberUnsRoute
   '/warenkorb': typeof WarenkorbRoute
+  '/wunschliste': typeof WunschlisteRoute
   '/shop/$slug': typeof ShopSlugRoute
 }
 export interface FileRoutesById {
@@ -97,6 +105,7 @@ export interface FileRoutesById {
   '/shop': typeof ShopRouteWithChildren
   '/ueber-uns': typeof UeberUnsRoute
   '/warenkorb': typeof WarenkorbRoute
+  '/wunschliste': typeof WunschlisteRoute
   '/shop/$slug': typeof ShopSlugRoute
 }
 export interface FileRouteTypes {
@@ -110,6 +119,7 @@ export interface FileRouteTypes {
     | '/shop'
     | '/ueber-uns'
     | '/warenkorb'
+    | '/wunschliste'
     | '/shop/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -121,6 +131,7 @@ export interface FileRouteTypes {
     | '/shop'
     | '/ueber-uns'
     | '/warenkorb'
+    | '/wunschliste'
     | '/shop/$slug'
   id:
     | '__root__'
@@ -132,6 +143,7 @@ export interface FileRouteTypes {
     | '/shop'
     | '/ueber-uns'
     | '/warenkorb'
+    | '/wunschliste'
     | '/shop/$slug'
   fileRoutesById: FileRoutesById
 }
@@ -144,10 +156,18 @@ export interface RootRouteChildren {
   ShopRoute: typeof ShopRouteWithChildren
   UeberUnsRoute: typeof UeberUnsRoute
   WarenkorbRoute: typeof WarenkorbRoute
+  WunschlisteRoute: typeof WunschlisteRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/wunschliste': {
+      id: '/wunschliste'
+      path: '/wunschliste'
+      fullPath: '/wunschliste'
+      preLoaderRoute: typeof WunschlisteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/warenkorb': {
       id: '/warenkorb'
       path: '/warenkorb'
@@ -233,6 +253,7 @@ const rootRouteChildren: RootRouteChildren = {
   ShopRoute: ShopRouteWithChildren,
   UeberUnsRoute: UeberUnsRoute,
   WarenkorbRoute: WarenkorbRoute,
+  WunschlisteRoute: WunschlisteRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
