@@ -197,7 +197,7 @@ function ProductPage() {
             <div className="grid gap-5 sm:grid-cols-2">
               <Field label={t("product.format")}>
                 <div className="flex flex-wrap gap-2">
-                  {formats.map((f) => (
+                  {formats.map((f: string) => (
                     <button
                       key={f}
                       onClick={() => setFormat(f)}
