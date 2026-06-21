@@ -86,7 +86,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Handgefertigte, personalisierte Geldgeschenke aus echtem Holz und feinem Papier — für Hochzeit, Geburtstag, Geburt, Taufe und mehr.",
       },
       { name: "author", content: "DigiNutz" },
-      { property: "og:title", content: "DigiNutz — Personalisierte Geldgeschenke" },
+      { property: "og:title", content: "DigiNutz — Personalisierte Geldgeschenke aus Holz & Papier" },
       {
         property: "og:description",
         content: "Personalisierte Geldgeschenke aus Holz & Papier, handgefertigt in Deutschland.",
@@ -94,6 +94,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "DigiNutz" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "DigiNutz — Personalisierte Geldgeschenke aus Holz & Papier" },
+      { name: "description", content: "An e-commerce store for handcrafted personalized money gift frames and boxes." },
+      { property: "og:description", content: "An e-commerce store for handcrafted personalized money gift frames and boxes." },
+      { name: "twitter:description", content: "An e-commerce store for handcrafted personalized money gift frames and boxes." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b68328f6-d261-4c24-a068-c963c31e6caa/id-preview-c480ba1d--c69fcf61-fbaa-492f-9a63-432ed9660716.lovable.app-1782045706419.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b68328f6-d261-4c24-a068-c963c31e6caa/id-preview-c480ba1d--c69fcf61-fbaa-492f-9a63-432ed9660716.lovable.app-1782045706419.png" },
     ],
     links: [{ rel: "stylesheet", href: appCss }],
     scripts: [
