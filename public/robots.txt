@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /warenkorb
+Disallow: /kasse
+Disallow: /bestellung-bestaetigt
+Disallow: /wunschliste
