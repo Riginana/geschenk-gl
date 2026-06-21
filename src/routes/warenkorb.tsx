@@ -7,8 +7,8 @@ import { useCart } from "@/contexts/cart";
 export const Route = createFileRoute("/warenkorb")({
   head: () => ({
     meta: [
-      { title: "Warenkorb | Lieblingsstück Atelier" },
-      { name: "description", content: "Ihr Warenkorb bei Lieblingsstück Atelier." },
+      { title: "Warenkorb | DigiNutz" },
+      { name: "description", content: "Ihr Warenkorb bei DigiNutz." },
       { name: "robots", content: "noindex" },
       { property: "og:url", content: "/warenkorb" },
     ],

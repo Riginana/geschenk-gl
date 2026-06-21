@@ -4,7 +4,7 @@ import { LegalPage } from "@/components/legal-page";
 export const Route = createFileRoute("/versand")({
   head: () => ({
     meta: [
-      { title: "Versand & Lieferzeiten | Lieblingsstück Atelier" },
+      { title: "Versand & Lieferzeiten | DigiNutz" },
       { name: "description", content: "Versandkosten, Lieferzeiten und Versandländer." },
       { property: "og:url", content: "/versand" },
     ],

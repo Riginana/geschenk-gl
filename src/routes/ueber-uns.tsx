@@ -6,9 +6,9 @@ import { useT } from "@/i18n";
 export const Route = createFileRoute("/ueber-uns")({
   head: () => ({
     meta: [
-      { title: "Über uns — Unsere Werkstatt | Lieblingsstück Atelier" },
+      { title: "Über uns — Unsere Werkstatt | DigiNutz" },
       { name: "description", content: "Lernen Sie unsere kleine Werkstatt kennen — Handarbeit, Materialien und unsere Geschichte." },
-      { property: "og:title", content: "Über uns — Lieblingsstück Atelier" },
+      { property: "og:title", content: "Über uns — DigiNutz" },
       { property: "og:url", content: "/ueber-uns" },
     ],
     links: [{ rel: "canonical", href: "/ueber-uns" }],

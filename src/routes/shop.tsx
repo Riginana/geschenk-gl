@@ -18,7 +18,7 @@ export const Route = createFileRoute("/shop")({
   validateSearch: (s) => searchSchema.parse(s),
   head: () => ({
     meta: [
-      { title: "Shop — Personalisierte Geldgeschenke | Lieblingsstück Atelier" },
+      { title: "Shop — Personalisierte Geldgeschenke | DigiNutz" },
       { name: "description", content: "Stöbern Sie durch unsere handgefertigten Geldgeschenke für jeden Anlass — Hochzeit, Geburtstag, Geburt, Konfirmation und mehr." },
       { property: "og:title", content: "Shop — Personalisierte Geldgeschenke" },
       { property: "og:url", content: "/shop" },

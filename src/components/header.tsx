@@ -41,7 +41,7 @@ export function Header() {
             <span className="font-serif text-base italic">L</span>
           </span>
           <span className="hidden font-serif text-lg tracking-tight text-walnut sm:inline">
-            Lieblingsstück <span className="text-brass">Atelier</span>
+            DigiNutz <span className="text-brass">Atelier</span>
           </span>
         </Link>
 

@@ -9,7 +9,7 @@ import { Reveal } from "@/components/reveal";
 export const Route = createFileRoute("/bewertungen")({
   head: () => ({
     meta: [
-      { title: "Bewertungen unserer Kunden | Lieblingsstück Atelier" },
+      { title: "Bewertungen unserer Kunden | DigiNutz" },
       { name: "description", content: "Über 3.000 zufriedene Kunden — lesen Sie echte Bewertungen zu unseren handgefertigten Geldgeschenken." },
       { property: "og:title", content: "Bewertungen unserer Kunden" },
       { property: "og:url", content: "/bewertungen" },

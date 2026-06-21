@@ -1,5 +1,5 @@
 export const de = {
-  brand: "Lieblingsstück Atelier",
+  brand: "DigiNutz",
   tagline: "Personalisierte Geldgeschenke aus Holz & Papier — von Hand gefertigt",
   nav: {
     home: "Startseite",
@@ -19,7 +19,7 @@ export const de = {
   },
   how: {
     eyebrow: "So einfach geht's",
-    title: "Drei Schritte zum Lieblingsstück",
+    title: "Drei Schritte zum DigiNutz",
     steps: [
       { title: "Design wählen", text: "Wählen Sie aus unserer Auswahl handgefertigter Rahmen und Motive für jeden Anlass." },
       { title: "Personalisieren", text: "Name, Datum, Format und Material — alles individuell auf Ihren Anlass abgestimmt." },

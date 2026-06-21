@@ -17,13 +17,13 @@ import { imageFor } from "@/lib/product-images";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Lieblingsstück Atelier — Personalisierte Geldgeschenke" },
+      { title: "DigiNutz — Personalisierte Geldgeschenke" },
       {
         name: "description",
         content:
           "Handgefertigte personalisierte Geldgeschenke aus Holz & Papier — für Hochzeit, Geburtstag, Geburt und mehr. Mit Namen und Datum personalisiert.",
       },
-      { property: "og:title", content: "Lieblingsstück Atelier — Personalisierte Geldgeschenke" },
+      { property: "og:title", content: "DigiNutz — Personalisierte Geldgeschenke" },
       { property: "og:description", content: "Handgefertigt in Deutschland. Mit Liebe zum Detail." },
       { property: "og:url", content: "/" },
     ],

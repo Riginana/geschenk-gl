@@ -4,7 +4,7 @@ import { LegalPage } from "@/components/legal-page";
 export const Route = createFileRoute("/widerruf")({
   head: () => ({
     meta: [
-      { title: "Widerrufsrecht | Lieblingsstück Atelier" },
+      { title: "Widerrufsrecht | DigiNutz" },
       { name: "description", content: "Widerrufsbelehrung und Hinweis zum Ausschluss des Widerrufsrechts bei personalisierten Produkten." },
       { property: "og:url", content: "/widerruf" },
     ],

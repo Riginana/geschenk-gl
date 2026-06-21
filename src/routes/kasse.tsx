@@ -10,8 +10,8 @@ import { submitOrder } from "@/lib/orders.functions";
 export const Route = createFileRoute("/kasse")({
   head: () => ({
     meta: [
-      { title: "Kasse | Lieblingsstück Atelier" },
-      { name: "description", content: "Sicher zur Kasse bei Lieblingsstück Atelier." },
+      { title: "Kasse | DigiNutz" },
+      { name: "description", content: "Sicher zur Kasse bei DigiNutz." },
       { name: "robots", content: "noindex" },
       { property: "og:url", content: "/kasse" },
     ],

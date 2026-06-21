@@ -8,8 +8,8 @@ import { ProductCard } from "@/components/product-card";
 export const Route = createFileRoute("/wunschliste")({
   head: () => ({
     meta: [
-      { title: "Wunschliste | Lieblingsstück Atelier" },
-      { name: "description", content: "Ihre Favoriten bei Lieblingsstück Atelier." },
+      { title: "Wunschliste | DigiNutz" },
+      { name: "description", content: "Ihre Favoriten bei DigiNutz." },
       { name: "robots", content: "noindex" },
     ],
   }),

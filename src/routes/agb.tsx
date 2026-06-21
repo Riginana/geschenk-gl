@@ -4,7 +4,7 @@ import { LegalPage } from "@/components/legal-page";
 export const Route = createFileRoute("/agb")({
   head: () => ({
     meta: [
-      { title: "AGB | Lieblingsstück Atelier" },
+      { title: "AGB | DigiNutz" },
       { name: "description", content: "Allgemeine Geschäftsbedingungen." },
       { property: "og:url", content: "/agb" },
     ],
@@ -13,7 +13,7 @@ export const Route = createFileRoute("/agb")({
   component: () => (
     <LegalPage title="Allgemeine Geschäftsbedingungen">
       <h2>1. Geltungsbereich</h2>
-      <p>Diese AGB gelten für alle Bestellungen, die Verbraucher und Unternehmer über unseren Online-Shop bei der Lieblingsstück Atelier tätigen.</p>
+      <p>Diese AGB gelten für alle Bestellungen, die Verbraucher und Unternehmer über unseren Online-Shop bei der DigiNutz tätigen.</p>
       <h2>2. Vertragsschluss</h2>
       <p>Die Darstellung der Produkte stellt kein rechtlich bindendes Angebot, sondern eine Aufforderung zur Bestellung dar.</p>
       <h2>3. Preise und Versandkosten</h2>

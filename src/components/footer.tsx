@@ -91,7 +91,7 @@ export function Footer() {
             <span className="rounded-full bg-brass/15 px-3 py-1 text-xs uppercase tracking-widest text-walnut">
               {t("footer.handmade")}
             </span>
-            <span>© {new Date().getFullYear()} Lieblingsstück Atelier. {t("footer.rights")}</span>
+            <span>© {new Date().getFullYear()} DigiNutz. {t("footer.rights")}</span>
           </div>
           <div className="flex items-center gap-5">
             <span className="hidden text-xs uppercase tracking-widest md:inline">{t("contact.follow")}</span>

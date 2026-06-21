@@ -4,7 +4,7 @@ import { LegalPage } from "@/components/legal-page";
 export const Route = createFileRoute("/faq")({
   head: () => ({
     meta: [
-      { title: "FAQ | Lieblingsstück Atelier" },
+      { title: "FAQ | DigiNutz" },
       { name: "description", content: "Häufig gestellte Fragen zu Personalisierung, Versand und Materialien." },
       { property: "og:url", content: "/faq" },
     ],

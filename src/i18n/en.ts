@@ -1,7 +1,7 @@
 import type { Dictionary } from "./de";
 
 export const en: Dictionary = {
-  brand: "Lieblingsstück Atelier",
+  brand: "DigiNutz",
   tagline: "Personalized money gifts in wood & paper — handcrafted",
   nav: {
     home: "Home",
