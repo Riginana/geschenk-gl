@@ -9,10 +9,16 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WarenkorbRouteImport } from './routes/warenkorb'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ShopSlugRouteImport } from './routes/shop.$slug'
 
+const WarenkorbRoute = WarenkorbRouteImport.update({
+  id: '/warenkorb',
+  path: '/warenkorb',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ShopRoute = ShopRouteImport.update({
   id: '/shop',
   path: '/shop',
@@ -32,34 +38,45 @@ const ShopSlugRoute = ShopSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/shop': typeof ShopRouteWithChildren
+  '/warenkorb': typeof WarenkorbRoute
   '/shop/$slug': typeof ShopSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/shop': typeof ShopRouteWithChildren
+  '/warenkorb': typeof WarenkorbRoute
   '/shop/$slug': typeof ShopSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/shop': typeof ShopRouteWithChildren
+  '/warenkorb': typeof WarenkorbRoute
   '/shop/$slug': typeof ShopSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/shop' | '/shop/$slug'
+  fullPaths: '/' | '/shop' | '/warenkorb' | '/shop/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/shop' | '/shop/$slug'
-  id: '__root__' | '/' | '/shop' | '/shop/$slug'
+  to: '/' | '/shop' | '/warenkorb' | '/shop/$slug'
+  id: '__root__' | '/' | '/shop' | '/warenkorb' | '/shop/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ShopRoute: typeof ShopRouteWithChildren
+  WarenkorbRoute: typeof WarenkorbRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/warenkorb': {
+      id: '/warenkorb'
+      path: '/warenkorb'
+      fullPath: '/warenkorb'
+      preLoaderRoute: typeof WarenkorbRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/shop': {
       id: '/shop'
       path: '/shop'
@@ -97,6 +114,7 @@ const ShopRouteWithChildren = ShopRoute._addFileChildren(ShopRouteChildren)
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ShopRoute: ShopRouteWithChildren,
+  WarenkorbRoute: WarenkorbRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
