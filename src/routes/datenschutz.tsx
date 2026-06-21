@@ -4,7 +4,7 @@ import { LegalPage } from "@/components/legal-page";
 export const Route = createFileRoute("/datenschutz")({
   head: () => ({
     meta: [
-      { title: "Datenschutzerklärung | Lieblingsstück Atelier" },
+      { title: "Datenschutzerklärung | DigiNutz" },
       { name: "description", content: "Datenschutzerklärung gemäß DSGVO." },
       { property: "og:url", content: "/datenschutz" },
     ],
@@ -13,7 +13,7 @@ export const Route = createFileRoute("/datenschutz")({
   component: () => (
     <LegalPage title="Datenschutzerklärung">
       <h2>1. Verantwortlicher</h2>
-      <p>Verantwortlich für die Datenverarbeitung auf dieser Website ist Lieblingsstück Atelier, Musterstraße 12, 10115 Berlin.</p>
+      <p>Verantwortlich für die Datenverarbeitung auf dieser Website ist DigiNutz, Musterstraße 12, 10115 Berlin.</p>
       <h2>2. Erhebung und Speicherung personenbezogener Daten</h2>
       <p>Wir verarbeiten personenbezogene Daten nur zur Vertragsabwicklung, Kommunikation und gesetzlich zulässigen Marketingmaßnahmen.</p>
       <h2>3. Ihre Rechte</h2>

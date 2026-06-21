@@ -11,9 +11,9 @@ import { Reveal } from "@/components/reveal";
 export const Route = createFileRoute("/kontakt")({
   head: () => ({
     meta: [
-      { title: "Kontakt | Lieblingsstück Atelier" },
+      { title: "Kontakt | DigiNutz" },
       { name: "description", content: "Kontaktieren Sie uns für Sonderwünsche, Fragen oder individuelle Gestaltung." },
-      { property: "og:title", content: "Kontakt — Lieblingsstück Atelier" },
+      { property: "og:title", content: "Kontakt — DigiNutz" },
       { property: "og:url", content: "/kontakt" },
     ],
     links: [{ rel: "canonical", href: "/kontakt" }],

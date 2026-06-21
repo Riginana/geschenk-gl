@@ -8,7 +8,7 @@ export const Route = createFileRoute("/bestellung-bestaetigt")({
   validateSearch: (s) => z.object({ id: z.string().optional() }).parse(s),
   head: () => ({
     meta: [
-      { title: "Vielen Dank für Ihre Bestellung! | Lieblingsstück Atelier" },
+      { title: "Vielen Dank für Ihre Bestellung! | DigiNutz" },
       { name: "description", content: "Wir haben Ihre Bestellung erhalten." },
       { name: "robots", content: "noindex" },
     ],

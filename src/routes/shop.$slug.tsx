@@ -32,7 +32,7 @@ export const Route = createFileRoute("/shop/$slug")({
     if (!p) return {};
     return {
       meta: [
-        { title: `${p.name_de} | Lieblingsstück Atelier` },
+        { title: `${p.name_de} | DigiNutz` },
         { name: "description", content: p.description_de.slice(0, 160) },
         { property: "og:title", content: p.name_de },
         { property: "og:description", content: p.description_de.slice(0, 160) },

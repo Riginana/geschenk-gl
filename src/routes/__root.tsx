@@ -79,20 +79,20 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lieblingsstück Atelier — Personalisierte Geldgeschenke aus Holz & Papier" },
+      { title: "DigiNutz — Personalisierte Geldgeschenke aus Holz & Papier" },
       {
         name: "description",
         content:
           "Handgefertigte, personalisierte Geldgeschenke aus echtem Holz und feinem Papier — für Hochzeit, Geburtstag, Geburt, Taufe und mehr.",
       },
-      { name: "author", content: "Lieblingsstück Atelier" },
-      { property: "og:title", content: "Lieblingsstück Atelier — Personalisierte Geldgeschenke" },
+      { name: "author", content: "DigiNutz" },
+      { property: "og:title", content: "DigiNutz — Personalisierte Geldgeschenke" },
       {
         property: "og:description",
         content: "Personalisierte Geldgeschenke aus Holz & Papier, handgefertigt in Deutschland.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:site_name", content: "Lieblingsstück Atelier" },
+      { property: "og:site_name", content: "DigiNutz" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "stylesheet", href: appCss }],
@@ -102,7 +102,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Organization",
-          name: "Lieblingsstück Atelier",
+          name: "DigiNutz",
           description: "Handgefertigte personalisierte Geldgeschenke aus Holz und Papier.",
         }),
       },
