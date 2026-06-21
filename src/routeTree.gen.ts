@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WarenkorbRouteImport } from './routes/warenkorb'
 import { Route as ShopRouteImport } from './routes/shop'
+import { Route as KasseRouteImport } from './routes/kasse'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ShopSlugRouteImport } from './routes/shop.$slug'
 
@@ -22,6 +23,11 @@ const WarenkorbRoute = WarenkorbRouteImport.update({
 const ShopRoute = ShopRouteImport.update({
   id: '/shop',
   path: '/shop',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KasseRoute = KasseRouteImport.update({
+  id: '/kasse',
+  path: '/kasse',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -37,12 +43,14 @@ const ShopSlugRoute = ShopSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/kasse': typeof KasseRoute
   '/shop': typeof ShopRouteWithChildren
   '/warenkorb': typeof WarenkorbRoute
   '/shop/$slug': typeof ShopSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/kasse': typeof KasseRoute
   '/shop': typeof ShopRouteWithChildren
   '/warenkorb': typeof WarenkorbRoute
   '/shop/$slug': typeof ShopSlugRoute
@@ -50,20 +58,22 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/kasse': typeof KasseRoute
   '/shop': typeof ShopRouteWithChildren
   '/warenkorb': typeof WarenkorbRoute
   '/shop/$slug': typeof ShopSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/shop' | '/warenkorb' | '/shop/$slug'
+  fullPaths: '/' | '/kasse' | '/shop' | '/warenkorb' | '/shop/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/shop' | '/warenkorb' | '/shop/$slug'
-  id: '__root__' | '/' | '/shop' | '/warenkorb' | '/shop/$slug'
+  to: '/' | '/kasse' | '/shop' | '/warenkorb' | '/shop/$slug'
+  id: '__root__' | '/' | '/kasse' | '/shop' | '/warenkorb' | '/shop/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  KasseRoute: typeof KasseRoute
   ShopRoute: typeof ShopRouteWithChildren
   WarenkorbRoute: typeof WarenkorbRoute
 }
@@ -82,6 +92,13 @@ declare module '@tanstack/react-router' {
       path: '/shop'
       fullPath: '/shop'
       preLoaderRoute: typeof ShopRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kasse': {
+      id: '/kasse'
+      path: '/kasse'
+      fullPath: '/kasse'
+      preLoaderRoute: typeof KasseRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -113,6 +130,7 @@ const ShopRouteWithChildren = ShopRoute._addFileChildren(ShopRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  KasseRoute: KasseRoute,
   ShopRoute: ShopRouteWithChildren,
   WarenkorbRoute: WarenkorbRoute,
 }
