@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as WarenkorbRouteImport } from './routes/warenkorb'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as KasseRouteImport } from './routes/kasse'
+import { Route as BestellungBestaetigtRouteImport } from './routes/bestellung-bestaetigt'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ShopSlugRouteImport } from './routes/shop.$slug'
 
@@ -30,6 +31,11 @@ const KasseRoute = KasseRouteImport.update({
   path: '/kasse',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BestellungBestaetigtRoute = BestellungBestaetigtRouteImport.update({
+  id: '/bestellung-bestaetigt',
+  path: '/bestellung-bestaetigt',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -43,6 +49,7 @@ const ShopSlugRoute = ShopSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/bestellung-bestaetigt': typeof BestellungBestaetigtRoute
   '/kasse': typeof KasseRoute
   '/shop': typeof ShopRouteWithChildren
   '/warenkorb': typeof WarenkorbRoute
@@ -50,6 +57,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/bestellung-bestaetigt': typeof BestellungBestaetigtRoute
   '/kasse': typeof KasseRoute
   '/shop': typeof ShopRouteWithChildren
   '/warenkorb': typeof WarenkorbRoute
@@ -58,6 +66,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/bestellung-bestaetigt': typeof BestellungBestaetigtRoute
   '/kasse': typeof KasseRoute
   '/shop': typeof ShopRouteWithChildren
   '/warenkorb': typeof WarenkorbRoute
@@ -65,14 +74,34 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/kasse' | '/shop' | '/warenkorb' | '/shop/$slug'
+  fullPaths:
+    | '/'
+    | '/bestellung-bestaetigt'
+    | '/kasse'
+    | '/shop'
+    | '/warenkorb'
+    | '/shop/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/kasse' | '/shop' | '/warenkorb' | '/shop/$slug'
-  id: '__root__' | '/' | '/kasse' | '/shop' | '/warenkorb' | '/shop/$slug'
+  to:
+    | '/'
+    | '/bestellung-bestaetigt'
+    | '/kasse'
+    | '/shop'
+    | '/warenkorb'
+    | '/shop/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/bestellung-bestaetigt'
+    | '/kasse'
+    | '/shop'
+    | '/warenkorb'
+    | '/shop/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BestellungBestaetigtRoute: typeof BestellungBestaetigtRoute
   KasseRoute: typeof KasseRoute
   ShopRoute: typeof ShopRouteWithChildren
   WarenkorbRoute: typeof WarenkorbRoute
@@ -99,6 +128,13 @@ declare module '@tanstack/react-router' {
       path: '/kasse'
       fullPath: '/kasse'
       preLoaderRoute: typeof KasseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bestellung-bestaetigt': {
+      id: '/bestellung-bestaetigt'
+      path: '/bestellung-bestaetigt'
+      fullPath: '/bestellung-bestaetigt'
+      preLoaderRoute: typeof BestellungBestaetigtRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -130,6 +166,7 @@ const ShopRouteWithChildren = ShopRoute._addFileChildren(ShopRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BestellungBestaetigtRoute: BestellungBestaetigtRoute,
   KasseRoute: KasseRoute,
   ShopRoute: ShopRouteWithChildren,
   WarenkorbRoute: WarenkorbRoute,
