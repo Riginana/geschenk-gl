@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WarenkorbRouteImport } from './routes/warenkorb'
+import { Route as UeberUnsRouteImport } from './routes/ueber-uns'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as KasseRouteImport } from './routes/kasse'
 import { Route as BewertungenRouteImport } from './routes/bewertungen'
@@ -20,6 +21,11 @@ import { Route as ShopSlugRouteImport } from './routes/shop.$slug'
 const WarenkorbRoute = WarenkorbRouteImport.update({
   id: '/warenkorb',
   path: '/warenkorb',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UeberUnsRoute = UeberUnsRouteImport.update({
+  id: '/ueber-uns',
+  path: '/ueber-uns',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ShopRoute = ShopRouteImport.update({
@@ -59,6 +65,7 @@ export interface FileRoutesByFullPath {
   '/bewertungen': typeof BewertungenRoute
   '/kasse': typeof KasseRoute
   '/shop': typeof ShopRouteWithChildren
+  '/ueber-uns': typeof UeberUnsRoute
   '/warenkorb': typeof WarenkorbRoute
   '/shop/$slug': typeof ShopSlugRoute
 }
@@ -68,6 +75,7 @@ export interface FileRoutesByTo {
   '/bewertungen': typeof BewertungenRoute
   '/kasse': typeof KasseRoute
   '/shop': typeof ShopRouteWithChildren
+  '/ueber-uns': typeof UeberUnsRoute
   '/warenkorb': typeof WarenkorbRoute
   '/shop/$slug': typeof ShopSlugRoute
 }
@@ -78,6 +86,7 @@ export interface FileRoutesById {
   '/bewertungen': typeof BewertungenRoute
   '/kasse': typeof KasseRoute
   '/shop': typeof ShopRouteWithChildren
+  '/ueber-uns': typeof UeberUnsRoute
   '/warenkorb': typeof WarenkorbRoute
   '/shop/$slug': typeof ShopSlugRoute
 }
@@ -89,6 +98,7 @@ export interface FileRouteTypes {
     | '/bewertungen'
     | '/kasse'
     | '/shop'
+    | '/ueber-uns'
     | '/warenkorb'
     | '/shop/$slug'
   fileRoutesByTo: FileRoutesByTo
@@ -98,6 +108,7 @@ export interface FileRouteTypes {
     | '/bewertungen'
     | '/kasse'
     | '/shop'
+    | '/ueber-uns'
     | '/warenkorb'
     | '/shop/$slug'
   id:
@@ -107,6 +118,7 @@ export interface FileRouteTypes {
     | '/bewertungen'
     | '/kasse'
     | '/shop'
+    | '/ueber-uns'
     | '/warenkorb'
     | '/shop/$slug'
   fileRoutesById: FileRoutesById
@@ -117,6 +129,7 @@ export interface RootRouteChildren {
   BewertungenRoute: typeof BewertungenRoute
   KasseRoute: typeof KasseRoute
   ShopRoute: typeof ShopRouteWithChildren
+  UeberUnsRoute: typeof UeberUnsRoute
   WarenkorbRoute: typeof WarenkorbRoute
 }
 
@@ -127,6 +140,13 @@ declare module '@tanstack/react-router' {
       path: '/warenkorb'
       fullPath: '/warenkorb'
       preLoaderRoute: typeof WarenkorbRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ueber-uns': {
+      id: '/ueber-uns'
+      path: '/ueber-uns'
+      fullPath: '/ueber-uns'
+      preLoaderRoute: typeof UeberUnsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/shop': {
@@ -190,6 +210,7 @@ const rootRouteChildren: RootRouteChildren = {
   BewertungenRoute: BewertungenRoute,
   KasseRoute: KasseRoute,
   ShopRoute: ShopRouteWithChildren,
+  UeberUnsRoute: UeberUnsRoute,
   WarenkorbRoute: WarenkorbRoute,
 }
 export const routeTree = rootRouteImport
