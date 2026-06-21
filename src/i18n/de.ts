@@ -177,6 +177,6 @@ export const de = {
     title: "Wunschliste",
     empty: "Sie haben noch keine Favoriten gespeichert.",
   },
-} as const;
+};
 
 export type Dictionary = typeof de;
