@@ -19,7 +19,7 @@ export const de = {
   },
   how: {
     eyebrow: "So einfach geht's",
-    title: "Drei Schritte zum DigiNutz",
+    title: "Drei Schritte zu Ihrem Lieblingsstück",
     steps: [
       { title: "Design wählen", text: "Wählen Sie aus unserer Auswahl handgefertigter Rahmen und Motive für jeden Anlass." },
       { title: "Personalisieren", text: "Name, Datum, Format und Material — alles individuell auf Ihren Anlass abgestimmt." },
