@@ -2,51 +2,36 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { useMemo, useState } from "react";
 import { toast } from "sonner";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { Heart, Minus, Plus, ShoppingBag, ArrowLeft } from "lucide-react";
-import { products } from "@/data/products";
+import { listProducts, type ProductRow } from "@/lib/products.functions";
 import { formatEUR, useT } from "@/i18n";
 import { useCart } from "@/contexts/cart";
 import { useWishlist } from "@/contexts/wishlist";
 import { Reveal } from "@/components/reveal";
 
+const productsQueryOptions = {
+  queryKey: ["products"] as const,
+  queryFn: () => listProducts(),
+};
+
 export const Route = createFileRoute("/shop/$slug")({
-  loader: ({ params }) => {
-    const product = products.find((p) => p.id === params.slug);
+  loader: async ({ context, params }) => {
+    const products = await context.queryClient.ensureQueryData(productsQueryOptions);
+    const product = products.find((p) => p.slug === params.slug);
     if (!product) throw notFound();
-    return { product };
+    return { slug: params.slug };
   },
-  head: ({ loaderData }) => {
-    const p = loaderData?.product;
-    if (!p) return {};
+  head: ({ loaderData, params }) => {
+    const slug = loaderData?.slug ?? params?.slug;
+    if (!slug) return {};
     return {
       meta: [
-        { title: `${p.title} | DigiNutz` },
-        { name: "description", content: p.description.slice(0, 160) },
-        { property: "og:title", content: p.title },
-        { property: "og:description", content: p.description.slice(0, 160) },
-        { property: "og:image", content: p.image },
+        { title: `Produkt | DigiNutz` },
         { property: "og:type", content: "product" },
-        { property: "og:url", content: `/shop/${p.id}` },
+        { property: "og:url", content: `/shop/${slug}` },
       ],
-      links: [{ rel: "canonical", href: `/shop/${p.id}` }],
-      scripts: [
-        {
-          type: "application/ld+json",
-          children: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Product",
-            name: p.title,
-            description: p.description,
-            image: p.image,
-            offers: {
-              "@type": "Offer",
-              priceCurrency: "EUR",
-              price: p.price.toFixed(2),
-              availability: p.inStock ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
-            },
-          }),
-        },
-      ],
+      links: [{ rel: "canonical", href: `/shop/${slug}` }],
     };
   },
   component: ProductPage,
@@ -67,36 +52,46 @@ const PRICE_BY_FORMAT: Record<string, number> = { A5: 0, A4: 5, A3: 12 };
 const PRICE_BY_FRAME: Record<string, number> = { papier: 0, kraftpapier: 2, holz: 8 };
 
 function ProductPage() {
-  const { product } = Route.useLoaderData();
+  const { slug } = Route.useLoaderData();
   const { t, locale } = useT();
-  
+  const { data: products } = useSuspenseQuery(productsQueryOptions);
+  const product = products.find((p) => p.slug === slug) as ProductRow | undefined;
+
   const { add } = useCart();
   const { has, toggle } = useWishlist();
 
+  const title = product ? (locale === "de" ? product.name_de : product.name_en) : "";
+  const description = product ? (locale === "de" ? product.description_de : product.description_en) : "";
+  const image = product?.images?.[0] ?? "";
+
   const formats = useMemo(() => {
-    const f = detectFormats(`${product.title} ${product.description}`);
-    return f.length ? f : (["A5", "A4", "A3"] as const).slice();
-  }, [product]);
+    if (!product) return ["A5", "A4", "A3"] as const;
+    const f = detectFormats(`${title} ${description}`);
+    return (f.length ? f : (["A5", "A4", "A3"] as const).slice()) as Array<"A5" | "A4" | "A3">;
+  }, [product, title, description]);
 
   const [format, setFormat] = useState<string>(formats[0]);
-  const [frame, setFrame] = useState<string>(product.material || "holz");
+  const [frame, setFrame] = useState<string>(product?.material || "holz");
   const [qty, setQty] = useState(1);
 
-  const unitPrice = product.price + (PRICE_BY_FORMAT[format] ?? 0) + (PRICE_BY_FRAME[frame] ?? 0);
+  if (!product) return <ProductNotFound />;
+
+  const basePrice = product.base_price_cents / 100;
+  const unitPrice = basePrice + (PRICE_BY_FORMAT[format] ?? 0) + (PRICE_BY_FRAME[frame] ?? 0);
   const unitCents = Math.round(unitPrice * 100);
 
   const onAdd = () => {
     add({
       id: `${product.id}-${format}-${frame}`,
       productId: product.id,
-      slug: product.id,
-      name: product.title,
-      image: product.image,
+      slug: product.slug,
+      name: title,
+      image,
       unitPriceCents: unitCents,
       qty,
       personalization: { format, material: frame },
     });
-    toast.success(t("product.addedToCart"), { description: `${product.title.slice(0, 60)} · ${format} · ${qty}×` });
+    toast.success(t("product.addedToCart"), { description: `${title.slice(0, 60)} · ${format} · ${qty}×` });
   };
 
   return (
@@ -106,13 +101,13 @@ function ProductPage() {
         <span className="mx-2">/</span>
         <Link to="/shop" className="hover:text-walnut">Shop</Link>
         <span className="mx-2">/</span>
-        <span className="text-walnut line-clamp-1">{product.title}</span>
+        <span className="text-walnut line-clamp-1">{title}</span>
       </nav>
 
       <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
         <Reveal>
           <div className="relative aspect-square overflow-hidden rounded-2xl bg-linen ring-1 ring-border">
-            <img src={product.image} alt={product.title} className="h-full w-full object-cover" />
+            <img src={image} alt={title} className="h-full w-full object-cover" />
             <span className="absolute left-4 top-4 rounded-full bg-walnut/90 px-3 py-1 text-[10px] font-medium uppercase tracking-widest text-cream">
               {t(`occasions.${product.occasion}`) || product.occasion}
             </span>
@@ -121,7 +116,7 @@ function ProductPage() {
 
         <div>
           <p className="eyebrow">{t(`occasions.${product.occasion}`) || product.occasion}</p>
-          <h1 className="mt-2 font-serif text-3xl text-walnut sm:text-4xl">{product.title}</h1>
+          <h1 className="mt-2 font-serif text-3xl text-walnut sm:text-4xl">{title}</h1>
 
           <div className="mt-6 flex items-baseline gap-3">
             <span className="font-serif text-3xl text-walnut">{formatEUR(unitCents, locale)}</span>
@@ -129,7 +124,7 @@ function ProductPage() {
           </div>
 
           <p className="mt-6 whitespace-pre-line text-base leading-relaxed text-foreground/85">
-            {product.description}
+            {description}
           </p>
 
           <div className="mt-8 space-y-5 rounded-2xl bg-card p-6 ring-1 ring-border/60">
