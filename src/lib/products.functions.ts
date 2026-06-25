@@ -16,6 +16,8 @@ export type ProductRow = {
   images: string[];
   hoverImage?: string;
   badge: string | null;
+  tags: string[];
+  inStock: boolean;
 };
 
 type RawEtsy = {
