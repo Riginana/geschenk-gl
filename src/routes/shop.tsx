@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { z } from "zod";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { useT } from "@/i18n";
-import { products as rawProducts, type Product } from "@/data/products";
-import type { ProductRow } from "@/lib/products.functions";
+import { listProducts } from "@/lib/products.functions";
 import { ProductCard } from "@/components/product-card";
 import { Reveal } from "@/components/reveal";
 
@@ -14,36 +14,14 @@ const searchSchema = z.object({
   sort: z.enum(["popular", "new", "price_asc", "price_desc"]).optional(),
 });
 
-function detectFormats(text: string): Array<"A5" | "A4" | "A3"> {
-  const out: Array<"A5" | "A4" | "A3"> = [];
-  const t = text.toUpperCase();
-  if (t.includes("A3")) out.push("A3");
-  if (t.includes("A4")) out.push("A4");
-  if (t.includes("A5")) out.push("A5");
-  return out;
-}
-
-function toRow(p: Product): ProductRow {
-  return {
-    id: p.id,
-    slug: p.id,
-    name_de: p.title,
-    name_en: p.title,
-    description_de: p.description,
-    description_en: p.description,
-    base_price_cents: Math.round(p.price * 100),
-    occasion: p.occasion,
-    material: p.material,
-    formats: detectFormats(`${p.title} ${p.description}`),
-    images: [p.image],
-    badge: null,
-  } as ProductRow;
-}
-
-const ALL_PRODUCTS: ProductRow[] = rawProducts.map(toRow);
+const productsQueryOptions = {
+  queryKey: ["products"] as const,
+  queryFn: () => listProducts(),
+};
 
 export const Route = createFileRoute("/shop")({
   validateSearch: (s) => searchSchema.parse(s),
+  loader: ({ context }) => context.queryClient.ensureQueryData(productsQueryOptions),
   head: () => ({
     meta: [
       { title: "Shop — Personalisierte Geldgeschenke | DigiNutz" },
@@ -63,9 +41,10 @@ function ShopPage() {
   const search = Route.useSearch();
   const navigate = Route.useNavigate();
   const [openFilters, setOpenFilters] = useState(false);
+  const { data: allProducts } = useSuspenseQuery(productsQueryOptions);
 
   const filtered = useMemo(() => {
-    let arr = ALL_PRODUCTS.slice();
+    let arr = allProducts.slice();
     if (search.occasion) arr = arr.filter((p) => p.occasion === search.occasion);
     if (search.material) arr = arr.filter((p) => p.material === search.material);
     if (search.format) arr = arr.filter((p) => (p.formats ?? []).includes(search.format!));
@@ -82,7 +61,7 @@ function ShopPage() {
         break;
     }
     return arr;
-  }, [search]);
+  }, [search, allProducts]);
 
   const update = (patch: Partial<typeof search>) => navigate({ search: (prev: typeof search) => ({ ...prev, ...patch }) });
 
