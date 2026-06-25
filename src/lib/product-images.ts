@@ -15,10 +15,20 @@ const byOccasion: Record<string, string> = {
   geburt: baby,
   taufe: baptism,
   konfirmation: confirmation,
+  kommunion: confirmation,
+  firmung: confirmation,
   jubilaeum: anniversary,
   ruhestand: retirement,
   weihnachten: christmas,
   abschied: farewell,
+  einzug: farewell,
+  abitur: anniversary,
+  jugendweihe: confirmation,
+  einschulung: baby,
+  fuehrerschein: anniversary,
+  ostern: christmas,
+  mutterschutz: baby,
+  sonstiges: hero,
 };
 
 export function imageFor(occasion: string): string {
@@ -26,7 +36,6 @@ export function imageFor(occasion: string): string {
 }
 
 export function secondaryImageFor(occasion: string): string {
-  // For card hover: rotate through the gallery
   const list = Object.values(byOccasion);
   const idx = Object.keys(byOccasion).indexOf(occasion);
   return list[(idx + 1) % list.length];

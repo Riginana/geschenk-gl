@@ -1,13 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
-import { createClient } from "@supabase/supabase-js";
 import { z } from "zod";
-import type { Database } from "@/integrations/supabase/types";
-
-function pub() {
-  return createClient<Database>(process.env.SUPABASE_URL!, process.env.SUPABASE_PUBLISHABLE_KEY!, {
-    auth: { storage: undefined, persistSession: false, autoRefreshToken: false },
-  });
-}
+import raw from "@/data/etsy-products.json";
 
 export type ProductRow = {
   id: string;
@@ -24,25 +17,52 @@ export type ProductRow = {
   badge: string | null;
 };
 
-export const listProducts = createServerFn({ method: "GET" }).handler(async (): Promise<ProductRow[]> => {
-  const { data, error } = await pub()
-    .from("products")
-    .select("id,slug,name_de,name_en,description_de,description_en,base_price_cents,occasion,material,formats,images,badge")
-    .eq("is_active", true)
-    .order("created_at", { ascending: false });
-  if (error) throw new Error(error.message);
-  return (data ?? []) as unknown as ProductRow[];
-});
+type RawEtsy = {
+  id: string;
+  title: string;
+  description: string;
+  price: number;
+  currency: string;
+  occasion: string;
+  material: string;
+  image: string;
+  tags?: string[];
+  inStock?: boolean;
+  quantity?: number;
+};
+
+function detectFormats(text: string): string[] {
+  const found = new Set<string>();
+  const t = text.toUpperCase();
+  for (const f of ["A3", "A4", "A5"]) {
+    if (new RegExp(`\\b${f}\\b`).test(t) || t.includes(`DIN ${f}`)) found.add(f);
+  }
+  if (found.size === 0) found.add("A4");
+  // Sort A5, A4, A3
+  return ["A5", "A4", "A3"].filter((f) => found.has(f));
+}
+
+const PRODUCTS: ProductRow[] = (raw as RawEtsy[]).map((p, i) => ({
+  id: p.id,
+  slug: p.id,
+  name_de: p.title,
+  name_en: p.title,
+  description_de: p.description,
+  description_en: p.description,
+  base_price_cents: Math.round(p.price * 100),
+  occasion: p.occasion,
+  material: p.material,
+  formats: detectFormats(`${p.title} ${p.description}`),
+  images: [p.image],
+  badge: i < 8 ? "bestseller" : i < 16 ? "neu" : null,
+}));
+
+export const listProducts = createServerFn({ method: "GET" }).handler(
+  async (): Promise<ProductRow[]> => PRODUCTS,
+);
 
 export const getProductBySlug = createServerFn({ method: "GET" })
   .inputValidator((d) => z.object({ slug: z.string().min(1).max(120) }).parse(d))
   .handler(async ({ data }): Promise<ProductRow | null> => {
-    const { data: row, error } = await pub()
-      .from("products")
-      .select("id,slug,name_de,name_en,description_de,description_en,base_price_cents,occasion,material,formats,images,badge")
-      .eq("slug", data.slug)
-      .eq("is_active", true)
-      .maybeSingle();
-    if (error) throw new Error(error.message);
-    return (row ?? null) as unknown as ProductRow | null;
+    return PRODUCTS.find((p) => p.slug === data.slug) ?? null;
   });

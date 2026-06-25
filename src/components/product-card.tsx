@@ -11,7 +11,7 @@ export function ProductCard({ p, eager }: { p: ProductRow; eager?: boolean }) {
   const { has, toggle } = useWishlist();
   const liked = has(p.id);
   const name = locale === "de" ? p.name_de : p.name_en;
-  const img = imageFor(p.occasion);
+  const img = p.images?.[0] || imageFor(p.occasion);
   const img2 = secondaryImageFor(p.occasion);
 
   return (
@@ -43,6 +43,7 @@ export function ProductCard({ p, eager }: { p: ProductRow; eager?: boolean }) {
             loading="lazy"
             className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
           />
+
           {p.badge && (
             <span className="absolute left-3 top-3 rounded-full bg-walnut/90 px-3 py-1 text-[10px] font-medium uppercase tracking-widest text-cream">
               {p.badge === "bestseller" ? t("badge.bestseller") : t("badge.neu")}
@@ -72,6 +73,7 @@ export function ProductCard({ p, eager }: { p: ProductRow; eager?: boolean }) {
     </motion.div>
   );
 }
+
 
 export function ProductCardSkeleton() {
   return (

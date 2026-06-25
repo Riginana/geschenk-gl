@@ -58,7 +58,8 @@ export const Route = createFileRoute("/shop/$slug")({
 });
 
 const PRICE_BY_FORMAT: Record<string, number> = { A5: 0, A4: 500, A3: 1200 };
-const PRICE_BY_MATERIAL: Record<string, number> = { karton: 0, holz: 800 };
+const PRICE_BY_MATERIAL: Record<string, number> = { papier: 0, kraftpapier: 200, holz: 800 };
+
 
 function ProductPage() {
   const { product } = Route.useLoaderData();
@@ -84,9 +85,10 @@ function ProductPage() {
   const unitPrice =
     product.base_price_cents + (PRICE_BY_FORMAT[format] ?? 0) + (PRICE_BY_MATERIAL[material] ?? 0);
 
-  const img = imageFor(product.occasion);
+  const img = product.images?.[0] || imageFor(product.occasion);
   const img2 = secondaryImageFor(product.occasion);
   const [activeImg, setActiveImg] = useState(img);
+
 
   const onAdd = () => {
     add({
@@ -212,7 +214,7 @@ function ProductPage() {
               </Field>
               <Field label={t("product.material")}>
                 <div className="flex flex-wrap gap-2">
-                  {(["karton", "holz"] as const).map((m) => (
+                  {(["papier", "kraftpapier", "holz"] as const).map((m) => (
                     <button
                       key={m}
                       onClick={() => setMaterial(m)}
@@ -225,6 +227,7 @@ function ProductPage() {
                   ))}
                 </div>
               </Field>
+
             </div>
           </div>
 
