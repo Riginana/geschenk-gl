@@ -36,6 +36,7 @@ export const listReviews = createServerFn({ method: "GET" })
     const { data: rows, error } = await q;
     if (error) throw new Error(error.message);
     const result = (rows ?? []) as unknown as ReviewRow[];
+    console.log("[listReviews] rows returned:", result.length);
     if (result.length > 0) return result;
 
     const FALLBACK_REVIEWS: ReviewRow[] = [
