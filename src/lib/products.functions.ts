@@ -14,6 +14,7 @@ export type ProductRow = {
   material: string;
   formats: string[];
   images: string[];
+  hoverImage?: string;
   badge: string | null;
 };
 
