@@ -12,7 +12,7 @@ export function ProductCard({ p, eager }: { p: ProductRow; eager?: boolean }) {
   const liked = has(p.id);
   const name = locale === "de" ? p.name_de : p.name_en;
   const img = p.images?.[0] || imageFor(p.occasion);
-  const img2 = secondaryImageFor(p.occasion);
+  const hoverImg = p.hoverImage;
 
   return (
     <motion.div
