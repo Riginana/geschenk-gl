@@ -15,9 +15,7 @@ export const products: Product[] = [
   {
     id: 'etsy-1',
     title: 'Abitur 2026 Geldgeschenk, Personalisierte Abitur Geschenke, Abitur Geschenk Mädchen Junge, DIN A4 Bilderrahmen, Geschenk zur Abschlussfeier.',
-    description: 'Dieses personalisierte Geldgeschenk zum Abitur 2026 ist eine stilvolle und zeitgemäße Geschenkidee für Absolventinnen und Absolventen.
-
-Das Design wird im DIN-A4-Format gefertigt und eignet sich perfekt, um Geldscheine dekorativ zu hinterlegen. Durch die klare Gestaltung wirkt das Geschenk modern, w...',
+    description: 'Dieses personalisierte Geldgeschenk zum Abitur 2026 ist eine stilvolle und zeitgemäße Geschenkidee für Absolventinnen und Absolventen.\n\nDas Design wird im DIN-A4-Format gefertigt und eignet sich perfekt, um Geldscheine dekorativ zu hinterlegen. Durch die klare Gestaltung wirkt das Geschenk modern, w...',
     price: 16.0,
     occasion: 'abitur',
     material: 'holz',
@@ -41,9 +39,7 @@ Das Design wird im DIN-A4-Format gefertigt und eignet sich perfekt, um Geldschei
   {
     id: 'etsy-3',
     title: 'Personalisiertes Geldgeschenk zur Hochzeit Weltkarte | DIN A5, A4 oder A3 im Echtholzrahmen | Hochzeitsgeschenk für Reisende.',
-    description: 'Dieses personalisierte Geldgeschenk zur Hochzeit mit Weltkarten-Design ist die perfekte Geschenkidee für Paare, die gemeinsam durchs Leben – und vielleicht auch durch die Welt – gehen möchten.
-
-Das Motiv besteht aus einer 3 mm starken Eichedekorplatte, präzise ausgeschnitten in Form einer Weltkarte....',
+    description: 'Dieses personalisierte Geldgeschenk zur Hochzeit mit Weltkarten-Design ist die perfekte Geschenkidee für Paare, die gemeinsam durchs Leben – und vielleicht auch durch die Welt – gehen möchten.\n\nDas Motiv besteht aus einer 3 mm starken Eichedekorplatte, präzise ausgeschnitten in Form einer Weltkarte....',
     price: 18.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -55,9 +51,7 @@ Das Motiv besteht aus einer 3 mm starken Eichedekorplatte, präzise ausgeschnitt
   {
     id: 'etsy-4',
     title: 'Weltkarte Hochzeit Geldgeschenk | DIN A5, A4 oder A3 im Echtholzrahmen | Personalisiertes Hochzeitsgeschenk für Reisende.',
-    description: 'Dieses personalisierte Geldgeschenk zur Hochzeit mit Weltkarten-Design ist die perfekte Geschenkidee für Paare, die gemeinsam durchs Leben – und vielleicht auch durch die Welt – gehen möchten.
-
-Das Motiv besteht aus einer 3 mm starken Sperrholzplatte, präzise ausgeschnitten in Form einer Weltkarte. ...',
+    description: 'Dieses personalisierte Geldgeschenk zur Hochzeit mit Weltkarten-Design ist die perfekte Geschenkidee für Paare, die gemeinsam durchs Leben – und vielleicht auch durch die Welt – gehen möchten.\n\nDas Motiv besteht aus einer 3 mm starken Sperrholzplatte, präzise ausgeschnitten in Form einer Weltkarte. ...',
     price: 17.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -69,10 +63,7 @@ Das Motiv besteht aus einer 3 mm starken Sperrholzplatte, präzise ausgeschnitte
   {
     id: 'etsy-5',
     title: 'Personalisiertes Geldgeschenk zur Firmung – DIN A4 im Echtholzrahmen | Anker Design | Name & Datum personalisierbar.',
-    description: 'Dieses personalisierte Geldgeschenk zur Firmung verbindet modernes Design mit symbolischer Bedeutung und wird zu einer bleibenden Erinnerung an einen wichtigen Lebensabschnitt.
-
-Das Motiv wird im DIN-A4-Format gefertigt und in einem hochwertigen Echtholz-Bilderrahmen präsentiert.
-Im Mittelpunkt steh...',
+    description: 'Dieses personalisierte Geldgeschenk zur Firmung verbindet modernes Design mit symbolischer Bedeutung und wird zu einer bleibenden Erinnerung an einen wichtigen Lebensabschnitt.\n\nDas Motiv wird im DIN-A4-Format gefertigt und in einem hochwertigen Echtholz-Bilderrahmen präsentiert.\nIm Mittelpunkt steh...',
     price: 19.0,
     occasion: 'firmung',
     material: 'holz',
@@ -84,8 +75,7 @@ Im Mittelpunkt steh...',
   {
     id: 'etsy-6',
     title: 'Personalisierte Geldgeschenk Nichts | Witziges Geschenkidee | Nichts zum Geburtstag | Humorvolles DIY Geldgeschenk | A4 Bilderrahmen.',
-    description: 'Manchmal wünscht sich das Geburtstagskind „Nichts“ – und genau das bekommst du mit diesem witzigen und kreativen Geldgeschenk! 🎉 Dieses humorvolle DIY-Geschenk ist perfekt für alle, die immer „Nichts“ sagen, aber trotzdem überrascht werden möchten – persönlich, charmant und mit einem Augenzwinkern.
-...',
+    description: 'Manchmal wünscht sich das Geburtstagskind „Nichts“ – und genau das bekommst du mit diesem witzigen und kreativen Geldgeschenk! 🎉 Dieses humorvolle DIY-Geschenk ist perfekt für alle, die immer „Nichts“ sagen, aber trotzdem überrascht werden möchten – persönlich, charmant und mit einem Augenzwinkern.\n...',
     price: 19.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -97,9 +87,7 @@ Im Mittelpunkt steh...',
   {
     id: 'etsy-7',
     title: 'Personalisierte Abitur 2026 Geldgeschenk | Perfekt ausgeschnitten | Abitur Geschenk Mädchen Junge | DIN A4 Echtholz Bilderrahmen.',
-    description: 'Feiere den Abschluss eines großen Lebenskapitels mit einem kreativen und personalisierten Geldgeschenk zum Abitur 2026 🎓 – ideal für Mädchen und Jungen, die diesen Meilenstein erreicht haben!
-
-Das Design zeigt ein stilvolles, modernes Motiv rund um das Thema Abschluss und wird auf hochwertigem 250g/...',
+    description: 'Feiere den Abschluss eines großen Lebenskapitels mit einem kreativen und personalisierten Geldgeschenk zum Abitur 2026 🎓 – ideal für Mädchen und Jungen, die diesen Meilenstein erreicht haben!\n\nDas Design zeigt ein stilvolles, modernes Motiv rund um das Thema Abschluss und wird auf hochwertigem 250g/...',
     price: 19.0,
     occasion: 'abitur',
     material: 'holz',
@@ -111,9 +99,7 @@ Das Design zeigt ein stilvolles, modernes Motiv rund um das Thema Abschluss und 
   {
     id: 'etsy-8',
     title: 'Personalisiertes Geldgeschenk zur Jugendweihe – DIN A5 A4 im Bilderrahmen | Name & Datum personalisierbar | Modernes Jugendweihe Geschenk',
-    description: 'Dieses personalisierte Geldgeschenk zur Jugendweihe ist eine moderne und liebevolle Geschenkidee für einen ganz besonderen Lebensabschnitt.
-
-Das Motiv wird auf hochweißem 250 g/m² Premium-Papier gedruckt und präzise ausgeschnitten, sodass Geldscheine dekorativ hinterlegt werden können. Durch den far...',
+    description: 'Dieses personalisierte Geldgeschenk zur Jugendweihe ist eine moderne und liebevolle Geschenkidee für einen ganz besonderen Lebensabschnitt.\n\nDas Motiv wird auf hochweißem 250 g/m² Premium-Papier gedruckt und präzise ausgeschnitten, sodass Geldscheine dekorativ hinterlegt werden können. Durch den far...',
     price: 13.0,
     occasion: 'jugendweihe',
     material: 'holz',
@@ -125,9 +111,7 @@ Das Motiv wird auf hochweißem 250 g/m² Premium-Papier gedruckt und präzise au
   {
     id: 'etsy-9',
     title: 'Geldgeschenk Geburt personalisiert – Willkommen auf der Welt, Bilderrahmen A5 A4 A3, Geschenk für Baby, kreative Babygeschenk Idee',
-    description: 'Dieses liebevoll gestaltete personalisierte Geldgeschenk zum 1. Geburtstag ist eine ganz besondere Erinnerung an den ersten großen Meilenstein im Leben eines Kindes.
-
-Mit süßen Motiven wie Dino oder Kinderwagen und der Möglichkeit, Geldscheine kreativ in das Design zu integrieren, entsteht eine einz...',
+    description: 'Dieses liebevoll gestaltete personalisierte Geldgeschenk zum 1. Geburtstag ist eine ganz besondere Erinnerung an den ersten großen Meilenstein im Leben eines Kindes.\n\nMit süßen Motiven wie Dino oder Kinderwagen und der Möglichkeit, Geldscheine kreativ in das Design zu integrieren, entsteht eine einz...',
     price: 13.0,
     occasion: 'geburt',
     material: 'holz',
@@ -139,9 +123,7 @@ Mit süßen Motiven wie Dino oder Kinderwagen und der Möglichkeit, Geldscheine 
   {
     id: 'etsy-10',
     title: 'Geldgeschenk für Brautpaar, Personalisierte Hochzeit Geldgeschenk, DIY Perfekt ausgeschnitten, A4 A3 Bilderrahmen, Hochzeitsgeschenk Idee.',
-    description: 'Mache den großen Tag noch unvergesslicher mit einem einzigartigen und personalisierten Geldgeschenk zur Hochzeit im Brautpaar-Design 💍👰🤵. Dieses liebevoll gestaltete DIY-Geldgeschenk ist die perfekte Kombination aus Symbolik, Stil und Funktion – ein besonderes Highlight für jedes Brautpaar.
-
-Das Des...',
+    description: 'Mache den großen Tag noch unvergesslicher mit einem einzigartigen und personalisierten Geldgeschenk zur Hochzeit im Brautpaar-Design 💍👰🤵. Dieses liebevoll gestaltete DIY-Geldgeschenk ist die perfekte Kombination aus Symbolik, Stil und Funktion – ein besonderes Highlight für jedes Brautpaar.\n\nDas Des...',
     price: 17.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -153,8 +135,7 @@ Das Des...',
   {
     id: 'etsy-11',
     title: 'Personalisiertes Geldgeschenk zur Taufe | Holzbox mit Name & Datum | Christliches Geldgeschenk | Taufgeschenk für Mädchen Jungen',
-    description: 'Dieses personalisierte Geldgeschenk zur Taufe ist eine besondere und stilvolle Art, Geld zu verschenken und gleichzeitig eine bleibende Erinnerung an diesen wichtigen christlichen Moment zu schaffen.
-Die natürliche Holzbox wird mit viel Liebe gefertigt und individuell für das Taufkind personalisiert...',
+    description: 'Dieses personalisierte Geldgeschenk zur Taufe ist eine besondere und stilvolle Art, Geld zu verschenken und gleichzeitig eine bleibende Erinnerung an diesen wichtigen christlichen Moment zu schaffen.\nDie natürliche Holzbox wird mit viel Liebe gefertigt und individuell für das Taufkind personalisiert...',
     price: 26.0,
     occasion: 'taufe',
     material: 'holz',
@@ -178,9 +159,7 @@ Die natürliche Holzbox wird mit viel Liebe gefertigt und individuell für das T
   {
     id: 'etsy-13',
     title: 'Personalisiertes Geldgeschenk zur Hochzeit | Gravierte Holzbox in Buchform | Hochzeitsgeschenk mit Namen & Datum | Geldgeschenk Brautpaar.',
-    description: 'Ein unvergesslicher Tag verdient ein ebenso besonderes Geschenk! Dieses hochwertige Hochzeitsgeldgeschenk in Form einer gravierten Holzbox ist die perfekte Kombination aus Natürlichkeit, Stil und emotionalem Wert. 💕
-
-Gefertigt aus hellem Holz des Kaiserbaums, ist die Schachtel ca. 14 x 9 x 4 cm groß...',
+    description: 'Ein unvergesslicher Tag verdient ein ebenso besonderes Geschenk! Dieses hochwertige Hochzeitsgeldgeschenk in Form einer gravierten Holzbox ist die perfekte Kombination aus Natürlichkeit, Stil und emotionalem Wert. 💕\n\nGefertigt aus hellem Holz des Kaiserbaums, ist die Schachtel ca. 14 x 9 x 4 cm groß...',
     price: 28.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -192,9 +171,7 @@ Gefertigt aus hellem Holz des Kaiserbaums, ist die Schachtel ca. 14 x 9 x 4 cm g
   {
     id: 'etsy-14',
     title: 'Hochzeit Geldgeschenk Weltkarte personalisiert – Bilderrahmen A3 A4 A5 | Reise Geldgeschenk Hochzeit | Rahmen Holz & Standard',
-    description: 'Überrasche das Brautpaar mit einem einzigartigen und stilvollen Geldgeschenk zur Hochzeit im Weltkarten-Design 🌍💍
-
-Dieses personalisierte Geschenk symbolisiert den gemeinsamen Lebensweg und die vielen Abenteuer, die noch vor dem Paar liegen. Die Weltkarte wird durch eingelegte Geldscheine zu einem e...',
+    description: 'Überrasche das Brautpaar mit einem einzigartigen und stilvollen Geldgeschenk zur Hochzeit im Weltkarten-Design 🌍💍\n\nDieses personalisierte Geschenk symbolisiert den gemeinsamen Lebensweg und die vielen Abenteuer, die noch vor dem Paar liegen. Die Weltkarte wird durch eingelegte Geldscheine zu einem e...',
     price: 13.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -206,9 +183,7 @@ Dieses personalisierte Geschenk symbolisiert den gemeinsamen Lebensweg und die v
   {
     id: 'etsy-15',
     title: 'Abitur 2026 Geldgeschenk, Personalisierte Abitur Geschenke, Abitur Geschenk Mädchen Junge, DIN A4 Bilderrahmen, Geschenk zur Abschlussfeier.',
-    description: 'Dieses personalisierte Geldgeschenk zum Abitur 2026 ist eine stilvolle und zeitgemäße Geschenkidee für Absolventinnen und Absolventen.
-
-Das Design wird im DIN-A4-Format gefertigt und eignet sich perfekt, um Geldscheine dekorativ zu hinterlegen. Durch die klare Gestaltung wirkt das Geschenk modern, w...',
+    description: 'Dieses personalisierte Geldgeschenk zum Abitur 2026 ist eine stilvolle und zeitgemäße Geschenkidee für Absolventinnen und Absolventen.\n\nDas Design wird im DIN-A4-Format gefertigt und eignet sich perfekt, um Geldscheine dekorativ zu hinterlegen. Durch die klare Gestaltung wirkt das Geschenk modern, w...',
     price: 16.0,
     occasion: 'abitur',
     material: 'holz',
@@ -232,9 +207,7 @@ Das Design wird im DIN-A4-Format gefertigt und eignet sich perfekt, um Geldschei
   {
     id: 'etsy-17',
     title: 'Personalisierte Geldgeschenk Reise | Für dein nächstes Abenteuer – personalisiert mit Name – Wohnmobil A4 mit Rahmen.',
-    description: 'Mach den Geburtstag zu einem besonderen Erlebnis mit dem Geldgeschenk Wohnmobil 🚐 – eine originelle und personalisierte Möglichkeit, Freude zu verschenken! Dieses DIY-Geldgeschenk ist perfekt für alle, die das Reisen, Camping und Abenteuer lieben.
-
-Das Design zeigt ein charmantes Wohnmobil und wird ...',
+    description: 'Mach den Geburtstag zu einem besonderen Erlebnis mit dem Geldgeschenk Wohnmobil 🚐 – eine originelle und personalisierte Möglichkeit, Freude zu verschenken! Dieses DIY-Geldgeschenk ist perfekt für alle, die das Reisen, Camping und Abenteuer lieben.\n\nDas Design zeigt ein charmantes Wohnmobil und wird ...',
     price: 19.0,
     occasion: 'sonstiges',
     material: 'holz',
@@ -246,9 +219,7 @@ Das Design zeigt ein charmantes Wohnmobil und wird ...',
   {
     id: 'etsy-18',
     title: 'Personalisiertes Geldgeschenk Abenteuer – Weltkarte im DIN A4 Format | Mit Namen | Optional mit Echtholz- oder Standardrahmen',
-    description: 'Dieses personalisierte Geldgeschenk „Für dein nächstes Abenteuer“ ist die perfekte Geschenkidee für Reiseliebhaber, Weltenbummler, zum Abitur, Abschluss, Geburtstag oder als Start in einen neuen Lebensabschnitt.
-
-Das moderne Weltkarten-Design symbolisiert Fernweh, Freiheit und neue Wege. Der Name de...',
+    description: 'Dieses personalisierte Geldgeschenk „Für dein nächstes Abenteuer“ ist die perfekte Geschenkidee für Reiseliebhaber, Weltenbummler, zum Abitur, Abschluss, Geburtstag oder als Start in einen neuen Lebensabschnitt.\n\nDas moderne Weltkarten-Design symbolisiert Fernweh, Freiheit und neue Wege. Der Name de...',
     price: 16.0,
     occasion: 'sonstiges',
     material: 'holz',
@@ -272,9 +243,7 @@ Das moderne Weltkarten-Design symbolisiert Fernweh, Freiheit und neue Wege. Der 
   {
     id: 'etsy-20',
     title: 'Personalisierte Abitur Geschenke, Abitur Geschenk Mädchen Junge, Abitur 2026 Geldgeschenk, DIN A4 Bilderrahmen, Geschenk zur Abschlussfeier.',
-    description: 'Dieses personalisierte Geldgeschenk zum Abitur 2026 ist eine stilvolle und zeitgemäße Geschenkidee für Absolventinnen und Absolventen.
-
-Das Design wird im DIN-A4-Format gefertigt und eignet sich perfekt, um Geldscheine dekorativ zu hinterlegen. Durch die klare Gestaltung wirkt das Geschenk modern, w...',
+    description: 'Dieses personalisierte Geldgeschenk zum Abitur 2026 ist eine stilvolle und zeitgemäße Geschenkidee für Absolventinnen und Absolventen.\n\nDas Design wird im DIN-A4-Format gefertigt und eignet sich perfekt, um Geldscheine dekorativ zu hinterlegen. Durch die klare Gestaltung wirkt das Geschenk modern, w...',
     price: 16.0,
     occasion: 'abitur',
     material: 'holz',
@@ -286,9 +255,7 @@ Das Design wird im DIN-A4-Format gefertigt und eignet sich perfekt, um Geldschei
   {
     id: 'etsy-21',
     title: 'Personalisierte Abitur Geschenke, Abitur Geschenk Mädchen Junge, Abitur 2026 Geldgeschenk, A5, A4 Bilderrahmen, Geschenk zur Abschlussfeier.',
-    description: 'Dieses personalisierte Geldgeschenk zum Abitur 2026 ist eine stilvolle und zeitgemäße Geschenkidee für Absolventinnen und Absolventen.
-
-Das Design wird im DIN A5, A4-Format gefertigt und eignet sich perfekt, um Geldscheine dekorativ zu hinterlegen. Durch die klare Gestaltung wirkt das Geschenk moder...',
+    description: 'Dieses personalisierte Geldgeschenk zum Abitur 2026 ist eine stilvolle und zeitgemäße Geschenkidee für Absolventinnen und Absolventen.\n\nDas Design wird im DIN A5, A4-Format gefertigt und eignet sich perfekt, um Geldscheine dekorativ zu hinterlegen. Durch die klare Gestaltung wirkt das Geschenk moder...',
     price: 13.0,
     occasion: 'abitur',
     material: 'holz',
@@ -300,9 +267,7 @@ Das Design wird im DIN A5, A4-Format gefertigt und eignet sich perfekt, um Gelds
   {
     id: 'etsy-22',
     title: 'Personalisierte Abschluss Geschenke, Abschluss Geschenk Mädchen Junge, Abschluss 2026 Geldgeschenk, DIN A5 A4, Geschenk zur Abschlussfeier.',
-    description: 'Dieses personalisierte Geldgeschenk zum Abschluss 2026 ist eine stilvolle und zeitgemäße Geschenkidee für Absolventinnen und Absolventen.
-
-Das Design wird im DIN-A4-Format gefertigt und eignet sich perfekt, um Geldscheine dekorativ zu hinterlegen. Durch die klare Gestaltung wirkt das Geschenk modern...',
+    description: 'Dieses personalisierte Geldgeschenk zum Abschluss 2026 ist eine stilvolle und zeitgemäße Geschenkidee für Absolventinnen und Absolventen.\n\nDas Design wird im DIN-A4-Format gefertigt und eignet sich perfekt, um Geldscheine dekorativ zu hinterlegen. Durch die klare Gestaltung wirkt das Geschenk modern...',
     price: 13.0,
     occasion: 'abitur',
     material: 'holz',
@@ -314,9 +279,7 @@ Das Design wird im DIN-A4-Format gefertigt und eignet sich perfekt, um Geldschei
   {
     id: 'etsy-23',
     title: 'Personalisierte Abitur 2026 Geldgeschenk | Perfekt ausgeschnitten | Abitur Geschenk Mädchen Junge | DIN A5 A4 A3 Echtholz Bilderrahmen.',
-    description: 'Feiere den Abschluss eines großen Lebenskapitels mit einem kreativen und personalisierten Geldgeschenk zum Abitur 2026 🎓 – ideal für Mädchen und Jungen, die diesen Meilenstein erreicht haben!
-
-Das Design zeigt ein stilvolles, modernes Motiv rund um das Thema Abschluss und wird auf hochwertigem 250g/...',
+    description: 'Feiere den Abschluss eines großen Lebenskapitels mit einem kreativen und personalisierten Geldgeschenk zum Abitur 2026 🎓 – ideal für Mädchen und Jungen, die diesen Meilenstein erreicht haben!\n\nDas Design zeigt ein stilvolles, modernes Motiv rund um das Thema Abschluss und wird auf hochwertigem 250g/...',
     price: 13.0,
     occasion: 'abitur',
     material: 'holz',
@@ -328,8 +291,7 @@ Das Design zeigt ein stilvolles, modernes Motiv rund um das Thema Abschluss und 
   {
     id: 'etsy-24',
     title: 'Personalisiertes Geldgeschenk zur Konfirmation | DIY Perfekt ausgeschnitten | A4 Bilderrahmen | Konfirmationsgeschenk Mädchen Junge.',
-    description: 'Dieses personalisierte Geldgeschenk zur Konfirmation ist eine besondere und stilvolle Möglichkeit, Geld kreativ und mit Bedeutung zu verschenken.
-Das moderne Motiv wird präzise ausgeschnitten und so gestaltet, dass Geldscheine dekorativ integriert werden können – ein echtes Highlight für diesen beso...',
+    description: 'Dieses personalisierte Geldgeschenk zur Konfirmation ist eine besondere und stilvolle Möglichkeit, Geld kreativ und mit Bedeutung zu verschenken.\nDas moderne Motiv wird präzise ausgeschnitten und so gestaltet, dass Geldscheine dekorativ integriert werden können – ein echtes Highlight für diesen beso...',
     price: 19.0,
     occasion: 'konfirmation',
     material: 'holz',
@@ -341,9 +303,7 @@ Das moderne Motiv wird präzise ausgeschnitten und so gestaltet, dass Geldschein
   {
     id: 'etsy-25',
     title: 'Personalisierte Abitur 2026 Geldgeschenk | Perfekt ausgeschnitten | Abitur Geschenk Mädchen Junge | DIN A4 Echtholz Bilderrahmen.',
-    description: 'Feiere den Abschluss eines großen Lebenskapitels mit einem kreativen und personalisierten Geldgeschenk zum Abitur 2026 🎓 – ideal für Mädchen und Jungen, die diesen Meilenstein erreicht haben!
-
-Das Design zeigt ein stilvolles, modernes Motiv rund um das Thema Abschluss und wird auf hochwertigem 250g/...',
+    description: 'Feiere den Abschluss eines großen Lebenskapitels mit einem kreativen und personalisierten Geldgeschenk zum Abitur 2026 🎓 – ideal für Mädchen und Jungen, die diesen Meilenstein erreicht haben!\n\nDas Design zeigt ein stilvolles, modernes Motiv rund um das Thema Abschluss und wird auf hochwertigem 250g/...',
     price: 19.0,
     occasion: 'abitur',
     material: 'holz',
@@ -355,9 +315,7 @@ Das Design zeigt ein stilvolles, modernes Motiv rund um das Thema Abschluss und 
   {
     id: 'etsy-26',
     title: 'Personalisiertes Hochzeitsgeldgeschenk Schmetterlingsherz, Geldgeschenk Hochzeit mit Namen & Datum, A5 A4 A3 Echtholz und MDF Bilderrahmen',
-    description: 'Suchen Sie nach einer besonderen Möglichkeit, Geld zur Hochzeit zu verschenken? Dieses liebevoll gestaltete Hochzeitsgeldgeschenk verbindet Eleganz, Kreativität und persönliche Erinnerungen in einem einzigartigen Geschenk.
-
-Das romantische Herz aus zahlreichen filigranen Schmetterlingen wird aus ein...',
+    description: 'Suchen Sie nach einer besonderen Möglichkeit, Geld zur Hochzeit zu verschenken? Dieses liebevoll gestaltete Hochzeitsgeldgeschenk verbindet Eleganz, Kreativität und persönliche Erinnerungen in einem einzigartigen Geschenk.\n\nDas romantische Herz aus zahlreichen filigranen Schmetterlingen wird aus ein...',
     price: 18.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -381,9 +339,7 @@ Das romantische Herz aus zahlreichen filigranen Schmetterlingen wird aus ein...'
   {
     id: 'etsy-28',
     title: 'Weltkarte Hochzeit Geldgeschenk | DIN A5, A4 oder A3 im Echtholzrahmen | Personalisiertes Hochzeitsgeschenk für Reisende.',
-    description: 'Dieses personalisierte Geldgeschenk zur Hochzeit mit Weltkarten-Design ist die perfekte Geschenkidee für Paare, die gemeinsam durchs Leben – und vielleicht auch durch die Welt – gehen möchten.
-
-Das Motiv besteht aus einer 3 mm starken Eichedekorplatte, präzise ausgeschnitten in Form einer Weltkarte....',
+    description: 'Dieses personalisierte Geldgeschenk zur Hochzeit mit Weltkarten-Design ist die perfekte Geschenkidee für Paare, die gemeinsam durchs Leben – und vielleicht auch durch die Welt – gehen möchten.\n\nDas Motiv besteht aus einer 3 mm starken Eichedekorplatte, präzise ausgeschnitten in Form einer Weltkarte....',
     price: 18.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -395,10 +351,7 @@ Das Motiv besteht aus einer 3 mm starken Eichedekorplatte, präzise ausgeschnitt
   {
     id: 'etsy-29',
     title: 'Personalisierte Geldgeschenk Weihnachten | Weihnachtsgeschenk mit Name | Echtholzrahmen DIN A4 oder A3 | Kreatives Geschenk zu Weihnachten.',
-    description: 'Mach Weihnachten zu etwas ganz Besonderem mit diesem personalisierten Geldgeschenk, das Herz und Stil vereint. 🎁✨
-Dieses festliche Design ist die ideale Geschenkidee, um Geld auf eine liebevolle und kreative Weise zu überreichen – perfekt für Familie, Freunde oder Kollegen.
-
-Das Motiv wird auf hochw...',
+    description: 'Mach Weihnachten zu etwas ganz Besonderem mit diesem personalisierten Geldgeschenk, das Herz und Stil vereint. 🎁✨\nDieses festliche Design ist die ideale Geschenkidee, um Geld auf eine liebevolle und kreative Weise zu überreichen – perfekt für Familie, Freunde oder Kollegen.\n\nDas Motiv wird auf hochw...',
     price: 19.0,
     occasion: 'weihnachten',
     material: 'holz',
@@ -410,9 +363,7 @@ Das Motiv wird auf hochw...',
   {
     id: 'etsy-30',
     title: 'Personalisiertes Geburtstags Geldgeschenk Torte – Bilderrahmen A5 A4 A3 Geldgeschenk Geburtstag mit Name | Standard- & Echtholzrahmen',
-    description: 'Dieses elegante Geldgeschenk zum Geburtstag mit Tortenmotiv ist eine kreative und persönliche Geschenkidee für jeden Anlass 🎂
-
-Die stilvolle Geburtstagstorte wird liebevoll gestaltet und bietet Platz, um Geldscheine dekorativ in das Design zu integrieren. So wird aus einem klassischen Geldgeschenk e...',
+    description: 'Dieses elegante Geldgeschenk zum Geburtstag mit Tortenmotiv ist eine kreative und persönliche Geschenkidee für jeden Anlass 🎂\n\nDie stilvolle Geburtstagstorte wird liebevoll gestaltet und bietet Platz, um Geldscheine dekorativ in das Design zu integrieren. So wird aus einem klassischen Geldgeschenk e...',
     price: 13.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -424,8 +375,7 @@ Die stilvolle Geburtstagstorte wird liebevoll gestaltet und bietet Platz, um Gel
   {
     id: 'etsy-31',
     title: 'Personalisierte Geldgeschenk Nichts | Witziges Geschenkidee | Nichts zum Geburtstag | Humorvolles DIY Geldgeschenk | A5 A4 Bilderrahmen.',
-    description: 'Manchmal wünscht sich das Geburtstagskind „Nichts“ – und genau das bekommst du mit diesem witzigen und kreativen Geldgeschenk! 🎉 Dieses humorvolle DIY-Geschenk ist perfekt für alle, die immer „Nichts“ sagen, aber trotzdem überrascht werden möchten – persönlich, charmant und mit einem Augenzwinkern.
-...',
+    description: 'Manchmal wünscht sich das Geburtstagskind „Nichts“ – und genau das bekommst du mit diesem witzigen und kreativen Geldgeschenk! 🎉 Dieses humorvolle DIY-Geschenk ist perfekt für alle, die immer „Nichts“ sagen, aber trotzdem überrascht werden möchten – persönlich, charmant und mit einem Augenzwinkern.\n...',
     price: 13.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -449,10 +399,7 @@ Die stilvolle Geburtstagstorte wird liebevoll gestaltet und bietet Platz, um Gel
   {
     id: 'etsy-33',
     title: 'Personalisierte Geburtstag Geldgeschenk, Geburtstagstorte Geschenk, Perfekt ausgeschnitten, A4 Bilderrahmen, Kreatives Geburtstagsgeschenk.',
-    description: 'Das liebevolle „Happy Birthday“-Design wird perfekt ausgeschnitten und auf hochwertigem 250g/m² Papier 📜 gedruckt. Eine farbige A4-Hintergrundkarte aus 160g/m² Papier sorgt für einen schönen Kontrast und macht das Geschenk sofort verschenkbereit.
-
-Wähle zwischen zwei eleganten Rahmenvarianten:
-✔ Sta...',
+    description: 'Das liebevolle „Happy Birthday“-Design wird perfekt ausgeschnitten und auf hochwertigem 250g/m² Papier 📜 gedruckt. Eine farbige A4-Hintergrundkarte aus 160g/m² Papier sorgt für einen schönen Kontrast und macht das Geschenk sofort verschenkbereit.\n\nWähle zwischen zwei eleganten Rahmenvarianten:\n✔ Sta...',
     price: 16.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -464,9 +411,7 @@ Wähle zwischen zwei eleganten Rahmenvarianten:
   {
     id: 'etsy-34',
     title: 'Personalisiertes Geldgeschenk zur Hochzeit Weltkarte | DIN A5, A4 oder A3 im Echtholzrahmen | Hochzeitsgeschenk für Reisende.',
-    description: 'Dieses personalisierte Geldgeschenk zur Hochzeit mit Weltkarten-Design ist die perfekte Geschenkidee für Paare, die gemeinsam durchs Leben – und vielleicht auch durch die Welt – gehen möchten.
-
-Das Motiv besteht aus einer 3 mm starken Sperrholzplatte, präzise ausgeschnitten in Form einer Weltkarte. ...',
+    description: 'Dieses personalisierte Geldgeschenk zur Hochzeit mit Weltkarten-Design ist die perfekte Geschenkidee für Paare, die gemeinsam durchs Leben – und vielleicht auch durch die Welt – gehen möchten.\n\nDas Motiv besteht aus einer 3 mm starken Sperrholzplatte, präzise ausgeschnitten in Form einer Weltkarte. ...',
     price: 17.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -478,10 +423,7 @@ Das Motiv besteht aus einer 3 mm starken Sperrholzplatte, präzise ausgeschnitte
   {
     id: 'etsy-35',
     title: 'Personalisiertes Geldgeschenk zum Abschluss & Abitur 2026 – Holz Geldgeschenk mit golden Schrauben | Geschenk Abi | 3 mm Holzplatte',
-    description: 'Du suchst ein besonderes Geldgeschenk zum Abschluss oder Abitur 2026?
-Dieses handgefertigte Holz-Geldgeschenk ist eine moderne und originelle Alternative zur klassischen Geldkarte.
-
-Gefertigt aus einer 3 mm starken Holzplatte, wird das Motiv präzise ausgeschnitten, sodass Geldscheine dekorativ hinte...',
+    description: 'Du suchst ein besonderes Geldgeschenk zum Abschluss oder Abitur 2026?\nDieses handgefertigte Holz-Geldgeschenk ist eine moderne und originelle Alternative zur klassischen Geldkarte.\n\nGefertigt aus einer 3 mm starken Holzplatte, wird das Motiv präzise ausgeschnitten, sodass Geldscheine dekorativ hinte...',
     price: 15.0,
     occasion: 'abitur',
     material: 'holz',
@@ -505,10 +447,7 @@ Gefertigt aus einer 3 mm starken Holzplatte, wird das Motiv präzise ausgeschnit
   {
     id: 'etsy-37',
     title: 'Weihnachtskarte aus Holz, Weihnachtsgeldgeschenk, Holzkärtchen 11x15 cm, Wunscherfüller Weihnachtsgeschenk, Kreatives Weihnachtsgeschenk.',
-    description: 'Dieses Weihnachtsgeld-Geschenk ist eine stilvolle und kreative Art, Geld zu Weihnachten zu verschenken. Gefertigt aus 3 mm starkem Sperrholz und mit feiner Gravur versehen, wird dieses Holzkärtchen (11×15 cm) zum besonderen Hingucker unter dem Weihnachtsbaum.
-
-💡 Anlässe:
-Perfekt als Geschenk zu Weih...',
+    description: 'Dieses Weihnachtsgeld-Geschenk ist eine stilvolle und kreative Art, Geld zu Weihnachten zu verschenken. Gefertigt aus 3 mm starkem Sperrholz und mit feiner Gravur versehen, wird dieses Holzkärtchen (11×15 cm) zum besonderen Hingucker unter dem Weihnachtsbaum.\n\n💡 Anlässe:\nPerfekt als Geschenk zu Weih...',
     price: 16.0,
     occasion: 'weihnachten',
     material: 'holz',
@@ -604,8 +543,7 @@ Perfekt als Geschenk zu Weih...',
   {
     id: 'etsy-45',
     title: 'Personalisierte Geldgeschenk Nichts | Witziges Geschenkidee | Nichts zum Geburtstag | Humorvolles DIY Geldgeschenk | A4 Bilderrahmen.',
-    description: 'Manchmal wünscht sich das Geburtstagskind „Nichts“ – und genau das bekommst du mit diesem witzigen und kreativen Geldgeschenk! 🎉 Dieses humorvolle DIY-Geschenk ist perfekt für alle, die immer „Nichts“ sagen, aber trotzdem überrascht werden möchten – persönlich, charmant und mit einem Augenzwinkern.
-...',
+    description: 'Manchmal wünscht sich das Geburtstagskind „Nichts“ – und genau das bekommst du mit diesem witzigen und kreativen Geldgeschenk! 🎉 Dieses humorvolle DIY-Geschenk ist perfekt für alle, die immer „Nichts“ sagen, aber trotzdem überrascht werden möchten – persönlich, charmant und mit einem Augenzwinkern.\n...',
     price: 19.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -617,10 +555,7 @@ Perfekt als Geschenk zu Weih...',
   {
     id: 'etsy-46',
     title: 'Personalisiertes Weihnachtsgeld Geschenk, Weihnachtskarte aus Holz mit Name, Holzkärtchen 11x15 cm, Wunscherfüller Weihnachtsgeschenk.',
-    description: 'Dieses Weihnachtsgeld-Geschenk ist eine stilvolle und persönliche Art, Geld zu Weihnachten zu verschenken. Gefertigt aus 3 mm starkem Sperrholz und mit fein gravierten Details, wird dieses Holzkärtchen (11×15 cm) zum echten Hingucker unter dem Weihnachtsbaum.
-
-💡 Anlässe:
-Perfekt als Geschenk zu Weih...',
+    description: 'Dieses Weihnachtsgeld-Geschenk ist eine stilvolle und persönliche Art, Geld zu Weihnachten zu verschenken. Gefertigt aus 3 mm starkem Sperrholz und mit fein gravierten Details, wird dieses Holzkärtchen (11×15 cm) zum echten Hingucker unter dem Weihnachtsbaum.\n\n💡 Anlässe:\nPerfekt als Geschenk zu Weih...',
     price: 14.0,
     occasion: 'weihnachten',
     material: 'holz',
@@ -656,10 +591,7 @@ Perfekt als Geschenk zu Weih...',
   {
     id: 'etsy-49',
     title: 'Weihnachtskarte aus Holz, Weihnachtsgeldgeschenk, Holzkärtchen 11x15 cm, Wunscherfüller Weihnachtsgeschenk, Kreatives Weihnachtsgeschenk.',
-    description: 'Dieses Weihnachtsgeld-Geschenk ist eine stilvolle und kreative Art, Geld zu Weihnachten zu verschenken. Gefertigt aus 3 mm starkem Sperrholz und mit feiner Gravur versehen, wird dieses Holzkärtchen (11×15 cm) zum besonderen Hingucker unter dem Weihnachtsbaum.
-
-💡 Anlässe:
-Perfekt als Geschenk zu Weih...',
+    description: 'Dieses Weihnachtsgeld-Geschenk ist eine stilvolle und kreative Art, Geld zu Weihnachten zu verschenken. Gefertigt aus 3 mm starkem Sperrholz und mit feiner Gravur versehen, wird dieses Holzkärtchen (11×15 cm) zum besonderen Hingucker unter dem Weihnachtsbaum.\n\n💡 Anlässe:\nPerfekt als Geschenk zu Weih...',
     price: 16.0,
     occasion: 'weihnachten',
     material: 'holz',
@@ -671,9 +603,7 @@ Perfekt als Geschenk zu Weih...',
   {
     id: 'etsy-50',
     title: 'Personalisierte Abenteuer Geburtstag Geldgeschenk, DIY Perfekt ausgeschnitten, A4 Bilderrahmen, Reise Geschenkidee, Erlebnis Geschenk.',
-    description: 'Schenke zum Geburtstag etwas ganz Besonderes – ein personalisiertes Geldgeschenk für das nächste Abenteuer 🎉🌍! Ob für eine Reise, einen lang ersehnten Traum oder einfach neue Erlebnisse – dieses kreative DIY-Geschenk ist eine stilvolle und originelle Art, Wünsche zu erfüllen.
-
-Das Abenteuer-Design w...',
+    description: 'Schenke zum Geburtstag etwas ganz Besonderes – ein personalisiertes Geldgeschenk für das nächste Abenteuer 🎉🌍! Ob für eine Reise, einen lang ersehnten Traum oder einfach neue Erlebnisse – dieses kreative DIY-Geschenk ist eine stilvolle und originelle Art, Wünsche zu erfüllen.\n\nDas Abenteuer-Design w...',
     price: 19.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -709,10 +639,7 @@ Das Abenteuer-Design w...',
   {
     id: 'etsy-53',
     title: 'Personalisiertes Geldgeschenk zum Ruhestand | Weltkarte Abschiedsgeschenk | A5 & A4 | Echtholz- oder Standardrahmen | Perfekt ausgeschnitten',
-    description: 'Ein neuer Lebensabschnitt beginnt – der Ruhestand ✨
-Mit diesem personalisierten Geldgeschenk schenkst du nicht nur Geld, sondern auch eine besondere Erinnerung an diesen wichtigen Moment.
-
-Das moderne Design – Weltkarte Motiv – steht symbolisch für Freiheit, Reisen und neue Abenteuer nach dem Arbeit...',
+    description: 'Ein neuer Lebensabschnitt beginnt – der Ruhestand ✨\nMit diesem personalisierten Geldgeschenk schenkst du nicht nur Geld, sondern auch eine besondere Erinnerung an diesen wichtigen Moment.\n\nDas moderne Design – Weltkarte Motiv – steht symbolisch für Freiheit, Reisen und neue Abenteuer nach dem Arbeit...',
     price: 13.0,
     occasion: 'ruhestand',
     material: 'holz',
@@ -724,10 +651,7 @@ Das moderne Design – Weltkarte Motiv – steht symbolisch für Freiheit, Reise
   {
     id: 'etsy-54',
     title: 'Runden Geburtstag Geldgeschenk | DIN A5 & A4 Echtholz- oder Standardrahmen | Kreatives Geburtstagsgeschenk | Perfekt ausgeschnitten.',
-    description: 'Du suchst ein besonderes Geschenk für einen runden Geburtstag? 🎉
-Dieses personalisierte Geldgeschenk ist die perfekte Kombination aus stilvoller Dekoration und kreativer Geldverpackung.
-
-Egal ob 18, 20, 30, 40, 50, 60, 70, 80, 90 oder 100 Jahre – das Design wird individuell auf das gewünschte Alter ...',
+    description: 'Du suchst ein besonderes Geschenk für einen runden Geburtstag? 🎉\nDieses personalisierte Geldgeschenk ist die perfekte Kombination aus stilvoller Dekoration und kreativer Geldverpackung.\n\nEgal ob 18, 20, 30, 40, 50, 60, 70, 80, 90 oder 100 Jahre – das Design wird individuell auf das gewünschte Alter ...',
     price: 13.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -763,10 +687,7 @@ Egal ob 18, 20, 30, 40, 50, 60, 70, 80, 90 oder 100 Jahre – das Design wird in
   {
     id: 'etsy-57',
     title: 'Personalisiertes Weihnachtsgeld Geschenk, Weihnachtskarte aus Holz mit Name, Holzkärtchen 11x15 cm, Wunscherfüller Weihnachtsgeschenk.',
-    description: 'Dieses Weihnachtsgeld-Geschenk ist eine stilvolle und persönliche Art, Geld zu Weihnachten zu verschenken. Gefertigt aus 3 mm starkem Sperrholz und mit fein gravierten Details, wird dieses Holzkärtchen (11×15 cm) zum echten Hingucker unter dem Weihnachtsbaum.
-
-💡 Anlässe:
-Perfekt als Geschenk zu Weih...',
+    description: 'Dieses Weihnachtsgeld-Geschenk ist eine stilvolle und persönliche Art, Geld zu Weihnachten zu verschenken. Gefertigt aus 3 mm starkem Sperrholz und mit fein gravierten Details, wird dieses Holzkärtchen (11×15 cm) zum echten Hingucker unter dem Weihnachtsbaum.\n\n💡 Anlässe:\nPerfekt als Geschenk zu Weih...',
     price: 15.0,
     occasion: 'weihnachten',
     material: 'holz',
@@ -778,9 +699,7 @@ Perfekt als Geschenk zu Weih...',
   {
     id: 'etsy-58',
     title: 'Personalisiertes Geburtstag Geldgeschenk Spiel-Controller, 18. Geburtstag Geschenk, Level 18 DIY Gaming Geschenkidee,  A4 Holz Bilderrahmen.',
-    description: 'Schenke zum 18. Geburtstag ein kreatives und personalisiertes Geldgeschenk im Spiel-Controller-Design 🎮 – die perfekte Idee für Gaming-Fans und alle, die Level 18 erreichen! Dieses originelle DIY-Geschenk vereint Spaß, Kreativität und Funktionalität, um den besonderen Tag unvergesslich zu machen.
-
-D...',
+    description: 'Schenke zum 18. Geburtstag ein kreatives und personalisiertes Geldgeschenk im Spiel-Controller-Design 🎮 – die perfekte Idee für Gaming-Fans und alle, die Level 18 erreichen! Dieses originelle DIY-Geschenk vereint Spaß, Kreativität und Funktionalität, um den besonderen Tag unvergesslich zu machen.\n\nD...',
     price: 13.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -792,9 +711,7 @@ D...',
   {
     id: 'etsy-59',
     title: 'Personalisierte Geburtstag Geldgeschenk Wohnmobil | Perfekt ausgeschnitten Geburtstagsgeschenk Idee | Reise Geschenk | DIN A4 Bilderrahmen.',
-    description: 'Mach den Geburtstag zu einem besonderen Erlebnis mit dem Geldgeschenk Wohnmobil 🚐 – eine originelle und personalisierte Möglichkeit, Freude zu verschenken! Dieses DIY-Geldgeschenk ist perfekt für alle, die das Reisen, Camping und Abenteuer lieben.
-
-Das Design zeigt ein charmantes Wohnmobil und wird ...',
+    description: 'Mach den Geburtstag zu einem besonderen Erlebnis mit dem Geldgeschenk Wohnmobil 🚐 – eine originelle und personalisierte Möglichkeit, Freude zu verschenken! Dieses DIY-Geldgeschenk ist perfekt für alle, die das Reisen, Camping und Abenteuer lieben.\n\nDas Design zeigt ein charmantes Wohnmobil und wird ...',
     price: 19.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -806,9 +723,7 @@ Das Design zeigt ein charmantes Wohnmobil und wird ...',
   {
     id: 'etsy-60',
     title: 'Personalisierte Ostern Geldgeschenk, Ostergeldgeschenk, Perfekt ausgeschnitten, A4 Bilderrahmen, Kreative Geschenkidee, Osterhase Geschenk.',
-    description: 'Schenke zu Ostern eine ganz besondere Überraschung mit diesem personalisierten Geldgeschenk im Osterhasen-Design 🐰🎁! Perfekt als kreative und stilvolle Möglichkeit, Geld zu verschenken – ideal für Kinder, Familie oder Freunde.
-
-Das A4-Design ist perfekt ausgeschnitten und wird auf hochwertigem 250g/...',
+    description: 'Schenke zu Ostern eine ganz besondere Überraschung mit diesem personalisierten Geldgeschenk im Osterhasen-Design 🐰🎁! Perfekt als kreative und stilvolle Möglichkeit, Geld zu verschenken – ideal für Kinder, Familie oder Freunde.\n\nDas A4-Design ist perfekt ausgeschnitten und wird auf hochwertigem 250g/...',
     price: 19.0,
     occasion: 'ostern',
     material: 'papier',
@@ -820,9 +735,7 @@ Das A4-Design ist perfekt ausgeschnitten und wird auf hochwertigem 250g/...',
   {
     id: 'etsy-61',
     title: 'Personalisierte Geldgeschenk Weltkarte, Geburtstag Geldgeschenk, Geburtstagsgeschenk Idee, Reise Geschenk, Bilderrahmen Schwarz und Weis.',
-    description: 'Schenke eine kreative und persönliche Reiseidee mit dem Geldgeschenk Weltkarte 🌍 – eine originelle Möglichkeit, Geburtstagsfreude zu verschenken! Dieses liebevoll gestaltete DIY Geldgeschenk ist ideal für alle, die Fernweh und Abenteuer lieben.
-
-Das Design zeigt eine elegante Weltkarte und wird auf ...',
+    description: 'Schenke eine kreative und persönliche Reiseidee mit dem Geldgeschenk Weltkarte 🌍 – eine originelle Möglichkeit, Geburtstagsfreude zu verschenken! Dieses liebevoll gestaltete DIY Geldgeschenk ist ideal für alle, die Fernweh und Abenteuer lieben.\n\nDas Design zeigt eine elegante Weltkarte und wird auf ...',
     price: 18.0,
     occasion: 'geburtstag',
     material: 'papier',
@@ -846,9 +759,7 @@ Das Design zeigt eine elegante Weltkarte und wird auf ...',
   {
     id: 'etsy-63',
     title: 'Personalisierte Abitur 2026 Geldgeschenk | Perfekt ausgeschnitten | Abitur Geschenk Mädchen Junge | DIN A4 Echtholz Bilderrahmen.',
-    description: 'Feiere den Abschluss eines großen Lebenskapitels mit einem kreativen und personalisierten Geldgeschenk zum Abitur 2026 🎓 – ideal für Mädchen und Jungen, die diesen Meilenstein erreicht haben!
-
-Das Design zeigt ein stilvolles, modernes Motiv rund um das Thema Abschluss und wird auf hochwertigem 250g/...',
+    description: 'Feiere den Abschluss eines großen Lebenskapitels mit einem kreativen und personalisierten Geldgeschenk zum Abitur 2026 🎓 – ideal für Mädchen und Jungen, die diesen Meilenstein erreicht haben!\n\nDas Design zeigt ein stilvolles, modernes Motiv rund um das Thema Abschluss und wird auf hochwertigem 250g/...',
     price: 19.0,
     occasion: 'abitur',
     material: 'holz',
@@ -872,10 +783,7 @@ Das Design zeigt ein stilvolles, modernes Motiv rund um das Thema Abschluss und 
   {
     id: 'etsy-65',
     title: 'Personalisiertes Geldgeschenk zum Abschluss & Abitur 2026 – Holz Geldgeschenk mit golden Schrauben | Geschenk Abi | 3 mm Holzplatte',
-    description: 'Du suchst ein besonderes Geldgeschenk zum Abschluss oder Abitur 2026?
-Dieses handgefertigte Holz-Geldgeschenk ist eine moderne und originelle Alternative zur klassischen Geldkarte.
-
-Gefertigt aus einer 3 mm starken Holzplatte, wird das Motiv präzise ausgeschnitten, sodass Geldscheine dekorativ hinte...',
+    description: 'Du suchst ein besonderes Geldgeschenk zum Abschluss oder Abitur 2026?\nDieses handgefertigte Holz-Geldgeschenk ist eine moderne und originelle Alternative zur klassischen Geldkarte.\n\nGefertigt aus einer 3 mm starken Holzplatte, wird das Motiv präzise ausgeschnitten, sodass Geldscheine dekorativ hinte...',
     price: 15.0,
     occasion: 'abitur',
     material: 'holz',
@@ -887,10 +795,7 @@ Gefertigt aus einer 3 mm starken Holzplatte, wird das Motiv präzise ausgeschnit
   {
     id: 'etsy-66',
     title: 'Personalisiertes Geldgeschenk zur Firmung | Holzbox mit Name & Datum | Christliches Geldgeschenk | Firmungsgeschenk für Mädchen  Jungen',
-    description: 'Dieses personalisierte Geldgeschenk zur Firmung ist eine besondere und stilvolle Art, Geld zu verschenken und gleichzeitig eine bleibende Erinnerung zu schaffen.
-Die natürliche Holzbox wird mit viel Liebe gefertigt und individuell für den Firmling personalisiert.
-
-Der weiße Fisch aus Acrylglas sorgt...',
+    description: 'Dieses personalisierte Geldgeschenk zur Firmung ist eine besondere und stilvolle Art, Geld zu verschenken und gleichzeitig eine bleibende Erinnerung zu schaffen.\nDie natürliche Holzbox wird mit viel Liebe gefertigt und individuell für den Firmling personalisiert.\n\nDer weiße Fisch aus Acrylglas sorgt...',
     price: 26.0,
     occasion: 'firmung',
     material: 'holz',
@@ -902,10 +807,7 @@ Der weiße Fisch aus Acrylglas sorgt...',
   {
     id: 'etsy-67',
     title: 'Weihnachten Geldgeschenk | Personalisierte Weihnachtsgeschenk mit Name | Echtholzrahmen DIN A4 oder A3 | Kreatives Geschenk zu Weihnachten.',
-    description: 'Mach Weihnachten zu etwas ganz Besonderem mit diesem personalisierten Geldgeschenk, das Herz und Stil vereint. 🎁✨
-Dieses festliche Design ist die ideale Geschenkidee, um Geld auf eine liebevolle und kreative Weise zu überreichen – perfekt für Familie, Freunde oder Kollegen.
-
-Das Motiv wird auf hochw...',
+    description: 'Mach Weihnachten zu etwas ganz Besonderem mit diesem personalisierten Geldgeschenk, das Herz und Stil vereint. 🎁✨\nDieses festliche Design ist die ideale Geschenkidee, um Geld auf eine liebevolle und kreative Weise zu überreichen – perfekt für Familie, Freunde oder Kollegen.\n\nDas Motiv wird auf hochw...',
     price: 19.0,
     occasion: 'weihnachten',
     material: 'holz',
@@ -929,8 +831,7 @@ Das Motiv wird auf hochw...',
   {
     id: 'etsy-69',
     title: 'Personalisiertes Geldgeschenk zur Konfirmation | DIY Perfekt ausgeschnitten | A4 Bilderrahmen | Konfirmationsgeschenk Mädchen Junge.',
-    description: 'Dieses personalisierte Geldgeschenk zur Konfirmation ist eine besondere und stilvolle Möglichkeit, Geld kreativ und mit Bedeutung zu verschenken.
-Das moderne Motiv wird präzise ausgeschnitten und so gestaltet, dass Geldscheine dekorativ integriert werden können – ein echtes Highlight für diesen beso...',
+    description: 'Dieses personalisierte Geldgeschenk zur Konfirmation ist eine besondere und stilvolle Möglichkeit, Geld kreativ und mit Bedeutung zu verschenken.\nDas moderne Motiv wird präzise ausgeschnitten und so gestaltet, dass Geldscheine dekorativ integriert werden können – ein echtes Highlight für diesen beso...',
     price: 13.0,
     occasion: 'konfirmation',
     material: 'holz',
@@ -954,10 +855,7 @@ Das moderne Motiv wird präzise ausgeschnitten und so gestaltet, dass Geldschein
   {
     id: 'etsy-71',
     title: 'Personalisierte Geldgeschenk Weihnachten | Weihnachtsgeschenk mit Name | Echtholzrahmen DIN A4 oder A3 | Kreatives Geschenk zu Weihnachten.',
-    description: 'Mach Weihnachten zu etwas ganz Besonderem mit diesem personalisierten Geldgeschenk, das Herz und Stil vereint. 🎁✨
-Dieses festliche Design ist die ideale Geschenkidee, um Geld auf eine liebevolle und kreative Weise zu überreichen – perfekt für Familie, Freunde oder Kollegen.
-
-Das Motiv wird auf hochw...',
+    description: 'Mach Weihnachten zu etwas ganz Besonderem mit diesem personalisierten Geldgeschenk, das Herz und Stil vereint. 🎁✨\nDieses festliche Design ist die ideale Geschenkidee, um Geld auf eine liebevolle und kreative Weise zu überreichen – perfekt für Familie, Freunde oder Kollegen.\n\nDas Motiv wird auf hochw...',
     price: 19.0,
     occasion: 'weihnachten',
     material: 'holz',
@@ -969,10 +867,7 @@ Das Motiv wird auf hochw...',
   {
     id: 'etsy-72',
     title: 'Weihnachtsgeschenk mit Name | Personalisierte Geldgeschenk Weihnachten | Echtholzrahmen DIN A4 oder A3 | Kreatives Geschenk zu Weihnachten.',
-    description: 'Mach Weihnachten zu etwas ganz Besonderem mit diesem personalisierten Geldgeschenk, das Herz und Stil vereint. 🎁✨
-Dieses festliche Design ist die ideale Geschenkidee, um Geld auf eine liebevolle und kreative Weise zu überreichen – perfekt für Familie, Freunde oder Kollegen.
-
-Das Motiv wird auf hochw...',
+    description: 'Mach Weihnachten zu etwas ganz Besonderem mit diesem personalisierten Geldgeschenk, das Herz und Stil vereint. 🎁✨\nDieses festliche Design ist die ideale Geschenkidee, um Geld auf eine liebevolle und kreative Weise zu überreichen – perfekt für Familie, Freunde oder Kollegen.\n\nDas Motiv wird auf hochw...',
     price: 19.0,
     occasion: 'weihnachten',
     material: 'holz',
@@ -996,8 +891,7 @@ Das Motiv wird auf hochw...',
   {
     id: 'etsy-74',
     title: 'Personalisierte Geldgeschenk Nichts | Witziges Geschenkidee | Nichts zum Geburtstag | Humorvolles DIY Geldgeschenk | A4 Bilderrahmen.',
-    description: 'Manchmal wünscht sich das Geburtstagskind „Nichts“ – und genau das bekommst du mit diesem witzigen und kreativen Geldgeschenk! 🎉 Dieses humorvolle DIY-Geschenk ist perfekt für alle, die immer „Nichts“ sagen, aber trotzdem überrascht werden möchten – persönlich, charmant und mit einem Augenzwinkern.
-...',
+    description: 'Manchmal wünscht sich das Geburtstagskind „Nichts“ – und genau das bekommst du mit diesem witzigen und kreativen Geldgeschenk! 🎉 Dieses humorvolle DIY-Geschenk ist perfekt für alle, die immer „Nichts“ sagen, aber trotzdem überrascht werden möchten – persönlich, charmant und mit einem Augenzwinkern.\n...',
     price: 19.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -1033,8 +927,7 @@ Das Motiv wird auf hochw...',
   {
     id: 'etsy-77',
     title: 'Hochzeitsauto Geldgeschenk, Personalisierte Hochzeitsgeschenke, DIY Flitterwochen Geschenk, DIN A4 Bilderrahmen Geschenk für Brautpaar.',
-    description: 'Überrasche das Brautpaar mit einem einzigartigen und personalisierten Geldgeschenk im Hochzeitsauto-Design 🚗💍. Dieses liebevoll gestaltete Hochzeitsgeschenk bietet eine stilvolle Möglichkeit, Geld kreativ zu verschenken – ideal für die Flitterwochen oder als schöne Erinnerung an den besonderen Tag.
-...',
+    description: 'Überrasche das Brautpaar mit einem einzigartigen und personalisierten Geldgeschenk im Hochzeitsauto-Design 🚗💍. Dieses liebevoll gestaltete Hochzeitsgeschenk bietet eine stilvolle Möglichkeit, Geld kreativ zu verschenken – ideal für die Flitterwochen oder als schöne Erinnerung an den besonderen Tag.\n...',
     price: 19.0,
     occasion: 'hochzeit',
     material: 'papier',
@@ -1046,8 +939,7 @@ Das Motiv wird auf hochw...',
   {
     id: 'etsy-78',
     title: 'Hochzeitsauto Geldgeschenk, Personalisierte Hochzeitsgeschenke, DIY Flitterwochen Geschenk, DIN A4 Bilderrahmen Geschenk für Brautpaar.',
-    description: 'Überrasche das Brautpaar mit einem einzigartigen und personalisierten Geldgeschenk im Hochzeitsauto-Design 🚗💍. Dieses liebevoll gestaltete Hochzeitsgeschenk bietet eine stilvolle Möglichkeit, Geld kreativ zu verschenken – ideal für die Flitterwochen oder als schöne Erinnerung an den besonderen Tag.
-...',
+    description: 'Überrasche das Brautpaar mit einem einzigartigen und personalisierten Geldgeschenk im Hochzeitsauto-Design 🚗💍. Dieses liebevoll gestaltete Hochzeitsgeschenk bietet eine stilvolle Möglichkeit, Geld kreativ zu verschenken – ideal für die Flitterwochen oder als schöne Erinnerung an den besonderen Tag.\n...',
     price: 19.0,
     occasion: 'hochzeit',
     material: 'papier',
@@ -1059,10 +951,7 @@ Das Motiv wird auf hochw...',
   {
     id: 'etsy-79',
     title: 'Personalisiertes Geldgeschenk zur Konfirmation | Holzbox mit Name & Datum | Christliches Geldgeschenk | Konfirmationsgeschenk Mädchen Junge',
-    description: 'Dieses personalisierte Geldgeschenk zur Konfirmation ist eine besondere und stilvolle Art, Geld zu verschenken und gleichzeitig eine bleibende Erinnerung zu schaffen.
-Die natürliche Holzbox wird mit viel Liebe gefertigt und individuell für den Konfirmanden oder die Konfirmandin personalisiert.
-
-Der ...',
+    description: 'Dieses personalisierte Geldgeschenk zur Konfirmation ist eine besondere und stilvolle Art, Geld zu verschenken und gleichzeitig eine bleibende Erinnerung zu schaffen.\nDie natürliche Holzbox wird mit viel Liebe gefertigt und individuell für den Konfirmanden oder die Konfirmandin personalisiert.\n\nDer ...',
     price: 26.0,
     occasion: 'konfirmation',
     material: 'holz',
@@ -1086,10 +975,7 @@ Der ...',
   {
     id: 'etsy-81',
     title: 'Ruhestand Geldgeschenk| Personalisiertes Weltkarte Abschiedsgeschenk | A5 & A4 | Echtholz- oder Standardrahmen | Perfekt ausgeschnitten',
-    description: 'Ein neuer Lebensabschnitt beginnt – der Ruhestand ✨
-Mit diesem personalisierten Geldgeschenk schenkst du nicht nur Geld, sondern auch eine besondere Erinnerung an diesen wichtigen Moment.
-
-Das moderne Design – Weltkarte Motiv – steht symbolisch für Freiheit, Reisen und neue Abenteuer nach dem Arbeit...',
+    description: 'Ein neuer Lebensabschnitt beginnt – der Ruhestand ✨\nMit diesem personalisierten Geldgeschenk schenkst du nicht nur Geld, sondern auch eine besondere Erinnerung an diesen wichtigen Moment.\n\nDas moderne Design – Weltkarte Motiv – steht symbolisch für Freiheit, Reisen und neue Abenteuer nach dem Arbeit...',
     price: 13.0,
     occasion: 'ruhestand',
     material: 'holz',
@@ -1113,9 +999,7 @@ Das moderne Design – Weltkarte Motiv – steht symbolisch für Freiheit, Reise
   {
     id: 'etsy-83',
     title: 'Brautpaar Geldgeschenk Holzbox | Geldgeschenk zur Hochzeit | Reagenzglas | Geschenkbox zur Hochzeit mit Namen & Datum | Erinnerungskiste',
-    description: 'Dieses liebevoll gestaltete Geldgeschenk zur Hochzeit ist mehr als nur eine Verpackung, es ist eine wunderschöne Erinnerung an den besonderen Tag 💍
-
-Die hochwertige Holz-Schiebebox wird individuell mit den Namen des Brautpaares sowie dem Hochzeitsdatum graviert. Ergänzt wird das Design durch ein ele...',
+    description: 'Dieses liebevoll gestaltete Geldgeschenk zur Hochzeit ist mehr als nur eine Verpackung, es ist eine wunderschöne Erinnerung an den besonderen Tag 💍\n\nDie hochwertige Holz-Schiebebox wird individuell mit den Namen des Brautpaares sowie dem Hochzeitsdatum graviert. Ergänzt wird das Design durch ein ele...',
     price: 24.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -1127,9 +1011,7 @@ Die hochwertige Holz-Schiebebox wird individuell mit den Namen des Brautpaares s
   {
     id: 'etsy-84',
     title: 'Abitur 2026 Geldgeschenk, Personalisierte Abitur Geschenke, Abitur Geschenk Mädchen Junge, DIN A4 Bilderrahmen, Geschenk zur Abschlussfeier.',
-    description: 'Dieses personalisierte Geldgeschenk zum Abitur 2026 ist eine stilvolle und zeitgemäße Geschenkidee für Absolventinnen und Absolventen.
-
-Das Design wird im DIN-A4-Format gefertigt und eignet sich perfekt, um Geldscheine dekorativ zu hinterlegen. Durch die klare Gestaltung wirkt das Geschenk modern, w...',
+    description: 'Dieses personalisierte Geldgeschenk zum Abitur 2026 ist eine stilvolle und zeitgemäße Geschenkidee für Absolventinnen und Absolventen.\n\nDas Design wird im DIN-A4-Format gefertigt und eignet sich perfekt, um Geldscheine dekorativ zu hinterlegen. Durch die klare Gestaltung wirkt das Geschenk modern, w...',
     price: 16.0,
     occasion: 'abitur',
     material: 'holz',
@@ -1141,9 +1023,7 @@ Das Design wird im DIN-A4-Format gefertigt und eignet sich perfekt, um Geldschei
   {
     id: 'etsy-85',
     title: 'Personalisierte Abitur 2026 Geldgeschenk | Perfekt ausgeschnitten | Abitur Geschenk Mädchen Junge | DIN A4 Echtholz Bilderrahmen.',
-    description: 'Feiere den Abschluss eines großen Lebenskapitels mit einem kreativen und personalisierten Geldgeschenk zum Abitur 2026 🎓 – ideal für Mädchen und Jungen, die diesen Meilenstein erreicht haben!
-
-Das Design zeigt ein stilvolles, modernes Motiv rund um das Thema Abschluss und wird auf hochwertigem 250g/...',
+    description: 'Feiere den Abschluss eines großen Lebenskapitels mit einem kreativen und personalisierten Geldgeschenk zum Abitur 2026 🎓 – ideal für Mädchen und Jungen, die diesen Meilenstein erreicht haben!\n\nDas Design zeigt ein stilvolles, modernes Motiv rund um das Thema Abschluss und wird auf hochwertigem 250g/...',
     price: 17.0,
     occasion: 'abitur',
     material: 'holz',
@@ -1155,8 +1035,7 @@ Das Design zeigt ein stilvolles, modernes Motiv rund um das Thema Abschluss und 
   {
     id: 'etsy-86',
     title: 'Hochzeitsauto Geldgeschenk, Personalisierte Hochzeitsgeschenke, DIY Flitterwochen Geschenk, DIN A4 Bilderrahmen   Geschenk für Brautpaar.',
-    description: 'Überrasche das Brautpaar mit einem einzigartigen und personalisierten Geldgeschenk im Hochzeitsauto-Design 🚗💍. Dieses liebevoll gestaltete Hochzeitsgeschenk bietet eine stilvolle Möglichkeit, Geld kreativ zu verschenken – ideal für die Flitterwochen oder als schöne Erinnerung an den besonderen Tag.
-...',
+    description: 'Überrasche das Brautpaar mit einem einzigartigen und personalisierten Geldgeschenk im Hochzeitsauto-Design 🚗💍. Dieses liebevoll gestaltete Hochzeitsgeschenk bietet eine stilvolle Möglichkeit, Geld kreativ zu verschenken – ideal für die Flitterwochen oder als schöne Erinnerung an den besonderen Tag.\n...',
     price: 19.0,
     occasion: 'hochzeit',
     material: 'papier',
@@ -1168,8 +1047,7 @@ Das Design zeigt ein stilvolles, modernes Motiv rund um das Thema Abschluss und 
   {
     id: 'etsy-87',
     title: 'Hochzeitsauto Geldgeschenk, Personalisierte Hochzeitsgeschenke, DIY Flitterwochen Geschenk, DIN A4 Bilderrahmen   Geschenk für Brautpaar.',
-    description: 'Überrasche das Brautpaar mit einem einzigartigen und personalisierten Geldgeschenk im Hochzeitsauto-Design 🚗💍. Dieses liebevoll gestaltete Hochzeitsgeschenk bietet eine stilvolle Möglichkeit, Geld kreativ zu verschenken – ideal für die Flitterwochen oder als schöne Erinnerung an den besonderen Tag.
-...',
+    description: 'Überrasche das Brautpaar mit einem einzigartigen und personalisierten Geldgeschenk im Hochzeitsauto-Design 🚗💍. Dieses liebevoll gestaltete Hochzeitsgeschenk bietet eine stilvolle Möglichkeit, Geld kreativ zu verschenken – ideal für die Flitterwochen oder als schöne Erinnerung an den besonderen Tag.\n...',
     price: 19.0,
     occasion: 'hochzeit',
     material: 'papier',
@@ -1181,9 +1059,7 @@ Das Design zeigt ein stilvolles, modernes Motiv rund um das Thema Abschluss und 
   {
     id: 'etsy-88',
     title: 'Hochzeit Geldgeschenk, Personalisierte Geldgeschenke, Perfekt ausgeschnitten, DIY Geldgeschenk, DIN A4 Bilderrahmen, Geschenkidee Hochzeit.',
-    description: 'Überrasche das Brautpaar mit einem liebevoll gestalteten Geldgeschenk zur Hochzeit 💍. Dieses elegante und kreative Geschenk wird perfekt ausgeschnitten geliefert und bietet die Möglichkeit, es individuell und kreativ zu gestalten.
-
-Das edle Design wird auf hochwertigem 250g/m² Papier 📜 gedruckt und ...',
+    description: 'Überrasche das Brautpaar mit einem liebevoll gestalteten Geldgeschenk zur Hochzeit 💍. Dieses elegante und kreative Geschenk wird perfekt ausgeschnitten geliefert und bietet die Möglichkeit, es individuell und kreativ zu gestalten.\n\nDas edle Design wird auf hochwertigem 250g/m² Papier 📜 gedruckt und ...',
     price: 18.0,
     occasion: 'hochzeit',
     material: 'papier',
@@ -1195,9 +1071,7 @@ Das edle Design wird auf hochwertigem 250g/m² Papier 📜 gedruckt und ...',
   {
     id: 'etsy-89',
     title: 'Personalisierte Geldgeschenk Wanderrucksack, Geburtstag Geldgeschenk, Reise Geschenk, A4 Bilderrahmen Schwarz Weiß, Kreatives Geldgeschenk.',
-    description: 'Schenke zum Geburtstag ein besonderes Geldgeschenk im Wanderrucksack-Design 🎒 – perfekt für alle, die Abenteuer und das Reisen lieben! Dieses kreative und personalisierte Geschenk ist ideal für Wanderfreunde, Globetrotter oder alle, die sich auf ihre nächste Reise freuen.
-
-Das hochwertige Design wir...',
+    description: 'Schenke zum Geburtstag ein besonderes Geldgeschenk im Wanderrucksack-Design 🎒 – perfekt für alle, die Abenteuer und das Reisen lieben! Dieses kreative und personalisierte Geschenk ist ideal für Wanderfreunde, Globetrotter oder alle, die sich auf ihre nächste Reise freuen.\n\nDas hochwertige Design wir...',
     price: 18.0,
     occasion: 'geburtstag',
     material: 'papier',
@@ -1209,9 +1083,7 @@ Das hochwertige Design wir...',
   {
     id: 'etsy-90',
     title: 'Personalisierte Abitur 2025 Geldgeschenk | Perfekt ausgeschnitten | Abitur Geschenk Mädchen Junge | DIN A4 Echtholz Bilderrahmen.',
-    description: 'Feiere den Abschluss eines großen Lebenskapitels mit einem kreativen und personalisierten Geldgeschenk zum Abitur 2025 🎓 – ideal für Mädchen und Jungen, die diesen Meilenstein erreicht haben!
-
-Das Design zeigt ein stilvolles, modernes Motiv rund um das Thema Abschluss und wird auf hochwertigem 250g/...',
+    description: 'Feiere den Abschluss eines großen Lebenskapitels mit einem kreativen und personalisierten Geldgeschenk zum Abitur 2025 🎓 – ideal für Mädchen und Jungen, die diesen Meilenstein erreicht haben!\n\nDas Design zeigt ein stilvolles, modernes Motiv rund um das Thema Abschluss und wird auf hochwertigem 250g/...',
     price: 19.0,
     occasion: 'abitur',
     material: 'holz',
@@ -1223,10 +1095,7 @@ Das Design zeigt ein stilvolles, modernes Motiv rund um das Thema Abschluss und 
   {
     id: 'etsy-91',
     title: 'Personalisierte Geldgeschenk Weihnachten | Weihnachtsgeschenk mit Name | Echtholzrahmen DIN A4 oder A3 | Kreatives Geschenk zu Weihnachten.',
-    description: 'Mach Weihnachten zu etwas ganz Besonderem mit diesem personalisierten Geldgeschenk, das Herz und Stil vereint. 🎁✨
-Dieses festliche Design ist die ideale Geschenkidee, um Geld auf eine liebevolle und kreative Weise zu überreichen – perfekt für Familie, Freunde oder Kollegen.
-
-Das Motiv wird auf hochw...',
+    description: 'Mach Weihnachten zu etwas ganz Besonderem mit diesem personalisierten Geldgeschenk, das Herz und Stil vereint. 🎁✨\nDieses festliche Design ist die ideale Geschenkidee, um Geld auf eine liebevolle und kreative Weise zu überreichen – perfekt für Familie, Freunde oder Kollegen.\n\nDas Motiv wird auf hochw...',
     price: 19.0,
     occasion: 'weihnachten',
     material: 'holz',
@@ -1238,9 +1107,7 @@ Das Motiv wird auf hochw...',
   {
     id: 'etsy-92',
     title: 'Personalisierte Abschluss Geschenke, Abschluss Geschenk Mädchen Junge, Abschluss 2026 Geldgeschenk, DIN A4, Geschenk zur Abschlussfeier.',
-    description: 'Dieses personalisierte Geldgeschenk zum Abschluss 2026 ist eine stilvolle und zeitgemäße Geschenkidee für Absolventinnen und Absolventen.
-
-Das Design wird im DIN-A4-Format gefertigt und eignet sich perfekt, um Geldscheine dekorativ zu hinterlegen. Durch die klare Gestaltung wirkt das Geschenk modern...',
+    description: 'Dieses personalisierte Geldgeschenk zum Abschluss 2026 ist eine stilvolle und zeitgemäße Geschenkidee für Absolventinnen und Absolventen.\n\nDas Design wird im DIN-A4-Format gefertigt und eignet sich perfekt, um Geldscheine dekorativ zu hinterlegen. Durch die klare Gestaltung wirkt das Geschenk modern...',
     price: 16.0,
     occasion: 'abitur',
     material: 'holz',
@@ -1252,9 +1119,7 @@ Das Design wird im DIN-A4-Format gefertigt und eignet sich perfekt, um Geldschei
   {
     id: 'etsy-93',
     title: 'Personalisierte 18. Geburtstag Geldgeschenk, DIY Geburtstag Geschenk, Perfekt ausgeschnitten, A4 Bilderrahmen, Kreatives Geburtstagsgeschenk',
-    description: 'Feiere einen ganz besonderen Meilenstein mit diesem personalisierten Geldgeschenk zum 18. Geburtstag 🎉! Dieses kreative DIY-Geschenk ist perfekt für Familie, Freunde oder Kollegen und bietet eine stilvolle Möglichkeit, Glückwünsche und Geld originell zu überreichen.
-
-Das Design enthält die herzliche...',
+    description: 'Feiere einen ganz besonderen Meilenstein mit diesem personalisierten Geldgeschenk zum 18. Geburtstag 🎉! Dieses kreative DIY-Geschenk ist perfekt für Familie, Freunde oder Kollegen und bietet eine stilvolle Möglichkeit, Glückwünsche und Geld originell zu überreichen.\n\nDas Design enthält die herzliche...',
     price: 19.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -1266,9 +1131,7 @@ Das Design enthält die herzliche...',
   {
     id: 'etsy-94',
     title: 'Personalisierte 80. Geburtstag Geldgeschenk,  Runder Geburtstagsgeschenk, Perfekt ausgeschnitten, A4 Bilderrahmen, DIY Geschenkidee.',
-    description: 'Feiere einen ganz besonderen Meilenstein mit diesem personalisierten Geldgeschenk zum 80. Geburtstag 🎉! Dieses kreative DIY-Geschenk ist perfekt für Familie, Freunde oder Kollegen und bietet eine stilvolle Möglichkeit, Glückwünsche und Geld originell zu überreichen.
-
-Das Design enthält die herzliche...',
+    description: 'Feiere einen ganz besonderen Meilenstein mit diesem personalisierten Geldgeschenk zum 80. Geburtstag 🎉! Dieses kreative DIY-Geschenk ist perfekt für Familie, Freunde oder Kollegen und bietet eine stilvolle Möglichkeit, Glückwünsche und Geld originell zu überreichen.\n\nDas Design enthält die herzliche...',
     price: 19.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -1364,9 +1227,7 @@ Das Design enthält die herzliche...',
   {
     id: 'etsy-102',
     title: 'Einzigartiges Hochzeitsgeldgeschenk aus Eichedekorplatte, personalisiert mit Namen & Datum, Geldgeschenk Brautpaar, A4 oder A3 Bilderrahmen',
-    description: 'Einzigartig & persönlich – das besondere Hochzeitsgeschenk
-
-Mach den großen Tag unvergesslich mit einem personalisierten Geldgeschenk aus edler HDF-Platte in Eichenoptik 💍👰🤵. Dieses stilvolle Hochzeitsgeschenk vereint Symbolkraft, Natürlichkeit und Individualität – liebevoll graviert mit den Namen d...',
+    description: 'Einzigartig & persönlich – das besondere Hochzeitsgeschenk\n\nMach den großen Tag unvergesslich mit einem personalisierten Geldgeschenk aus edler HDF-Platte in Eichenoptik 💍👰🤵. Dieses stilvolle Hochzeitsgeschenk vereint Symbolkraft, Natürlichkeit und Individualität – liebevoll graviert mit den Namen d...',
     price: 28.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -1414,9 +1275,7 @@ Mach den großen Tag unvergesslich mit einem personalisierten Geldgeschenk aus e
   {
     id: 'etsy-106',
     title: 'Personalisierte Hochzeit Geldgeschenk, DIY Perfekt ausgeschnitten, Bilderrahmen, Geschenk für Brautpaar, Hochzeitsgeschenk Idee.',
-    description: 'Feiere die Liebe mit einem wunderschönen, personalisierten Geldgeschenk zur Hochzeit 💍🎁 – eine stilvolle und kreative Möglichkeit, dem Brautpaar eine besondere Freude zu machen. Ob als Beitrag zur Hochzeitsreise oder für den gemeinsamen Start ins Eheleben – dieses Geschenk bleibt in Erinnerung.
-
-Das...',
+    description: 'Feiere die Liebe mit einem wunderschönen, personalisierten Geldgeschenk zur Hochzeit 💍🎁 – eine stilvolle und kreative Möglichkeit, dem Brautpaar eine besondere Freude zu machen. Ob als Beitrag zur Hochzeitsreise oder für den gemeinsamen Start ins Eheleben – dieses Geschenk bleibt in Erinnerung.\n\nDas...',
     price: 17.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -1452,9 +1311,7 @@ Das...',
   {
     id: 'etsy-109',
     title: 'Personalisierte Abenteuer Geburtstag Geldgeschenk, DIY Perfekt ausgeschnitten, A4 Bilderrahmen, Reise Geschenkidee, Erlebnis Geschenk.',
-    description: 'Schenke zum Geburtstag etwas ganz Besonderes – ein personalisiertes Geldgeschenk für das nächste Abenteuer 🎉🌍! Ob für eine Reise, einen lang ersehnten Traum oder einfach neue Erlebnisse – dieses kreative DIY-Geschenk ist eine stilvolle und originelle Art, Wünsche zu erfüllen.
-
-Das Abenteuer-Design w...',
+    description: 'Schenke zum Geburtstag etwas ganz Besonderes – ein personalisiertes Geldgeschenk für das nächste Abenteuer 🎉🌍! Ob für eine Reise, einen lang ersehnten Traum oder einfach neue Erlebnisse – dieses kreative DIY-Geschenk ist eine stilvolle und originelle Art, Wünsche zu erfüllen.\n\nDas Abenteuer-Design w...',
     price: 19.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -1478,9 +1335,7 @@ Das Abenteuer-Design w...',
   {
     id: 'etsy-111',
     title: 'Personalisierte Geldgeschenk NIX | Witziges Geschenkidee | Nichts zum Geburtstag | Humorvolles DIY Geldgeschenk | A4 Bilderrahmen.',
-    description: 'Manchmal wünscht sich das Geburtstagskind „NIX“ – und genau das bekommst du mit diesem witzigen und kreativen Geldgeschenk! 🎉 Dieses humorvolle DIY-Geschenk ist perfekt für alle, die immer „NIX“ sagen, aber trotzdem überrascht werden möchten – persönlich, charmant und mit einem Augenzwinkern.
-
-Das m...',
+    description: 'Manchmal wünscht sich das Geburtstagskind „NIX“ – und genau das bekommst du mit diesem witzigen und kreativen Geldgeschenk! 🎉 Dieses humorvolle DIY-Geschenk ist perfekt für alle, die immer „NIX“ sagen, aber trotzdem überrascht werden möchten – persönlich, charmant und mit einem Augenzwinkern.\n\nDas m...',
     price: 19.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -1504,10 +1359,7 @@ Das m...',
   {
     id: 'etsy-113',
     title: 'Personalisiertes Gaming Geldgeschenk aus Holz | Controller Geldgeschenk Gamer | Geldgeschenk Geburtstag Junge Mann | Gaming Geldgeschenk',
-    description: 'Du suchst ein originelles Geldgeschenk für einen echten Gamer?
-Dieses personalisierte Gaming Geldgeschenk in Form eines Controllers ist die perfekte Überraschung für Gaming-Fans, Jugendliche, Männer oder Jungs! 🎮✨
-
-Das moderne Controller-Design wird aus hochwertiger 3mm Sperrholzplatte gefertigt und...',
+    description: 'Du suchst ein originelles Geldgeschenk für einen echten Gamer?\nDieses personalisierte Gaming Geldgeschenk in Form eines Controllers ist die perfekte Überraschung für Gaming-Fans, Jugendliche, Männer oder Jungs! 🎮✨\n\nDas moderne Controller-Design wird aus hochwertiger 3mm Sperrholzplatte gefertigt und...',
     price: 17.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -1519,10 +1371,7 @@ Das moderne Controller-Design wird aus hochwertiger 3mm Sperrholzplatte gefertig
   {
     id: 'etsy-114',
     title: 'Geldgeschenk Reise | Gravierte Holzbox mit Magnetverschluss | Personalisiertes Geschenk mit Name | Kreatives Urlaubsgeld-Geschenk.',
-    description: 'Suchst du ein originelles Geldgeschenk für eine Reise, den Urlaub oder als Geburtstagsüberraschung? 🌍✈️
-Diese liebevoll gestaltete Holzbox (ca. 14 × 9 × 5 cm) mit Magnetverschluss ist die perfekte Idee für Weltenbummler und Abenteuerlustige!
-
-Die Außenseite der Box wird mit einem individuell gravier...',
+    description: 'Suchst du ein originelles Geldgeschenk für eine Reise, den Urlaub oder als Geburtstagsüberraschung? 🌍✈️\nDiese liebevoll gestaltete Holzbox (ca. 14 × 9 × 5 cm) mit Magnetverschluss ist die perfekte Idee für Weltenbummler und Abenteuerlustige!\n\nDie Außenseite der Box wird mit einem individuell gravier...',
     price: 25.0,
     occasion: 'sonstiges',
     material: 'holz',
@@ -1534,9 +1383,7 @@ Die Außenseite der Box wird mit einem individuell gravier...',
   {
     id: 'etsy-115',
     title: 'Wohnmobil Geldgeschenk, Personalisierte Geschenkidee, Abenteuer Geschenkidee, Perfekt ausgeschnitten, Kreatives Geldgeschenk  DIN A4 | A3.',
-    description: 'Einzigartig & voller Fernweh – das perfekte Geldgeschenk zur großen Reise
-
-Ob zum Geburtstag, zum Abschied in ein Auslandsjahr oder als kreatives Hochzeitsgeschenk für die Flitterwochen – dieses personalisierte Geldgeschenk mit Wohnmobil-Design steht für Aufbruch, Abenteuer und grenzenlose Träume 🌍✈...',
+    description: 'Einzigartig & voller Fernweh – das perfekte Geldgeschenk zur großen Reise\n\nOb zum Geburtstag, zum Abschied in ein Auslandsjahr oder als kreatives Hochzeitsgeschenk für die Flitterwochen – dieses personalisierte Geldgeschenk mit Wohnmobil-Design steht für Aufbruch, Abenteuer und grenzenlose Träume 🌍✈...',
     price: 25.0,
     occasion: 'sonstiges',
     material: 'holz',
@@ -1560,9 +1407,7 @@ Ob zum Geburtstag, zum Abschied in ein Auslandsjahr oder als kreatives Hochzeits
   {
     id: 'etsy-117',
     title: 'Personalisierte Geburtstag Geldgeschenk, DIY Perfekt ausgeschnitten, A4 Bilderrahmen, Geschenkidee Geburtstag, Kreatives Geldgeschenk.',
-    description: 'Schenke eine Welt voller Möglichkeiten mit dem Geldgeschenk Weltkarte 🌍 – die perfekte Kombination aus Kreativität, Stil und Funktionalität. Dieses personalisierte Reise-Geldgeschenk ist ideal für Globetrotter, Reiseliebhaber oder Geburtstagskinder, die von ihrem nächsten Abenteuer träumen.
-
-Das det...',
+    description: 'Schenke eine Welt voller Möglichkeiten mit dem Geldgeschenk Weltkarte 🌍 – die perfekte Kombination aus Kreativität, Stil und Funktionalität. Dieses personalisierte Reise-Geldgeschenk ist ideal für Globetrotter, Reiseliebhaber oder Geburtstagskinder, die von ihrem nächsten Abenteuer träumen.\n\nDas det...',
     price: 19.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -1574,9 +1419,7 @@ Das det...',
   {
     id: 'etsy-118',
     title: 'Personalisierte Hochzeit Geldgeschenk, DIY Perfekt ausgeschnitten, A4 oder A3 Bilderrahmen, Geschenk für Brautpaar, Hochzeitsgeschenk Idee.',
-    description: 'Mache den großen Tag noch unvergesslicher mit einem einzigartigen und personalisierten Geldgeschenk zur Hochzeit im Brautpaar-Design 💍👰🤵. Dieses liebevoll gestaltete DIY-Geldgeschenk ist die perfekte Kombination aus Symbolik, Stil und Funktion – ein besonderes Highlight für jedes Brautpaar.
-
-Das Des...',
+    description: 'Mache den großen Tag noch unvergesslicher mit einem einzigartigen und personalisierten Geldgeschenk zur Hochzeit im Brautpaar-Design 💍👰🤵. Dieses liebevoll gestaltete DIY-Geldgeschenk ist die perfekte Kombination aus Symbolik, Stil und Funktion – ein besonderes Highlight für jedes Brautpaar.\n\nDas Des...',
     price: 17.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -1600,11 +1443,7 @@ Das Des...',
   {
     id: 'etsy-120',
     title: 'Personalisiertes Mutterschutz Geldgeschenk | Geldgeschenk für werdende Mamas | Schwangerschaft Geldgeschenk | A5 A4 A3 Bilderrahmen.',
-    description: 'Du suchst ein emotionales und persönliches Geschenk zum Mutterschutz oder zur Schwangerschaft?
-Dieses liebevoll gestaltete Geldgeschenk ist die perfekte Überraschung für eine geschätzte Kollegin, Freundin oder werdende Mama.
-
-Mit dem Spruch:
-„Aus einer super Kollegin kann nur eine super Mama werden!...',
+    description: 'Du suchst ein emotionales und persönliches Geschenk zum Mutterschutz oder zur Schwangerschaft?\nDieses liebevoll gestaltete Geldgeschenk ist die perfekte Überraschung für eine geschätzte Kollegin, Freundin oder werdende Mama.\n\nMit dem Spruch:\n„Aus einer super Kollegin kann nur eine super Mama werden!...',
     price: 13.0,
     occasion: 'mutterschutz',
     material: 'holz',
@@ -1616,11 +1455,7 @@ Mit dem Spruch:
   {
     id: 'etsy-121',
     title: 'Personalisiertes Mutterschutz Geldgeschenk | Geldgeschenk für werdende Mamas | Schwangerschaft Geldgeschenk | A5 A4 A3 Bilderrahmen.',
-    description: 'Du suchst ein emotionales und persönliches Geschenk zum Mutterschutz oder zur Schwangerschaft?
-Dieses liebevoll gestaltete Geldgeschenk ist die perfekte Überraschung für eine geschätzte Kollegin, Freundin oder werdende Mama.
-
-Mit dem Spruch:
-„Aus einer super Kollegin kann nur eine super Mama werden!...',
+    description: 'Du suchst ein emotionales und persönliches Geschenk zum Mutterschutz oder zur Schwangerschaft?\nDieses liebevoll gestaltete Geldgeschenk ist die perfekte Überraschung für eine geschätzte Kollegin, Freundin oder werdende Mama.\n\nMit dem Spruch:\n„Aus einer super Kollegin kann nur eine super Mama werden!...',
     price: 13.0,
     occasion: 'mutterschutz',
     material: 'holz',
@@ -1632,10 +1467,7 @@ Mit dem Spruch:
   {
     id: 'etsy-122',
     title: 'Geldgeschenk zum Geburtstag | Gravierte Holzbox mit Magnetverschluss | Personalisiertes Geburtstagsgeschenk mit Name | Kreatives Geschenk.',
-    description: 'Einzigartig, kreativ & mit persönlicher Note – dein ideales Geburtstagsgeschenk! 🎈
-
-Du suchst ein besonderes Geldgeschenk, das nicht nur praktisch ist, sondern auch emotional berührt?
-Diese handgefertigte Holzbox aus hellem Naturholz (ca. 14 × 9 × 5 cm) ist nicht einfach nur eine Verpackung – sie is...',
+    description: 'Einzigartig, kreativ & mit persönlicher Note – dein ideales Geburtstagsgeschenk! 🎈\n\nDu suchst ein besonderes Geldgeschenk, das nicht nur praktisch ist, sondern auch emotional berührt?\nDiese handgefertigte Holzbox aus hellem Naturholz (ca. 14 × 9 × 5 cm) ist nicht einfach nur eine Verpackung – sie is...',
     price: 25.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -1647,9 +1479,7 @@ Diese handgefertigte Holzbox aus hellem Naturholz (ca. 14 × 9 × 5 cm) ist nich
   {
     id: 'etsy-123',
     title: 'Personalisierte Hochzeit Geldgeschenk, DIY Perfekt ausgeschnitten, A4 oder A3 Bilderrahmen, Geschenk für Brautpaar, Hochzeitsgeschenk Idee.',
-    description: 'Mache den großen Tag noch unvergesslicher mit einem einzigartigen und personalisierten Geldgeschenk zur Hochzeit im Brautpaar-Design 💍👰🤵. Dieses liebevoll gestaltete DIY-Geldgeschenk ist die perfekte Kombination aus Symbolik, Stil und Funktion – ein besonderes Highlight für jedes Brautpaar.
-
-Das Des...',
+    description: 'Mache den großen Tag noch unvergesslicher mit einem einzigartigen und personalisierten Geldgeschenk zur Hochzeit im Brautpaar-Design 💍👰🤵. Dieses liebevoll gestaltete DIY-Geldgeschenk ist die perfekte Kombination aus Symbolik, Stil und Funktion – ein besonderes Highlight für jedes Brautpaar.\n\nDas Des...',
     price: 17.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -1661,10 +1491,7 @@ Das Des...',
   {
     id: 'etsy-124',
     title: 'Personalisiertes Hochzeitsgeldgeschenk, Hochzeit Geldgeschenk in der Holzschiebebox – mit personalisierten Namen und Datum.',
-    description: 'Dieses einzigartige Hochzeits-Geldgeschenk in einer hochwertigen Holz-Schiebebox ist die perfekte Kombination aus Eleganz, Natürlichkeit und persönlicher Note.
-Ideal, um Geld kreativ, edel und unvergesslich zu verschenken!
-
-Die handgefertigte Box misst 16 × 12,5 × 4,5 cm und wird außen mit einem wun...',
+    description: 'Dieses einzigartige Hochzeits-Geldgeschenk in einer hochwertigen Holz-Schiebebox ist die perfekte Kombination aus Eleganz, Natürlichkeit und persönlicher Note.\nIdeal, um Geld kreativ, edel und unvergesslich zu verschenken!\n\nDie handgefertigte Box misst 16 × 12,5 × 4,5 cm und wird außen mit einem wun...',
     price: 29.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -1676,9 +1503,7 @@ Die handgefertigte Box misst 16 × 12,5 × 4,5 cm und wird außen mit einem wun.
   {
     id: 'etsy-125',
     title: 'Personalisiertes Hochzeit Geldgeschenk, Rundes Holzschild 20 cm, Optional mit Trockenblumen(Lavendel) & Geldröhrchen, Kreatives Geldgeschenk',
-    description: 'Dieses hochwertig gefertigte Hochzeits-Geldgeschenk ist ein einzigartiges Andenken für das Brautpaar – romantisch, dekorativ und mit viel Liebe zum Detail gestaltet.
-
-Das Schild besteht aus 20 cm rundem Natur-Sperrholz (3 mm) und wird mit den Namen des Brautpaares sowie dem Hochzeitsdatum personalis...',
+    description: 'Dieses hochwertig gefertigte Hochzeits-Geldgeschenk ist ein einzigartiges Andenken für das Brautpaar – romantisch, dekorativ und mit viel Liebe zum Detail gestaltet.\n\nDas Schild besteht aus 20 cm rundem Natur-Sperrholz (3 mm) und wird mit den Namen des Brautpaares sowie dem Hochzeitsdatum personalis...',
     price: 23.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -1690,10 +1515,7 @@ Das Schild besteht aus 20 cm rundem Natur-Sperrholz (3 mm) und wird mit den Name
   {
     id: 'etsy-126',
     title: 'Geldgeschenk Geburtstag, Personalisiertes Geldgeschenk Spiel-Controller, 18. Geburtstag Geschenk, Level 18 Gaming Geschenkidee, DIN A4 | A3.',
-    description: 'Level up! Das perfekte Geldgeschenk für Gamer zum 18. Geburtstag 🎮
-
-Du suchst ein originelles und persönliches Geschenk für einen Gaming-Fan? Dieses personalisiertes Geldgeschenk mit Spiel-Controller Design ist die perfekte Idee zum 18. Geburtstag!
-Mit dem Schriftzug „Level 18“ kombiniert es Humor, ...',
+    description: 'Level up! Das perfekte Geldgeschenk für Gamer zum 18. Geburtstag 🎮\n\nDu suchst ein originelles und persönliches Geschenk für einen Gaming-Fan? Dieses personalisiertes Geldgeschenk mit Spiel-Controller Design ist die perfekte Idee zum 18. Geburtstag!\nMit dem Schriftzug „Level 18“ kombiniert es Humor, ...',
     price: 22.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -1705,9 +1527,7 @@ Mit dem Schriftzug „Level 18“ kombiniert es Humor, ...',
   {
     id: 'etsy-127',
     title: 'Personalisiertes Geburtstag Geldgeschenk Spiel-Controller, 18. Geburtstag Geschenk, A4 Bilderrahmen, Level 18 DIY Gaming Geschenkidee.',
-    description: 'Schenke zum 18. Geburtstag ein kreatives und personalisiertes Geldgeschenk im Spiel-Controller-Design 🎮 – die perfekte Idee für Gaming-Fans und alle, die Level 18 erreichen! Dieses originelle DIY-Geschenk vereint Spaß, Kreativität und Funktionalität, um den besonderen Tag unvergesslich zu machen.
-
-D...',
+    description: 'Schenke zum 18. Geburtstag ein kreatives und personalisiertes Geldgeschenk im Spiel-Controller-Design 🎮 – die perfekte Idee für Gaming-Fans und alle, die Level 18 erreichen! Dieses originelle DIY-Geschenk vereint Spaß, Kreativität und Funktionalität, um den besonderen Tag unvergesslich zu machen.\n\nD...',
     price: 19.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -1719,10 +1539,7 @@ D...',
   {
     id: 'etsy-128',
     title: 'Runden Geburtstag Geldgeschenk | DIN A5 & A4 Echtholz- oder Standardrahmen | Kreatives Geburtstagsgeschenk | Perfekt ausgeschnitten.',
-    description: 'Du suchst ein besonderes Geschenk für einen runden Geburtstag? 🎉
-Dieses personalisierte Geldgeschenk ist die perfekte Kombination aus stilvoller Dekoration und kreativer Geldverpackung.
-
-Egal ob 18, 20, 30, 40, 50, 60, 70, 80, 90 oder 100 Jahre – das Design wird individuell auf das gewünschte Alter ...',
+    description: 'Du suchst ein besonderes Geschenk für einen runden Geburtstag? 🎉\nDieses personalisierte Geldgeschenk ist die perfekte Kombination aus stilvoller Dekoration und kreativer Geldverpackung.\n\nEgal ob 18, 20, 30, 40, 50, 60, 70, 80, 90 oder 100 Jahre – das Design wird individuell auf das gewünschte Alter ...',
     price: 13.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -1734,9 +1551,7 @@ Egal ob 18, 20, 30, 40, 50, 60, 70, 80, 90 oder 100 Jahre – das Design wird in
   {
     id: 'etsy-129',
     title: 'Weltkarte Geldgeschenk, Personalisierte Geschenkidee, Abenteuer Geschenkidee, Perfekt ausgeschnitten, Kreatives Geldgeschenk  DIN A4 | A3.',
-    description: 'Einzigartig & voller Fernweh – das perfekte Geldgeschenk zur großen Reise
-
-Ob zum Geburtstag, zum Abschied in ein Auslandsjahr oder als kreatives Hochzeitsgeschenk für die Flitterwochen – dieses personalisierte Geldgeschenk mit Weltkarten-Design steht für Aufbruch, Abenteuer und grenzenlose Träume 🌍...',
+    description: 'Einzigartig & voller Fernweh – das perfekte Geldgeschenk zur großen Reise\n\nOb zum Geburtstag, zum Abschied in ein Auslandsjahr oder als kreatives Hochzeitsgeschenk für die Flitterwochen – dieses personalisierte Geldgeschenk mit Weltkarten-Design steht für Aufbruch, Abenteuer und grenzenlose Träume 🌍...',
     price: 25.0,
     occasion: 'sonstiges',
     material: 'holz',
@@ -1748,8 +1563,7 @@ Ob zum Geburtstag, zum Abschied in ein Auslandsjahr oder als kreatives Hochzeits
   {
     id: 'etsy-130',
     title: 'Personalisiertes Geldgeschenk zur Konfirmation | DIY Perfekt ausgeschnitten | A4 Bilderrahmen | Konfirmationsgeschenk Mädchen Junge.',
-    description: 'Dieses personalisierte Geldgeschenk zur Konfirmation ist eine besondere und stilvolle Möglichkeit, Geld kreativ und mit Bedeutung zu verschenken.
-Das moderne Motiv wird präzise ausgeschnitten und so gestaltet, dass Geldscheine dekorativ integriert werden können – ein echtes Highlight für diesen beso...',
+    description: 'Dieses personalisierte Geldgeschenk zur Konfirmation ist eine besondere und stilvolle Möglichkeit, Geld kreativ und mit Bedeutung zu verschenken.\nDas moderne Motiv wird präzise ausgeschnitten und so gestaltet, dass Geldscheine dekorativ integriert werden können – ein echtes Highlight für diesen beso...',
     price: 17.0,
     occasion: 'konfirmation',
     material: 'holz',
@@ -1761,9 +1575,7 @@ Das moderne Motiv wird präzise ausgeschnitten und so gestaltet, dass Geldschein
   {
     id: 'etsy-131',
     title: 'Personalisiertes Geldgeschenk Abenteuer Wohnmobil | Reise Geschenkidee | A5 A4 A3 Standard & Echtholzrahmen | Erlebnis Geschenk.',
-    description: 'Dieses personalisierte Geldgeschenk im Abenteuer-Design ist die perfekte Überraschung für alle, die Reisen, Freiheit und neue Erlebnisse lieben 🌍✨
-
-Das moderne Motiv mit Bergen und Wanderer steht für Aufbruch und unvergessliche Abenteuer. Geldscheine lassen sich kreativ in das Design integrieren und...',
+    description: 'Dieses personalisierte Geldgeschenk im Abenteuer-Design ist die perfekte Überraschung für alle, die Reisen, Freiheit und neue Erlebnisse lieben 🌍✨\n\nDas moderne Motiv mit Bergen und Wanderer steht für Aufbruch und unvergessliche Abenteuer. Geldscheine lassen sich kreativ in das Design integrieren und...',
     price: 13.0,
     occasion: 'sonstiges',
     material: 'holz',
@@ -1775,9 +1587,7 @@ Das moderne Motiv mit Bergen und Wanderer steht für Aufbruch und unvergessliche
   {
     id: 'etsy-132',
     title: 'Geldgeschenk Hochzeit, personalisiert mit Namen & Datum, Geldgeschenk Brautpaar, Herz Schmetterling, DIN A4 A3 Echtholz Bilderrahmen.',
-    description: 'Einzigartig & persönlich – das besondere Hochzeitsgeschenk
-
-Mach den großen Tag unvergesslich mit einem personalisierten Geldgeschenk aus edler HDF-Platte in Eichenoptik 💍👰🤵. Dieses stilvolle Hochzeitsgeschenk vereint Symbolkraft, Natürlichkeit und Individualität – liebevoll graviert mit den Namen d...',
+    description: 'Einzigartig & persönlich – das besondere Hochzeitsgeschenk\n\nMach den großen Tag unvergesslich mit einem personalisierten Geldgeschenk aus edler HDF-Platte in Eichenoptik 💍👰🤵. Dieses stilvolle Hochzeitsgeschenk vereint Symbolkraft, Natürlichkeit und Individualität – liebevoll graviert mit den Namen d...',
     price: 23.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -1789,10 +1599,7 @@ Mach den großen Tag unvergesslich mit einem personalisierten Geldgeschenk aus e
   {
     id: 'etsy-133',
     title: 'Personalisiertes Geldgeschenk zum runden Geburtstag |  A5 & A4  Echtholz- oder Standardrahmen | Kreatives Geburtstagsgeschenk',
-    description: 'Du suchst ein besonderes Geschenk für einen runden Geburtstag? 🎉
-Dieses personalisierte Geldgeschenk ist die perfekte Kombination aus stilvoller Dekoration und kreativer Geldverpackung.
-
-Egal ob 18, 20, 30, 40, 50, 60, 70, 80, 90 oder 100 Jahre – das Design wird individuell auf das gewünschte Alter ...',
+    description: 'Du suchst ein besonderes Geschenk für einen runden Geburtstag? 🎉\nDieses personalisierte Geldgeschenk ist die perfekte Kombination aus stilvoller Dekoration und kreativer Geldverpackung.\n\nEgal ob 18, 20, 30, 40, 50, 60, 70, 80, 90 oder 100 Jahre – das Design wird individuell auf das gewünschte Alter ...',
     price: 13.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -1804,8 +1611,7 @@ Egal ob 18, 20, 30, 40, 50, 60, 70, 80, 90 oder 100 Jahre – das Design wird in
   {
     id: 'etsy-134',
     title: 'Personalisiertes Geldgeschenk zur Kommunion | DIY perfekt ausgeschnitten | A4 Bilderrahmen | Kommunionsgeldgeschenk für Mädchen und Jungen',
-    description: 'Dieses personalisierte Geldgeschenk zur Kommunion ist eine besondere und stilvolle Möglichkeit, Geld kreativ und mit Bedeutung zu verschenken.
-Das moderne Motiv wird präzise ausgeschnitten und so gestaltet, dass Geldscheine dekorativ integriert werden können – ein echtes Highlight für diesen besonde...',
+    description: 'Dieses personalisierte Geldgeschenk zur Kommunion ist eine besondere und stilvolle Möglichkeit, Geld kreativ und mit Bedeutung zu verschenken.\nDas moderne Motiv wird präzise ausgeschnitten und so gestaltet, dass Geldscheine dekorativ integriert werden können – ein echtes Highlight für diesen besonde...',
     price: 17.0,
     occasion: 'kommunion',
     material: 'holz',
@@ -1817,8 +1623,7 @@ Das moderne Motiv wird präzise ausgeschnitten und so gestaltet, dass Geldschein
   {
     id: 'etsy-135',
     title: 'Personalisiertes Geldgeschenk zur Kommunion | DIY perfekt ausgeschnitten | A4 Bilderrahmen | Kommunionsgeldgeschenk für Mädchen und Jungen',
-    description: 'Dieses personalisierte Geldgeschenk zur Kommunion ist eine besondere und stilvolle Möglichkeit, Geld kreativ und mit Bedeutung zu verschenken.
-Das moderne Motiv wird präzise ausgeschnitten und so gestaltet, dass Geldscheine dekorativ integriert werden können – ein echtes Highlight für diesen besonde...',
+    description: 'Dieses personalisierte Geldgeschenk zur Kommunion ist eine besondere und stilvolle Möglichkeit, Geld kreativ und mit Bedeutung zu verschenken.\nDas moderne Motiv wird präzise ausgeschnitten und so gestaltet, dass Geldscheine dekorativ integriert werden können – ein echtes Highlight für diesen besonde...',
     price: 17.0,
     occasion: 'kommunion',
     material: 'holz',
@@ -1830,9 +1635,7 @@ Das moderne Motiv wird präzise ausgeschnitten und so gestaltet, dass Geldschein
   {
     id: 'etsy-136',
     title: 'Personalisiertes Geldgeschenk zum Geburtstag | Hobby-Design | Perfekt ausgeschnitten mit A4 Bilderrahmen | Kreatives Geldgeschenk.',
-    description: 'Überrasche das Geburtstagskind mit einem individuellen Geldgeschenk passend zum Hobby – ob Sport, Musik, Tiere oder kreative Freizeitgestaltung 🎁🎨⚽🎸. Dieses personalisierte Design ist die perfekte Möglichkeit, dein Geschenk liebevoll und passend zu gestalten.
-
-Das Motiv wird auf hochwertigem 250g/m²...',
+    description: 'Überrasche das Geburtstagskind mit einem individuellen Geldgeschenk passend zum Hobby – ob Sport, Musik, Tiere oder kreative Freizeitgestaltung 🎁🎨⚽🎸. Dieses personalisierte Design ist die perfekte Möglichkeit, dein Geschenk liebevoll und passend zu gestalten.\n\nDas Motiv wird auf hochwertigem 250g/m²...',
     price: 19.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -1844,9 +1647,7 @@ Das Motiv wird auf hochwertigem 250g/m²...',
   {
     id: 'etsy-137',
     title: 'Personalisierte Hochzeit Geldgeschenk, DIY Perfekt ausgeschnitten, A4 A3 Bilderrahmen, Geschenk für Brautpaar, Hochzeitsgeschenk Idee.',
-    description: 'Mache den großen Tag noch unvergesslicher mit einem einzigartigen und personalisierten Geldgeschenk zur Hochzeit im Brautpaar-Design 💍👰🤵. Dieses liebevoll gestaltete DIY-Geldgeschenk ist die perfekte Kombination aus Symbolik, Stil und Funktion – ein besonderes Highlight für jedes Brautpaar.
-
-Das Des...',
+    description: 'Mache den großen Tag noch unvergesslicher mit einem einzigartigen und personalisierten Geldgeschenk zur Hochzeit im Brautpaar-Design 💍👰🤵. Dieses liebevoll gestaltete DIY-Geldgeschenk ist die perfekte Kombination aus Symbolik, Stil und Funktion – ein besonderes Highlight für jedes Brautpaar.\n\nDas Des...',
     price: 17.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -1858,9 +1659,7 @@ Das Des...',
   {
     id: 'etsy-138',
     title: 'Personalisierte Abenteuer Geburtstag Geldgeschenk, DIY Perfekt ausgeschnitten, A4 Bilderrahmen, Reise Geschenkidee, Erlebnis Geschenk.',
-    description: 'Schenke zum Geburtstag etwas ganz Besonderes – ein personalisiertes Geldgeschenk für das nächste Abenteuer 🎉🌍! Ob für eine Reise, einen lang ersehnten Traum oder einfach neue Erlebnisse – dieses kreative DIY-Geschenk ist eine stilvolle und originelle Art, Wünsche zu erfüllen.
-
-Das Abenteuer-Design w...',
+    description: 'Schenke zum Geburtstag etwas ganz Besonderes – ein personalisiertes Geldgeschenk für das nächste Abenteuer 🎉🌍! Ob für eine Reise, einen lang ersehnten Traum oder einfach neue Erlebnisse – dieses kreative DIY-Geschenk ist eine stilvolle und originelle Art, Wünsche zu erfüllen.\n\nDas Abenteuer-Design w...',
     price: 19.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -1884,9 +1683,7 @@ Das Abenteuer-Design w...',
   {
     id: 'etsy-140',
     title: 'Hochzeitsgeldgeschenk aus Eichedekorplatte, personalisiert mit Namen & Datum, Einzigartiges  Geldgeschenk Brautpaar, A4 oder A3 Bilderrahmen',
-    description: 'Einzigartig & persönlich – das besondere Hochzeitsgeschenk
-
-Mach den großen Tag unvergesslich mit einem personalisierten Geldgeschenk aus edler HDF-Platte in Eichenoptik 💍👰🤵. Dieses stilvolle Hochzeitsgeschenk vereint Symbolkraft, Natürlichkeit und Individualität – liebevoll graviert mit den Namen d...',
+    description: 'Einzigartig & persönlich – das besondere Hochzeitsgeschenk\n\nMach den großen Tag unvergesslich mit einem personalisierten Geldgeschenk aus edler HDF-Platte in Eichenoptik 💍👰🤵. Dieses stilvolle Hochzeitsgeschenk vereint Symbolkraft, Natürlichkeit und Individualität – liebevoll graviert mit den Namen d...',
     price: 25.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -1898,9 +1695,7 @@ Mach den großen Tag unvergesslich mit einem personalisierten Geldgeschenk aus e
   {
     id: 'etsy-141',
     title: 'Hochzeitsgeldgeschenk aus 3 mm Eichedekorplatte, personalisiert mit Namen & Datum, Geldgeschenk Brautpaar, DIN A4 A3 Echtholz Bilderrahmen.',
-    description: 'Einzigartig & persönlich – das besondere Hochzeitsgeschenk
-
-Mach den großen Tag unvergesslich mit einem personalisierten Geldgeschenk aus edler HDF-Platte in Eichenoptik 💍👰🤵. Dieses stilvolle Hochzeitsgeschenk vereint Symbolkraft, Natürlichkeit und Individualität – liebevoll graviert mit den Namen d...',
+    description: 'Einzigartig & persönlich – das besondere Hochzeitsgeschenk\n\nMach den großen Tag unvergesslich mit einem personalisierten Geldgeschenk aus edler HDF-Platte in Eichenoptik 💍👰🤵. Dieses stilvolle Hochzeitsgeschenk vereint Symbolkraft, Natürlichkeit und Individualität – liebevoll graviert mit den Namen d...',
     price: 25.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -1936,9 +1731,7 @@ Mach den großen Tag unvergesslich mit einem personalisierten Geldgeschenk aus e
   {
     id: 'etsy-144',
     title: 'Brautpaar Geldgeschenk Holzbox | Geldgeschenk zur Hochzeit | Reagenzglas | Geschenkbox zur Hochzeit mit Namen & Datum | Erinnerungskiste',
-    description: 'Dieses liebevoll gestaltete Geldgeschenk zur Hochzeit ist mehr als nur eine Verpackung, es ist eine wunderschöne Erinnerung an den besonderen Tag 💍
-
-Die hochwertige Holz-Schiebebox wird individuell mit den Namen des Brautpaares sowie dem Hochzeitsdatum graviert. Ergänzt wird das Design durch ein ele...',
+    description: 'Dieses liebevoll gestaltete Geldgeschenk zur Hochzeit ist mehr als nur eine Verpackung, es ist eine wunderschöne Erinnerung an den besonderen Tag 💍\n\nDie hochwertige Holz-Schiebebox wird individuell mit den Namen des Brautpaares sowie dem Hochzeitsdatum graviert. Ergänzt wird das Design durch ein ele...',
     price: 24.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -1950,9 +1743,7 @@ Die hochwertige Holz-Schiebebox wird individuell mit den Namen des Brautpaares s
   {
     id: 'etsy-145',
     title: 'Geldgeschenk Brautpaar, A4 oder A3 Bilderrahmen, DIY Perfekt ausgeschnitten, Hochzeit Geschenkidee, Personalisierte Kreatives Geldgeschenk.',
-    description: 'Einzigartig & persönlich – das besondere Hochzeitsgeschenk
-
-Mach den großen Tag unvergesslich mit einem einzigartigen und personalisierten Geldgeschenk im eleganten Brautpaar-Design 💍👰🤵. Dieses liebevoll gestaltete DIY-Geldgeschenk vereint Symbolik, Stil und Funktion – ein Highlight, das Brautpaare ...',
+    description: 'Einzigartig & persönlich – das besondere Hochzeitsgeschenk\n\nMach den großen Tag unvergesslich mit einem einzigartigen und personalisierten Geldgeschenk im eleganten Brautpaar-Design 💍👰🤵. Dieses liebevoll gestaltete DIY-Geldgeschenk vereint Symbolik, Stil und Funktion – ein Highlight, das Brautpaare ...',
     price: 16.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -1964,9 +1755,7 @@ Mach den großen Tag unvergesslich mit einem einzigartigen und personalisierten 
   {
     id: 'etsy-146',
     title: 'Personalisiertes Geldgeschenk zur Hochzeit Holzbox | Geldgeschenk zur Hochzeit | Reagenzglas | Geschenkbox zur Hochzeit mit Namen & Datum',
-    description: 'Dieses liebevoll gestaltete Geldgeschenk zur Hochzeit ist mehr als nur eine Verpackung, es ist eine wunderschöne Erinnerung an den besonderen Tag 💍
-
-Die hochwertige Holz-Schiebebox wird individuell mit den Namen des Brautpaares sowie dem Hochzeitsdatum graviert. Ergänzt wird das Design durch ein ele...',
+    description: 'Dieses liebevoll gestaltete Geldgeschenk zur Hochzeit ist mehr als nur eine Verpackung, es ist eine wunderschöne Erinnerung an den besonderen Tag 💍\n\nDie hochwertige Holz-Schiebebox wird individuell mit den Namen des Brautpaares sowie dem Hochzeitsdatum graviert. Ergänzt wird das Design durch ein ele...',
     price: 24.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -1978,9 +1767,7 @@ Die hochwertige Holz-Schiebebox wird individuell mit den Namen des Brautpaares s
   {
     id: 'etsy-147',
     title: 'Personalisierte Abenteuer Geburtstag Geldgeschenk, DIY Perfekt ausgeschnitten, A4 Bilderrahmen, Reise Geschenkidee, Erlebnis Geschenk.',
-    description: 'Schenke zum Geburtstag etwas ganz Besonderes – ein personalisiertes Geldgeschenk für das nächste Abenteuer 🎉🌍! Ob für eine Reise, einen lang ersehnten Traum oder einfach neue Erlebnisse – dieses kreative DIY-Geschenk ist eine stilvolle und originelle Art, Wünsche zu erfüllen.
-
-Das Abenteuer-Design w...',
+    description: 'Schenke zum Geburtstag etwas ganz Besonderes – ein personalisiertes Geldgeschenk für das nächste Abenteuer 🎉🌍! Ob für eine Reise, einen lang ersehnten Traum oder einfach neue Erlebnisse – dieses kreative DIY-Geschenk ist eine stilvolle und originelle Art, Wünsche zu erfüllen.\n\nDas Abenteuer-Design w...',
     price: 19.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -1992,9 +1779,7 @@ Das Abenteuer-Design w...',
   {
     id: 'etsy-148',
     title: 'Brautpaar Geldgeschenk, A4 A3 Bilderrahmen, Perfekt ausgeschnitten Hochzeit Geschenkidee, Personalisierte Einzigartige Hochzeitsgeschenke.',
-    description: 'Einzigartig & persönlich – das besondere Hochzeitsgeschenk
-
-Mach den großen Tag unvergesslich mit einem einzigartigen und personalisierten Geldgeschenk im eleganten Brautpaar-Design 💍👰🤵. Dieses liebevoll gestaltete DIY-Geldgeschenk vereint Symbolik, Stil und Funktion – ein Highlight, das Brautpaare ...',
+    description: 'Einzigartig & persönlich – das besondere Hochzeitsgeschenk\n\nMach den großen Tag unvergesslich mit einem einzigartigen und personalisierten Geldgeschenk im eleganten Brautpaar-Design 💍👰🤵. Dieses liebevoll gestaltete DIY-Geldgeschenk vereint Symbolik, Stil und Funktion – ein Highlight, das Brautpaare ...',
     price: 16.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -2006,9 +1791,7 @@ Mach den großen Tag unvergesslich mit einem einzigartigen und personalisierten 
   {
     id: 'etsy-149',
     title: 'Brautpaar Geldgeschenk Holzbox | Geldgeschenk zur Hochzeit | Reagenzglas | Geschenkbox zur Hochzeit mit Namen & Datum | Erinnerungskiste',
-    description: 'Dieses liebevoll gestaltete Geldgeschenk zur Hochzeit ist mehr als nur eine Verpackung, es ist eine wunderschöne Erinnerung an den besonderen Tag 💍
-
-Die hochwertige Holz-Schiebebox wird individuell mit den Namen des Brautpaares sowie dem Hochzeitsdatum graviert. Ergänzt wird das Design durch ein ele...',
+    description: 'Dieses liebevoll gestaltete Geldgeschenk zur Hochzeit ist mehr als nur eine Verpackung, es ist eine wunderschöne Erinnerung an den besonderen Tag 💍\n\nDie hochwertige Holz-Schiebebox wird individuell mit den Namen des Brautpaares sowie dem Hochzeitsdatum graviert. Ergänzt wird das Design durch ein ele...',
     price: 24.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -2020,9 +1803,7 @@ Die hochwertige Holz-Schiebebox wird individuell mit den Namen des Brautpaares s
   {
     id: 'etsy-150',
     title: 'Brautpaar Geldgeschenk DIY A4 oder A3, Perfekt ausgeschnitten Hochzeit Geschenkidee, Bilderrahmen, Personalisierte Kreatives Geldgeschenk.',
-    description: 'Einzigartig & persönlich – das besondere Hochzeitsgeschenk
-
-Mach den großen Tag unvergesslich mit einem einzigartigen und personalisierten Geldgeschenk im eleganten Brautpaar-Design 💍👰🤵. Dieses liebevoll gestaltete DIY-Geldgeschenk vereint Symbolik, Stil und Funktion – ein Highlight, das Brautpaare ...',
+    description: 'Einzigartig & persönlich – das besondere Hochzeitsgeschenk\n\nMach den großen Tag unvergesslich mit einem einzigartigen und personalisierten Geldgeschenk im eleganten Brautpaar-Design 💍👰🤵. Dieses liebevoll gestaltete DIY-Geldgeschenk vereint Symbolik, Stil und Funktion – ein Highlight, das Brautpaare ...',
     price: 19.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -2034,9 +1815,7 @@ Mach den großen Tag unvergesslich mit einem einzigartigen und personalisierten 
   {
     id: 'etsy-151',
     title: 'Personalisiertes Geldgeschenk zur Jugendweihe – DIN A4 im Bilderrahmen | Name & Datum personalisierbar | Modernes Jugendweihe Geschenk',
-    description: 'Dieses personalisierte Geldgeschenk zur Jugendweihe ist eine moderne und liebevolle Geschenkidee für einen ganz besonderen Lebensabschnitt.
-
-Das Motiv wird auf hochweißem 250 g/m² Premium-Papier gedruckt und präzise ausgeschnitten, sodass Geldscheine dekorativ hinterlegt werden können. Durch den far...',
+    description: 'Dieses personalisierte Geldgeschenk zur Jugendweihe ist eine moderne und liebevolle Geschenkidee für einen ganz besonderen Lebensabschnitt.\n\nDas Motiv wird auf hochweißem 250 g/m² Premium-Papier gedruckt und präzise ausgeschnitten, sodass Geldscheine dekorativ hinterlegt werden können. Durch den far...',
     price: 16.0,
     occasion: 'jugendweihe',
     material: 'holz',
@@ -2060,8 +1839,7 @@ Das Motiv wird auf hochweißem 250 g/m² Premium-Papier gedruckt und präzise au
   {
     id: 'etsy-153',
     title: 'Personalisiertes Geldgeschenk zur Kommunion | DIY perfekt ausgeschnitten | A4 Bilderrahmen | Kommunionsgeldgeschenk für Mädchen und Jungen',
-    description: 'Dieses personalisierte Geldgeschenk zur Kommunion ist eine besondere und stilvolle Möglichkeit, Geld kreativ und mit Bedeutung zu verschenken.
-Das moderne Motiv wird präzise ausgeschnitten und so gestaltet, dass Geldscheine dekorativ integriert werden können – ein echtes Highlight für diesen besonde...',
+    description: 'Dieses personalisierte Geldgeschenk zur Kommunion ist eine besondere und stilvolle Möglichkeit, Geld kreativ und mit Bedeutung zu verschenken.\nDas moderne Motiv wird präzise ausgeschnitten und so gestaltet, dass Geldscheine dekorativ integriert werden können – ein echtes Highlight für diesen besonde...',
     price: 13.0,
     occasion: 'kommunion',
     material: 'holz',
@@ -2073,11 +1851,7 @@ Das moderne Motiv wird präzise ausgeschnitten und so gestaltet, dass Geldschein
   {
     id: 'etsy-154',
     title: 'Personalisiertes Geldgeschenk aus Holz zur Firmung, Kommunion, Konfirmation oder Jugendweihe – 3 mm Holzplatte mit goldenen Schrauben',
-    description: 'Du suchst ein besonderes und hochwertiges Geldgeschenk zur Kommunion, Konfirmation, Firmung, Taufe oder Jugendweihe?
-
-Dieses handgefertigte Holz-Geldgeschenk ist eine stilvolle Alternative zur klassischen Geldkarte und bleibt als schöne Erinnerung erhalten.
-
-Gefertigt aus einer 3 mm starken Holzplat...',
+    description: 'Du suchst ein besonderes und hochwertiges Geldgeschenk zur Kommunion, Konfirmation, Firmung, Taufe oder Jugendweihe?\n\nDieses handgefertigte Holz-Geldgeschenk ist eine stilvolle Alternative zur klassischen Geldkarte und bleibt als schöne Erinnerung erhalten.\n\nGefertigt aus einer 3 mm starken Holzplat...',
     price: 15.0,
     occasion: 'kommunion',
     material: 'holz',
@@ -2089,9 +1863,7 @@ Gefertigt aus einer 3 mm starken Holzplat...',
   {
     id: 'etsy-155',
     title: 'Geldgeschenk Geburt personalisiert – Willkommen auf der Welt, Bilderrahmen A5 A4 A3, Geschenk für Baby, kreative Babygeschenk Idee',
-    description: 'Dieses liebevoll gestaltete personalisierte Geldgeschenk zum 1. Geburtstag ist eine ganz besondere Erinnerung an den ersten großen Meilenstein im Leben eines Kindes.
-
-Mit süßen Motiven wie Dino oder Kinderwagen und der Möglichkeit, Geldscheine kreativ in das Design zu integrieren, entsteht eine einz...',
+    description: 'Dieses liebevoll gestaltete personalisierte Geldgeschenk zum 1. Geburtstag ist eine ganz besondere Erinnerung an den ersten großen Meilenstein im Leben eines Kindes.\n\nMit süßen Motiven wie Dino oder Kinderwagen und der Möglichkeit, Geldscheine kreativ in das Design zu integrieren, entsteht eine einz...',
     price: 13.0,
     occasion: 'geburt',
     material: 'holz',
@@ -2103,9 +1875,7 @@ Mit süßen Motiven wie Dino oder Kinderwagen und der Möglichkeit, Geldscheine 
   {
     id: 'etsy-156',
     title: 'Geldgeschenk Geburt personalisiert – Willkommen auf der Welt, Bilderrahmen A5 A4 A3, Geschenk für Baby, kreative Babygeschenk Idee',
-    description: 'Dieses liebevoll gestaltete personalisierte Geldgeschenk zum 1. Geburtstag ist eine ganz besondere Erinnerung an den ersten großen Meilenstein im Leben eines Kindes.
-
-Mit süßen Motiven wie Dino oder Kinderwagen und der Möglichkeit, Geldscheine kreativ in das Design zu integrieren, entsteht eine einz...',
+    description: 'Dieses liebevoll gestaltete personalisierte Geldgeschenk zum 1. Geburtstag ist eine ganz besondere Erinnerung an den ersten großen Meilenstein im Leben eines Kindes.\n\nMit süßen Motiven wie Dino oder Kinderwagen und der Möglichkeit, Geldscheine kreativ in das Design zu integrieren, entsteht eine einz...',
     price: 13.0,
     occasion: 'geburt',
     material: 'holz',
@@ -2117,9 +1887,7 @@ Mit süßen Motiven wie Dino oder Kinderwagen und der Möglichkeit, Geldscheine 
   {
     id: 'etsy-157',
     title: 'Geldgeschenk Geburt personalisiert – Willkommen auf der Welt, Bilderrahmen A5 A4 A3, Geschenk für Baby, kreative Babygeschenk Idee',
-    description: 'Dieses liebevoll gestaltete personalisierte Geldgeschenk zum 1. Geburtstag ist eine ganz besondere Erinnerung an den ersten großen Meilenstein im Leben eines Kindes.
-
-Mit süßen Motiven wie Dino oder Kinderwagen und der Möglichkeit, Geldscheine kreativ in das Design zu integrieren, entsteht eine einz...',
+    description: 'Dieses liebevoll gestaltete personalisierte Geldgeschenk zum 1. Geburtstag ist eine ganz besondere Erinnerung an den ersten großen Meilenstein im Leben eines Kindes.\n\nMit süßen Motiven wie Dino oder Kinderwagen und der Möglichkeit, Geldscheine kreativ in das Design zu integrieren, entsteht eine einz...',
     price: 13.0,
     occasion: 'geburt',
     material: 'holz',
@@ -2131,9 +1899,7 @@ Mit süßen Motiven wie Dino oder Kinderwagen und der Möglichkeit, Geldscheine 
   {
     id: 'etsy-158',
     title: 'Geldgeschenk für Brautpaar, Personalisierte Hochzeit Geldgeschenk, DIY Perfekt ausgeschnitten, A4 A3 Bilderrahmen, Hochzeitsgeschenk Idee.',
-    description: 'Mache den großen Tag noch unvergesslicher mit einem einzigartigen und personalisierten Geldgeschenk zur Hochzeit im Brautpaar-Design 💍👰🤵. Dieses liebevoll gestaltete DIY-Geldgeschenk ist die perfekte Kombination aus Symbolik, Stil und Funktion – ein besonderes Highlight für jedes Brautpaar.
-
-Das Des...',
+    description: 'Mache den großen Tag noch unvergesslicher mit einem einzigartigen und personalisierten Geldgeschenk zur Hochzeit im Brautpaar-Design 💍👰🤵. Dieses liebevoll gestaltete DIY-Geldgeschenk ist die perfekte Kombination aus Symbolik, Stil und Funktion – ein besonderes Highlight für jedes Brautpaar.\n\nDas Des...',
     price: 17.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -2145,9 +1911,7 @@ Das Des...',
   {
     id: 'etsy-159',
     title: 'Geldgeschenk Geburt personalisiert – Willkommen auf der Welt, Bilderrahmen A5 A4 A3, Geschenk für Baby, kreative Babygeschenk Idee',
-    description: 'Dieses liebevoll gestaltete personalisierte Geldgeschenk zum 1. Geburtstag ist eine ganz besondere Erinnerung an den ersten großen Meilenstein im Leben eines Kindes.
-
-Mit süßen Motiven wie Dino oder Kinderwagen und der Möglichkeit, Geldscheine kreativ in das Design zu integrieren, entsteht eine einz...',
+    description: 'Dieses liebevoll gestaltete personalisierte Geldgeschenk zum 1. Geburtstag ist eine ganz besondere Erinnerung an den ersten großen Meilenstein im Leben eines Kindes.\n\nMit süßen Motiven wie Dino oder Kinderwagen und der Möglichkeit, Geldscheine kreativ in das Design zu integrieren, entsteht eine einz...',
     price: 13.0,
     occasion: 'geburt',
     material: 'holz',
@@ -2159,9 +1923,7 @@ Mit süßen Motiven wie Dino oder Kinderwagen und der Möglichkeit, Geldscheine 
   {
     id: 'etsy-160',
     title: 'Personalisierte Geldgeschenk zur Geburt, Willkommen auf der Welt, Perfekt ausgeschnitten Geschenk, A5 A4 A3 Bilderrahmen Geschenk zur Geburt',
-    description: 'Dieses liebevoll gestaltete Geldgeschenk zum 1. Geburtstag ist eine ganz besondere Erinnerung an den ersten großen Meilenstein im Leben eines Kindes
-
-Mit süßen Motiven wie Dino oder Kinderwagen und der Möglichkeit, Geldscheine kreativ in das Design zu integrieren, wird dieses Geschenk zu einer einzi...',
+    description: 'Dieses liebevoll gestaltete Geldgeschenk zum 1. Geburtstag ist eine ganz besondere Erinnerung an den ersten großen Meilenstein im Leben eines Kindes\n\nMit süßen Motiven wie Dino oder Kinderwagen und der Möglichkeit, Geldscheine kreativ in das Design zu integrieren, wird dieses Geschenk zu einer einzi...',
     price: 13.0,
     occasion: 'geburt',
     material: 'holz',
@@ -2173,9 +1935,7 @@ Mit süßen Motiven wie Dino oder Kinderwagen und der Möglichkeit, Geldscheine 
   {
     id: 'etsy-161',
     title: 'Personalisiertes Geldgeschenk zur Geburt – Willkommen auf der Welt, Bilderrahmen A5 A4 A3, Geschenk zur Geburt, kreative Geschenkidee Baby',
-    description: 'Dieses liebevoll gestaltete Geldgeschenk zum 1. Geburtstag ist eine ganz besondere Erinnerung an den ersten großen Meilenstein im Leben eines Kindes
-
-Mit süßen Motiven wie Dino oder Kinderwagen und der Möglichkeit, Geldscheine kreativ in das Design zu integrieren, wird dieses Geschenk zu einer einzi...',
+    description: 'Dieses liebevoll gestaltete Geldgeschenk zum 1. Geburtstag ist eine ganz besondere Erinnerung an den ersten großen Meilenstein im Leben eines Kindes\n\nMit süßen Motiven wie Dino oder Kinderwagen und der Möglichkeit, Geldscheine kreativ in das Design zu integrieren, wird dieses Geschenk zu einer einzi...',
     price: 13.0,
     occasion: 'geburt',
     material: 'holz',
@@ -2187,9 +1947,7 @@ Mit süßen Motiven wie Dino oder Kinderwagen und der Möglichkeit, Geldscheine 
   {
     id: 'etsy-162',
     title: 'Personalisiertes Geldgeschenk zum Geburtstag | Hobby-Design | Perfekt ausgeschnitten mit A4 Bilderrahmen | Kreatives Geldgeschenk.',
-    description: 'Überrasche das Geburtstagskind mit einem individuellen Geldgeschenk passend zum Hobby – ob Sport, Musik, Tiere oder kreative Freizeitgestaltung 🎁🎨⚽🎸. Dieses personalisierte Design ist die perfekte Möglichkeit, dein Geschenk liebevoll und passend zu gestalten.
-
-Das Motiv wird auf hochwertigem 250g/m²...',
+    description: 'Überrasche das Geburtstagskind mit einem individuellen Geldgeschenk passend zum Hobby – ob Sport, Musik, Tiere oder kreative Freizeitgestaltung 🎁🎨⚽🎸. Dieses personalisierte Design ist die perfekte Möglichkeit, dein Geschenk liebevoll und passend zu gestalten.\n\nDas Motiv wird auf hochwertigem 250g/m²...',
     price: 19.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -2201,9 +1959,7 @@ Das Motiv wird auf hochwertigem 250g/m²...',
   {
     id: 'etsy-163',
     title: 'Personalisiertes Geldgeschenk zum Geburtstag | Hobby-Design | Perfekt ausgeschnitten mit A4 Bilderrahmen | Kreatives Geldgeschenk.',
-    description: 'Überrasche das Geburtstagskind mit einem individuellen Geldgeschenk passend zum Hobby – ob Sport, Musik, Tiere oder kreative Freizeitgestaltung 🎁🎨⚽🎸. Dieses personalisierte Design ist die perfekte Möglichkeit, dein Geschenk liebevoll und passend zu gestalten.
-
-Das Motiv wird auf hochwertigem 250g/m²...',
+    description: 'Überrasche das Geburtstagskind mit einem individuellen Geldgeschenk passend zum Hobby – ob Sport, Musik, Tiere oder kreative Freizeitgestaltung 🎁🎨⚽🎸. Dieses personalisierte Design ist die perfekte Möglichkeit, dein Geschenk liebevoll und passend zu gestalten.\n\nDas Motiv wird auf hochwertigem 250g/m²...',
     price: 19.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -2215,9 +1971,7 @@ Das Motiv wird auf hochwertigem 250g/m²...',
   {
     id: 'etsy-164',
     title: 'Personalisiertes Geldgeschenk zum Geburtstag | Hobby-Design | Perfekt ausgeschnitten mit A4 Bilderrahmen | Kreatives Geldgeschenk.',
-    description: 'Überrasche das Geburtstagskind mit einem individuellen Geldgeschenk passend zum Hobby – ob Sport, Musik, Tiere oder kreative Freizeitgestaltung 🎁🎨⚽🎸. Dieses personalisierte Design ist die perfekte Möglichkeit, dein Geschenk liebevoll und passend zu gestalten.
-
-Das Motiv wird auf hochwertigem 250g/m²...',
+    description: 'Überrasche das Geburtstagskind mit einem individuellen Geldgeschenk passend zum Hobby – ob Sport, Musik, Tiere oder kreative Freizeitgestaltung 🎁🎨⚽🎸. Dieses personalisierte Design ist die perfekte Möglichkeit, dein Geschenk liebevoll und passend zu gestalten.\n\nDas Motiv wird auf hochwertigem 250g/m²...',
     price: 19.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -2229,9 +1983,7 @@ Das Motiv wird auf hochwertigem 250g/m²...',
   {
     id: 'etsy-165',
     title: 'Personalisiertes Geldgeschenk zum Geburtstag | Hobby-Design | Perfekt ausgeschnitten mit A4 Bilderrahmen | Kreatives Geldgeschenk.',
-    description: 'Überrasche das Geburtstagskind mit einem individuellen Geldgeschenk passend zum Hobby – ob Sport, Musik, Tiere oder kreative Freizeitgestaltung 🎁🎨⚽🎸. Dieses personalisierte Design ist die perfekte Möglichkeit, dein Geschenk liebevoll und passend zu gestalten.
-
-Das Motiv wird auf hochwertigem 250g/m²...',
+    description: 'Überrasche das Geburtstagskind mit einem individuellen Geldgeschenk passend zum Hobby – ob Sport, Musik, Tiere oder kreative Freizeitgestaltung 🎁🎨⚽🎸. Dieses personalisierte Design ist die perfekte Möglichkeit, dein Geschenk liebevoll und passend zu gestalten.\n\nDas Motiv wird auf hochwertigem 250g/m²...',
     price: 19.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -2243,9 +1995,7 @@ Das Motiv wird auf hochwertigem 250g/m²...',
   {
     id: 'etsy-166',
     title: 'Personalisiertes Geldgeschenk zum Geburtstag | Hobby-Design | Perfekt ausgeschnitten mit A4 Bilderrahmen | Kreatives Geldgeschenk.',
-    description: 'Überrasche das Geburtstagskind mit einem individuellen Geldgeschenk passend zum Hobby – ob Sport, Musik, Tiere oder kreative Freizeitgestaltung 🎁🎨⚽🎸. Dieses personalisierte Design ist die perfekte Möglichkeit, dein Geschenk liebevoll und passend zu gestalten.
-
-Das Motiv wird auf hochwertigem 250g/m²...',
+    description: 'Überrasche das Geburtstagskind mit einem individuellen Geldgeschenk passend zum Hobby – ob Sport, Musik, Tiere oder kreative Freizeitgestaltung 🎁🎨⚽🎸. Dieses personalisierte Design ist die perfekte Möglichkeit, dein Geschenk liebevoll und passend zu gestalten.\n\nDas Motiv wird auf hochwertigem 250g/m²...',
     price: 19.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -2257,9 +2007,7 @@ Das Motiv wird auf hochwertigem 250g/m²...',
   {
     id: 'etsy-167',
     title: 'Personalisiertes Geldgeschenk zum Geburtstag | Hobby-Design | Perfekt ausgeschnitten mit A4 Bilderrahmen | Kreatives Geldgeschenk.',
-    description: 'Überrasche das Geburtstagskind mit einem individuellen Geldgeschenk passend zum Hobby – ob Sport, Musik, Tiere oder kreative Freizeitgestaltung 🎁🎨⚽🎸. Dieses personalisierte Design ist die perfekte Möglichkeit, dein Geschenk liebevoll und passend zu gestalten.
-
-Das Motiv wird auf hochwertigem 250g/m²...',
+    description: 'Überrasche das Geburtstagskind mit einem individuellen Geldgeschenk passend zum Hobby – ob Sport, Musik, Tiere oder kreative Freizeitgestaltung 🎁🎨⚽🎸. Dieses personalisierte Design ist die perfekte Möglichkeit, dein Geschenk liebevoll und passend zu gestalten.\n\nDas Motiv wird auf hochwertigem 250g/m²...',
     price: 19.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -2271,9 +2019,7 @@ Das Motiv wird auf hochwertigem 250g/m²...',
   {
     id: 'etsy-168',
     title: 'Personalisiertes Geldgeschenk zum Geburtstag | Hobby-Design | Perfekt ausgeschnitten mit A4 Bilderrahmen | Kreatives Geldgeschenk.',
-    description: 'Überrasche das Geburtstagskind mit einem individuellen Geldgeschenk passend zum Hobby – ob Sport, Musik, Tiere oder kreative Freizeitgestaltung 🎁🎨⚽🎸. Dieses personalisierte Design ist die perfekte Möglichkeit, dein Geschenk liebevoll und passend zu gestalten.
-
-Das Motiv wird auf hochwertigem 250g/m²...',
+    description: 'Überrasche das Geburtstagskind mit einem individuellen Geldgeschenk passend zum Hobby – ob Sport, Musik, Tiere oder kreative Freizeitgestaltung 🎁🎨⚽🎸. Dieses personalisierte Design ist die perfekte Möglichkeit, dein Geschenk liebevoll und passend zu gestalten.\n\nDas Motiv wird auf hochwertigem 250g/m²...',
     price: 19.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -2285,8 +2031,7 @@ Das Motiv wird auf hochwertigem 250g/m²...',
   {
     id: 'etsy-169',
     title: 'Personalisiertes Geldgeschenk zur Konfirmation | DIY Perfekt ausgeschnitten | A4 Echtholz Bilderrahmen | Konfirmationsgeschenk Mädchen Junge',
-    description: 'Dieses personalisierte Geldgeschenk zur Konfirmation ist eine besondere und stilvolle Möglichkeit, Geld kreativ und mit Bedeutung zu verschenken.
-Das moderne Motiv wird präzise ausgeschnitten und so gestaltet, dass Geldscheine dekorativ integriert werden können – ein echtes Highlight für diesen beso...',
+    description: 'Dieses personalisierte Geldgeschenk zur Konfirmation ist eine besondere und stilvolle Möglichkeit, Geld kreativ und mit Bedeutung zu verschenken.\nDas moderne Motiv wird präzise ausgeschnitten und so gestaltet, dass Geldscheine dekorativ integriert werden können – ein echtes Highlight für diesen beso...',
     price: 17.0,
     occasion: 'konfirmation',
     material: 'holz',
@@ -2298,9 +2043,7 @@ Das moderne Motiv wird präzise ausgeschnitten und so gestaltet, dass Geldschein
   {
     id: 'etsy-170',
     title: 'Brautpaar Geldgeschenk DIY A4 oder A3, Perfekt ausgeschnitten Hochzeit Geschenkidee, Bilderrahmen, Personalisierte Kreatives Geldgeschenk.',
-    description: 'Einzigartig & persönlich – das besondere Hochzeitsgeschenk
-
-Mach den großen Tag unvergesslich mit einem einzigartigen und personalisierten Geldgeschenk im eleganten Brautpaar-Design 💍👰🤵. Dieses liebevoll gestaltete DIY-Geldgeschenk vereint Symbolik, Stil und Funktion – ein Highlight, das Brautpaare ...',
+    description: 'Einzigartig & persönlich – das besondere Hochzeitsgeschenk\n\nMach den großen Tag unvergesslich mit einem einzigartigen und personalisierten Geldgeschenk im eleganten Brautpaar-Design 💍👰🤵. Dieses liebevoll gestaltete DIY-Geldgeschenk vereint Symbolik, Stil und Funktion – ein Highlight, das Brautpaare ...',
     price: 19.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -2312,9 +2055,7 @@ Mach den großen Tag unvergesslich mit einem einzigartigen und personalisierten 
   {
     id: 'etsy-171',
     title: 'Personalisiertes Geldgeschenk Abenteuer Geburtstag | Reise Geschenkidee | A5 A4 A3 Standard & Echtholzrahmen | Erlebnis Geschenk.',
-    description: 'Dieses personalisierte Geldgeschenk im Abenteuer-Design ist die perfekte Überraschung für alle, die Reisen, Freiheit und neue Erlebnisse lieben 🌍✨
-
-Das moderne Motiv mit Bergen und Wanderer steht für Aufbruch und unvergessliche Abenteuer. Geldscheine lassen sich kreativ in das Design integrieren und...',
+    description: 'Dieses personalisierte Geldgeschenk im Abenteuer-Design ist die perfekte Überraschung für alle, die Reisen, Freiheit und neue Erlebnisse lieben 🌍✨\n\nDas moderne Motiv mit Bergen und Wanderer steht für Aufbruch und unvergessliche Abenteuer. Geldscheine lassen sich kreativ in das Design integrieren und...',
     price: 13.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -2326,8 +2067,7 @@ Das moderne Motiv mit Bergen und Wanderer steht für Aufbruch und unvergessliche
   {
     id: 'etsy-172',
     title: 'Personalisiertes Geldgeschenk zur Einschulung | Perfekt ausgeschnittenes Design für den Schulanfang | Geschenkidee im A4 oder A3-Format.',
-    description: 'Die Einschulung ist ein riesiger Meilenstein im Leben eines Kindes – und genau dafür gibt es dieses liebevoll gestaltete, personalisierte Geldgeschenk zur Einschulung 🎒✨.
-Ideal für Eltern, Großeltern, Paten oder Freunde, die etwas Besonderes schenken möchten: Ein Kunstwerk, das nicht nur Geld origin...',
+    description: 'Die Einschulung ist ein riesiger Meilenstein im Leben eines Kindes – und genau dafür gibt es dieses liebevoll gestaltete, personalisierte Geldgeschenk zur Einschulung 🎒✨.\nIdeal für Eltern, Großeltern, Paten oder Freunde, die etwas Besonderes schenken möchten: Ein Kunstwerk, das nicht nur Geld origin...',
     price: 19.0,
     occasion: 'einschulung',
     material: 'holz',
@@ -2351,9 +2091,7 @@ Ideal für Eltern, Großeltern, Paten oder Freunde, die etwas Besonderes schenke
   {
     id: 'etsy-174',
     title: 'Personalisiertes Geldgeschenk Abenteuer Wohnmobil | Reise Geschenkidee | A5 A4 A3 Standard & Echtholzrahmen | Erlebnis Geschenk.',
-    description: 'Dieses personalisierte Geldgeschenk im Abenteuer-Design ist die perfekte Überraschung für alle, die Reisen, Freiheit und neue Erlebnisse lieben 🌍✨
-
-Das moderne Motiv mit Bergen und Wanderer steht für Aufbruch und unvergessliche Abenteuer. Geldscheine lassen sich kreativ in das Design integrieren und...',
+    description: 'Dieses personalisierte Geldgeschenk im Abenteuer-Design ist die perfekte Überraschung für alle, die Reisen, Freiheit und neue Erlebnisse lieben 🌍✨\n\nDas moderne Motiv mit Bergen und Wanderer steht für Aufbruch und unvergessliche Abenteuer. Geldscheine lassen sich kreativ in das Design integrieren und...',
     price: 13.0,
     occasion: 'sonstiges',
     material: 'holz',
@@ -2365,9 +2103,7 @@ Das moderne Motiv mit Bergen und Wanderer steht für Aufbruch und unvergessliche
   {
     id: 'etsy-175',
     title: 'Personalisiertes Geldgeschenk Abenteuer Geburtstag | Reise Geschenkidee | A5 A4 A3 Standard & Echtholzrahmen | Erlebnis Geschenk.',
-    description: 'Dieses personalisierte Geldgeschenk im Abenteuer-Design ist die perfekte Überraschung für alle, die Reisen, Freiheit und neue Erlebnisse lieben 🌍✨
-
-Das moderne Motiv mit Bergen und Wanderer steht für Aufbruch und unvergessliche Abenteuer. Geldscheine lassen sich kreativ in das Design integrieren und...',
+    description: 'Dieses personalisierte Geldgeschenk im Abenteuer-Design ist die perfekte Überraschung für alle, die Reisen, Freiheit und neue Erlebnisse lieben 🌍✨\n\nDas moderne Motiv mit Bergen und Wanderer steht für Aufbruch und unvergessliche Abenteuer. Geldscheine lassen sich kreativ in das Design integrieren und...',
     price: 13.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -2379,8 +2115,7 @@ Das moderne Motiv mit Bergen und Wanderer steht für Aufbruch und unvergessliche
   {
     id: 'etsy-176',
     title: 'Personalisiertes Geldgeschenk zur Kommunion | Holzbox mit Name & Datum | Christliches Geldgeschenk | Kommunionsgeschenk für Mädchen  Jungen',
-    description: 'Dieses personalisierte Geldgeschenk zur Kommunion ist eine besondere und stilvolle Art, Geld zu verschenken und gleichzeitig eine bleibende Erinnerung an die Erste Heilige Kommunion zu schaffen.
-Die natürliche Holzbox wird mit viel Liebe gefertigt und individuell für das Kommunionskind personalisier...',
+    description: 'Dieses personalisierte Geldgeschenk zur Kommunion ist eine besondere und stilvolle Art, Geld zu verschenken und gleichzeitig eine bleibende Erinnerung an die Erste Heilige Kommunion zu schaffen.\nDie natürliche Holzbox wird mit viel Liebe gefertigt und individuell für das Kommunionskind personalisier...',
     price: 26.0,
     occasion: 'kommunion',
     material: 'holz',
@@ -2392,9 +2127,7 @@ Die natürliche Holzbox wird mit viel Liebe gefertigt und individuell für das K
   {
     id: 'etsy-177',
     title: 'Personalisiertes Hochzeitsgeldgeschenk | Mit Namen & Datum | mit Trockenblumen, Geldröhrchen | Geschenk zur Hochzeit für Brautpaare.',
-    description: 'Dieses hochwertig gefertigte Hochzeits-Geldgeschenk ist ein einzigartiges Andenken für das Brautpaar – romantisch, dekorativ und mit viel Liebe zum Detail gestaltet.
-
-Das Schild besteht aus 20 cm rundem Natur-Sperrholz (3 mm) und wird mit den Namen des Brautpaares sowie dem Hochzeitsdatum personalis...',
+    description: 'Dieses hochwertig gefertigte Hochzeits-Geldgeschenk ist ein einzigartiges Andenken für das Brautpaar – romantisch, dekorativ und mit viel Liebe zum Detail gestaltet.\n\nDas Schild besteht aus 20 cm rundem Natur-Sperrholz (3 mm) und wird mit den Namen des Brautpaares sowie dem Hochzeitsdatum personalis...',
     price: 22.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -2406,10 +2139,7 @@ Das Schild besteht aus 20 cm rundem Natur-Sperrholz (3 mm) und wird mit den Name
   {
     id: 'etsy-178',
     title: 'Wunscherfüller Weihnachtsgeschenk, Weihnachtskarte aus Holz, Weihnachtsgeldgeschenk, Holzkärtchen 11x15 cm, Kreatives Weihnachtsgeschenk.',
-    description: 'Dieses Weihnachtsgeld-Geschenk ist eine stilvolle und kreative Art, Geld zu Weihnachten zu verschenken. Gefertigt aus 3 mm starkem Sperrholz und mit feiner Gravur versehen, wird dieses Holzkärtchen (11×15 cm) zum besonderen Hingucker unter dem Weihnachtsbaum.
-
-💡 Anlässe:
-Perfekt als Geschenk zu Weih...',
+    description: 'Dieses Weihnachtsgeld-Geschenk ist eine stilvolle und kreative Art, Geld zu Weihnachten zu verschenken. Gefertigt aus 3 mm starkem Sperrholz und mit feiner Gravur versehen, wird dieses Holzkärtchen (11×15 cm) zum besonderen Hingucker unter dem Weihnachtsbaum.\n\n💡 Anlässe:\nPerfekt als Geschenk zu Weih...',
     price: 16.0,
     occasion: 'weihnachten',
     material: 'holz',
@@ -2421,9 +2151,7 @@ Perfekt als Geschenk zu Weih...',
   {
     id: 'etsy-179',
     title: 'Personalisiertes Geldgeschenk zum Geburtstag | Hobby-Design | Perfekt ausgeschnitten mit A4 Bilderrahmen | Kreatives Geldgeschenk.',
-    description: 'Überrasche das Geburtstagskind mit einem individuellen Geldgeschenk passend zum Hobby – ob Sport, Musik, Tiere oder kreative Freizeitgestaltung 🎁🎨⚽🎸. Dieses personalisierte Design ist die perfekte Möglichkeit, dein Geschenk liebevoll und passend zu gestalten.
-
-Das Motiv wird auf hochwertigem 250g/m²...',
+    description: 'Überrasche das Geburtstagskind mit einem individuellen Geldgeschenk passend zum Hobby – ob Sport, Musik, Tiere oder kreative Freizeitgestaltung 🎁🎨⚽🎸. Dieses personalisierte Design ist die perfekte Möglichkeit, dein Geschenk liebevoll und passend zu gestalten.\n\nDas Motiv wird auf hochwertigem 250g/m²...',
     price: 19.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -2435,8 +2163,7 @@ Das Motiv wird auf hochwertigem 250g/m²...',
   {
     id: 'etsy-180',
     title: 'Personalisiertes Geldgeschenk zur Kommunion | DIY perfekt ausgeschnitten | A4 Bilderrahmen | Kommunionsgeldgeschenk für Mädchen und Jungen',
-    description: 'Dieses personalisierte Geldgeschenk zur Kommunion ist eine besondere und stilvolle Möglichkeit, Geld kreativ und mit Bedeutung zu verschenken.
-Das moderne Motiv wird präzise ausgeschnitten und so gestaltet, dass Geldscheine dekorativ integriert werden können – ein echtes Highlight für diesen besonde...',
+    description: 'Dieses personalisierte Geldgeschenk zur Kommunion ist eine besondere und stilvolle Möglichkeit, Geld kreativ und mit Bedeutung zu verschenken.\nDas moderne Motiv wird präzise ausgeschnitten und so gestaltet, dass Geldscheine dekorativ integriert werden können – ein echtes Highlight für diesen besonde...',
     price: 19.0,
     occasion: 'kommunion',
     material: 'holz',
@@ -2460,10 +2187,7 @@ Das moderne Motiv wird präzise ausgeschnitten und so gestaltet, dass Geldschein
   {
     id: 'etsy-182',
     title: 'Personalisiertes Geldgeschenk zur Taufe – DIN A4 im Echtholzrahmen | Name & Datum personalisierbar | Kreatives Taufgeschenk mit Baum',
-    description: 'Dieses personalisierte Geldgeschenk zur Taufe ist eine liebevolle und stilvolle Geschenkidee für ein besonderes Lebensereignis.
-Durch das zeitlose Design wird es nicht nur zu einem kreativen Geldgeschenk, sondern auch zu einer bleibenden Erinnerung.
-
-Das Motiv wird im DIN-A4-Format gefertigt und in ...',
+    description: 'Dieses personalisierte Geldgeschenk zur Taufe ist eine liebevolle und stilvolle Geschenkidee für ein besonderes Lebensereignis.\nDurch das zeitlose Design wird es nicht nur zu einem kreativen Geldgeschenk, sondern auch zu einer bleibenden Erinnerung.\n\nDas Motiv wird im DIN-A4-Format gefertigt und in ...',
     price: 16.0,
     occasion: 'taufe',
     material: 'holz',
@@ -2475,9 +2199,7 @@ Das Motiv wird im DIN-A4-Format gefertigt und in ...',
   {
     id: 'etsy-183',
     title: 'Hochzeit Geldgeschenk, Perfekt ausgeschnitten, DIY  Bilderrahmen, Personalisierte Brautpaar Geschenkidee Hochzeit, Kreatives Geldgeschenk.',
-    description: 'Einzigartig & persönlich – das besondere Hochzeitsgeschenk
-
-Mach den großen Tag unvergesslich mit einem einzigartigen und personalisierten Geldgeschenk im eleganten Brautpaar-Design 💍👰🤵. Dieses liebevoll gestaltete DIY-Geldgeschenk vereint Symbolik, Stil und Funktion – ein Highlight, das Brautpaare ...',
+    description: 'Einzigartig & persönlich – das besondere Hochzeitsgeschenk\n\nMach den großen Tag unvergesslich mit einem einzigartigen und personalisierten Geldgeschenk im eleganten Brautpaar-Design 💍👰🤵. Dieses liebevoll gestaltete DIY-Geldgeschenk vereint Symbolik, Stil und Funktion – ein Highlight, das Brautpaare ...',
     price: 19.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -2489,9 +2211,7 @@ Mach den großen Tag unvergesslich mit einem einzigartigen und personalisierten 
   {
     id: 'etsy-184',
     title: 'Personalisierte Hochzeit Geldgeschenk, DIY Perfekt ausgeschnitten, A4 Bilderrahmen, Geschenk für Brautpaar, Hochzeitsgeschenk Idee.',
-    description: 'Feiere die Liebe mit einem wunderschönen, personalisierten Geldgeschenk zur Hochzeit 💍🎁 – eine stilvolle und kreative Möglichkeit, dem Brautpaar eine besondere Freude zu machen. Ob als Beitrag zur Hochzeitsreise oder für den gemeinsamen Start ins Eheleben – dieses Geschenk bleibt in Erinnerung.
-
-Das...',
+    description: 'Feiere die Liebe mit einem wunderschönen, personalisierten Geldgeschenk zur Hochzeit 💍🎁 – eine stilvolle und kreative Möglichkeit, dem Brautpaar eine besondere Freude zu machen. Ob als Beitrag zur Hochzeitsreise oder für den gemeinsamen Start ins Eheleben – dieses Geschenk bleibt in Erinnerung.\n\nDas...',
     price: 19.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -2515,10 +2235,7 @@ Das...',
   {
     id: 'etsy-186',
     title: 'Personalisiertes Weihnachten Geldgeschenk aus Holz – „Du wolltest doch NICHTS … oder?“, Holzkärtchen 11x15cm oder 13x18cm.',
-    description: 'Dieses humorvolle Weihnachts-Geldgeschenk ist ideal für alle, die immer sagen: „Ich wünsche mir nichts!“ 😄
-Das Design zeigt den Schriftzug „Du wolltest doch NICHTS … oder? Frohe Weihnachten“ und sorgt garantiert für ein Schmunzeln unterm Weihnachtsbaum.
-
-Gefertigt aus 3 mm starker Sperrholzplatte, i...',
+    description: 'Dieses humorvolle Weihnachts-Geldgeschenk ist ideal für alle, die immer sagen: „Ich wünsche mir nichts!“ 😄\nDas Design zeigt den Schriftzug „Du wolltest doch NICHTS … oder? Frohe Weihnachten“ und sorgt garantiert für ein Schmunzeln unterm Weihnachtsbaum.\n\nGefertigt aus 3 mm starker Sperrholzplatte, i...',
     price: 15.0,
     occasion: 'weihnachten',
     material: 'holz',
@@ -2530,10 +2247,7 @@ Gefertigt aus 3 mm starker Sperrholzplatte, i...',
   {
     id: 'etsy-187',
     title: 'Personalisiertes Weihnachts-Geldgeschenk, Frohe Weihnachten Geldgeschenk, Mit Name im Echtholzrahmen, Kreatives Geldgeschenk zu Weihnachten.',
-    description: 'Dieses stilvolle Weihnachts-Geldgeschenk ist die perfekte Kombination aus Eleganz, Kreativität und persönlicher Note.
-Ein wunderschönes Geschenk, um Geld auf originelle und festliche Weise zu verschenken – ideal für Familie, Freunde, Kollegen oder Kinder.
-
-Der hochwertige Druck erfolgt auf 250g/m² h...',
+    description: 'Dieses stilvolle Weihnachts-Geldgeschenk ist die perfekte Kombination aus Eleganz, Kreativität und persönlicher Note.\nEin wunderschönes Geschenk, um Geld auf originelle und festliche Weise zu verschenken – ideal für Familie, Freunde, Kollegen oder Kinder.\n\nDer hochwertige Druck erfolgt auf 250g/m² h...',
     price: 19.0,
     occasion: 'weihnachten',
     material: 'holz',
@@ -2545,10 +2259,7 @@ Der hochwertige Druck erfolgt auf 250g/m² h...',
   {
     id: 'etsy-188',
     title: 'Runden 18. Geburtstag Geldgeschenk | DIN A5 & A4 Echtholz- oder Standardrahmen | Kreatives Geburtstagsgeschenk | Perfekt ausgeschnitten.',
-    description: 'Du suchst ein besonderes Geschenk für einen runden Geburtstag? 🎉
-Dieses personalisierte Geldgeschenk ist die perfekte Kombination aus stilvoller Dekoration und kreativer Geldverpackung.
-
-Egal ob 18, 20, 30, 40, 50, 60, 70, 80, 90 oder 100 Jahre – das Design wird individuell auf das gewünschte Alter ...',
+    description: 'Du suchst ein besonderes Geschenk für einen runden Geburtstag? 🎉\nDieses personalisierte Geldgeschenk ist die perfekte Kombination aus stilvoller Dekoration und kreativer Geldverpackung.\n\nEgal ob 18, 20, 30, 40, 50, 60, 70, 80, 90 oder 100 Jahre – das Design wird individuell auf das gewünschte Alter ...',
     price: 13.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -2560,10 +2271,7 @@ Egal ob 18, 20, 30, 40, 50, 60, 70, 80, 90 oder 100 Jahre – das Design wird in
   {
     id: 'etsy-189',
     title: 'Runden 20. Geburtstag Geldgeschenk | DIN A5 & A4 Echtholz- oder Standardrahmen | Kreatives Geburtstagsgeschenk | Perfekt ausgeschnitten.',
-    description: 'Du suchst ein besonderes Geschenk für einen runden Geburtstag? 🎉
-Dieses personalisierte Geldgeschenk ist die perfekte Kombination aus stilvoller Dekoration und kreativer Geldverpackung.
-
-Egal ob 18, 20, 30, 40, 50, 60, 70, 80, 90 oder 100 Jahre – das Design wird individuell auf das gewünschte Alter ...',
+    description: 'Du suchst ein besonderes Geschenk für einen runden Geburtstag? 🎉\nDieses personalisierte Geldgeschenk ist die perfekte Kombination aus stilvoller Dekoration und kreativer Geldverpackung.\n\nEgal ob 18, 20, 30, 40, 50, 60, 70, 80, 90 oder 100 Jahre – das Design wird individuell auf das gewünschte Alter ...',
     price: 13.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -2575,10 +2283,7 @@ Egal ob 18, 20, 30, 40, 50, 60, 70, 80, 90 oder 100 Jahre – das Design wird in
   {
     id: 'etsy-190',
     title: 'Personalisiertes Geldgeschenk zur Hochzeit | Geldgeschenkideen in der Holzschiebebox | Geldgeschenk für Brautpaar | Hochzeitsgeschenk.',
-    description: 'Dieses einzigartige Hochzeits-Geldgeschenk in einer hochwertigen Holz-Schiebebox ist die perfekte Kombination aus Eleganz, Natürlichkeit und persönlicher Note.
-Ideal, um Geld kreativ, edel und unvergesslich zu verschenken!
-
-Die handgefertigte Box misst 16 × 12,5 × 4,5 cm und wird außen mit einem wun...',
+    description: 'Dieses einzigartige Hochzeits-Geldgeschenk in einer hochwertigen Holz-Schiebebox ist die perfekte Kombination aus Eleganz, Natürlichkeit und persönlicher Note.\nIdeal, um Geld kreativ, edel und unvergesslich zu verschenken!\n\nDie handgefertigte Box misst 16 × 12,5 × 4,5 cm und wird außen mit einem wun...',
     price: 29.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -2590,9 +2295,7 @@ Die handgefertigte Box misst 16 × 12,5 × 4,5 cm und wird außen mit einem wun.
   {
     id: 'etsy-191',
     title: 'DIY Brautpaar Hochzeit Geschenkidee, Personalisierte Hochzeit Geldgeschenk, Perfekt ausgeschnitten, DIN A4 oder A3 Bilderrahmen.',
-    description: 'Einzigartig & persönlich – das besondere Hochzeitsgeschenk
-
-Mach den großen Tag unvergesslich mit einem einzigartigen und personalisierten Geldgeschenk im eleganten Brautpaar-Design 💍👰🤵. Dieses liebevoll gestaltete DIY-Geldgeschenk vereint Symbolik, Stil und Funktion – ein Highlight, das Brautpaare ...',
+    description: 'Einzigartig & persönlich – das besondere Hochzeitsgeschenk\n\nMach den großen Tag unvergesslich mit einem einzigartigen und personalisierten Geldgeschenk im eleganten Brautpaar-Design 💍👰🤵. Dieses liebevoll gestaltete DIY-Geldgeschenk vereint Symbolik, Stil und Funktion – ein Highlight, das Brautpaare ...',
     price: 19.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -2604,9 +2307,7 @@ Mach den großen Tag unvergesslich mit einem einzigartigen und personalisierten 
   {
     id: 'etsy-192',
     title: 'DIY A4 oder A3 Personalisierte Brautpaar Geldgeschenk, Perfekt ausgeschnitten Hochzeit Geschenkidee, Bilderrahmen, Kreatives Geldgeschenk.',
-    description: 'Einzigartig & persönlich – das besondere Hochzeitsgeschenk
-
-Mach den großen Tag unvergesslich mit einem einzigartigen und personalisierten Geldgeschenk im eleganten Brautpaar-Design 💍👰🤵. Dieses liebevoll gestaltete DIY-Geldgeschenk vereint Symbolik, Stil und Funktion – ein Highlight, das Brautpaare ...',
+    description: 'Einzigartig & persönlich – das besondere Hochzeitsgeschenk\n\nMach den großen Tag unvergesslich mit einem einzigartigen und personalisierten Geldgeschenk im eleganten Brautpaar-Design 💍👰🤵. Dieses liebevoll gestaltete DIY-Geldgeschenk vereint Symbolik, Stil und Funktion – ein Highlight, das Brautpaare ...',
     price: 19.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -2618,9 +2319,7 @@ Mach den großen Tag unvergesslich mit einem einzigartigen und personalisierten 
   {
     id: 'etsy-193',
     title: 'Personalisierte 60. Geburtstag Geldgeschenk,  Runder Geburtstagsgeschenk, Perfekt ausgeschnitten, A4 Bilderrahmen, DIY Geschenkidee.',
-    description: 'Feiere einen ganz besonderen Meilenstein mit diesem personalisierten Geldgeschenk zum 60. Geburtstag 🎉! Dieses kreative DIY-Geschenk ist perfekt für Familie, Freunde oder Kollegen und bietet eine stilvolle Möglichkeit, Glückwünsche und Geld originell zu überreichen.
-
-Das Design enthält die herzliche...',
+    description: 'Feiere einen ganz besonderen Meilenstein mit diesem personalisierten Geldgeschenk zum 60. Geburtstag 🎉! Dieses kreative DIY-Geschenk ist perfekt für Familie, Freunde oder Kollegen und bietet eine stilvolle Möglichkeit, Glückwünsche und Geld originell zu überreichen.\n\nDas Design enthält die herzliche...',
     price: 19.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -2632,9 +2331,7 @@ Das Design enthält die herzliche...',
   {
     id: 'etsy-194',
     title: 'Personalisierte 70. Geburtstag Geldgeschenk,  Runder Geburtstagsgeschenk, Perfekt ausgeschnitten, A4 Bilderrahmen, DIY Geschenkidee.',
-    description: 'Feiere einen ganz besonderen Meilenstein mit diesem personalisierten Geldgeschenk zum 70. Geburtstag 🎉! Dieses kreative DIY-Geschenk ist perfekt für Familie, Freunde oder Kollegen und bietet eine stilvolle Möglichkeit, Glückwünsche und Geld originell zu überreichen.
-
-Das Design enthält die herzliche...',
+    description: 'Feiere einen ganz besonderen Meilenstein mit diesem personalisierten Geldgeschenk zum 70. Geburtstag 🎉! Dieses kreative DIY-Geschenk ist perfekt für Familie, Freunde oder Kollegen und bietet eine stilvolle Möglichkeit, Glückwünsche und Geld originell zu überreichen.\n\nDas Design enthält die herzliche...',
     price: 13.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -2646,10 +2343,7 @@ Das Design enthält die herzliche...',
   {
     id: 'etsy-195',
     title: 'Runden 30. Geburtstag Geldgeschenk | DIN A5 & A4 Echtholz- oder Standardrahmen | Kreatives Geburtstagsgeschenk | Perfekt ausgeschnitten.',
-    description: 'Du suchst ein besonderes Geschenk für einen runden Geburtstag? 🎉
-Dieses personalisierte Geldgeschenk ist die perfekte Kombination aus stilvoller Dekoration und kreativer Geldverpackung.
-
-Egal ob 18, 20, 30, 40, 50, 60, 70, 80, 90 oder 100 Jahre – das Design wird individuell auf das gewünschte Alter ...',
+    description: 'Du suchst ein besonderes Geschenk für einen runden Geburtstag? 🎉\nDieses personalisierte Geldgeschenk ist die perfekte Kombination aus stilvoller Dekoration und kreativer Geldverpackung.\n\nEgal ob 18, 20, 30, 40, 50, 60, 70, 80, 90 oder 100 Jahre – das Design wird individuell auf das gewünschte Alter ...',
     price: 13.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -2661,10 +2355,7 @@ Egal ob 18, 20, 30, 40, 50, 60, 70, 80, 90 oder 100 Jahre – das Design wird in
   {
     id: 'etsy-196',
     title: 'Weihnachtsgeschenk mit Name | Personalisierte Geldgeschenk Weihnachten | Frohe Weihnachten | Mit Name im Echtholzrahmen A4.',
-    description: 'Dieses stilvolle Weihnachts-Geldgeschenk ist die perfekte Kombination aus Eleganz, Kreativität und persönlicher Note.
-Ein wunderschönes Geschenk, um Geld auf originelle und festliche Weise zu verschenken – ideal für Familie, Freunde, Kollegen oder Kinder.
-
-Der hochwertige Druck erfolgt auf 250g/m² h...',
+    description: 'Dieses stilvolle Weihnachts-Geldgeschenk ist die perfekte Kombination aus Eleganz, Kreativität und persönlicher Note.\nEin wunderschönes Geschenk, um Geld auf originelle und festliche Weise zu verschenken – ideal für Familie, Freunde, Kollegen oder Kinder.\n\nDer hochwertige Druck erfolgt auf 250g/m² h...',
     price: 16.0,
     occasion: 'weihnachten',
     material: 'holz',
@@ -2688,9 +2379,7 @@ Der hochwertige Druck erfolgt auf 250g/m² h...',
   {
     id: 'etsy-198',
     title: 'Personalisiertes Hochzeit Geldgeschenk | Rundes Holzschild 20 cm | Optional mit Trockenblumen | Geldgeschenk zur Hochzeit für Brautpaare.',
-    description: 'Dieses hochwertig gefertigte Hochzeits-Geldgeschenk ist ein einzigartiges Andenken für das Brautpaar – romantisch, dekorativ und mit viel Liebe zum Detail gestaltet.
-
-Das Schild besteht aus 20 cm rundem Natur-Sperrholz (3 mm) und wird mit den Namen des Brautpaares sowie dem Hochzeitsdatum personalis...',
+    description: 'Dieses hochwertig gefertigte Hochzeits-Geldgeschenk ist ein einzigartiges Andenken für das Brautpaar – romantisch, dekorativ und mit viel Liebe zum Detail gestaltet.\n\nDas Schild besteht aus 20 cm rundem Natur-Sperrholz (3 mm) und wird mit den Namen des Brautpaares sowie dem Hochzeitsdatum personalis...',
     price: 22.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -2702,10 +2391,7 @@ Das Schild besteht aus 20 cm rundem Natur-Sperrholz (3 mm) und wird mit den Name
   {
     id: 'etsy-199',
     title: 'Personalisiertes Geldgeschenk zur Taufe – DIN A4 im Echtholzrahmen | Name & Datum personalisierbar | Kreatives Taufgeschenk mit Regenbogen',
-    description: 'Dieses personalisierte Geldgeschenk zur Taufe ist eine liebevolle und stilvolle Geschenkidee für ein besonderes Lebensereignis.
-Durch das zeitlose Design wird es nicht nur zu einem kreativen Geldgeschenk, sondern auch zu einer bleibenden Erinnerung.
-
-Das Motiv wird im DIN-A4-Format gefertigt und in ...',
+    description: 'Dieses personalisierte Geldgeschenk zur Taufe ist eine liebevolle und stilvolle Geschenkidee für ein besonderes Lebensereignis.\nDurch das zeitlose Design wird es nicht nur zu einem kreativen Geldgeschenk, sondern auch zu einer bleibenden Erinnerung.\n\nDas Motiv wird im DIN-A4-Format gefertigt und in ...',
     price: 16.0,
     occasion: 'taufe',
     material: 'holz',
@@ -2717,10 +2403,7 @@ Das Motiv wird im DIN-A4-Format gefertigt und in ...',
   {
     id: 'etsy-200',
     title: 'Weihnachtskarte aus Holz mit Name, Personalisiertes Weihnachtsgeld Geschenk, Holzkärtchen 11x15 cm, Wunscherfüller Weihnachtsgeschenk.',
-    description: 'Dieses Weihnachtsgeld-Geschenk ist eine stilvolle und persönliche Art, Geld zu Weihnachten zu verschenken. Gefertigt aus 3 mm starkem Sperrholz und mit fein gravierten Details, wird dieses Holzkärtchen (11×15 cm) zum echten Hingucker unter dem Weihnachtsbaum.
-
-💡 Anlässe:
-Perfekt als Geschenk zu Weih...',
+    description: 'Dieses Weihnachtsgeld-Geschenk ist eine stilvolle und persönliche Art, Geld zu Weihnachten zu verschenken. Gefertigt aus 3 mm starkem Sperrholz und mit fein gravierten Details, wird dieses Holzkärtchen (11×15 cm) zum echten Hingucker unter dem Weihnachtsbaum.\n\n💡 Anlässe:\nPerfekt als Geschenk zu Weih...',
     price: 15.0,
     occasion: 'weihnachten',
     material: 'holz',
@@ -2732,10 +2415,7 @@ Perfekt als Geschenk zu Weih...',
   {
     id: 'etsy-201',
     title: 'Personalisierte Geldgeschenk Weihnachten | Weihnachtsgeschenk mit Name | Echtholzrahmen DIN A4 oder A3 | Kreatives Geschenk zu Weihnachten.',
-    description: 'Mach Weihnachten zu etwas ganz Besonderem mit diesem personalisierten Geldgeschenk, das Herz und Stil vereint. 🎁✨
-Dieses festliche Design ist die ideale Geschenkidee, um Geld auf eine liebevolle und kreative Weise zu überreichen – perfekt für Familie, Freunde oder Kollegen.
-
-Das Motiv wird auf hochw...',
+    description: 'Mach Weihnachten zu etwas ganz Besonderem mit diesem personalisierten Geldgeschenk, das Herz und Stil vereint. 🎁✨\nDieses festliche Design ist die ideale Geschenkidee, um Geld auf eine liebevolle und kreative Weise zu überreichen – perfekt für Familie, Freunde oder Kollegen.\n\nDas Motiv wird auf hochw...',
     price: 19.0,
     occasion: 'weihnachten',
     material: 'holz',
@@ -2747,10 +2427,7 @@ Das Motiv wird auf hochw...',
   {
     id: 'etsy-202',
     title: 'Wunscherfüller Weihnachtsgeschenk, Personalisiertes Weihnachtsgeld Geschenk, Weihnachtskarte aus Holz mit Name, Holzkärtchen 11x15 cm.',
-    description: 'Dieses Weihnachten Geldgeschenk ist eine stilvolle und persönliche Art, Geld zu Weihnachten zu verschenken. Gefertigt aus 3 mm starkem Sperrholz und mit fein gravierten Details, wird dieses Holzkärtchen (11×15 cm) zum echten Hingucker unter dem Weihnachtsbaum.
-
-💡 Anlässe:
-Perfekt als Geschenk zu Wei...',
+    description: 'Dieses Weihnachten Geldgeschenk ist eine stilvolle und persönliche Art, Geld zu Weihnachten zu verschenken. Gefertigt aus 3 mm starkem Sperrholz und mit fein gravierten Details, wird dieses Holzkärtchen (11×15 cm) zum echten Hingucker unter dem Weihnachtsbaum.\n\n💡 Anlässe:\nPerfekt als Geschenk zu Wei...',
     price: 13.0,
     occasion: 'weihnachten',
     material: 'holz',
@@ -2762,10 +2439,7 @@ Perfekt als Geschenk zu Wei...',
   {
     id: 'etsy-203',
     title: 'Personalisiertes Weihnachten Geldgeschenk, Wunscherfüller Weihnachtsgeschenk, Weihnachtskarte aus Holz mit Name, Holzkärtchen 11x15 cm.',
-    description: 'Dieses Weihnachten Geldgeschenk ist eine stilvolle und persönliche Art, Geld zu Weihnachten zu verschenken. Gefertigt aus 3 mm starkem Sperrholz und mit fein gravierten Details, wird dieses Holzkärtchen (11×15 cm) zum echten Hingucker unter dem Weihnachtsbaum.
-
-💡 Anlässe:
-Perfekt als Geschenk zu Wei...',
+    description: 'Dieses Weihnachten Geldgeschenk ist eine stilvolle und persönliche Art, Geld zu Weihnachten zu verschenken. Gefertigt aus 3 mm starkem Sperrholz und mit fein gravierten Details, wird dieses Holzkärtchen (11×15 cm) zum echten Hingucker unter dem Weihnachtsbaum.\n\n💡 Anlässe:\nPerfekt als Geschenk zu Wei...',
     price: 15.0,
     occasion: 'weihnachten',
     material: 'holz',
@@ -2777,9 +2451,7 @@ Perfekt als Geschenk zu Wei...',
   {
     id: 'etsy-204',
     title: 'Brautpaar Geldgeschenk Holzbox | Geldgeschenk zur Hochzeit | Reagenzglas | Geschenkbox zur Hochzeit mit Namen & Datum | Erinnerungskiste',
-    description: 'Dieses liebevoll gestaltete Geldgeschenk zur Hochzeit ist mehr als nur eine Verpackung, es ist eine wunderschöne Erinnerung an den besonderen Tag 💍
-
-Die hochwertige Holz-Schiebebox wird individuell mit den Namen des Brautpaares sowie dem Hochzeitsdatum graviert. Ergänzt wird das Design durch ein ele...',
+    description: 'Dieses liebevoll gestaltete Geldgeschenk zur Hochzeit ist mehr als nur eine Verpackung, es ist eine wunderschöne Erinnerung an den besonderen Tag 💍\n\nDie hochwertige Holz-Schiebebox wird individuell mit den Namen des Brautpaares sowie dem Hochzeitsdatum graviert. Ergänzt wird das Design durch ein ele...',
     price: 24.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -2791,10 +2463,7 @@ Die hochwertige Holz-Schiebebox wird individuell mit den Namen des Brautpaares s
   {
     id: 'etsy-205',
     title: 'Wunscherfüller Weihnachtsgeschenk, Personalisiertes Weihnachten Geldgeschenk, Weihnachtskarte aus Holz mit Name, Holzkärtchen 11x15 cm.',
-    description: 'Dieses Weihnachten Geldgeschenk ist eine stilvolle und persönliche Art, Geld zu Weihnachten zu verschenken. Gefertigt aus 3 mm starkem Sperrholz und mit fein gravierten Details, wird dieses Holzkärtchen (11×15 cm) zum echten Hingucker unter dem Weihnachtsbaum.
-
-💡 Anlässe:
-Perfekt als Geschenk zu Wei...',
+    description: 'Dieses Weihnachten Geldgeschenk ist eine stilvolle und persönliche Art, Geld zu Weihnachten zu verschenken. Gefertigt aus 3 mm starkem Sperrholz und mit fein gravierten Details, wird dieses Holzkärtchen (11×15 cm) zum echten Hingucker unter dem Weihnachtsbaum.\n\n💡 Anlässe:\nPerfekt als Geschenk zu Wei...',
     price: 13.0,
     occasion: 'weihnachten',
     material: 'holz',
@@ -2806,10 +2475,7 @@ Perfekt als Geschenk zu Wei...',
   {
     id: 'etsy-206',
     title: 'Weihnachtskarte aus Holz, Weihnachtsgeldgeschenk, Holzkärtchen 11x15 cm, Wunscherfüller Weihnachtsgeschenk, Kreatives Weihnachtsgeschenk.',
-    description: 'Dieses Weihnachtsgeld-Geschenk ist eine stilvolle und kreative Art, Geld zu Weihnachten zu verschenken. Gefertigt aus 3 mm starkem Sperrholz und mit feiner Gravur versehen, wird dieses Holzkärtchen (11×15 cm) zum besonderen Hingucker unter dem Weihnachtsbaum.
-
-💡 Anlässe:
-Perfekt als Geschenk zu Weih...',
+    description: 'Dieses Weihnachtsgeld-Geschenk ist eine stilvolle und kreative Art, Geld zu Weihnachten zu verschenken. Gefertigt aus 3 mm starkem Sperrholz und mit feiner Gravur versehen, wird dieses Holzkärtchen (11×15 cm) zum besonderen Hingucker unter dem Weihnachtsbaum.\n\n💡 Anlässe:\nPerfekt als Geschenk zu Weih...',
     price: 16.0,
     occasion: 'weihnachten',
     material: 'holz',
@@ -2821,10 +2487,7 @@ Perfekt als Geschenk zu Weih...',
   {
     id: 'etsy-207',
     title: 'Personalisiertes Weihnachten Geldgeschenk, Geschenkidee zu Weihnachten, Weihnachtskarte aus Holz mit Name, Holzkärtchen 11x15 cm.',
-    description: 'Dieses humorvolle Weihnachts-Geldgeschenk ist ideal für alle, die immer sagen: „Ich wünsche mir nichts!“ 😄
-Das Design zeigt den Schriftzug „Du wolltest doch NICHTS … oder? Frohe Weihnachten“ und sorgt garantiert für ein Schmunzeln unterm Weihnachtsbaum.
-
-Gefertigt aus 3 mm starker Sperrholzplatte, i...',
+    description: 'Dieses humorvolle Weihnachts-Geldgeschenk ist ideal für alle, die immer sagen: „Ich wünsche mir nichts!“ 😄\nDas Design zeigt den Schriftzug „Du wolltest doch NICHTS … oder? Frohe Weihnachten“ und sorgt garantiert für ein Schmunzeln unterm Weihnachtsbaum.\n\nGefertigt aus 3 mm starker Sperrholzplatte, i...',
     price: 15.0,
     occasion: 'weihnachten',
     material: 'holz',
@@ -2836,10 +2499,7 @@ Gefertigt aus 3 mm starker Sperrholzplatte, i...',
   {
     id: 'etsy-208',
     title: 'Personalisiertes Weihnachten Geldgeschenk aus Holz – „Du wolltest doch NICHTS … oder?“ | Frohe Weihnachten  | Geschenkidee zu Weihnachten.',
-    description: 'Dieses humorvolle Weihnachts-Geldgeschenk ist ideal für alle, die immer sagen: „Ich wünsche mir nichts!“ 😄
-Das Design zeigt den Schriftzug „Du wolltest doch NICHTS … oder? Frohe Weihnachten“ und sorgt garantiert für ein Schmunzeln unterm Weihnachtsbaum.
-
-Gefertigt aus 3 mm starker Sperrholzplatte, i...',
+    description: 'Dieses humorvolle Weihnachts-Geldgeschenk ist ideal für alle, die immer sagen: „Ich wünsche mir nichts!“ 😄\nDas Design zeigt den Schriftzug „Du wolltest doch NICHTS … oder? Frohe Weihnachten“ und sorgt garantiert für ein Schmunzeln unterm Weihnachtsbaum.\n\nGefertigt aus 3 mm starker Sperrholzplatte, i...',
     price: 15.0,
     occasion: 'weihnachten',
     material: 'holz',
@@ -2851,9 +2511,7 @@ Gefertigt aus 3 mm starker Sperrholzplatte, i...',
   {
     id: 'etsy-209',
     title: 'Personalisiertes Geldgeschenk zum Geburtstag | DIY Geschenk | Perfekt ausgeschnitten mit A4 Bilderrahmen | Kreatives Geldgeschenk.',
-    description: 'Schenke zum Geburtstag etwas ganz Besonderes – ein personalisiertes Geldgeschenk mit kreativem DIY-Design 🎁🎉. Diese Idee verbindet Spaß, Stil und Persönlichkeit – ideal für jedes Alter und jeden Geschmack.
-
-Das Motiv wird auf hochwertigem 250g/m² Papier gedruckt und ist fein und präzise ausgeschnitt...',
+    description: 'Schenke zum Geburtstag etwas ganz Besonderes – ein personalisiertes Geldgeschenk mit kreativem DIY-Design 🎁🎉. Diese Idee verbindet Spaß, Stil und Persönlichkeit – ideal für jedes Alter und jeden Geschmack.\n\nDas Motiv wird auf hochwertigem 250g/m² Papier gedruckt und ist fein und präzise ausgeschnitt...',
     price: 19.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -2865,9 +2523,7 @@ Das Motiv wird auf hochwertigem 250g/m² Papier gedruckt und ist fein und präzi
   {
     id: 'etsy-210',
     title: 'Geldgeschenk zur Hochzeit | Geldgeschenk Holzbox | Reagenzglas | Geschenkbox zur Hochzeit mit Namen & Datum | Erinnerungskiste',
-    description: 'Dieses liebevoll gestaltete Geldgeschenk zur Hochzeit ist mehr als nur eine Verpackung, es ist eine wunderschöne Erinnerung an den besonderen Tag 💍
-
-Die hochwertige Holz-Schiebebox wird individuell mit den Namen des Brautpaares sowie dem Hochzeitsdatum graviert. Ergänzt wird das Design durch ein ele...',
+    description: 'Dieses liebevoll gestaltete Geldgeschenk zur Hochzeit ist mehr als nur eine Verpackung, es ist eine wunderschöne Erinnerung an den besonderen Tag 💍\n\nDie hochwertige Holz-Schiebebox wird individuell mit den Namen des Brautpaares sowie dem Hochzeitsdatum graviert. Ergänzt wird das Design durch ein ele...',
     price: 24.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -2879,9 +2535,7 @@ Die hochwertige Holz-Schiebebox wird individuell mit den Namen des Brautpaares s
   {
     id: 'etsy-211',
     title: 'Personalisierte Hochzeit Geldgeschenk, DIY Perfekt ausgeschnitten, A4  A3 Bilderrahmen, Geschenk für Brautpaar, Hochzeitsgeschenk Idee.',
-    description: 'Einzigartig & persönlich – das besondere Hochzeitsgeschenk
-
-Mach den großen Tag unvergesslich mit einem einzigartigen und personalisierten Geldgeschenk im eleganten Brautpaar-Design 💍👰🤵. Dieses liebevoll gestaltete DIY-Geldgeschenk vereint Symbolik, Stil und Funktion – ein Highlight, das Brautpaare ...',
+    description: 'Einzigartig & persönlich – das besondere Hochzeitsgeschenk\n\nMach den großen Tag unvergesslich mit einem einzigartigen und personalisierten Geldgeschenk im eleganten Brautpaar-Design 💍👰🤵. Dieses liebevoll gestaltete DIY-Geldgeschenk vereint Symbolik, Stil und Funktion – ein Highlight, das Brautpaare ...',
     price: 19.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -2893,9 +2547,7 @@ Mach den großen Tag unvergesslich mit einem einzigartigen und personalisierten 
   {
     id: 'etsy-212',
     title: 'Personalisierte Führerschein Geldgeschenk, Perfekt ausgeschnitten, DIY A4 Bilderrahmen  Geschenkidee Führerschein, Kreatives Geldgeschenk.',
-    description: 'Endlich mobil! 🎉 Verschenke zur bestandenen Führerscheinprüfung ein originelles, personalisiertes Geldgeschenk im Auto-Design – ideal für Fahranfänger, Auto-Fans oder zur Unterstützung beim ersten eigenen Wagen!
-
-Das Motiv zeigt ein stilisiertes Auto und wird auf hochwertigem 250g/m² Papier 📜 gedruc...',
+    description: 'Endlich mobil! 🎉 Verschenke zur bestandenen Führerscheinprüfung ein originelles, personalisiertes Geldgeschenk im Auto-Design – ideal für Fahranfänger, Auto-Fans oder zur Unterstützung beim ersten eigenen Wagen!\n\nDas Motiv zeigt ein stilisiertes Auto und wird auf hochwertigem 250g/m² Papier 📜 gedruc...',
     price: 19.0,
     occasion: 'fuehrerschein',
     material: 'holz',
@@ -2907,9 +2559,7 @@ Das Motiv zeigt ein stilisiertes Auto und wird auf hochwertigem 250g/m² Papier 
   {
     id: 'etsy-213',
     title: 'Personalisiertes Geburtstag Geldgeschenk Spiel-Controller, 18. Geburtstag Geschenk, A4 Bilderrahmen, Level 18 DIY Gaming Geschenkidee.',
-    description: 'Schenke zum 18. Geburtstag ein kreatives und personalisiertes Geldgeschenk im Spiel-Controller-Design 🎮 – die perfekte Idee für Gaming-Fans und alle, die Level 18 erreichen! Dieses originelle DIY-Geschenk vereint Spaß, Kreativität und Stil und macht den besonderen Tag unvergesslich.
-
-Das detailreich...',
+    description: 'Schenke zum 18. Geburtstag ein kreatives und personalisiertes Geldgeschenk im Spiel-Controller-Design 🎮 – die perfekte Idee für Gaming-Fans und alle, die Level 18 erreichen! Dieses originelle DIY-Geschenk vereint Spaß, Kreativität und Stil und macht den besonderen Tag unvergesslich.\n\nDas detailreich...',
     price: 18.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -2945,8 +2595,7 @@ Das detailreich...',
   {
     id: 'etsy-216',
     title: 'Personalisiertes Hochzeit Geldgeschenk – Holzbuch Ja | Mit Namen & Datum | 3D-Acryl, Trockenblumen, Geldflasche | Geschenk zur Hochzeit.',
-    description: 'Dieses exklusive Hochzeits-Geldgeschenk in Buchform ist ein wunderschönes, romantisches und zugleich hochwertiges Geschenk zur Hochzeit.
-Das Holzbuch (14 × 9 cm) besteht aus Naturholz und wird mit dem Schriftzug „Für immer und ewig – ja“ veredelt. Das Wort „ja“ ist aus edlem weißem Acrylglas geferti...',
+    description: 'Dieses exklusive Hochzeits-Geldgeschenk in Buchform ist ein wunderschönes, romantisches und zugleich hochwertiges Geschenk zur Hochzeit.\nDas Holzbuch (14 × 9 cm) besteht aus Naturholz und wird mit dem Schriftzug „Für immer und ewig – ja“ veredelt. Das Wort „ja“ ist aus edlem weißem Acrylglas geferti...',
     price: 23.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -2958,10 +2607,7 @@ Das Holzbuch (14 × 9 cm) besteht aus Naturholz und wird mit dem Schriftzug „F
   {
     id: 'etsy-217',
     title: 'Runden Geburtstag Geldgeschenk | DIN A5 & A4 Echtholz- oder Standardrahmen | Kreatives Geburtstagsgeschenk | Perfekt ausgeschnitten.',
-    description: 'Du suchst ein besonderes Geschenk für einen runden Geburtstag? 🎉
-Dieses personalisierte Geldgeschenk ist die perfekte Kombination aus stilvoller Dekoration und kreativer Geldverpackung.
-
-Egal ob 18, 20, 30, 40, 50, 60, 70, 80, 90 oder 100 Jahre – das Design wird individuell auf das gewünschte Alter ...',
+    description: 'Du suchst ein besonderes Geschenk für einen runden Geburtstag? 🎉\nDieses personalisierte Geldgeschenk ist die perfekte Kombination aus stilvoller Dekoration und kreativer Geldverpackung.\n\nEgal ob 18, 20, 30, 40, 50, 60, 70, 80, 90 oder 100 Jahre – das Design wird individuell auf das gewünschte Alter ...',
     price: 13.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -2973,10 +2619,7 @@ Egal ob 18, 20, 30, 40, 50, 60, 70, 80, 90 oder 100 Jahre – das Design wird in
   {
     id: 'etsy-218',
     title: 'Runden Geburtstag Geldgeschenk | DIN A5 & A4 Echtholz- oder Standardrahmen | Kreatives Geburtstagsgeschenk | Perfekt ausgeschnitten.',
-    description: 'Du suchst ein besonderes Geschenk für einen runden Geburtstag? 🎉
-Dieses personalisierte Geldgeschenk ist die perfekte Kombination aus stilvoller Dekoration und kreativer Geldverpackung.
-
-Egal ob 18, 20, 30, 40, 50, 60, 70, 80, 90 oder 100 Jahre – das Design wird individuell auf das gewünschte Alter ...',
+    description: 'Du suchst ein besonderes Geschenk für einen runden Geburtstag? 🎉\nDieses personalisierte Geldgeschenk ist die perfekte Kombination aus stilvoller Dekoration und kreativer Geldverpackung.\n\nEgal ob 18, 20, 30, 40, 50, 60, 70, 80, 90 oder 100 Jahre – das Design wird individuell auf das gewünschte Alter ...',
     price: 13.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -2988,10 +2631,7 @@ Egal ob 18, 20, 30, 40, 50, 60, 70, 80, 90 oder 100 Jahre – das Design wird in
   {
     id: 'etsy-219',
     title: 'Runden Geburtstag Geldgeschenk | DIN A5 & A4 Echtholz- oder Standardrahmen | Kreatives Geburtstagsgeschenk | Perfekt ausgeschnitten.',
-    description: 'Du suchst ein besonderes Geschenk für einen runden Geburtstag? 🎉
-Dieses personalisierte Geldgeschenk ist die perfekte Kombination aus stilvoller Dekoration und kreativer Geldverpackung.
-
-Egal ob 18, 20, 30, 40, 50, 60, 70, 80, 90 oder 100 Jahre – das Design wird individuell auf das gewünschte Alter ...',
+    description: 'Du suchst ein besonderes Geschenk für einen runden Geburtstag? 🎉\nDieses personalisierte Geldgeschenk ist die perfekte Kombination aus stilvoller Dekoration und kreativer Geldverpackung.\n\nEgal ob 18, 20, 30, 40, 50, 60, 70, 80, 90 oder 100 Jahre – das Design wird individuell auf das gewünschte Alter ...',
     price: 13.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -3015,9 +2655,7 @@ Egal ob 18, 20, 30, 40, 50, 60, 70, 80, 90 oder 100 Jahre – das Design wird in
   {
     id: 'etsy-221',
     title: 'Personalisierte Geldgeschenk NIX | Witziges Geschenkidee | Nichts zum Geburtstag | Humorvolles DIY Geldgeschenk | A4 oder A3  Bilderrahmen.',
-    description: 'Manchmal wünscht sich das Geburtstagskind „NIX“ – und genau das bekommst du mit diesem witzigen und kreativen Geldgeschenk! 🎉 Dieses liebevoll gestaltete Geschenk ist perfekt für alle, die immer „nichts“ sagen, aber trotzdem mit einem originellen und humorvollen Geschenk überrascht werden möchten.
-
-...',
+    description: 'Manchmal wünscht sich das Geburtstagskind „NIX“ – und genau das bekommst du mit diesem witzigen und kreativen Geldgeschenk! 🎉 Dieses liebevoll gestaltete Geschenk ist perfekt für alle, die immer „nichts“ sagen, aber trotzdem mit einem originellen und humorvollen Geschenk überrascht werden möchten.\n\n...',
     price: 19.0,
     occasion: 'geburtstag',
     material: 'papier',
@@ -3029,10 +2667,7 @@ Egal ob 18, 20, 30, 40, 50, 60, 70, 80, 90 oder 100 Jahre – das Design wird in
   {
     id: 'etsy-222',
     title: 'Personalisiertes Geldgeschenk zum runden Geburtstag |  A5 & A4  Echtholz- oder Standardrahmen | Kreatives Geburtstagsgeschenk',
-    description: 'Du suchst ein besonderes Geschenk für einen runden Geburtstag? 🎉
-Dieses personalisierte Geldgeschenk ist die perfekte Kombination aus stilvoller Dekoration und kreativer Geldverpackung.
-
-Egal ob 18, 20, 30, 40, 50, 60, 70, 80, 90 oder 100 Jahre – das Design wird individuell auf das gewünschte Alter ...',
+    description: 'Du suchst ein besonderes Geschenk für einen runden Geburtstag? 🎉\nDieses personalisierte Geldgeschenk ist die perfekte Kombination aus stilvoller Dekoration und kreativer Geldverpackung.\n\nEgal ob 18, 20, 30, 40, 50, 60, 70, 80, 90 oder 100 Jahre – das Design wird individuell auf das gewünschte Alter ...',
     price: 13.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -3044,10 +2679,7 @@ Egal ob 18, 20, 30, 40, 50, 60, 70, 80, 90 oder 100 Jahre – das Design wird in
   {
     id: 'etsy-223',
     title: 'Personalisierte Geldgeschenk Weihnachten | Weihnachtsgeschenk mit Name | Echtholzrahmen DIN A4 oder A3 | Kreatives Geschenk zu Weihnachten.',
-    description: 'Mach Weihnachten zu etwas ganz Besonderem mit diesem personalisierten Geldgeschenk, das Herz und Stil vereint. 🎁✨
-Dieses festliche Design ist die ideale Geschenkidee, um Geld auf eine liebevolle und kreative Weise zu überreichen – perfekt für Familie, Freunde oder Kollegen.
-
-Das Motiv wird auf hochw...',
+    description: 'Mach Weihnachten zu etwas ganz Besonderem mit diesem personalisierten Geldgeschenk, das Herz und Stil vereint. 🎁✨\nDieses festliche Design ist die ideale Geschenkidee, um Geld auf eine liebevolle und kreative Weise zu überreichen – perfekt für Familie, Freunde oder Kollegen.\n\nDas Motiv wird auf hochw...',
     price: 19.0,
     occasion: 'weihnachten',
     material: 'holz',
@@ -3059,10 +2691,7 @@ Das Motiv wird auf hochw...',
   {
     id: 'etsy-224',
     title: 'Weihnachtsgeldgeschenk, Weihnachtskarte aus Holz, Holzkärtchen 11x15 cm, Wunscherfüller Weihnachtsgeschenk, Kreatives Weihnachtsgeschenk.',
-    description: 'Dieses Weihnachtsgeld-Geschenk ist eine stilvolle und kreative Art, Geld zu Weihnachten zu verschenken. Gefertigt aus 3 mm starkem Sperrholz und mit feiner Gravur versehen, wird dieses Holzkärtchen (11×15 cm) zum besonderen Hingucker unter dem Weihnachtsbaum.
-
-💡 Anlässe:
-Perfekt als Geschenk zu Weih...',
+    description: 'Dieses Weihnachtsgeld-Geschenk ist eine stilvolle und kreative Art, Geld zu Weihnachten zu verschenken. Gefertigt aus 3 mm starkem Sperrholz und mit feiner Gravur versehen, wird dieses Holzkärtchen (11×15 cm) zum besonderen Hingucker unter dem Weihnachtsbaum.\n\n💡 Anlässe:\nPerfekt als Geschenk zu Weih...',
     price: 16.0,
     occasion: 'weihnachten',
     material: 'holz',
@@ -3074,8 +2703,7 @@ Perfekt als Geschenk zu Weih...',
   {
     id: 'etsy-225',
     title: 'Personalisierte Hochzeit Geldgeschenk, DIY Perfekt ausgeschnitten, A4 Bilderrahmen, Geschenkidee Hochzeit, Kreatives Geldgeschenk.',
-    description: '💍 Personalisiertes Geldgeschenk zur Hochzeit – Schwäne 🦢
-Feiere die Liebe mit einem eleganten Geldgeschenk im Schwäne-Design – eine liebevolle und personalisierte Möglichkeit, dem Brautpaar eine Freude zu machen! Dieses perfekt ausgeschnittene DIY-Geldgeschenk ist ideal für Hochzeiten und symbolisie...',
+    description: '💍 Personalisiertes Geldgeschenk zur Hochzeit – Schwäne 🦢\nFeiere die Liebe mit einem eleganten Geldgeschenk im Schwäne-Design – eine liebevolle und personalisierte Möglichkeit, dem Brautpaar eine Freude zu machen! Dieses perfekt ausgeschnittene DIY-Geldgeschenk ist ideal für Hochzeiten und symbolisie...',
     price: 19.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -3087,9 +2715,7 @@ Feiere die Liebe mit einem eleganten Geldgeschenk im Schwäne-Design – eine li
   {
     id: 'etsy-226',
     title: 'Personalisierte Geschenkidee Hochzeit, Kreatives Geldgeschenk, Hochzeit Geldgeschenk, DIY Perfekt ausgeschnitten, A4 / A3 Bilderrahmen.',
-    description: 'Einzigartig & persönlich – das besondere Hochzeitsgeschenk
-
-Mach den großen Tag unvergesslich mit einem einzigartigen und personalisierten Geldgeschenk im eleganten Brautpaar-Design 💍👰🤵. Dieses liebevoll gestaltete DIY-Geldgeschenk vereint Symbolik, Stil und Funktion – ein Highlight, das Brautpaare ...',
+    description: 'Einzigartig & persönlich – das besondere Hochzeitsgeschenk\n\nMach den großen Tag unvergesslich mit einem einzigartigen und personalisierten Geldgeschenk im eleganten Brautpaar-Design 💍👰🤵. Dieses liebevoll gestaltete DIY-Geldgeschenk vereint Symbolik, Stil und Funktion – ein Highlight, das Brautpaare ...',
     price: 19.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -3101,9 +2727,7 @@ Mach den großen Tag unvergesslich mit einem einzigartigen und personalisierten 
   {
     id: 'etsy-227',
     title: 'Personalisierte 90. Geburtstag Geldgeschenk,  Runder Geburtstagsgeschenk, Perfekt ausgeschnitten, A4 Bilderrahmen, DIY Geschenkidee.',
-    description: 'Feiere einen ganz besonderen Meilenstein mit diesem personalisierten Geldgeschenk zum 90. Geburtstag 🎉! Dieses kreative DIY-Geschenk ist perfekt für Familie, Freunde oder Kollegen und bietet eine stilvolle Möglichkeit, Glückwünsche und Geld originell zu überreichen.
-
-Das Design enthält die herzliche...',
+    description: 'Feiere einen ganz besonderen Meilenstein mit diesem personalisierten Geldgeschenk zum 90. Geburtstag 🎉! Dieses kreative DIY-Geschenk ist perfekt für Familie, Freunde oder Kollegen und bietet eine stilvolle Möglichkeit, Glückwünsche und Geld originell zu überreichen.\n\nDas Design enthält die herzliche...',
     price: 19.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -3115,9 +2739,7 @@ Das Design enthält die herzliche...',
   {
     id: 'etsy-228',
     title: 'Geschenk zur Hochzeit für Brautpaare | Personalisiertes Hochzeitsgeldgeschenk | Mit Namen & Datum | mit Trockenblumen, Geldröhrchen.',
-    description: 'Dieses hochwertig gefertigte Hochzeits-Geldgeschenk ist ein einzigartiges Andenken für das Brautpaar – romantisch, dekorativ und mit viel Liebe zum Detail gestaltet.
-
-Das Schild besteht aus 20 cm rundem Natur-Sperrholz (3 mm) und wird mit den Namen des Brautpaares sowie dem Hochzeitsdatum personalis...',
+    description: 'Dieses hochwertig gefertigte Hochzeits-Geldgeschenk ist ein einzigartiges Andenken für das Brautpaar – romantisch, dekorativ und mit viel Liebe zum Detail gestaltet.\n\nDas Schild besteht aus 20 cm rundem Natur-Sperrholz (3 mm) und wird mit den Namen des Brautpaares sowie dem Hochzeitsdatum personalis...',
     price: 23.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -3129,9 +2751,7 @@ Das Schild besteht aus 20 cm rundem Natur-Sperrholz (3 mm) und wird mit den Name
   {
     id: 'etsy-229',
     title: 'Personalisierte 30. Geburtstag Geldgeschenk,  Runder Geburtstagsgeschenk, Perfekt ausgeschnitten, A4 Bilderrahmen, DIY Geschenkidee.',
-    description: 'Feiere einen ganz besonderen Meilenstein mit diesem personalisierten Geldgeschenk zum 30. Geburtstag 🎉! Dieses kreative DIY-Geschenk ist perfekt für Familie, Freunde oder Kollegen und bietet eine stilvolle Möglichkeit, Glückwünsche und Geld originell zu überreichen.
-
-Das Design enthält die herzliche...',
+    description: 'Feiere einen ganz besonderen Meilenstein mit diesem personalisierten Geldgeschenk zum 30. Geburtstag 🎉! Dieses kreative DIY-Geschenk ist perfekt für Familie, Freunde oder Kollegen und bietet eine stilvolle Möglichkeit, Glückwünsche und Geld originell zu überreichen.\n\nDas Design enthält die herzliche...',
     price: 19.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -3143,9 +2763,7 @@ Das Design enthält die herzliche...',
   {
     id: 'etsy-230',
     title: 'Personalisiertes Geldgeschenk zu Weihnachten | Holzbox 14x9x4cm mit Acryl-Tannenbaum | Geldgeschenk Weihnachten | Kreatives Geschenk.',
-    description: 'Diese handgefertigte Holzbox ist ein wunderschönes und persönliches Weihnachtsgeld-Geschenk, das durch sein edles Design und die liebevollen Details überzeugt.
-
-Gefertigt aus Naturholz, verziert mit einem weißen Acrylglas-Tannenbaum in 3D-Optik, wird sie zu einem besonderen Blickfang. Im Inneren bef...',
+    description: 'Diese handgefertigte Holzbox ist ein wunderschönes und persönliches Weihnachtsgeld-Geschenk, das durch sein edles Design und die liebevollen Details überzeugt.\n\nGefertigt aus Naturholz, verziert mit einem weißen Acrylglas-Tannenbaum in 3D-Optik, wird sie zu einem besonderen Blickfang. Im Inneren bef...',
     price: 23.0,
     occasion: 'weihnachten',
     material: 'holz',
@@ -3157,10 +2775,7 @@ Gefertigt aus Naturholz, verziert mit einem weißen Acrylglas-Tannenbaum in 3D-O
   {
     id: 'etsy-231',
     title: 'Welkarte Ruhestand Geldgeschenk| Personalisiertes Reise Abschiedsgeschenk | A5 & A4 | Echtholzrahmen | Perfekt ausgeschnitten',
-    description: 'Ein neuer Lebensabschnitt beginnt – der Ruhestand ✨
-Mit diesem personalisierten Geldgeschenk schenkst du nicht nur Geld, sondern auch eine besondere Erinnerung an diesen wichtigen Moment.
-
-Das moderne Design – Weltkate Motiv – steht symbolisch für Freiheit, Reisen und neue Abenteuer nach dem Arbeits...',
+    description: 'Ein neuer Lebensabschnitt beginnt – der Ruhestand ✨\nMit diesem personalisierten Geldgeschenk schenkst du nicht nur Geld, sondern auch eine besondere Erinnerung an diesen wichtigen Moment.\n\nDas moderne Design – Weltkate Motiv – steht symbolisch für Freiheit, Reisen und neue Abenteuer nach dem Arbeits...',
     price: 13.0,
     occasion: 'ruhestand',
     material: 'holz',
@@ -3172,9 +2787,7 @@ Das moderne Design – Weltkate Motiv – steht symbolisch für Freiheit, Reisen
   {
     id: 'etsy-232',
     title: 'Wunscherfüller Personalisierter Geldgeschenk, Schmetterling Geldgeschenk, Geburtstag Geschenkidee, A4 Bilderrahmen, Perfekt ausgeschnitten.',
-    description: 'Mach den Geburtstag unvergesslich mit einem personalisierten Wunscherfüller Geldgeschenk im Schmetterling-Design 🦋. Dieses einzigartige DIY-Geldgeschenk wird perfekt ausgeschnitten geliefert und kann auf Wunsch individuell personalisiert werden, um dem Geschenk eine persönliche Note zu verleihen.
-
-D...',
+    description: 'Mach den Geburtstag unvergesslich mit einem personalisierten Wunscherfüller Geldgeschenk im Schmetterling-Design 🦋. Dieses einzigartige DIY-Geldgeschenk wird perfekt ausgeschnitten geliefert und kann auf Wunsch individuell personalisiert werden, um dem Geschenk eine persönliche Note zu verleihen.\n\nD...',
     price: 18.0,
     occasion: 'geburtstag',
     material: 'papier',
@@ -3186,10 +2799,7 @@ D...',
   {
     id: 'etsy-233',
     title: 'Ruhestand Geldgeschenk| Personalisiertes Yacht Abschiedsgeschenk | A5 & A4 | Echtholz- oder Standardrahmen | Perfekt ausgeschnitten',
-    description: 'Ein neuer Lebensabschnitt beginnt – der Ruhestand ✨
-Mit diesem personalisierten Geldgeschenk schenkst du nicht nur Geld, sondern auch eine besondere Erinnerung an diesen wichtigen Moment.
-
-Das moderne Design – Yacht Motiv – steht symbolisch für Freiheit, Reisen und neue Abenteuer nach dem Arbeitsleb...',
+    description: 'Ein neuer Lebensabschnitt beginnt – der Ruhestand ✨\nMit diesem personalisierten Geldgeschenk schenkst du nicht nur Geld, sondern auch eine besondere Erinnerung an diesen wichtigen Moment.\n\nDas moderne Design – Yacht Motiv – steht symbolisch für Freiheit, Reisen und neue Abenteuer nach dem Arbeitsleb...',
     price: 13.0,
     occasion: 'ruhestand',
     material: 'holz',
@@ -3201,10 +2811,7 @@ Das moderne Design – Yacht Motiv – steht symbolisch für Freiheit, Reisen un
   {
     id: 'etsy-234',
     title: 'Ruhestand Geldgeschenk| Personalisiertes Kreuzfahrt Abschiedsgeschenk | A5 & A4 | Echtholz- oder Standardrahmen | Perfekt ausgeschnitten',
-    description: 'Ein neuer Lebensabschnitt beginnt – der Ruhestand ✨
-Mit diesem personalisierten Geldgeschenk schenkst du nicht nur Geld, sondern auch eine besondere Erinnerung an diesen wichtigen Moment.
-
-Das moderne Design – Kreuzfahrt Motiv – steht symbolisch für Freiheit, Reisen und neue Abenteuer nach dem Arbei...',
+    description: 'Ein neuer Lebensabschnitt beginnt – der Ruhestand ✨\nMit diesem personalisierten Geldgeschenk schenkst du nicht nur Geld, sondern auch eine besondere Erinnerung an diesen wichtigen Moment.\n\nDas moderne Design – Kreuzfahrt Motiv – steht symbolisch für Freiheit, Reisen und neue Abenteuer nach dem Arbei...',
     price: 13.0,
     occasion: 'ruhestand',
     material: 'holz',
@@ -3216,10 +2823,7 @@ Das moderne Design – Kreuzfahrt Motiv – steht symbolisch für Freiheit, Reis
   {
     id: 'etsy-235',
     title: 'Weihnachten Geldgeschenk, Mit Name, Trockenblumen, Geldröhrchen & 3D-Herz aus Acryl, Kreatives Geldgeschenk zu Weihnachten.',
-    description: 'Dieses personalisierte Weihnachts-Geldgeschenk ist ein stilvolles und liebevoll gestaltetes Highlight für die Weihnachtszeit.
-Das runde Holzschild besteht aus hochwertiger 3 mm Sperrholzplatte und hat einen Durchmesser von 20 cm – perfekt als dekoratives Geschenk, das sofort ins Auge fällt.
-
-Der Sch...',
+    description: 'Dieses personalisierte Weihnachts-Geldgeschenk ist ein stilvolles und liebevoll gestaltetes Highlight für die Weihnachtszeit.\nDas runde Holzschild besteht aus hochwertiger 3 mm Sperrholzplatte und hat einen Durchmesser von 20 cm – perfekt als dekoratives Geschenk, das sofort ins Auge fällt.\n\nDer Sch...',
     price: 24.0,
     occasion: 'weihnachten',
     material: 'holz',
@@ -3243,10 +2847,7 @@ Der Sch...',
   {
     id: 'etsy-237',
     title: 'Personalisiertes Weihnachten Geldgeschenk, Mit Name, Trockenblumen, Geldröhrchen & 3D-Herz aus Acryl, Kreatives Geldgeschenk zu Weihnachten.',
-    description: 'Dieses personalisierte Weihnachts-Geldgeschenk ist ein stilvolles und liebevoll gestaltetes Highlight für die Weihnachtszeit.
-Das runde Holzschild besteht aus hochwertiger 3 mm Sperrholzplatte und hat einen Durchmesser von 20 cm – perfekt als dekoratives Geschenk, das sofort ins Auge fällt.
-
-Der Sch...',
+    description: 'Dieses personalisierte Weihnachts-Geldgeschenk ist ein stilvolles und liebevoll gestaltetes Highlight für die Weihnachtszeit.\nDas runde Holzschild besteht aus hochwertiger 3 mm Sperrholzplatte und hat einen Durchmesser von 20 cm – perfekt als dekoratives Geschenk, das sofort ins Auge fällt.\n\nDer Sch...',
     price: 22.0,
     occasion: 'weihnachten',
     material: 'holz',
@@ -3270,10 +2871,7 @@ Der Sch...',
   {
     id: 'etsy-239',
     title: 'Wunscherfüller Weihnachtsgeschenk, Personalisiertes Weihnachtsgeld Geschenk, Weihnachtskarte aus Holz mit Name, Holzkärtchen 11x15 cm.',
-    description: 'Dieses Weihnachtsgeld-Geschenk ist eine stilvolle und persönliche Art, Geld zu Weihnachten zu verschenken. Gefertigt aus 3 mm starkem Sperrholz und mit fein gravierten Details, wird dieses Holzkärtchen (11×15 cm) zum echten Hingucker unter dem Weihnachtsbaum.
-
-💡 Anlässe:
-Perfekt als Geschenk zu Weih...',
+    description: 'Dieses Weihnachtsgeld-Geschenk ist eine stilvolle und persönliche Art, Geld zu Weihnachten zu verschenken. Gefertigt aus 3 mm starkem Sperrholz und mit fein gravierten Details, wird dieses Holzkärtchen (11×15 cm) zum echten Hingucker unter dem Weihnachtsbaum.\n\n💡 Anlässe:\nPerfekt als Geschenk zu Weih...',
     price: 15.0,
     occasion: 'weihnachten',
     material: 'holz',
@@ -3297,10 +2895,7 @@ Perfekt als Geschenk zu Weih...',
   {
     id: 'etsy-241',
     title: 'Geschenkidee zu Weihnachten, Personalisiertes Weihnachten Geldgeschenk, Weihnachtskarte aus Holz mit Name, Holzkärtchen 11x15cm oder 13x18cm',
-    description: 'Dieses humorvolle Weihnachts-Geldgeschenk ist ideal für alle, die immer sagen: „Ich wünsche mir nichts!“ 😄
-Das Design zeigt den Schriftzug „Du wolltest doch NICHTS … oder? Frohe Weihnachten“ und sorgt garantiert für ein Schmunzeln unterm Weihnachtsbaum.
-
-Gefertigt aus 3 mm starker Sperrholzplatte, i...',
+    description: 'Dieses humorvolle Weihnachts-Geldgeschenk ist ideal für alle, die immer sagen: „Ich wünsche mir nichts!“ 😄\nDas Design zeigt den Schriftzug „Du wolltest doch NICHTS … oder? Frohe Weihnachten“ und sorgt garantiert für ein Schmunzeln unterm Weihnachtsbaum.\n\nGefertigt aus 3 mm starker Sperrholzplatte, i...',
     price: 15.0,
     occasion: 'weihnachten',
     material: 'holz',
@@ -3312,10 +2907,7 @@ Gefertigt aus 3 mm starker Sperrholzplatte, i...',
   {
     id: 'etsy-242',
     title: 'Geldgeschenk zum Geburtstag | Personalisiertes Geburtstag Holzschild  | Mit Glasröhrchen & Trockenblumen | Kreatives Geburtstagsgeschenk.',
-    description: 'Suchst du ein ganz besonderes Geldgeschenk zum Geburtstag?
-Dann ist dieses runde Holzschild (Ø 20 cm) genau das Richtige!
-
-Gefertigt aus hochwertiger 3 mm Sperrholzplatte, mit dem liebevollen Schriftzug „Alles Gute zum Geburtstag“, einer weißen Herzform aus Acrylglas und einem dekorativen Glasröhrch...',
+    description: 'Suchst du ein ganz besonderes Geldgeschenk zum Geburtstag?\nDann ist dieses runde Holzschild (Ø 20 cm) genau das Richtige!\n\nGefertigt aus hochwertiger 3 mm Sperrholzplatte, mit dem liebevollen Schriftzug „Alles Gute zum Geburtstag“, einer weißen Herzform aus Acrylglas und einem dekorativen Glasröhrch...',
     price: 25.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -3327,9 +2919,7 @@ Gefertigt aus hochwertiger 3 mm Sperrholzplatte, mit dem liebevollen Schriftzu
   {
     id: 'etsy-243',
     title: 'Personalisierte Geburtstag Geldgeschenk, DIY Perfekt ausgeschnitten, A4 Bilderrahmen, Geschenkidee Geburtstag, Kreatives Geldgeschenk.',
-    description: 'Überrasche das Geburtstagskind mit einem stilvollen und personalisierten Geldgeschenk 🎉🎁! Diese kreative Idee ist die perfekte Möglichkeit, Geld liebevoll und originell zu verschenken – ideal für Freunde, Familie oder Kollegen jeden Alters.
-
-Das festliche Design wird präzise ausgeschnitten und auf h...',
+    description: 'Überrasche das Geburtstagskind mit einem stilvollen und personalisierten Geldgeschenk 🎉🎁! Diese kreative Idee ist die perfekte Möglichkeit, Geld liebevoll und originell zu verschenken – ideal für Freunde, Familie oder Kollegen jeden Alters.\n\nDas festliche Design wird präzise ausgeschnitten und auf h...',
     price: 19.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -3341,8 +2931,7 @@ Das festliche Design wird präzise ausgeschnitten und auf h...',
   {
     id: 'etsy-244',
     title: 'Personalisierte Geldgeschenk Weihnachten |  Frohe Weihnachten | Mit Name im Echtholzrahmen A4 | Kreatives Geldgeschenk zu Weihnachten.',
-    description: 'Dieses liebevoll gestaltete Weihnachts-Geldgeschenk mit Weihnachtsmann-Motiv ist die perfekte Möglichkeit, Geld originell und festlich zu verschenken.
-Das Design zeigt den stilvollen Umriss eines Weihnachtsmanns, hinter dem Geldscheine elegant platziert werden – so wird aus einem einfachen Geldgesch...',
+    description: 'Dieses liebevoll gestaltete Weihnachts-Geldgeschenk mit Weihnachtsmann-Motiv ist die perfekte Möglichkeit, Geld originell und festlich zu verschenken.\nDas Design zeigt den stilvollen Umriss eines Weihnachtsmanns, hinter dem Geldscheine elegant platziert werden – so wird aus einem einfachen Geldgesch...',
     price: 16.0,
     occasion: 'weihnachten',
     material: 'holz',
@@ -3366,8 +2955,7 @@ Das Design zeigt den stilvollen Umriss eines Weihnachtsmanns, hinter dem Geldsch
   {
     id: 'etsy-246',
     title: 'Personalisierte Geburtstag Geldgeschenk, DIY NIX A5 auf A4 Geburtstagsgeschenk, Geldgeschenk Idee, Bilderrahmen Schwarz und Weis.',
-    description: 'Schenke zum Geburtstag ein humorvolles Geldgeschenk der besonderen Art mit unserem Design „NIX“ – eine spaßige und kreative Art, Geld zu verschenken! 🎉 Das NIX-Design wird in A5 auf einem A4-Blatt 📜 gedruckt und ist eine lustige Überraschung für alle, die Freude am Schenken mit Augenzwinkern haben.
-...',
+    description: 'Schenke zum Geburtstag ein humorvolles Geldgeschenk der besonderen Art mit unserem Design „NIX“ – eine spaßige und kreative Art, Geld zu verschenken! 🎉 Das NIX-Design wird in A5 auf einem A4-Blatt 📜 gedruckt und ist eine lustige Überraschung für alle, die Freude am Schenken mit Augenzwinkern haben.\n...',
     price: 18.0,
     occasion: 'geburtstag',
     material: 'papier',
@@ -3379,9 +2967,7 @@ Das Design zeigt den stilvollen Umriss eines Weihnachtsmanns, hinter dem Geldsch
   {
     id: 'etsy-247',
     title: 'Personalisierte Horoskop Geburtstag Geldgeschenk, DIY Perfekt ausgeschnitten, DIN A4 Bilderrahmen, Astrologie Geschenk, Sternzeichen.',
-    description: 'Überrasche das Geburtstagskind mit einem einzigartigen, personalisierten Horoskop-Geldgeschenk 🎉♈♍♒! Eine kreative und stilvolle Möglichkeit, Geld passend zum Sternzeichen des Beschenkten zu verschenken – perfekt für Astrologie-Liebhaber und alle, die gerne an die Magie der Sterne glauben.
-
-Das A4-D...',
+    description: 'Überrasche das Geburtstagskind mit einem einzigartigen, personalisierten Horoskop-Geldgeschenk 🎉♈♍♒! Eine kreative und stilvolle Möglichkeit, Geld passend zum Sternzeichen des Beschenkten zu verschenken – perfekt für Astrologie-Liebhaber und alle, die gerne an die Magie der Sterne glauben.\n\nDas A4-D...',
     price: 19.0,
     occasion: 'geburtstag',
     material: 'holz',
@@ -3393,10 +2979,7 @@ Das A4-D...',
   {
     id: 'etsy-248',
     title: 'Personalisierte Geldgeschenk Weihnachten – „Frohe Weihnachten“ mit Weihnachtsmann & Rentieren | Mit Name im Echtholzrahmen A4.',
-    description: 'Dieses stilvolle Weihnachts-Geldgeschenk ist die perfekte Kombination aus Eleganz, Kreativität und persönlicher Note.
-Ein wunderschönes Geschenk, um Geld auf originelle und festliche Weise zu verschenken – ideal für Familie, Freunde, Kollegen oder Kinder.
-
-Der hochwertige Druck erfolgt auf 250g/m² h...',
+    description: 'Dieses stilvolle Weihnachts-Geldgeschenk ist die perfekte Kombination aus Eleganz, Kreativität und persönlicher Note.\nEin wunderschönes Geschenk, um Geld auf originelle und festliche Weise zu verschenken – ideal für Familie, Freunde, Kollegen oder Kinder.\n\nDer hochwertige Druck erfolgt auf 250g/m² h...',
     price: 16.0,
     occasion: 'weihnachten',
     material: 'holz',
@@ -3408,9 +2991,7 @@ Der hochwertige Druck erfolgt auf 250g/m² h...',
   {
     id: 'etsy-249',
     title: 'Personalisierte Hochzeitsgeschenk Idee, Hochzeit Geldgeschenk, Perfekt ausgeschnitten, A4 A3 Bilderrahmen, Ehehafen Geschenk für Brautpaar.',
-    description: 'Einzigartig & persönlich – das besondere Hochzeitsgeschenk
-
-Mach den großen Tag unvergesslich mit einem einzigartigen und personalisierten Geldgeschenk im eleganten Brautpaar-Design 💍👰🤵. Dieses liebevoll gestaltete DIY-Geldgeschenk vereint Symbolik, Stil und Funktion – ein Highlight, das Brautpaare ...',
+    description: 'Einzigartig & persönlich – das besondere Hochzeitsgeschenk\n\nMach den großen Tag unvergesslich mit einem einzigartigen und personalisierten Geldgeschenk im eleganten Brautpaar-Design 💍👰🤵. Dieses liebevoll gestaltete DIY-Geldgeschenk vereint Symbolik, Stil und Funktion – ein Highlight, das Brautpaare ...',
     price: 19.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -3446,8 +3027,7 @@ Mach den großen Tag unvergesslich mit einem einzigartigen und personalisierten 
   {
     id: 'etsy-252',
     title: 'Personalisiertes Weihnachts-Geldgeschenk – „Frohe Weihnachten“ mit Geschenk, Tannenbaum & Weihnachtssocke  | Mit Name im Echtholzrahmen A4.',
-    description: 'Dieses festliche Weihnachts-Geldgeschenk vereint Kreativität, Qualität und persönliche Note in einem stilvollen Design.
-Das Motiv zeigt drei liebevoll gestaltete Ausschnitte – ein Geschenk, einen Weihnachtsbaum und eine Weihnachtssocke – hinter denen Geldscheine dekorativ platziert werden können. So...',
+    description: 'Dieses festliche Weihnachts-Geldgeschenk vereint Kreativität, Qualität und persönliche Note in einem stilvollen Design.\nDas Motiv zeigt drei liebevoll gestaltete Ausschnitte – ein Geschenk, einen Weihnachtsbaum und eine Weihnachtssocke – hinter denen Geldscheine dekorativ platziert werden können. So...',
     price: 19.0,
     occasion: 'weihnachten',
     material: 'holz',
@@ -3459,8 +3039,7 @@ Das Motiv zeigt drei liebevoll gestaltete Ausschnitte – ein Geschenk, einen We
   {
     id: 'etsy-253',
     title: 'Personalisiertes Weihnachts-Geldgeschenk – „Frohe Weihnachten“ mit Weihnachtsmann & Rentieren | Mit Name im Echtholzrahmen A4.',
-    description: 'Dieses liebevoll gestaltete Weihnachts-Geldgeschenk ist die perfekte Kombination aus festlicher Stimmung und persönlicher Note.
-Das Motiv zeigt den Weihnachtsmann mit seinen Rentieren, die einen Schlitten voller Geldscheine ziehen – eine originelle Art, Geld zu verschenken und gleichzeitig ein beson...',
+    description: 'Dieses liebevoll gestaltete Weihnachts-Geldgeschenk ist die perfekte Kombination aus festlicher Stimmung und persönlicher Note.\nDas Motiv zeigt den Weihnachtsmann mit seinen Rentieren, die einen Schlitten voller Geldscheine ziehen – eine originelle Art, Geld zu verschenken und gleichzeitig ein beson...',
     price: 19.0,
     occasion: 'weihnachten',
     material: 'holz',
@@ -3472,11 +3051,7 @@ Das Motiv zeigt den Weihnachtsmann mit seinen Rentieren, die einen Schlitten vol
   {
     id: 'etsy-254',
     title: 'Personalisiertes Geldgeschenk aus Holz zur Taufe, Kommunion, Konfirmation, Firmung oder Jugendweihe – 3 mm Holzplatte mit goldenen Schrauben',
-    description: 'Du suchst ein besonderes und hochwertiges Geldgeschenk zur Kommunion, Konfirmation, Firmung, Taufe oder Jugendweihe?
-
-Dieses handgefertigte Holz-Geldgeschenk ist eine stilvolle Alternative zur klassischen Geldkarte und bleibt als schöne Erinnerung erhalten.
-
-Gefertigt aus einer 3 mm starken Holzplat...',
+    description: 'Du suchst ein besonderes und hochwertiges Geldgeschenk zur Kommunion, Konfirmation, Firmung, Taufe oder Jugendweihe?\n\nDieses handgefertigte Holz-Geldgeschenk ist eine stilvolle Alternative zur klassischen Geldkarte und bleibt als schöne Erinnerung erhalten.\n\nGefertigt aus einer 3 mm starken Holzplat...',
     price: 15.0,
     occasion: 'taufe',
     material: 'holz',
@@ -3488,11 +3063,7 @@ Gefertigt aus einer 3 mm starken Holzplat...',
   {
     id: 'etsy-255',
     title: 'Personalisiertes Geldgeschenk aus Holz zur Kommunion, Konfirmation, Firmung, Taufe oder Jugendweihe – 3 mm Holzplatte mit goldenen Schrauben',
-    description: 'Du suchst ein besonderes und hochwertiges Geldgeschenk zur Kommunion, Konfirmation, Firmung, Taufe oder Jugendweihe?
-
-Dieses handgefertigte Holz-Geldgeschenk ist eine stilvolle Alternative zur klassischen Geldkarte und bleibt als schöne Erinnerung erhalten.
-
-Gefertigt aus einer 3 mm starken Holzplat...',
+    description: 'Du suchst ein besonderes und hochwertiges Geldgeschenk zur Kommunion, Konfirmation, Firmung, Taufe oder Jugendweihe?\n\nDieses handgefertigte Holz-Geldgeschenk ist eine stilvolle Alternative zur klassischen Geldkarte und bleibt als schöne Erinnerung erhalten.\n\nGefertigt aus einer 3 mm starken Holzplat...',
     price: 15.0,
     occasion: 'taufe',
     material: 'holz',
@@ -3504,11 +3075,7 @@ Gefertigt aus einer 3 mm starken Holzplat...',
   {
     id: 'etsy-256',
     title: 'Personalisiertes Geldgeschenk aus Holz zur Kommunion, Konfirmation, Firmung, Taufe oder Jugendweihe – 3 mm Holzplatte mit goldenen Schrauben',
-    description: 'Du suchst ein besonderes und hochwertiges Geldgeschenk zur Kommunion, Konfirmation, Firmung, Taufe oder Jugendweihe?
-
-Dieses handgefertigte Holz-Geldgeschenk ist eine stilvolle Alternative zur klassischen Geldkarte und bleibt als schöne Erinnerung erhalten.
-
-Gefertigt aus einer 3 mm starken Holzplat...',
+    description: 'Du suchst ein besonderes und hochwertiges Geldgeschenk zur Kommunion, Konfirmation, Firmung, Taufe oder Jugendweihe?\n\nDieses handgefertigte Holz-Geldgeschenk ist eine stilvolle Alternative zur klassischen Geldkarte und bleibt als schöne Erinnerung erhalten.\n\nGefertigt aus einer 3 mm starken Holzplat...',
     price: 15.0,
     occasion: 'taufe',
     material: 'holz',
@@ -3520,9 +3087,7 @@ Gefertigt aus einer 3 mm starken Holzplat...',
   {
     id: 'etsy-257',
     title: 'Personalisierte Ostern Geldgeschenk, Ostergeldgeschenk, Perfekt ausgeschnitten, A4 Bilderrahmen, Kreative Geschenkidee, Osterhase Geschenk.',
-    description: 'Schenke zu Ostern eine ganz besondere Überraschung mit diesem personalisierten Geldgeschenk im Osterhasen-Design 🐰🎁! Perfekt als kreative und stilvolle Möglichkeit, Geld zu verschenken – ideal für Kinder, Familie oder Freunde.
-
-Das A4-Design ist perfekt ausgeschnitten und wird auf hochwertigem 250g/...',
+    description: 'Schenke zu Ostern eine ganz besondere Überraschung mit diesem personalisierten Geldgeschenk im Osterhasen-Design 🐰🎁! Perfekt als kreative und stilvolle Möglichkeit, Geld zu verschenken – ideal für Kinder, Familie oder Freunde.\n\nDas A4-Design ist perfekt ausgeschnitten und wird auf hochwertigem 250g/...',
     price: 19.0,
     occasion: 'ostern',
     material: 'papier',
@@ -3534,9 +3099,7 @@ Das A4-Design ist perfekt ausgeschnitten und wird auf hochwertigem 250g/...',
   {
     id: 'etsy-258',
     title: 'Personalisierte Ostern Geldgeschenk, Ostergeldgeschenk, Perfekt ausgeschnitten, A4 Bilderrahmen, Kreative Geschenkidee, Osterhase Geschenk.',
-    description: 'Schenke zu Ostern eine ganz besondere Überraschung mit diesem personalisierten Geldgeschenk im Osterhasen-Design 🐰🎁! Perfekt als kreative und stilvolle Möglichkeit, Geld zu verschenken – ideal für Kinder, Familie oder Freunde.
-
-Das A4-Design ist perfekt ausgeschnitten und wird auf hochwertigem 250g/...',
+    description: 'Schenke zu Ostern eine ganz besondere Überraschung mit diesem personalisierten Geldgeschenk im Osterhasen-Design 🐰🎁! Perfekt als kreative und stilvolle Möglichkeit, Geld zu verschenken – ideal für Kinder, Familie oder Freunde.\n\nDas A4-Design ist perfekt ausgeschnitten und wird auf hochwertigem 250g/...',
     price: 19.0,
     occasion: 'ostern',
     material: 'papier',
@@ -3548,9 +3111,7 @@ Das A4-Design ist perfekt ausgeschnitten und wird auf hochwertigem 250g/...',
   {
     id: 'etsy-259',
     title: 'Personalisierte Ostern Geldgeschenk, Ostergeldgeschenk, Perfekt ausgeschnitten, A4 Bilderrahmen, Kreative Geschenkidee, Osterhase Geschenk.',
-    description: 'Schenke zu Ostern eine ganz besondere Überraschung mit diesem personalisierten Geldgeschenk im Osterhasen-Design 🐰🎁! Perfekt als kreative und stilvolle Möglichkeit, Geld zu verschenken – ideal für Kinder, Familie oder Freunde.
-
-Das A4-Design ist perfekt ausgeschnitten und wird auf hochwertigem 250g/...',
+    description: 'Schenke zu Ostern eine ganz besondere Überraschung mit diesem personalisierten Geldgeschenk im Osterhasen-Design 🐰🎁! Perfekt als kreative und stilvolle Möglichkeit, Geld zu verschenken – ideal für Kinder, Familie oder Freunde.\n\nDas A4-Design ist perfekt ausgeschnitten und wird auf hochwertigem 250g/...',
     price: 19.0,
     occasion: 'ostern',
     material: 'papier',
@@ -3562,10 +3123,7 @@ Das A4-Design ist perfekt ausgeschnitten und wird auf hochwertigem 250g/...',
   {
     id: 'etsy-260',
     title: 'Personalisiertes Geldgeschenk zur Firmung – DIN A4 im Echtholzrahmen | Weltkarte Design | Name & Datum personalisierbar.',
-    description: 'Dieses personalisierte Geldgeschenk zur Firmung verbindet modernes Design mit symbolischer Bedeutung und wird zu einer bleibenden Erinnerung an einen wichtigen Lebensabschnitt.
-
-Das Motiv wird im DIN-A4-Format gefertigt und in einem hochwertigen Echtholz-Bilderrahmen präsentiert.
-Im Mittelpunkt steh...',
+    description: 'Dieses personalisierte Geldgeschenk zur Firmung verbindet modernes Design mit symbolischer Bedeutung und wird zu einer bleibenden Erinnerung an einen wichtigen Lebensabschnitt.\n\nDas Motiv wird im DIN-A4-Format gefertigt und in einem hochwertigen Echtholz-Bilderrahmen präsentiert.\nIm Mittelpunkt steh...',
     price: 16.0,
     occasion: 'firmung',
     material: 'holz',
@@ -3589,10 +3147,7 @@ Im Mittelpunkt steh...',
   {
     id: 'etsy-262',
     title: 'Personalisiertes Weihnachten Geldgeschenk, Wunscherfüller Weihnachtsgeschenk, Weihnachtskarte aus Holz mit Name, Holzkärtchen 11x15 cm.',
-    description: 'Dieses Weihnachten Geldgeschenk ist eine stilvolle und persönliche Art, Geld zu Weihnachten zu verschenken. Gefertigt aus 3 mm starkem Sperrholz und mit fein gravierten Details, wird dieses Holzkärtchen (11×15 cm) zum echten Hingucker unter dem Weihnachtsbaum.
-
-💡 Anlässe:
-Perfekt als Geschenk zu Wei...',
+    description: 'Dieses Weihnachten Geldgeschenk ist eine stilvolle und persönliche Art, Geld zu Weihnachten zu verschenken. Gefertigt aus 3 mm starkem Sperrholz und mit fein gravierten Details, wird dieses Holzkärtchen (11×15 cm) zum echten Hingucker unter dem Weihnachtsbaum.\n\n💡 Anlässe:\nPerfekt als Geschenk zu Wei...',
     price: 15.0,
     occasion: 'weihnachten',
     material: 'holz',
@@ -3652,9 +3207,7 @@ Perfekt als Geschenk zu Wei...',
   {
     id: 'etsy-267',
     title: 'Weihnachtsgeld Geschenk personalisiert – Eiche Dekoplatte DIN A4 mit Trockenblumen & Geldröhrchen, Geldgeschenk Weihnachten, Echtholzrahmen.',
-    description: 'Dieses Weihnachtsgeld-Geschenk vereint natürliche Materialien, festliches Design und liebevolle Handarbeit – ideal, um Geld oder Gutscheine zu Weihnachten besonders stilvoll zu verschenken.
-
-Die hochwertige Dekoplatte aus 3 mm Eiche-HDF im Format DIN A4 wird mit edlen Trockenblumen und einem Geldröh...',
+    description: 'Dieses Weihnachtsgeld-Geschenk vereint natürliche Materialien, festliches Design und liebevolle Handarbeit – ideal, um Geld oder Gutscheine zu Weihnachten besonders stilvoll zu verschenken.\n\nDie hochwertige Dekoplatte aus 3 mm Eiche-HDF im Format DIN A4 wird mit edlen Trockenblumen und einem Geldröh...',
     price: 22.0,
     occasion: 'weihnachten',
     material: 'holz',
@@ -3786,9 +3339,7 @@ Die hochwertige Dekoplatte aus 3 mm Eiche-HDF im Format DIN A4 wird mit edlen Tr
   {
     id: 'etsy-278',
     title: 'Weihnachtsgeld Geschenk personalisiert | Holzbox 14x9x4 cm mit Acryl-Tannenbaum & Gravur | Geldgeschenk Weihnachten | Kreatives Geschenk.',
-    description: 'Diese handgefertigte Holzbox ist ein wunderschönes und persönliches Weihnachtsgeld-Geschenk, das durch sein edles Design und die liebevollen Details überzeugt.
-
-Gefertigt aus Naturholz, verziert mit einem weißen Acrylglas-Tannenbaum in 3D-Optik, wird sie zu einem besonderen Blickfang. Im Inneren bef...',
+    description: 'Diese handgefertigte Holzbox ist ein wunderschönes und persönliches Weihnachtsgeld-Geschenk, das durch sein edles Design und die liebevollen Details überzeugt.\n\nGefertigt aus Naturholz, verziert mit einem weißen Acrylglas-Tannenbaum in 3D-Optik, wird sie zu einem besonderen Blickfang. Im Inneren bef...',
     price: 24.0,
     occasion: 'weihnachten',
     material: 'holz',
@@ -3800,9 +3351,7 @@ Gefertigt aus Naturholz, verziert mit einem weißen Acrylglas-Tannenbaum in 3D-O
   {
     id: 'etsy-279',
     title: 'Personalisierte Weltkarte Hochzeit Geldgeschenk, DIY Perfekt ausgeschnitten, Holz Bilderrahmen, Hochzeitsgeschenk für Brautpaar.',
-    description: 'Feiere die Liebe mit einem wunderschönen, personalisierten Geldgeschenk zur Hochzeit 💍🎁 – eine stilvolle und kreative Möglichkeit, dem Brautpaar eine besondere Freude zu machen. Ob als Beitrag zur Hochzeitsreise oder für den gemeinsamen Start ins Eheleben – dieses Geschenk bleibt in Erinnerung.
-
-Das...',
+    description: 'Feiere die Liebe mit einem wunderschönen, personalisierten Geldgeschenk zur Hochzeit 💍🎁 – eine stilvolle und kreative Möglichkeit, dem Brautpaar eine besondere Freude zu machen. Ob als Beitrag zur Hochzeitsreise oder für den gemeinsamen Start ins Eheleben – dieses Geschenk bleibt in Erinnerung.\n\nDas...',
     price: 16.0,
     occasion: 'hochzeit',
     material: 'holz',
@@ -3814,9 +3363,7 @@ Das...',
   {
     id: 'etsy-280',
     title: 'Personalisiertes Geldgeschenk zum Geburtstag | Hobby-Design | Perfekt ausgeschnitten mit A4 Bilderrahmen | Kreatives Geldgeschenk.',
-    description: 'Überrasche das Geburtstagskind mit einem individuellen Geldgeschenk passend zum Hobby – ob Sport, Musik, Tiere oder kreative Freizeitgestaltung 🎁🎨⚽🎸. Dieses personalisierte Design ist die perfekte Möglichkeit, dein Geschenk liebevoll und passend zu gestalten.
-
-Das Motiv wird auf hochwertigem 250g/m²...',
+    description: 'Überrasche das Geburtstagskind mit einem individuellen Geldgeschenk passend zum Hobby – ob Sport, Musik, Tiere oder kreative Freizeitgestaltung 🎁🎨⚽🎸. Dieses personalisierte Design ist die perfekte Möglichkeit, dein Geschenk liebevoll und passend zu gestalten.\n\nDas Motiv wird auf hochwertigem 250g/m²...',
     price: 19.0,
     occasion: 'geburtstag',
     material: 'holz',
