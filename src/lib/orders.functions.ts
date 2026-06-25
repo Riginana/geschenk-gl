@@ -23,7 +23,7 @@ const orderSchema = z.object({
   items: z
     .array(
       z.object({
-        productId: z.string().uuid(),
+        productId: z.string().min(1).max(120),
         slug: z.string().min(1).max(120),
         name: z.string().min(1).max(200),
         qty: z.number().int().min(1).max(50),
