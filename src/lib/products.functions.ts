@@ -1,6 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import raw from "@/data/etsy-products.json";
+import { secondaryImageFor } from "@/lib/product-images";
 
 export type ProductRow = {
   id: string;
