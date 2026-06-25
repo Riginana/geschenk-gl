@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Heart } from "lucide-react";
 import type { ProductRow } from "@/lib/products.functions";
-import { imageFor, secondaryImageFor } from "@/lib/product-images";
+import { imageFor } from "@/lib/product-images";
 import { formatEUR, useT } from "@/i18n";
 import { useWishlist } from "@/contexts/wishlist";
 
