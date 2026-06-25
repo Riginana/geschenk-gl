@@ -1,30 +1,18 @@
 import { createFileRoute, Link, notFound, useNavigate } from "@tanstack/react-router";
-import { useSuspenseQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { toast } from "sonner";
-import { ArrowRight, Heart, Minus, Plus, ShoppingBag } from "lucide-react";
-import { getProductBySlug, listProducts } from "@/lib/products.functions";
-import { listReviews } from "@/lib/reviews.functions";
+import { Heart, Minus, Plus, ShoppingBag, ArrowLeft } from "lucide-react";
+import { products, type Product } from "@/data/products";
 import { formatEUR, useT } from "@/i18n";
 import { useCart } from "@/contexts/cart";
 import { useWishlist } from "@/contexts/wishlist";
-import { imageFor, secondaryImageFor } from "@/lib/product-images";
-import { ProductCard } from "@/components/product-card";
 import { Reveal } from "@/components/reveal";
-import { StarRating } from "@/components/star-rating";
 
 export const Route = createFileRoute("/shop/$slug")({
-  loader: async ({ params, context }) => {
-    const product = await context.queryClient.ensureQueryData({
-      queryKey: ["product", params.slug],
-      queryFn: () => getProductBySlug({ data: { slug: params.slug } }),
-    });
+  loader: ({ params }) => {
+    const product = products.find((p) => p.id === params.slug);
     if (!product) throw notFound();
-    await Promise.all([
-      context.queryClient.ensureQueryData({ queryKey: ["products"], queryFn: () => listProducts() }),
-      context.queryClient.ensureQueryData({ queryKey: ["reviews", params.slug], queryFn: () => listReviews({ data: { limit: 12 } }) }),
-    ]);
     return { product };
   },
   head: ({ loaderData }) => {
@@ -32,34 +20,51 @@ export const Route = createFileRoute("/shop/$slug")({
     if (!p) return {};
     return {
       meta: [
-        { title: `${p.name_de} | DigiNutz` },
-        { name: "description", content: p.description_de.slice(0, 160) },
-        { property: "og:title", content: p.name_de },
-        { property: "og:description", content: p.description_de.slice(0, 160) },
+        { title: `${p.title} | DigiNutz` },
+        { name: "description", content: p.description.slice(0, 160) },
+        { property: "og:title", content: p.title },
+        { property: "og:description", content: p.description.slice(0, 160) },
+        { property: "og:image", content: p.image },
         { property: "og:type", content: "product" },
-        { property: "og:url", content: `/shop/${p.slug}` },
+        { property: "og:url", content: `/shop/${p.id}` },
       ],
-      links: [{ rel: "canonical", href: `/shop/${p.slug}` }],
+      links: [{ rel: "canonical", href: `/shop/${p.id}` }],
       scripts: [
         {
           type: "application/ld+json",
           children: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Product",
-            name: p.name_de,
-            description: p.description_de,
-            offers: { "@type": "Offer", priceCurrency: "EUR", price: (p.base_price_cents / 100).toFixed(2) },
+            name: p.title,
+            description: p.description,
+            image: p.image,
+            offers: {
+              "@type": "Offer",
+              priceCurrency: "EUR",
+              price: p.price.toFixed(2),
+              availability: p.inStock ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+            },
           }),
         },
       ],
     };
   },
   component: ProductPage,
+  notFoundComponent: ProductNotFound,
 });
 
-const PRICE_BY_FORMAT: Record<string, number> = { A5: 0, A4: 500, A3: 1200 };
-const PRICE_BY_MATERIAL: Record<string, number> = { papier: 0, kraftpapier: 200, holz: 800 };
+function detectFormats(text: string): Array<"A5" | "A4" | "A3"> {
+  const out: Array<"A5" | "A4" | "A3"> = [];
+  const t = text.toUpperCase();
+  for (const f of ["A5", "A4", "A3"] as const) {
+    if (new RegExp(`\\b${f}\\b`).test(t) || t.includes(`DIN ${f}`)) out.push(f);
+  }
+  return out;
+}
 
+const FRAMES = ["holz", "papier", "kraftpapier"] as const;
+const PRICE_BY_FORMAT: Record<string, number> = { A5: 0, A4: 5, A3: 12 };
+const PRICE_BY_FRAME: Record<string, number> = { papier: 0, kraftpapier: 2, holz: 8 };
 
 function ProductPage() {
   const { product } = Route.useLoaderData();
@@ -67,50 +72,32 @@ function ProductPage() {
   const navigate = useNavigate();
   const { add } = useCart();
   const { has, toggle } = useWishlist();
-  const { data: reviews } = useSuspenseQuery({ queryKey: ["reviews", product.slug], queryFn: () => listReviews({ data: { limit: 12 } }) });
-  const { data: all } = useSuspenseQuery({ queryKey: ["products"], queryFn: () => listProducts() });
 
-  const name = locale === "de" ? product.name_de : product.name_en;
-  const description = locale === "de" ? product.description_de : product.description_en;
+  const formats = useMemo(() => {
+    const f = detectFormats(`${product.title} ${product.description}`);
+    return f.length ? f : (["A5", "A4", "A3"] as const).slice();
+  }, [product]);
 
-  const formats = product.formats?.length ? product.formats : ["A5", "A4", "A3"];
-
-  const [names, setNames] = useState("");
-  const [date, setDate] = useState("");
-  const [message, setMessage] = useState("");
   const [format, setFormat] = useState<string>(formats[0]);
-  const [material, setMaterial] = useState<string>(product.material);
+  const [frame, setFrame] = useState<string>(product.material || "holz");
   const [qty, setQty] = useState(1);
 
-  const unitPrice =
-    product.base_price_cents + (PRICE_BY_FORMAT[format] ?? 0) + (PRICE_BY_MATERIAL[material] ?? 0);
-
-  const img = product.images?.[0] || imageFor(product.occasion);
-  const img2 = secondaryImageFor(product.occasion);
-  const [activeImg, setActiveImg] = useState(img);
-
+  const unitPrice = product.price + (PRICE_BY_FORMAT[format] ?? 0) + (PRICE_BY_FRAME[frame] ?? 0);
+  const unitCents = Math.round(unitPrice * 100);
 
   const onAdd = () => {
     add({
-      id: `${product.id}-${format}-${material}-${(names || "_")}-${(date || "_")}`,
+      id: `${product.id}-${format}-${frame}`,
       productId: product.id,
-      slug: product.slug,
-      name,
-      image: img,
-      unitPriceCents: unitPrice,
+      slug: product.id,
+      name: product.title,
+      image: product.image,
+      unitPriceCents: unitCents,
       qty,
-      personalization: {
-        names: names || undefined,
-        date: date || undefined,
-        message: message || undefined,
-        format,
-        material,
-      },
+      personalization: { format, material: frame },
     });
-    toast.success(t("product.addedToCart"), { description: `${name} · ${format} · ${qty}×` });
+    toast.success(t("product.addedToCart"), { description: `${product.title.slice(0, 60)} · ${format} · ${qty}×` });
   };
-
-  const related = all.filter((p) => p.occasion === product.occasion && p.id !== product.id).slice(0, 4);
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-10 lg:py-16">
@@ -119,115 +106,64 @@ function ProductPage() {
         <span className="mx-2">/</span>
         <Link to="/shop" className="hover:text-walnut">Shop</Link>
         <span className="mx-2">/</span>
-        <span className="text-walnut">{name}</span>
+        <span className="text-walnut line-clamp-1">{product.title}</span>
       </nav>
 
       <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
-        <div>
-          <motion.div
-            key={activeImg}
-            initial={{ opacity: 0.3 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.4 }}
-            className="relative aspect-square overflow-hidden rounded-2xl bg-linen ring-1 ring-border"
-          >
-            <img src={activeImg} alt={name} width={1024} height={1024} className="h-full w-full object-cover" />
-            {product.badge && (
-              <span className="absolute left-4 top-4 rounded-full bg-walnut/90 px-3 py-1 text-[10px] font-medium uppercase tracking-widest text-cream">
-                {product.badge === "bestseller" ? t("badge.bestseller") : t("badge.neu")}
-              </span>
-            )}
-          </motion.div>
-          <div className="mt-4 flex gap-3">
-            {[img, img2].map((src) => (
-              <button
-                key={src}
-                onClick={() => setActiveImg(src)}
-                className={`relative aspect-square w-20 overflow-hidden rounded-lg ring-1 ${
-                  activeImg === src ? "ring-2 ring-brass" : "ring-border"
-                }`}
-              >
-                <img src={src} alt="" width={120} height={120} className="h-full w-full object-cover" />
-              </button>
-            ))}
+        <Reveal>
+          <div className="relative aspect-square overflow-hidden rounded-2xl bg-linen ring-1 ring-border">
+            <img src={product.image} alt={product.title} className="h-full w-full object-cover" />
+            <span className="absolute left-4 top-4 rounded-full bg-walnut/90 px-3 py-1 text-[10px] font-medium uppercase tracking-widest text-cream">
+              {t(`occasions.${product.occasion}`) || product.occasion}
+            </span>
           </div>
-        </div>
+        </Reveal>
 
         <div>
-          <p className="eyebrow">{t(`occasions.${product.occasion}`)}</p>
-          <h1 className="mt-2 font-serif text-3xl text-walnut sm:text-4xl">{name}</h1>
-          <div className="mt-3 flex items-center gap-3 text-sm text-muted-foreground">
-            <StarRating value={5} size={14} />
-            <span>4,9 / 5 · {reviews.length} Bewertungen</span>
-          </div>
-          <p className="mt-6 text-base leading-relaxed text-foreground/85">{description}</p>
+          <p className="eyebrow">{t(`occasions.${product.occasion}`) || product.occasion}</p>
+          <h1 className="mt-2 font-serif text-3xl text-walnut sm:text-4xl">{product.title}</h1>
 
           <div className="mt-6 flex items-baseline gap-3">
-            <span className="font-serif text-3xl text-walnut">{formatEUR(unitPrice, locale)}</span>
+            <span className="font-serif text-3xl text-walnut">{formatEUR(unitCents, locale)}</span>
             <span className="text-sm text-muted-foreground">inkl. MwSt. zzgl. Versand</span>
           </div>
 
-          <div className="mt-8 space-y-5 rounded-2xl bg-card p-6 ring-1 ring-border/60">
-            <Field label={t("product.name")}>
-              <input
-                type="text"
-                value={names}
-                onChange={(e) => setNames(e.target.value)}
-                placeholder={t("product.namePlaceholder")}
-                maxLength={120}
-                className="w-full rounded-lg border border-border bg-cream px-4 py-2.5 text-sm outline-none focus:border-brass"
-              />
-            </Field>
-            <Field label={t("product.date")}>
-              <input
-                type="date"
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
-                className="w-full rounded-lg border border-border bg-cream px-4 py-2.5 text-sm outline-none focus:border-brass"
-              />
-            </Field>
-            <Field label={t("product.message")}>
-              <textarea
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                placeholder={t("product.messagePlaceholder")}
-                maxLength={500}
-                rows={3}
-                className="w-full resize-none rounded-lg border border-border bg-cream px-4 py-2.5 text-sm outline-none focus:border-brass"
-              />
-            </Field>
-            <div className="grid gap-5 sm:grid-cols-2">
-              <Field label={t("product.format")}>
-                <div className="flex flex-wrap gap-2">
-                  {formats.map((f: string) => (
-                    <button
-                      key={f}
-                      onClick={() => setFormat(f)}
-                      className={`rounded-full border px-4 py-1.5 text-xs transition ${
-                        format === f ? "border-walnut bg-walnut text-cream" : "border-border bg-cream text-walnut"
-                      }`}
-                    >
-                      {f}
-                    </button>
-                  ))}
-                </div>
-              </Field>
-              <Field label={t("product.material")}>
-                <div className="flex flex-wrap gap-2">
-                  {(["papier", "kraftpapier", "holz"] as const).map((m) => (
-                    <button
-                      key={m}
-                      onClick={() => setMaterial(m)}
-                      className={`rounded-full border px-4 py-1.5 text-xs transition ${
-                        material === m ? "border-walnut bg-walnut text-cream" : "border-border bg-cream text-walnut"
-                      }`}
-                    >
-                      {t(`shop.${m}`)}
-                    </button>
-                  ))}
-                </div>
-              </Field>
+          <p className="mt-6 whitespace-pre-line text-base leading-relaxed text-foreground/85">
+            {product.description}
+          </p>
 
+          <div className="mt-8 space-y-5 rounded-2xl bg-card p-6 ring-1 ring-border/60">
+            <div>
+              <p className="eyebrow mb-2">{t("product.format")}</p>
+              <div className="flex flex-wrap gap-2">
+                {formats.map((f) => (
+                  <button
+                    key={f}
+                    onClick={() => setFormat(f)}
+                    className={`rounded-full border px-4 py-1.5 text-xs transition ${
+                      format === f ? "border-walnut bg-walnut text-cream" : "border-border bg-cream text-walnut"
+                    }`}
+                  >
+                    {f}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div>
+              <p className="eyebrow mb-2">{t("product.material")}</p>
+              <div className="flex flex-wrap gap-2">
+                {FRAMES.map((m) => (
+                  <button
+                    key={m}
+                    onClick={() => setFrame(m)}
+                    className={`rounded-full border px-4 py-1.5 text-xs transition ${
+                      frame === m ? "border-walnut bg-walnut text-cream" : "border-border bg-cream text-walnut"
+                    }`}
+                  >
+                    {t(`shop.${m}`)}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -247,7 +183,7 @@ function ProductPage() {
               className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-walnut px-6 py-3.5 text-sm font-medium text-cream transition hover:bg-walnut/90"
             >
               <ShoppingBag size={16} />
-              {t("product.addToCart")} · {formatEUR(unitPrice * qty, locale)}
+              {t("product.addToCart")} · {formatEUR(unitCents * qty, locale)}
             </motion.button>
             <button
               onClick={() => toggle(product.id)}
@@ -260,60 +196,39 @@ function ProductPage() {
             </button>
           </div>
 
-          <div className="mt-8 grid gap-3 text-sm">
-            <Detail title={t("product.materials")} text={t("product.materialsText")} />
-            <Detail title={t("product.delivery")} text={t("product.deliveryText")} />
-          </div>
+          {product.tags?.length > 0 && (
+            <div className="mt-8">
+              <p className="eyebrow mb-2">Tags</p>
+              <div className="flex flex-wrap gap-1.5">
+                {product.tags.slice(0, 10).map((tag) => (
+                  <span key={tag} className="rounded-full bg-linen px-3 py-1 text-xs text-muted-foreground">
+                    {tag.replaceAll("_", " ")}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
-
-      <section className="mt-20">
-        <Reveal>
-          <h2 className="font-serif text-2xl text-walnut sm:text-3xl">{t("product.reviewsTitle")}</h2>
-        </Reveal>
-        <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {reviews.slice(0, 6).map((r) => (
-            <div key={r.id} className="rounded-2xl bg-card p-5 ring-1 ring-border/60">
-              <StarRating value={r.rating} />
-              <p className="mt-3 text-sm text-foreground/85">„{locale === "de" ? r.text_de : r.text_en}"</p>
-              <p className="mt-3 text-xs font-medium text-walnut">{r.customer_name}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {related.length > 0 && (
-        <section className="mt-20">
-          <Reveal>
-            <h2 className="font-serif text-2xl text-walnut sm:text-3xl">{t("product.related")}</h2>
-          </Reveal>
-          <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {related.map((p) => (
-              <ProductCard key={p.id} p={p} />
-            ))}
-          </div>
-        </section>
-      )}
     </div>
   );
 }
 
-function Field({ label, children }: { label: string; children: React.ReactNode }) {
+function ProductNotFound() {
   return (
-    <label className="block">
-      <span className="eyebrow">{label}</span>
-      <div className="mt-2">{children}</div>
-    </label>
-  );
-}
-
-function Detail({ title, text }: { title: string; text: string }) {
-  return (
-    <details className="group rounded-xl border border-border bg-card px-5 py-4">
-      <summary className="flex cursor-pointer list-none items-center justify-between font-medium text-walnut">
-        {title} <ArrowRight size={14} className="transition group-open:rotate-90" />
-      </summary>
-      <p className="mt-3 text-muted-foreground">{text}</p>
-    </details>
+    <div className="mx-auto flex min-h-[60vh] max-w-2xl flex-col items-center justify-center px-4 text-center">
+      <h1 className="font-serif text-6xl text-walnut">404</h1>
+      <h2 className="mt-4 font-serif text-2xl text-walnut">Produkt nicht gefunden</h2>
+      <p className="mt-2 text-sm text-muted-foreground">
+        Dieses Produkt existiert nicht oder wurde entfernt.
+      </p>
+      <Link
+        to="/shop"
+        className="mt-6 inline-flex items-center gap-2 rounded-full bg-walnut px-5 py-2.5 text-sm font-medium text-cream hover:bg-walnut/90"
+      >
+        <ArrowLeft size={14} />
+        Zurück zum Shop
+      </Link>
+    </div>
   );
 }
