@@ -12,9 +12,6 @@ export const Route = createFileRoute("/impressum")({
   }),
   component: () => (
     <>
-      <div className="bg-yellow-100 border border-yellow-400 text-yellow-900 px-4 py-3 text-center font-medium">
-        ⚠️ Diese Seite enthält noch Platzhalter — bitte vor dem Launch ausfüllen.
-      </div>
       <LegalPage title="Impressum">
         <h2>Angaben gemäß § 5 TMG</h2>
         <p>DigiNutz<br />Inhaber: <span className="text-red-600 font-bold">[Kubanych Susamyrbek uulu]</span><br /><span className="text-red-600 font-bold">[Am Färberhof 9]</span><br /><span className="text-red-600 font-bold">[91052 Erlangen]</span></p>
