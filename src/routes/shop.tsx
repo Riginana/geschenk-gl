@@ -9,10 +9,11 @@ import { Reveal } from "@/components/reveal";
 
 const searchSchema = z.object({
   occasion: z.string().optional(),
-  material: z.enum(["holz", "karton"]).optional(),
+  material: z.enum(["holz", "papier", "kraftpapier"]).optional(),
   format: z.enum(["A5", "A4", "A3"]).optional(),
   sort: z.enum(["popular", "new", "price_asc", "price_desc"]).optional(),
 });
+
 
 export const Route = createFileRoute("/shop")({
   validateSearch: (s) => searchSchema.parse(s),
@@ -30,7 +31,7 @@ export const Route = createFileRoute("/shop")({
   component: ShopPage,
 });
 
-const OCCASIONS = ["hochzeit", "geburtstag", "geburt", "taufe", "konfirmation", "jubilaeum", "ruhestand", "weihnachten", "abschied"] as const;
+const OCCASIONS = ["hochzeit", "geburtstag", "geburt", "taufe", "kommunion", "konfirmation", "firmung", "abitur", "ruhestand", "weihnachten", "einzug", "mutterschutz", "ostern", "jugendweihe", "fuehrerschein", "einschulung", "sonstiges"] as const;
 
 function ShopPage() {
   const { t } = useT();
@@ -93,8 +94,10 @@ function ShopPage() {
             <FilterGroup label={t("shop.filterMaterial")}>
               <FilterChip active={!search.material} onClick={() => update({ material: undefined })}>{t("shop.all")}</FilterChip>
               <FilterChip active={search.material === "holz"} onClick={() => update({ material: "holz" })}>{t("shop.holz")}</FilterChip>
-              <FilterChip active={search.material === "karton"} onClick={() => update({ material: "karton" })}>{t("shop.karton")}</FilterChip>
+              <FilterChip active={search.material === "papier"} onClick={() => update({ material: "papier" })}>{t("shop.papier")}</FilterChip>
+              <FilterChip active={search.material === "kraftpapier"} onClick={() => update({ material: "kraftpapier" })}>{t("shop.kraftpapier")}</FilterChip>
             </FilterGroup>
+
             <FilterGroup label={t("shop.filterFormat")}>
               <FilterChip active={!search.format} onClick={() => update({ format: undefined })}>{t("shop.all")}</FilterChip>
               {(["A5", "A4", "A3"] as const).map((f) => (
