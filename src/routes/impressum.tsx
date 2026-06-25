@@ -19,7 +19,7 @@ export const Route = createFileRoute("/impressum")({
         <h2>Angaben gemäß § 5 TMG</h2>
         <p>DigiNutz<br />Inhaber: <span className="text-red-600 font-bold">[Kubanych Susamyrbek uulu]</span><br /><span className="text-red-600 font-bold">[Am Färberhof 9]</span><br /><span className="text-red-600 font-bold">[91052 Erlangen]</span></p>
         <h2>Kontakt</h2>
-        <p><span className="text-red-600 font-bold">[Telefon einfügen]</span><br /><span className="text-red-600 font-bold">[E-Mail einfügen]</span></p>
+        <p><span className="text-red-600 font-bold">[Telefon einfügen]</span><br />diginutz.e@gmail.com</p>
         <h2>Umsatzsteuer-ID</h2>
         <p>Umsatzsteuer-Identifikationsnummer gemäß § 27 a UStG: <span className="text-red-600 font-bold">[DE366034898]</span></p>
         <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV:</h2>
