@@ -77,7 +77,7 @@ export function Header() {
             aria-label={t("nav.wishlist")}
             className="relative grid h-10 w-10 place-items-center rounded-full text-walnut transition hover:bg-linen"
           >
-            <Heart size={18} />
+            <span aria-hidden="true" className="text-lg leading-none">♡</span>
             {ids.length > 0 && (
               <span className="absolute -right-0.5 -top-0.5 grid h-4 min-w-4 place-items-center rounded-full bg-brass px-1 text-[10px] font-medium text-walnut">
                 {ids.length}
@@ -91,7 +91,7 @@ export function Header() {
             id="cart-icon"
             className="relative grid h-10 w-10 place-items-center rounded-full text-walnut transition hover:bg-linen"
           >
-            <ShoppingBag size={18} />
+            <span aria-hidden="true" className="text-base leading-none">🛒</span>
             <AnimatePresence>
               {count > 0 && (
                 <motion.span
