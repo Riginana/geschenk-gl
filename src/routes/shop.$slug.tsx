@@ -200,7 +200,7 @@ function ProductPage() {
             <div className="mt-8">
               <p className="eyebrow mb-2">Tags</p>
               <div className="flex flex-wrap gap-1.5">
-                {product.tags.slice(0, 10).map((tag) => (
+                {product.tags.slice(0, 10).map((tag: string) => (
                   <span key={tag} className="rounded-full bg-linen px-3 py-1 text-xs text-muted-foreground">
                     {tag.replaceAll("_", " ")}
                   </span>
