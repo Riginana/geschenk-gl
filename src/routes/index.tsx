@@ -193,11 +193,12 @@ function Occasions() {
     "geburt",
     "taufe",
     "konfirmation",
-    "jubilaeum",
+    "abitur",
     "ruhestand",
     "weihnachten",
-    "abschied",
+    "einzug",
   ] as const;
+
 
   return (
     <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-10 lg:py-28">
