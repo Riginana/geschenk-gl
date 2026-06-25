@@ -69,7 +69,7 @@ const PRICE_BY_FRAME: Record<string, number> = { papier: 0, kraftpapier: 2, holz
 function ProductPage() {
   const { product } = Route.useLoaderData();
   const { t, locale } = useT();
-  const navigate = useNavigate();
+  
   const { add } = useCart();
   const { has, toggle } = useWishlist();
 
