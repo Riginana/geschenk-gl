@@ -22,7 +22,7 @@ export const Route = createFileRoute("/impressum")({
         <p><span className="text-red-600 font-bold">[Telefon einfügen]</span><br /><span className="text-red-600 font-bold">[E-Mail einfügen]</span></p>
         <h2>Umsatzsteuer-ID</h2>
         <p>Umsatzsteuer-Identifikationsnummer gemäß § 27 a UStG: <span className="text-red-600 font-bold">[DE366034898]</span></p>
-        <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
+        <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV:</h2>
         <p><span className="text-red-600 font-bold">[Kubanych Susamyrbek uulu]</span>, Anschrift wie oben.</p>
       </LegalPage>
     </>
