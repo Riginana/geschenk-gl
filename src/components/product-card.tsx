@@ -34,15 +34,17 @@ export function ProductCard({ p, eager }: { p: ProductRow; eager?: boolean }) {
             loading={eager ? "eager" : "lazy"}
             className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
-          <img
-            src={img2}
-            alt=""
-            aria-hidden
-            width={1024}
-            height={1280}
-            loading="lazy"
-            className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-          />
+          {hoverImg && (
+            <img
+              src={hoverImg}
+              alt=""
+              aria-hidden
+              width={1024}
+              height={1280}
+              loading="lazy"
+              className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+            />
+          )}
 
           {p.badge && (
             <span className="absolute left-3 top-3 rounded-full bg-walnut/90 px-3 py-1 text-[10px] font-medium uppercase tracking-widest text-cream">
