@@ -58,6 +58,8 @@ const PRODUCTS: ProductRow[] = (raw as RawEtsy[]).map((p, i) => ({
   formats: detectFormats(`${p.title} ${p.description}`),
   images: [p.image],
   badge: i < 8 ? "bestseller" : i < 16 ? "neu" : null,
+  tags: p.tags ?? [],
+  inStock: p.inStock ?? true,
 }));
 
 export const listProducts = createServerFn({ method: "GET" }).handler(
