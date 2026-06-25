@@ -58,6 +58,7 @@ const PRODUCTS: ProductRow[] = (raw as RawEtsy[]).map((p, i) => ({
   material: p.material,
   formats: detectFormats(`${p.title} ${p.description}`),
   images: [p.image],
+  hoverImage: secondaryImageFor(p.occasion),
   badge: i < 8 ? "bestseller" : i < 16 ? "neu" : null,
   tags: p.tags ?? [],
   inStock: p.inStock ?? true,
