@@ -1,9 +1,9 @@
-import { createFileRoute, Link, notFound, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { useMemo, useState } from "react";
 import { toast } from "sonner";
 import { Heart, Minus, Plus, ShoppingBag, ArrowLeft } from "lucide-react";
-import { products, type Product } from "@/data/products";
+import { products } from "@/data/products";
 import { formatEUR, useT } from "@/i18n";
 import { useCart } from "@/contexts/cart";
 import { useWishlist } from "@/contexts/wishlist";
