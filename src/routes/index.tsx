@@ -45,6 +45,7 @@ function Home() {
   return (
     <>
       <Hero />
+      <FeaturedTrio />
       <HowItWorks />
       <Occasions />
       <Bestsellers />
