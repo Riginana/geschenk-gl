@@ -129,11 +129,11 @@ function Hero() {
             className="relative overflow-hidden rounded-[1.5rem] shadow-[0_40px_80px_-30px_rgba(60,40,20,0.35)] ring-1 ring-walnut/10"
           >
             <img
-              src={heroNewAsset.url}
-              alt="Personalisiertes Geldgeschenk in einem Eichenrahmen"
-              width={1600}
-              height={1200}
-              className="block h-auto w-full"
+              src={heroNew2Asset.url}
+              alt="Personalisiertes Geldgeschenk"
+              width={794}
+              height={794}
+              className="absolute inset-0 h-full w-full object-cover"
             />
           </motion.div>
           <motion.div
