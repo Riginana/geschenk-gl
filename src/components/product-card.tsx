@@ -11,10 +11,28 @@ import { useCart } from "@/contexts/cart";
 export function ProductCard({ p, eager }: { p: ProductRow; eager?: boolean }) {
   const { locale, t } = useT();
   const { has, toggle } = useWishlist();
+  const { add } = useCart();
   const liked = has(p.id);
   const name = locale === "de" ? p.name_de : p.name_en;
   const img = p.images?.[0] || imageFor(p.occasion);
   const hoverImg = p.hoverImage;
+
+  const onQuickAdd = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const format = p.formats?.[0] ?? "A4";
+    const material = p.material ?? "holz";
+    add({
+      id: `${p.id}-${format}-${material}`,
+      productId: p.id,
+      slug: p.slug,
+      name,
+      image: img,
+      unitPriceCents: p.base_price_cents,
+      qty: 1,
+      personalization: { format, material },
+    });
+    toast.success(t("product.addedToCart"), { description: `${name.slice(0, 60)} · ${format}` });
+  };
 
   return (
     <motion.div
