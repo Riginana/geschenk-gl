@@ -96,7 +96,7 @@ function ContactPage() {
             </div>
             <h3 className="eyebrow mt-6">{t("contact.follow")}</h3>
             <div className="mt-4 flex gap-3">
-              <a href="https://www.instagram.com/digi.nutz/" aria-label="Instagram" className="grid h-10 w-10 place-items-center rounded-full bg-card ring-1 ring-border hover:bg-brass/10"><Instagram size={16} /></a>
+              <a href="https://www.instagram.com/digi.nutz?igsh=d2MzZXU1ZTNqZnpl" aria-label="Instagram" className="grid h-10 w-10 place-items-center rounded-full bg-card ring-1 ring-border hover:bg-brass/10"><Instagram size={16} /></a>
               <a href="https://facebook.com" aria-label="Facebook" className="grid h-10 w-10 place-items-center rounded-full bg-card ring-1 ring-border hover:bg-brass/10"><Facebook size={16} /></a>
               <a href="https://wa.me/4915112345678" aria-label="WhatsApp" className="grid h-10 w-10 place-items-center rounded-full bg-card ring-1 ring-border hover:bg-brass/10"><MessageCircle size={16} /></a>
             </div>
