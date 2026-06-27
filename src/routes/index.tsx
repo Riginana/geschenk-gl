@@ -6,6 +6,9 @@ import useEmblaCarousel from "embla-carousel-react";
 import { ArrowRight, Heart, Package, Sparkles } from "lucide-react";
 import heroImg from "@/assets/hero-frame.jpg";
 import atelierImg from "@/assets/atelier.jpg";
+import featuredWedding from "@/assets/featured-wedding.webp.asset.json";
+import featuredAdventure from "@/assets/featured-adventure.webp.asset.json";
+import featuredController from "@/assets/featured-controller.jpg.asset.json";
 import { useT } from "@/i18n";
 import { listProducts } from "@/lib/products.functions";
 import { listReviews } from "@/lib/reviews.functions";
@@ -42,6 +45,7 @@ function Home() {
   return (
     <>
       <Hero />
+      <FeaturedTrio />
       <HowItWorks />
       <Occasions />
       <Bestsellers />
@@ -146,6 +150,66 @@ function Hero() {
     </section>
   );
 }
+
+function FeaturedTrio() {
+  const { t } = useT();
+  const items = [
+    { src: featuredWedding.url, alt: "Personalisierter Holzteller zur Hochzeit", aspect: "aspect-[4/5]" },
+    { src: featuredAdventure.url, alt: "Geldgeschenk im Eichenrahmen zum Geburtstag", aspect: "aspect-[4/3]" },
+    { src: featuredController.url, alt: "Geldgeschenk in Form eines Gaming-Controllers aus Holz", aspect: "aspect-[4/3]" },
+  ];
+
+  return (
+    <section className="border-t border-border/60 bg-cream">
+      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-10 lg:py-24">
+        <Reveal>
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="eyebrow">{t("featured.eyebrow")}</p>
+            <h2 className="mt-3 font-serif text-3xl text-walnut sm:text-4xl lg:text-5xl">
+              {t("featured.title")}
+            </h2>
+          </div>
+        </Reveal>
+
+        <div className="mt-12 grid gap-5 md:grid-cols-3 md:grid-rows-2 md:gap-6">
+          <Reveal>
+            <a
+              href="/shop"
+              className={`group relative block ${items[0].aspect} overflow-hidden rounded-[1.5rem] ring-1 ring-walnut/10 shadow-[0_24px_50px_-30px_rgba(60,40,20,0.3)] md:col-span-2 md:row-span-2 md:h-full md:aspect-auto`}
+            >
+              <img
+                src={items[0].src}
+                alt={items[0].alt}
+                loading="eager"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-walnut/40 to-transparent" aria-hidden />
+            </a>
+          </Reveal>
+
+          {items.slice(1).map((it, i) => (
+            <Reveal key={i} delay={(i + 1) * 0.08}>
+              <a
+                href="/shop"
+                className={`group relative block ${it.aspect} overflow-hidden rounded-[1.5rem] ring-1 ring-walnut/10 shadow-[0_24px_50px_-30px_rgba(60,40,20,0.3)] md:h-full md:aspect-auto`}
+              >
+                <img
+                  src={it.src}
+                  alt={it.alt}
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-walnut/40 to-transparent" aria-hidden />
+              </a>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
 
 function HowItWorks() {
   const { t } = useT();

@@ -54,6 +54,10 @@ export const de = {
     eyebrow: "Beliebt",
     title: "Bestseller aus dem Atelier",
   },
+  featured: {
+    eyebrow: "Neu im Atelier",
+    title: "Handgefertigte Lieblingsstücke",
+  },
   reviews: {
     eyebrow: "Stimmen unserer Kunden",
     title: "Über 3.000 zufriedene Kunden",
