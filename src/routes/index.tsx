@@ -187,6 +187,7 @@ function HowItWorks() {
 
 function Occasions() {
   const { t } = useT();
+  const { data: products } = useSuspenseQuery({ queryKey: ["products"], queryFn: () => listProducts() });
   const items = [
     "hochzeit",
     "geburtstag",
@@ -198,6 +199,13 @@ function Occasions() {
     "weihnachten",
     "einzug",
   ] as const;
+
+  const pickImage = (occasion: string, idx: number) => {
+    const matches = products.filter((p) => p.occasion === occasion && p.images?.[0]);
+    if (matches.length > 0) return matches[idx % matches.length].images[0];
+    return imageFor(occasion);
+  };
+
 
 
   return (
