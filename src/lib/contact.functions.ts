@@ -38,6 +38,9 @@ export const submitContact = createServerFn({ method: "POST" })
       phone: data.phone || null,
       message: data.message,
     });
-    if (error) throw new Error(error.message);
+    if (error) {
+      console.error("[submitContact]", error.message);
+      throw new Error("We couldn't send your message. Please try again.");
+    }
     return { ok: true };
   });
