@@ -86,10 +86,21 @@ export function ProductCard({ p, eager }: { p: ProductRow; eager?: boolean }) {
         <div className="space-y-1 px-4 py-4">
           <p className="eyebrow">{t(`occasions.${p.occasion}`)}</p>
           <h3 className="line-clamp-2 font-serif text-lg text-walnut">{name}</h3>
-          <p className="pt-1 text-sm text-muted-foreground">
-            <span className="opacity-70">{t("common.from")} </span>
-            <span className="font-medium text-foreground">{formatEUR(p.base_price_cents, locale)}</span>
-          </p>
+          <div className="flex items-center justify-between gap-2 pt-1">
+            <p className="text-sm text-muted-foreground">
+              <span className="opacity-70">{t("common.from")} </span>
+              <span className="font-medium text-foreground">{formatEUR(p.base_price_cents, locale)}</span>
+            </p>
+            <button
+              type="button"
+              onClick={onQuickAdd}
+              aria-label={t("product.addToCart")}
+              className="inline-flex items-center gap-1.5 rounded-full bg-walnut px-3 py-1.5 text-xs font-medium text-cream transition hover:bg-walnut/90 active:scale-95"
+            >
+              <ShoppingBag size={13} />
+              <span className="hidden sm:inline">{t("product.addToCart")}</span>
+            </button>
+          </div>
         </div>
       </Link>
     </motion.div>
