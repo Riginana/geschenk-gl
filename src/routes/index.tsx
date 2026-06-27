@@ -231,7 +231,7 @@ function Occasions() {
               className="group relative block aspect-[4/5] overflow-hidden rounded-2xl ring-1 ring-border/60"
             >
               <img
-                src={imageFor(o)}
+                src={pickImage(o, i)}
                 alt={t(`occasions.${o}`)}
                 loading="lazy"
                 width={800}
