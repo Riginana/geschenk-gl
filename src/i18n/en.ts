@@ -56,6 +56,10 @@ export const en: Dictionary = {
     eyebrow: "Popular",
     title: "Atelier bestsellers",
   },
+  featured: {
+    eyebrow: "New in the atelier",
+    title: "Handcrafted favourites",
+  },
   reviews: {
     eyebrow: "What our customers say",
     title: "Over 3,000 happy customers",
