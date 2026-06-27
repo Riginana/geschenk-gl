@@ -126,7 +126,7 @@ function Hero() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
-            className="relative overflow-hidden rounded-[1.5rem] shadow-[0_40px_80px_-30px_rgba(60,40,20,0.35)] ring-1 ring-walnut/10"
+            className="relative overflow-hidden rounded-[1.5rem] shadow-[0_40px_80px_-30px_rgba(60,40,20,0.35)] ring-1 ring-walnut/10 aspect-[4/3]"
           >
             <img
               src={heroNew2Asset.url}
