@@ -95,9 +95,9 @@ export function Footer() {
           </div>
           <div className="flex items-center gap-5">
             <span className="hidden text-xs uppercase tracking-widest md:inline">{t("contact.follow")}</span>
-            <a href="https://www.instagram.com/digi.nutz?igsh=d2MzZXU1ZTNqZnpl" aria-label="Instagram" className="text-walnut hover:text-brass"><Instagram size={18} /></a>
-            <a href="https://facebook.com" aria-label="Facebook" className="text-walnut hover:text-brass"><Facebook size={18} /></a>
-            <a href="https://wa.me/4915112345678" aria-label="WhatsApp" className="text-walnut hover:text-brass"><MessageCircle size={18} /></a>
+            <a href="https://www.instagram.com/digi.nutz?igsh=d2MzZXU1ZTNqZnpl" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-walnut hover:text-brass"><Instagram size={18} /></a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-walnut hover:text-brass"><Facebook size={18} /></a>
+            <a href="https://wa.me/4915112345678" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="text-walnut hover:text-brass"><MessageCircle size={18} /></a>
           </div>
         </div>
 
