@@ -23,7 +23,7 @@ export type ReviewRow = {
 
 export const listReviews = createServerFn({ method: "GET" })
   .inputValidator((d) =>
-    z.object({ productId: z.string().uuid().optional(), limit: z.number().int().min(1).max(100).optional() }).parse(d ?? {}),
+    z.object({ productId: z.string().min(1).max(120).optional(), limit: z.number().int().min(1).max(100).optional() }).parse(d ?? {}),
   )
   .handler(async ({ data }): Promise<ReviewRow[]> => {
     let q = pub()
