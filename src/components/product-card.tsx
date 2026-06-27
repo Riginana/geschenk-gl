@@ -1,10 +1,12 @@
 import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { Heart } from "lucide-react";
+import { Heart, ShoppingBag } from "lucide-react";
+import { toast } from "sonner";
 import type { ProductRow } from "@/lib/products.functions";
 import { imageFor } from "@/lib/product-images";
 import { formatEUR, useT } from "@/i18n";
 import { useWishlist } from "@/contexts/wishlist";
+import { useCart } from "@/contexts/cart";
 
 export function ProductCard({ p, eager }: { p: ProductRow; eager?: boolean }) {
   const { locale, t } = useT();
