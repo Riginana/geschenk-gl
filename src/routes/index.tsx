@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import useEmblaCarousel from "embla-carousel-react";
 import { ArrowRight, Heart, Package, Sparkles } from "lucide-react";
-import heroNewAsset from "@/assets/hero-new.jpg.asset.json";
+import heroNew2Asset from "@/assets/hero-new2.jpg.asset.json";
 import atelierImg from "@/assets/atelier.jpg";
 import featuredWedding from "@/assets/featured-wedding.webp.asset.json";
 import featuredAdventure from "@/assets/featured-adventure.webp.asset.json";
