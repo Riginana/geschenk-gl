@@ -61,23 +61,20 @@ function CheckoutPage() {
             slug: i.slug,
             name: i.name,
             qty: i.qty,
-            unitPriceCents: i.unitPriceCents,
             personalization: Object.fromEntries(
               Object.entries(i.personalization).filter(([, v]) => v != null) as [string, string][],
             ),
           })),
           shippingMethod: shipping,
           paymentMethod: payment,
-          subtotalCents,
-          shippingCents,
-          totalCents: total,
           locale,
         },
       });
       clear();
       navigate({ to: "/bestellung-bestaetigt", search: { id: res.id } });
     } catch (err) {
-      toast.error("Bestellung fehlgeschlagen", { description: String((err as Error).message) });
+      console.error("[kasse] submit failed", err);
+      toast.error("Bestellung fehlgeschlagen", { description: "Bitte versuchen Sie es erneut." });
     } finally {
       setSubmitting(false);
     }
