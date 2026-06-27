@@ -171,40 +171,23 @@ function FeaturedTrio() {
           </div>
         </Reveal>
 
-        <div className="mt-12 grid gap-5 md:grid-cols-3 md:gap-6">
-          <Reveal className="md:col-span-2">
-            <a
-              href="/shop"
-              className="group relative block aspect-[4/5] overflow-hidden rounded-[1.5rem] ring-1 ring-walnut/10 shadow-[0_24px_50px_-30px_rgba(60,40,20,0.3)] md:aspect-[16/13]"
-            >
-              <img
-                src={items[0].src}
-                alt={items[0].alt}
-                loading="eager"
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-walnut/40 to-transparent" aria-hidden />
-            </a>
-          </Reveal>
-
-          <div className="grid gap-5 md:gap-6">
-            {items.slice(1).map((it, i) => (
-              <Reveal key={i} delay={(i + 1) * 0.08}>
-                <a
-                  href="/shop"
-                  className={`group relative block ${it.aspect} overflow-hidden rounded-[1.5rem] ring-1 ring-walnut/10 shadow-[0_24px_50px_-30px_rgba(60,40,20,0.3)]`}
-                >
-                  <img
-                    src={it.src}
-                    alt={it.alt}
-                    loading="lazy"
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-walnut/40 to-transparent" aria-hidden />
-                </a>
-              </Reveal>
-            ))}
-          </div>
+        <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 md:gap-6">
+          {items.map((it, i) => (
+            <Reveal key={i} delay={i * 0.08}>
+              <a
+                href="/shop"
+                className="group relative block aspect-[4/3] overflow-hidden rounded-[1.5rem] ring-1 ring-walnut/10 shadow-[0_24px_50px_-30px_rgba(60,40,20,0.3)]"
+              >
+                <img
+                  src={it.src}
+                  alt={it.alt}
+                  loading={i === 0 ? "eager" : "lazy"}
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-walnut/40 to-transparent" aria-hidden />
+              </a>
+            </Reveal>
+          ))}
         </div>
 
       </div>
