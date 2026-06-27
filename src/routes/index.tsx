@@ -129,7 +129,7 @@ function Hero() {
             className="relative overflow-hidden rounded-[1.5rem] shadow-[0_40px_80px_-30px_rgba(60,40,20,0.35)] ring-1 ring-walnut/10"
           >
             <img
-              src={heroImg}
+              src={heroNewAsset.url}
               alt="Personalisiertes Geldgeschenk in einem Eichenrahmen"
               width={1600}
               height={1200}
