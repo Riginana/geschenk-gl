@@ -187,6 +187,7 @@ function HowItWorks() {
 
 function Occasions() {
   const { t } = useT();
+  const { data: products } = useSuspenseQuery({ queryKey: ["products"], queryFn: () => listProducts() });
   const items = [
     "hochzeit",
     "geburtstag",
@@ -198,6 +199,13 @@ function Occasions() {
     "weihnachten",
     "einzug",
   ] as const;
+
+  const pickImage = (occasion: string, idx: number) => {
+    const matches = products.filter((p) => p.occasion === occasion && p.images?.[0]);
+    if (matches.length > 0) return matches[idx % matches.length].images[0];
+    return imageFor(occasion);
+  };
+
 
 
   return (
@@ -223,7 +231,7 @@ function Occasions() {
               className="group relative block aspect-[4/5] overflow-hidden rounded-2xl ring-1 ring-border/60"
             >
               <img
-                src={imageFor(o)}
+                src={pickImage(o, i)}
                 alt={t(`occasions.${o}`)}
                 loading="lazy"
                 width={800}
