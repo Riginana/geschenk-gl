@@ -13,7 +13,10 @@ export const subscribeNewsletter = createServerFn({ method: "POST" })
   .inputValidator((d) => z.object({ email: z.string().trim().email().max(255), locale: z.enum(["de", "en"]).default("de") }).parse(d))
   .handler(async ({ data }) => {
     const { error } = await pub().from("newsletter_subscribers").insert({ email: data.email, locale: data.locale });
-    if (error && !/duplicate key/i.test(error.message)) throw new Error(error.message);
+    if (error && !/duplicate key/i.test(error.message)) {
+      console.error("[subscribeNewsletter]", error.message);
+      throw new Error("We couldn't complete your subscription. Please try again.");
+    }
     return { ok: true };
   });
 
@@ -35,6 +38,9 @@ export const submitContact = createServerFn({ method: "POST" })
       phone: data.phone || null,
       message: data.message,
     });
-    if (error) throw new Error(error.message);
+    if (error) {
+      console.error("[submitContact]", error.message);
+      throw new Error("We couldn't send your message. Please try again.");
+    }
     return { ok: true };
   });

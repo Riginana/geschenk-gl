@@ -40,7 +40,8 @@ function ContactPage() {
       setName(""); setEmail(""); setPhone(""); setMessage("");
       toast.success(t("contact.success"));
     } catch (err) {
-      toast.error("Fehler", { description: String((err as Error).message) });
+      console.error("[kontakt] submit failed", err);
+      toast.error("Fehler", { description: "Bitte versuchen Sie es erneut." });
     } finally {
       setPending(false);
     }
