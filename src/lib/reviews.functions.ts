@@ -34,7 +34,10 @@ export const listReviews = createServerFn({ method: "GET" })
       .limit(data.limit ?? 50);
     if (data.productId) q = q.eq("product_id", data.productId);
     const { data: rows, error } = await q;
-    if (error) throw new Error(error.message);
+    if (error) {
+      console.error("[listReviews]", error.message);
+      throw new Error("We couldn't load reviews right now. Please try again.");
+    }
     const result = (rows ?? []) as unknown as ReviewRow[];
     console.log("[listReviews] rows returned:", result.length);
     if (result.length > 0) return result;
