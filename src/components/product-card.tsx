@@ -1,18 +1,38 @@
 import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { Heart } from "lucide-react";
+import { Heart, ShoppingBag } from "lucide-react";
+import { toast } from "sonner";
 import type { ProductRow } from "@/lib/products.functions";
 import { imageFor } from "@/lib/product-images";
 import { formatEUR, useT } from "@/i18n";
 import { useWishlist } from "@/contexts/wishlist";
+import { useCart } from "@/contexts/cart";
 
 export function ProductCard({ p, eager }: { p: ProductRow; eager?: boolean }) {
   const { locale, t } = useT();
   const { has, toggle } = useWishlist();
+  const { add } = useCart();
   const liked = has(p.id);
   const name = locale === "de" ? p.name_de : p.name_en;
   const img = p.images?.[0] || imageFor(p.occasion);
   const hoverImg = p.hoverImage;
+
+  const onQuickAdd = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const format = p.formats?.[0] ?? "A4";
+    const material = p.material ?? "holz";
+    add({
+      id: `${p.id}-${format}-${material}`,
+      productId: p.id,
+      slug: p.slug,
+      name,
+      image: img,
+      unitPriceCents: p.base_price_cents,
+      qty: 1,
+      personalization: { format, material },
+    });
+    toast.success(t("product.addedToCart"), { description: `${name.slice(0, 60)} · ${format}` });
+  };
 
   return (
     <motion.div
@@ -66,10 +86,21 @@ export function ProductCard({ p, eager }: { p: ProductRow; eager?: boolean }) {
         <div className="space-y-1 px-4 py-4">
           <p className="eyebrow">{t(`occasions.${p.occasion}`)}</p>
           <h3 className="line-clamp-2 font-serif text-lg text-walnut">{name}</h3>
-          <p className="pt-1 text-sm text-muted-foreground">
-            <span className="opacity-70">{t("common.from")} </span>
-            <span className="font-medium text-foreground">{formatEUR(p.base_price_cents, locale)}</span>
-          </p>
+          <div className="flex items-center justify-between gap-2 pt-1">
+            <p className="text-sm text-muted-foreground">
+              <span className="opacity-70">{t("common.from")} </span>
+              <span className="font-medium text-foreground">{formatEUR(p.base_price_cents, locale)}</span>
+            </p>
+            <button
+              type="button"
+              onClick={onQuickAdd}
+              aria-label={t("product.addToCart")}
+              className="inline-flex items-center gap-1.5 rounded-full bg-walnut px-3 py-1.5 text-xs font-medium text-cream transition hover:bg-walnut/90 active:scale-95"
+            >
+              <ShoppingBag size={13} />
+              <span className="hidden sm:inline">{t("product.addToCart")}</span>
+            </button>
+          </div>
         </div>
       </Link>
     </motion.div>
