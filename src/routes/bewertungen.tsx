@@ -13,7 +13,7 @@ export const Route = createFileRoute("/bewertungen")({
       {
         name: "description",
         content:
-          "Über 3.000 zufriedene Kunden — lesen Sie echte Bewertungen zu unseren handgefertigten Geldgeschenken.",
+          "Über 276 zufriedene Kunden — lesen Sie echte Bewertungen zu unseren handgefertigten Geldgeschenken.",
       },
       { property: "og:title", content: "Bewertungen unserer Kunden" },
       { property: "og:url", content: "/bewertungen" },
@@ -23,7 +23,7 @@ export const Route = createFileRoute("/bewertungen")({
   loader: ({ context }) =>
     context.queryClient.ensureQueryData({
       queryKey: ["reviews", "all"],
-      queryFn: () => listReviews({ data: { limit: 100 } }),
+      queryFn: () => listReviews({ data: { limit: 300 } }),
     }),
   component: ReviewsPage,
 });

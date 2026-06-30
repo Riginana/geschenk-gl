@@ -428,7 +428,7 @@ function TrustStrip() {
     <section className="border-t border-border/60 bg-walnut text-cream">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:grid-cols-3 sm:px-6 lg:px-10">
         {[
-          { kpi: "3.247+", label: "zufriedene Kunden" },
+          { kpi: "276+", label: "zufriedene Kunden" },
           { kpi: "4,9 ★", label: "durchschnittliche Bewertung" },
           { kpi: "100 %", label: "Handarbeit in Deutschland" },
         ].map((s) => (
