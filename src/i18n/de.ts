@@ -21,9 +21,18 @@ export const de = {
     eyebrow: "So einfach geht's",
     title: "Drei Schritte zu Ihrem Lieblingsstück",
     steps: [
-      { title: "Design wählen", text: "Wählen Sie aus unserer Auswahl handgefertigter Rahmen und Motive für jeden Anlass." },
-      { title: "Personalisieren", text: "Name, Datum, Format und Material — alles individuell auf Ihren Anlass abgestimmt." },
-      { title: "Erhalten & verschenken", text: "Wir fertigen mit Sorgfalt und liefern sicher verpackt direkt zu Ihnen." },
+      {
+        title: "Design wählen",
+        text: "Wählen Sie aus unserer Auswahl handgefertigter Rahmen und Motive für jeden Anlass.",
+      },
+      {
+        title: "Personalisieren",
+        text: "Name, Datum, Format und Material — alles individuell auf Ihren Anlass abgestimmt.",
+      },
+      {
+        title: "Erhalten & verschenken",
+        text: "Wir fertigen mit Sorgfalt und liefern sicher verpackt direkt zu Ihnen.",
+      },
     ],
   },
   occasions: {
@@ -60,7 +69,7 @@ export const de = {
   },
   reviews: {
     eyebrow: "Stimmen unserer Kunden",
-    title: "Über 3.000 zufriedene Kunden",
+    title: "Über 270 zufriedene Kunden",
     seeAll: "Alle Bewertungen ansehen",
   },
   atelier: {
@@ -116,8 +125,10 @@ export const de = {
     delivery: "Versand & Lieferzeit",
     reviewsTitle: "Bewertungen zu diesem Produkt",
     related: "Das könnte Ihnen auch gefallen",
-    materialsText: "Hochwertiges Eichenholz aus nachhaltiger Forstwirtschaft oder schweres Kraftpapier (350 g/m²). Jedes Stück wird einzeln gefertigt, lackiert und veredelt.",
-    deliveryText: "Fertigungszeit 3–5 Werktage. Versand DHL versichert. Lieferung innerhalb Deutschlands 1–2 Werktage, EU 3–6 Werktage.",
+    materialsText:
+      "Hochwertiges Eichenholz aus nachhaltiger Forstwirtschaft oder schweres Kraftpapier (350 g/m²). Jedes Stück wird einzeln gefertigt, lackiert und veredelt.",
+    deliveryText:
+      "Fertigungszeit 3–5 Werktage. Versand DHL versichert. Lieferung innerhalb Deutschlands 1–2 Werktage, EU 3–6 Werktage.",
   },
   cart: {
     title: "Ihr Warenkorb",
@@ -157,7 +168,8 @@ export const de = {
   },
   contact: {
     title: "Kontakt",
-    intro: "Sie haben eine Frage, einen Sonderwunsch oder möchten ein individuelles Design? Wir freuen uns auf Ihre Nachricht.",
+    intro:
+      "Sie haben eine Frage, einen Sonderwunsch oder möchten ein individuelles Design? Wir freuen uns auf Ihre Nachricht.",
     name: "Name",
     email: "E-Mail",
     phone: "Telefon (optional)",
@@ -169,7 +181,8 @@ export const de = {
   },
   about: {
     title: "Unsere Geschichte",
-    intro: "Aus der Liebe zur Handarbeit entstand unser Atelier — ein kleines Studio, in dem jedes Geldgeschenk mit Sorgfalt von Hand gefertigt wird.",
+    intro:
+      "Aus der Liebe zur Handarbeit entstand unser Atelier — ein kleines Studio, in dem jedes Geldgeschenk mit Sorgfalt von Hand gefertigt wird.",
   },
   footer: {
     rights: "Alle Rechte vorbehalten.",

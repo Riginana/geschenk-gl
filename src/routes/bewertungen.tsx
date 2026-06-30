@@ -10,20 +10,30 @@ export const Route = createFileRoute("/bewertungen")({
   head: () => ({
     meta: [
       { title: "Bewertungen unserer Kunden | DigiNutz" },
-      { name: "description", content: "Über 3.000 zufriedene Kunden — lesen Sie echte Bewertungen zu unseren handgefertigten Geldgeschenken." },
+      {
+        name: "description",
+        content:
+          "Über 3.000 zufriedene Kunden — lesen Sie echte Bewertungen zu unseren handgefertigten Geldgeschenken.",
+      },
       { property: "og:title", content: "Bewertungen unserer Kunden" },
       { property: "og:url", content: "/bewertungen" },
     ],
     links: [{ rel: "canonical", href: "/bewertungen" }],
   }),
   loader: ({ context }) =>
-    context.queryClient.ensureQueryData({ queryKey: ["reviews", "all"], queryFn: () => listReviews({ data: { limit: 100 } }) }),
+    context.queryClient.ensureQueryData({
+      queryKey: ["reviews", "all"],
+      queryFn: () => listReviews({ data: { limit: 100 } }),
+    }),
   component: ReviewsPage,
 });
 
 function ReviewsPage() {
   const { t, locale } = useT();
-  const { data: reviews } = useSuspenseQuery({ queryKey: ["reviews", "all"], queryFn: () => listReviews({ data: { limit: 100 } }) });
+  const { data: reviews } = useSuspenseQuery({
+    queryKey: ["reviews", "all"],
+    queryFn: () => listReviews({ data: { limit: 300 } }),
+  });
   const [occasion, setOccasion] = useState<string>("all");
 
   const avg = reviews.length ? reviews.reduce((s, r) => s + r.rating, 0) / reviews.length : 0;

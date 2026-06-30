@@ -35,7 +35,10 @@ export const Route = createFileRoute("/")({
   loader: async ({ context }) => {
     await Promise.all([
       context.queryClient.ensureQueryData({ queryKey: ["products"], queryFn: () => listProducts() }),
-      context.queryClient.ensureQueryData({ queryKey: ["reviews", "home"], queryFn: () => listReviews({ data: { limit: 12 } }) }),
+      context.queryClient.ensureQueryData({
+        queryKey: ["reviews", "home"],
+        queryFn: () => listReviews({ data: { limit: 12 } }),
+      }),
     ]);
   },
   component: Home,
@@ -115,7 +118,7 @@ function Hero() {
           <div className="mt-10 flex items-center gap-6">
             <div className="flex items-center gap-2">
               <StarRating value={5} size={16} />
-              <span className="text-sm text-muted-foreground">4,9 / 5 · 3.247 Bewertungen</span>
+              <span className="text-sm text-muted-foreground">4,9 / 5 · 276 Bewertungen</span>
             </div>
           </div>
         </motion.div>
@@ -156,7 +159,11 @@ function FeaturedTrio() {
   const items = [
     { src: featuredWedding.url, alt: "Personalisierter Holzteller zur Hochzeit", aspect: "aspect-[4/5]" },
     { src: featuredAdventure.url, alt: "Geldgeschenk im Eichenrahmen zum Geburtstag", aspect: "aspect-[4/3]" },
-    { src: featuredController.url, alt: "Geldgeschenk in Form eines Gaming-Controllers aus Holz", aspect: "aspect-[4/3]" },
+    {
+      src: featuredController.url,
+      alt: "Geldgeschenk in Form eines Gaming-Controllers aus Holz",
+      aspect: "aspect-[4/3]",
+    },
   ];
 
   return (
@@ -165,9 +172,7 @@ function FeaturedTrio() {
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
             <p className="eyebrow">{t("featured.eyebrow")}</p>
-            <h2 className="mt-3 font-serif text-3xl text-walnut sm:text-4xl lg:text-5xl">
-              {t("featured.title")}
-            </h2>
+            <h2 className="mt-3 font-serif text-3xl text-walnut sm:text-4xl lg:text-5xl">{t("featured.title")}</h2>
           </div>
         </Reveal>
 
@@ -184,18 +189,18 @@ function FeaturedTrio() {
                   loading={i === 0 ? "eager" : "lazy"}
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-walnut/40 to-transparent" aria-hidden />
+                <div
+                  className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-walnut/40 to-transparent"
+                  aria-hidden
+                />
               </a>
             </Reveal>
           ))}
         </div>
-
       </div>
     </section>
   );
 }
-
-
 
 function HowItWorks() {
   const { t } = useT();
@@ -256,8 +261,6 @@ function Occasions() {
     return imageFor(occasion);
   };
 
-
-
   return (
     <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-10 lg:py-28">
       <Reveal>
@@ -266,7 +269,10 @@ function Occasions() {
             <p className="eyebrow">{t("occasions.eyebrow")}</p>
             <h2 className="mt-3 font-serif text-3xl text-walnut sm:text-4xl lg:text-5xl">{t("occasions.title")}</h2>
           </div>
-          <Link to="/shop" className="hidden text-sm font-medium text-walnut underline-offset-4 hover:underline sm:inline-flex">
+          <Link
+            to="/shop"
+            className="hidden text-sm font-medium text-walnut underline-offset-4 hover:underline sm:inline-flex"
+          >
             {t("shop.title")} →
           </Link>
         </div>
@@ -288,7 +294,10 @@ function Occasions() {
                 height={1000}
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-walnut/80 via-walnut/10 to-transparent" aria-hidden />
+              <div
+                className="absolute inset-0 bg-gradient-to-t from-walnut/80 via-walnut/10 to-transparent"
+                aria-hidden
+              />
               <div className="absolute inset-x-0 bottom-0 p-5">
                 <p className="eyebrow text-cream/80">Anlass</p>
                 <h3 className="mt-1 font-serif text-2xl text-cream">{t(`occasions.${o}`)}</h3>
@@ -331,7 +340,10 @@ function Bestsellers() {
 
 function ReviewsBlock() {
   const { t, locale } = useT();
-  const { data: reviews } = useSuspenseQuery({ queryKey: ["reviews", "home"], queryFn: () => listReviews({ data: { limit: 12 } }) });
+  const { data: reviews } = useSuspenseQuery({
+    queryKey: ["reviews", "home"],
+    queryFn: () => listReviews({ data: { limit: 12 } }),
+  });
   const [emblaRef] = useEmblaCarousel({ loop: true, align: "start", dragFree: true });
 
   return (
@@ -343,14 +355,17 @@ function ReviewsBlock() {
             <h2 className="mt-3 font-serif text-3xl text-walnut sm:text-4xl lg:text-5xl">{t("reviews.title")}</h2>
             <div className="mt-4 flex items-center gap-3">
               <StarRating value={5} size={18} />
-              <span className="text-sm text-muted-foreground">4,9 / 5 · 3.247 Bewertungen</span>
+              <span className="text-sm text-muted-foreground">4,9 / 5 · 276 Bewertungen</span>
             </div>
           </div>
         </Reveal>
         <div className="mt-12 overflow-hidden" ref={emblaRef}>
           <div className="flex gap-5">
             {reviews.map((r) => (
-              <div key={r.id} className="min-w-[280px] max-w-[340px] flex-[0_0_85%] sm:flex-[0_0_45%] lg:flex-[0_0_30%]">
+              <div
+                key={r.id}
+                className="min-w-[280px] max-w-[340px] flex-[0_0_85%] sm:flex-[0_0_45%] lg:flex-[0_0_30%]"
+              >
                 <div className="h-full rounded-2xl bg-card p-6 ring-1 ring-border/60">
                   <StarRating value={r.rating} size={14} />
                   <p className="mt-4 text-sm leading-relaxed text-foreground/85">
@@ -381,7 +396,14 @@ function Atelier() {
     <section className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-20 sm:px-6 md:grid-cols-2 lg:gap-16 lg:px-10 lg:py-28">
       <Reveal>
         <div className="relative overflow-hidden rounded-[1.5rem] shadow-xl ring-1 ring-border">
-          <img src={atelierImg} alt="Unsere Werkstatt" loading="lazy" width={1400} height={1000} className="block h-auto w-full" />
+          <img
+            src={atelierImg}
+            alt="Unsere Werkstatt"
+            loading="lazy"
+            width={1400}
+            height={1000}
+            className="block h-auto w-full"
+          />
         </div>
       </Reveal>
       <Reveal delay={0.1}>

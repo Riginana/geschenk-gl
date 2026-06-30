@@ -23,7 +23,10 @@ export const en: Dictionary = {
     eyebrow: "How it works",
     title: "Three steps to your keepsake",
     steps: [
-      { title: "Choose a design", text: "Pick from our selection of handcrafted frames and motifs for every occasion." },
+      {
+        title: "Choose a design",
+        text: "Pick from our selection of handcrafted frames and motifs for every occasion.",
+      },
       { title: "Personalize", text: "Name, date, format and material — tailored to your moment." },
       { title: "Receive & gift", text: "We craft with care and ship safely packaged straight to your door." },
     ],
@@ -62,7 +65,7 @@ export const en: Dictionary = {
   },
   reviews: {
     eyebrow: "What our customers say",
-    title: "Over 3,000 happy customers",
+    title: "Over 270 happy customers",
     seeAll: "See all reviews",
   },
   atelier: {
@@ -118,8 +121,10 @@ export const en: Dictionary = {
     delivery: "Shipping & delivery",
     reviewsTitle: "Reviews for this product",
     related: "You may also like",
-    materialsText: "Premium oak from sustainable forestry or heavy 350 g/m² kraft paper. Each piece is individually crafted, finished and refined.",
-    deliveryText: "Production 3–5 business days. Insured DHL shipping. Germany 1–2 business days, EU 3–6 business days.",
+    materialsText:
+      "Premium oak from sustainable forestry or heavy 350 g/m² kraft paper. Each piece is individually crafted, finished and refined.",
+    deliveryText:
+      "Production 3–5 business days. Insured DHL shipping. Germany 1–2 business days, EU 3–6 business days.",
   },
   cart: {
     title: "Your cart",
