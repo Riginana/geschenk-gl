@@ -24,7 +24,11 @@ export type ReviewRow = {
 export const listReviews = createServerFn({ method: "GET" })
   .inputValidator((d) =>
     z
-      .object({ productId: z.string().min(1).max(120).optional(), limit: z.number().int().min(1).max(300).optional() })
+      .object({
+        productId: z.string().min(1).max(120).optional(),
+        occasion: z.string().min(1).max(60).optional(),
+        limit: z.number().int().min(1).max(300).optional(),
+      })
       .parse(d ?? {}),
   )
   .handler(async ({ data }): Promise<ReviewRow[]> => {
@@ -34,13 +38,17 @@ export const listReviews = createServerFn({ method: "GET" })
       .eq("is_published", true)
       .order("created_at", { ascending: false })
       .limit(data.limit ?? 50);
-    if (data.productId) q = q.eq("product_id", data.productId);
+    if (data.productId && data.occasion) {
+      q = q.or(`product_id.eq.${data.productId},occasion.eq.${data.occasion}`);
+    } else if (data.productId) {
+      q = q.eq("product_id", data.productId);
+    } else if (data.occasion) {
+      q = q.eq("occasion", data.occasion);
+    }
     const { data: rows, error } = await q;
     if (error) {
       console.error("[listReviews]", error.message);
       throw new Error("We couldn't load reviews right now. Please try again.");
     }
-    const result = (rows ?? []) as unknown as ReviewRow[];
-    console.log("[listReviews] rows returned:", result.length);
-    return result;
+    return (rows ?? []) as unknown as ReviewRow[];
   });
