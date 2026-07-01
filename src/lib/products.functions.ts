@@ -1,6 +1,8 @@
 import { createServerFn } from "@tanstack/react-start";
+import { createClient } from "@supabase/supabase-js";
 import { z } from "zod";
 import raw from "@/data/etsy-products.json";
+import type { Database } from "@/integrations/supabase/types";
 
 export type ProductRow = {
   id: string;
@@ -35,17 +37,14 @@ type RawEtsy = {
 };
 
 function detectFormats(text: string): string[] {
-  const found = new Set<string>();
   const t = text.toUpperCase();
-  for (const f of ["A3", "A4", "A5"]) {
-    if (new RegExp(`\\b${f}\\b`).test(t) || t.includes(`DIN ${f}`)) found.add(f);
-  }
-  if (found.size === 0) found.add("A4");
-  // Sort A5, A4, A3
-  return ["A5", "A4", "A3"].filter((f) => found.has(f));
+  const found = ["A5", "A4", "A3"].filter(
+    (f) => new RegExp(`\\b${f}\\b`).test(t) || t.includes(`DIN ${f}`),
+  );
+  return found.length ? found : ["A4"];
 }
 
-const PRODUCTS: ProductRow[] = (raw as RawEtsy[]).map((p, i) => ({
+const FALLBACK_PRODUCTS: ProductRow[] = (raw as RawEtsy[]).map((p, i) => ({
   id: p.id,
   slug: p.id,
   name_de: p.title,
@@ -62,12 +61,73 @@ const PRODUCTS: ProductRow[] = (raw as RawEtsy[]).map((p, i) => ({
   inStock: p.inStock ?? true,
 }));
 
+function getSupabase() {
+  return createClient<Database>(
+    process.env.SUPABASE_URL!,
+    process.env.SUPABASE_PUBLISHABLE_KEY!,
+    {
+      auth: {
+        storage: undefined,
+        persistSession: false,
+        autoRefreshToken: false,
+      },
+    },
+  );
+}
+
+type DbProduct = Database["public"]["Tables"]["products"]["Row"];
+
+function mapDbProduct(p: DbProduct, fallbackIdx: number): ProductRow {
+  const fallback = FALLBACK_PRODUCTS.find((f) => f.slug === p.slug);
+  return {
+    id: p.id,
+    slug: p.slug,
+    name_de: p.name_de,
+    name_en: p.name_en,
+    description_de: p.description_de,
+    description_en: p.description_en,
+    base_price_cents: p.base_price_cents,
+    occasion: p.occasion,
+    material: p.material,
+    formats: (p.formats as string[]) ?? ["A4"],
+    images: (p.images as string[]) ?? [],
+    badge: p.badge,
+    tags: fallback?.tags ?? [],
+    inStock: true,
+  };
+}
+
 export const listProducts = createServerFn({ method: "GET" }).handler(
-  async (): Promise<ProductRow[]> => PRODUCTS,
+  async (): Promise<ProductRow[]> => {
+    try {
+      const { data, error } = await getSupabase()
+        .from("products")
+        .select("*")
+        .eq("is_active", true)
+        .order("created_at", { ascending: true });
+      if (error) throw error;
+      if (data && data.length > 0) return data.map((p, i) => mapDbProduct(p, i));
+    } catch (e) {
+      console.error("[listProducts] Supabase failed, using fallback:", e);
+    }
+    return FALLBACK_PRODUCTS;
+  },
 );
 
 export const getProductBySlug = createServerFn({ method: "GET" })
   .inputValidator((d) => z.object({ slug: z.string().min(1).max(120) }).parse(d))
   .handler(async ({ data }): Promise<ProductRow | null> => {
-    return PRODUCTS.find((p) => p.slug === data.slug) ?? null;
+    try {
+      const { data: row, error } = await getSupabase()
+        .from("products")
+        .select("*")
+        .eq("slug", data.slug)
+        .eq("is_active", true)
+        .maybeSingle();
+      if (error) throw error;
+      if (row) return mapDbProduct(row, 0);
+    } catch (e) {
+      console.error("[getProductBySlug] Supabase failed, using fallback:", e);
+    }
+    return FALLBACK_PRODUCTS.find((p) => p.slug === data.slug) ?? null;
   });
