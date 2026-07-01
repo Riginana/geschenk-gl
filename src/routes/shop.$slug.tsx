@@ -207,7 +207,55 @@ function ProductPage() {
           )}
         </div>
       </div>
+
+      <ProductReviews productId={product.id} occasion={product.occasion} />
     </div>
+  );
+}
+
+function ProductReviews({ productId, occasion }: { productId: string; occasion: string }) {
+  const { t, locale } = useT();
+  const { data: reviews } = useSuspenseQuery({
+    queryKey: ["reviews", "product", productId, occasion],
+    queryFn: () => listReviews({ data: { productId, occasion, limit: 12 } }),
+  });
+  if (!reviews.length) return null;
+  const avg = reviews.reduce((s, r) => s + r.rating, 0) / reviews.length;
+  return (
+    <section className="mt-16 border-t border-border pt-12">
+      <Reveal>
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p className="eyebrow">{t("reviews.eyebrow")}</p>
+            <h2 className="mt-2 font-serif text-2xl text-walnut sm:text-3xl">
+              {avg.toFixed(1).replace(".", ",")} <span className="text-brass">★</span>
+              <span className="ml-2 text-sm font-sans text-muted-foreground">
+                ({reviews.length})
+              </span>
+            </h2>
+          </div>
+          <Link to="/bewertungen" className="text-sm text-walnut underline underline-offset-4 hover:text-brass">
+            {t("reviews.seeAll")}
+          </Link>
+        </div>
+      </Reveal>
+      <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {reviews.slice(0, 6).map((r, i) => (
+          <Reveal key={r.id} delay={(i % 6) * 0.04}>
+            <article className="h-full rounded-2xl bg-card p-6 ring-1 ring-border/60">
+              <div className="flex items-center justify-between">
+                <StarRating value={r.rating} />
+                <time className="text-xs text-muted-foreground">{formatDate(r.created_at, locale)}</time>
+              </div>
+              <p className="mt-4 text-sm leading-relaxed text-foreground/85">
+                „{locale === "de" ? r.text_de : r.text_en}"
+              </p>
+              <div className="mt-4 text-xs font-medium text-walnut">{r.customer_name}</div>
+            </article>
+          </Reveal>
+        ))}
+      </div>
+    </section>
   );
 }
 
