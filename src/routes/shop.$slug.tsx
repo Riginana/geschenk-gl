@@ -5,10 +5,12 @@ import { toast } from "sonner";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { Heart, Minus, Plus, ShoppingBag, ArrowLeft } from "lucide-react";
 import { listProducts, type ProductRow } from "@/lib/products.functions";
-import { formatEUR, useT } from "@/i18n";
+import { listReviews } from "@/lib/reviews.functions";
+import { formatEUR, formatDate, useT } from "@/i18n";
 import { useCart } from "@/contexts/cart";
 import { useWishlist } from "@/contexts/wishlist";
 import { Reveal } from "@/components/reveal";
+import { StarRating } from "@/components/star-rating";
 
 const productsQueryOptions = {
   queryKey: ["products"] as const,
