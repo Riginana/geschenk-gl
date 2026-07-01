@@ -25,7 +25,6 @@ import { Route as BestellungBestaetigtRouteImport } from './routes/bestellung-be
 import { Route as AgbRouteImport } from './routes/agb'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ShopSlugRouteImport } from './routes/shop.$slug'
-import { Route as ApiPublicSeedProductsRouteImport } from './routes/api/public/seed-products'
 
 const WunschlisteRoute = WunschlisteRouteImport.update({
   id: '/wunschliste',
@@ -107,11 +106,6 @@ const ShopSlugRoute = ShopSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => ShopRoute,
 } as any)
-const ApiPublicSeedProductsRoute = ApiPublicSeedProductsRouteImport.update({
-  id: '/api/public/seed-products',
-  path: '/api/public/seed-products',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -130,7 +124,6 @@ export interface FileRoutesByFullPath {
   '/widerruf': typeof WiderrufRoute
   '/wunschliste': typeof WunschlisteRoute
   '/shop/$slug': typeof ShopSlugRoute
-  '/api/public/seed-products': typeof ApiPublicSeedProductsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -149,7 +142,6 @@ export interface FileRoutesByTo {
   '/widerruf': typeof WiderrufRoute
   '/wunschliste': typeof WunschlisteRoute
   '/shop/$slug': typeof ShopSlugRoute
-  '/api/public/seed-products': typeof ApiPublicSeedProductsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -169,7 +161,6 @@ export interface FileRoutesById {
   '/widerruf': typeof WiderrufRoute
   '/wunschliste': typeof WunschlisteRoute
   '/shop/$slug': typeof ShopSlugRoute
-  '/api/public/seed-products': typeof ApiPublicSeedProductsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -190,7 +181,6 @@ export interface FileRouteTypes {
     | '/widerruf'
     | '/wunschliste'
     | '/shop/$slug'
-    | '/api/public/seed-products'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -209,7 +199,6 @@ export interface FileRouteTypes {
     | '/widerruf'
     | '/wunschliste'
     | '/shop/$slug'
-    | '/api/public/seed-products'
   id:
     | '__root__'
     | '/'
@@ -228,7 +217,6 @@ export interface FileRouteTypes {
     | '/widerruf'
     | '/wunschliste'
     | '/shop/$slug'
-    | '/api/public/seed-products'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -247,7 +235,6 @@ export interface RootRouteChildren {
   WarenkorbRoute: typeof WarenkorbRoute
   WiderrufRoute: typeof WiderrufRoute
   WunschlisteRoute: typeof WunschlisteRoute
-  ApiPublicSeedProductsRoute: typeof ApiPublicSeedProductsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -364,13 +351,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShopSlugRouteImport
       parentRoute: typeof ShopRoute
     }
-    '/api/public/seed-products': {
-      id: '/api/public/seed-products'
-      path: '/api/public/seed-products'
-      fullPath: '/api/public/seed-products'
-      preLoaderRoute: typeof ApiPublicSeedProductsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
@@ -400,18 +380,7 @@ const rootRouteChildren: RootRouteChildren = {
   WarenkorbRoute: WarenkorbRoute,
   WiderrufRoute: WiderrufRoute,
   WunschlisteRoute: WunschlisteRoute,
-  ApiPublicSeedProductsRoute: ApiPublicSeedProductsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
