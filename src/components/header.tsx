@@ -36,14 +36,14 @@ export function Header() {
         scrolled ? "bg-cream/85 shadow-[0_1px_0_rgba(60,40,20,0.06)] backdrop-blur" : "bg-cream/0"
       }`}
     >
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:h-20 lg:px-10">
-        <Link to="/" className="group flex items-center gap-2">
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:h-24 lg:px-10">
+        <Link to="/" className="group flex items-center gap-3">
           <img
             src={logoAsset.url}
             alt="DigiNutz"
-            className="h-10 w-10 rounded-full object-contain bg-cream transition group-hover:scale-105"
+            className="h-14 w-14 rounded-full object-contain bg-cream transition group-hover:scale-105 lg:h-16 lg:w-16"
           />
-          <span className="hidden font-serif text-lg tracking-tight text-walnut sm:inline">
+          <span className="hidden font-serif text-2xl tracking-tight text-walnut sm:inline lg:text-3xl">
             Digi<span className="text-brass">Nutz</span>
           </span>
         </Link>
