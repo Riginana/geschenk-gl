@@ -156,6 +156,7 @@ function RootComponent() {
               </main>
               <Footer />
             </div>
+            <WhatsAppFloat />
             <Toaster
               position="bottom-right"
               toastOptions={{
