@@ -92,7 +92,7 @@ function ContactPage() {
           <div className="rounded-2xl bg-linen/60 p-6 ring-1 ring-border">
             <h3 className="eyebrow">Atelier</h3>
             <div className="mt-4 space-y-3 text-sm text-walnut">
-              <p className="flex items-center gap-3"><Mail size={16} className="text-brass" /> hallo@lieblingsstueck-atelier.de</p>
+              
               <p className="flex items-center gap-3"><Mail size={16} className="text-brass" /> <a href={`mailto:${CONTACT.email}`} className="hover:text-brass">{CONTACT.email}</a></p>
               <p className="flex items-center gap-3"><Phone size={16} className="text-brass" /> <a href={`tel:${CONTACT.phoneTel}`} className="hover:text-brass">{CONTACT.phoneDisplay}</a></p>
               <p className="text-xs text-muted-foreground">{t("contact.hours")}</p>
