@@ -8,7 +8,7 @@ import { useWishlist } from "@/contexts/wishlist";
 import logoAsset from "@/assets/diginutz-logo.jpeg.asset.json";
 
 export function Header() {
-  const { t } = useT();
+  const { t, locale, setLocale } = useT();
   const { count } = useCart();
   const { ids } = useWishlist();
   const [open, setOpen] = useState(false);
@@ -62,6 +62,16 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-1 sm:gap-2">
+          <button
+            onClick={() => setLocale(locale === "de" ? "en" : "de")}
+            aria-label="Sprache wechseln / Change language"
+            className="flex items-center gap-1 rounded-full border border-border bg-card/60 px-3 py-1.5 text-xs uppercase tracking-widest text-walnut transition hover:bg-card"
+          >
+            <span className={locale === "de" ? "text-walnut" : "text-muted-foreground"}>DE</span>
+            <span className="text-muted-foreground">/</span>
+            <span className={locale === "en" ? "text-walnut" : "text-muted-foreground"}>EN</span>
+          </button>
+
 
           <Link
             to="/wunschliste"

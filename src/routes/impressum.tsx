@@ -11,17 +11,33 @@ export const Route = createFileRoute("/impressum")({
     links: [{ rel: "canonical", href: "/impressum" }],
   }),
   component: () => (
-    <>
-      <LegalPage title="Impressum">
-        <h2>Angaben gemäß § 5 TMG</h2>
-        <p>DigiNutz<br />Inhaber: [Kubanych Susamyrbek uulu]<br />[Am Färberhof 9]<br />[91052 Erlangen]</p>
-        <h2>Kontakt</h2>
-        <p>017624299597<br />diginutz.e@gmail.com</p>
-        <h2>Umsatzsteuer-ID</h2>
-        <p>Umsatzsteuer-Identifikationsnummer gemäß § 27 a UStG: [DE366034898]</p>
-        <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV:</h2>
-        <p>[Kubanych Susamyrbek uulu], Anschrift wie oben.</p>
-      </LegalPage>
-    </>
+    <LegalPage
+      title="Impressum"
+      titleEn="Legal Notice"
+      children={
+        <>
+          <h2>Angaben gemäß § 5 TMG</h2>
+          <p>DigiNutz<br />Inhaber: [Kubanych Susamyrbek uulu]<br />[Am Färberhof 9]<br />[91052 Erlangen]</p>
+          <h2>Kontakt</h2>
+          <p>017624299597<br />diginutz.e@gmail.com</p>
+          <h2>Umsatzsteuer-ID</h2>
+          <p>Umsatzsteuer-Identifikationsnummer gemäß § 27 a UStG: [DE366034898]</p>
+          <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV:</h2>
+          <p>[Kubanych Susamyrbek uulu], Anschrift wie oben.</p>
+        </>
+      }
+      childrenEn={
+        <>
+          <h2>Information according to § 5 TMG</h2>
+          <p>DigiNutz<br />Owner: Kubanych Susamyrbek uulu<br />Am Färberhof 9<br />91052 Erlangen, Germany</p>
+          <h2>Contact</h2>
+          <p>+49 176 24299597<br />diginutz.e@gmail.com</p>
+          <h2>VAT ID</h2>
+          <p>VAT identification number according to § 27a of the German VAT Act: DE366034898</p>
+          <h2>Responsible for content under § 18 (2) MStV</h2>
+          <p>Kubanych Susamyrbek uulu, address as above.</p>
+        </>
+      }
+    />
   ),
 });

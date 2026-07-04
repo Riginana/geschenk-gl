@@ -47,22 +47,74 @@ function detectFormats(text: string): string[] {
   return found.length ? found : ["A4"];
 }
 
-const FALLBACK_PRODUCTS: ProductRow[] = (raw as RawEtsy[]).map((p, i) => ({
-  id: p.id,
-  slug: p.id,
-  name_de: p.title,
-  name_en: p.title,
-  description_de: p.description,
-  description_en: p.description,
-  base_price_cents: Math.round(p.price * 100),
-  occasion: p.occasion,
-  material: p.material,
-  formats: detectFormats(`${p.title} ${p.description}`),
-  images: [p.image],
-  badge: i < 8 ? "bestseller" : i < 16 ? "neu" : null,
-  tags: p.tags ?? [],
-  inStock: p.inStock ?? true,
-}));
+const OCCASION_EN: Record<string, string> = {
+  hochzeit: "Wedding",
+  geburtstag: "Birthday",
+  geburt: "New Baby",
+  taufe: "Baptism",
+  kommunion: "Communion",
+  konfirmation: "Confirmation",
+  firmung: "Catholic Confirmation",
+  abitur: "Graduation",
+  jubilaeum: "Anniversary",
+  ruhestand: "Retirement",
+  weihnachten: "Christmas",
+  einzug: "Housewarming",
+  mutterschutz: "Maternity",
+  ostern: "Easter",
+  jugendweihe: "Youth Ceremony",
+  fuehrerschein: "Driver's License",
+  einschulung: "First Day at School",
+  abschied: "Farewell",
+  sonstiges: "Special Occasion",
+};
+
+const MATERIAL_EN: Record<string, string> = {
+  holz: "real wood",
+  karton: "kraft paper",
+  papier: "premium paper",
+  kraftpapier: "kraft paper",
+};
+
+function translateTitle(occasion: string, material: string, formats: string[]): string {
+  const occ = OCCASION_EN[occasion] || "Special Occasion";
+  const mat = MATERIAL_EN[material] || "wood";
+  const fmt = formats[0] || "A4";
+  return `Personalized ${occ} Money Gift — ${mat} frame ${fmt}, handcrafted by DigiNutz`;
+}
+
+function translateDescription(occasion: string, material: string, formats: string[]): string {
+  const occ = OCCASION_EN[occasion] || "special occasion";
+  const mat = MATERIAL_EN[material] || "premium wood";
+  const fmt = formats.join(" / ") || "A4";
+  return [
+    `This personalized money gift for a ${occ.toLowerCase()} turns cash into a lasting keepsake.`,
+    `Crafted in our small atelier from ${mat}, precisely cut and finished by hand.`,
+    `Available in ${fmt} format and personalized with names, dates and your own dedication — a gift that will be remembered long after the celebration.`,
+    `Production time 3–5 business days. Insured DHL shipping.`,
+  ].join("\n\n");
+}
+
+const FALLBACK_PRODUCTS: ProductRow[] = (raw as RawEtsy[]).map((p, i) => {
+  const formats = detectFormats(`${p.title} ${p.description}`);
+  return {
+    id: p.id,
+    slug: p.id,
+    name_de: p.title,
+    name_en: translateTitle(p.occasion, p.material, formats),
+    description_de: p.description,
+    description_en: translateDescription(p.occasion, p.material, formats),
+    base_price_cents: Math.round(p.price * 100),
+    occasion: p.occasion,
+    material: p.material,
+    formats,
+    images: [p.image],
+    badge: i < 8 ? "bestseller" : i < 16 ? "neu" : null,
+    tags: p.tags ?? [],
+    inStock: p.inStock ?? true,
+  };
+});
+
 
 function getSupabase() {
   return createClient<Database>(
