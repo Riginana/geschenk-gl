@@ -8,7 +8,7 @@ import { useWishlist } from "@/contexts/wishlist";
 import logoAsset from "@/assets/diginutz-logo.jpeg.asset.json";
 
 export function Header() {
-  const { t, locale, setLocale } = useT();
+  const { t } = useT();
   const { count } = useCart();
   const { ids } = useWishlist();
   const [open, setOpen] = useState(false);
@@ -62,15 +62,6 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-1 sm:gap-2">
-          <button
-            onClick={() => setLocale(locale === "de" ? "en" : "de")}
-            aria-label="Sprache wechseln"
-            className="hidden items-center gap-1 rounded-full border border-border bg-card/60 px-3 py-1.5 text-xs uppercase tracking-widest text-walnut transition hover:bg-card sm:flex"
-          >
-            <span className={locale === "de" ? "text-walnut" : "text-muted-foreground"}>DE</span>
-            <span className="text-muted-foreground">/</span>
-            <span className={locale === "en" ? "text-walnut" : "text-muted-foreground"}>EN</span>
-          </button>
 
           <Link
             to="/wunschliste"
@@ -134,14 +125,6 @@ export function Header() {
                   </Link>
                 ))}
               </nav>
-              <button
-                onClick={() => setLocale(locale === "de" ? "en" : "de")}
-                className="mt-4 flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-xs uppercase tracking-widest text-walnut"
-              >
-                <span className={locale === "de" ? "font-medium" : "opacity-50"}>Deutsch</span>
-                <span className="opacity-30">/</span>
-                <span className={locale === "en" ? "font-medium" : "opacity-50"}>English</span>
-              </button>
             </div>
           </motion.div>
         )}
