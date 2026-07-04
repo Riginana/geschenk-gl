@@ -7,6 +7,7 @@ import { Heart, Minus, Plus, ShoppingBag, ArrowLeft } from "lucide-react";
 import { listProducts, type ProductRow } from "@/lib/products.functions";
 import { listReviews } from "@/lib/reviews.functions";
 import { formatEUR, formatDate, useT } from "@/i18n";
+import { de } from "@/i18n/de";
 import { useCart } from "@/contexts/cart";
 import { useWishlist } from "@/contexts/wishlist";
 import { Reveal } from "@/components/reveal";
@@ -16,6 +17,36 @@ const productsQueryOptions = {
   queryKey: ["products"] as const,
   queryFn: () => listProducts(),
 };
+
+function getOccasionLabel(occasion: string): string {
+  const label = (de.occasions as Record<string, string>)[occasion];
+  return label || occasion;
+}
+
+function generateProductMetaDescription(name: string, occasion: string): string {
+  const occasionLabel = getOccasionLabel(occasion);
+
+  const candidates = [
+    `${name} — personalisiertes Geldgeschenk für ${occasionLabel}. Handgefertigt aus Holz & Papier bei DigiNutz.`,
+    `Entdecken Sie ${name} — das perfekte personalisierte Geldgeschenk für ${occasionLabel}. Handgefertigt aus Holz und Papier bei DigiNutz.`,
+    `${name} — einzigartiges Geldgeschenk für ${occasionLabel}. Handgefertigt aus Holz & Papier mit Liebe zum Detail bei DigiNutz.`,
+  ];
+
+  for (const c of candidates) {
+    if (c.length >= 140 && c.length <= 160) return c;
+  }
+
+  const shortest = candidates.reduce((a, b) => (a.length < b.length ? a : b));
+  if (shortest.length > 160) {
+    return shortest.slice(0, 157) + "...";
+  }
+
+  // Pad if still under 140 (unlikely with real product names)
+  let result = shortest;
+  const pad = " Jetzt bei DigiNutz entdecken.";
+  if (result.length + pad.length <= 160) result += pad;
+  return result;
+}
 
 export const Route = createFileRoute("/shop/$slug")({
   loader: async ({ context, params }) => {
@@ -29,15 +60,21 @@ export const Route = createFileRoute("/shop/$slug")({
     const product = loaderData?.product;
     if (!slug) return {};
     const title = product ? `${product.name_de} | DigiNutz` : `Produkt | DigiNutz`;
-    const description = product?.meta_description_de || product?.description_de || "";
+    const description = product
+      ? generateProductMetaDescription(product.name_de, product.occasion)
+      : "";
+    const image = product?.images?.[0] ?? "";
     return {
       meta: [
         { title },
-        ...(description ? [{ name: "description", content: description.slice(0, 300) }] : []),
+        ...(description ? [{ name: "description", content: description }] : []),
         { property: "og:title", content: product?.name_de ?? "Produkt" },
-        ...(description ? [{ property: "og:description", content: description.slice(0, 300) }] : []),
+        ...(description ? [{ property: "og:description", content: description }] : []),
         { property: "og:type", content: "product" },
         { property: "og:url", content: `/shop/${slug}` },
+        ...(image ? [{ property: "og:image", content: image }] : []),
+        ...(description ? [{ name: "twitter:description", content: description }] : []),
+        ...(image ? [{ name: "twitter:image", content: image }] : []),
       ],
       links: [{ rel: "canonical", href: `/shop/${slug}` }],
     };
