@@ -93,15 +93,17 @@ function ContactPage() {
             <h3 className="eyebrow">Atelier</h3>
             <div className="mt-4 space-y-3 text-sm text-walnut">
               <p className="flex items-center gap-3"><Mail size={16} className="text-brass" /> hallo@lieblingsstueck-atelier.de</p>
-              <p className="flex items-center gap-3"><Phone size={16} className="text-brass" /> +49 (0) 30 12345678</p>
+              <p className="flex items-center gap-3"><Mail size={16} className="text-brass" /> <a href={`mailto:${CONTACT.email}`} className="hover:text-brass">{CONTACT.email}</a></p>
+              <p className="flex items-center gap-3"><Phone size={16} className="text-brass" /> <a href={`tel:${CONTACT.phoneTel}`} className="hover:text-brass">{CONTACT.phoneDisplay}</a></p>
               <p className="text-xs text-muted-foreground">{t("contact.hours")}</p>
             </div>
             <h3 className="eyebrow mt-6">{t("contact.follow")}</h3>
             <div className="mt-4 flex gap-3">
-              <a href="https://www.instagram.com/digi.nutz?igsh=d2MzZXU1ZTNqZnpl" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="grid h-10 w-10 place-items-center rounded-full bg-card ring-1 ring-border hover:bg-brass/10"><Instagram size={16} /></a>
+              <a href={CONTACT.instagramUrl} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="grid h-10 w-10 place-items-center rounded-full bg-card ring-1 ring-border hover:bg-brass/10"><Instagram size={16} /></a>
               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="grid h-10 w-10 place-items-center rounded-full bg-card ring-1 ring-border hover:bg-brass/10"><Facebook size={16} /></a>
-              <a href="https://wa.me/4917624299597" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="grid h-10 w-10 place-items-center rounded-full bg-card ring-1 ring-border hover:bg-brass/10"><MessageCircle size={16} /></a>
+              <a href={CONTACT.whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="grid h-10 w-10 place-items-center rounded-full bg-card ring-1 ring-border hover:bg-brass/10"><MessageCircle size={16} /></a>
             </div>
+
           </div>
 
           <div className="overflow-hidden rounded-2xl ring-1 ring-border">
