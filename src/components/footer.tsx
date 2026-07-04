@@ -4,6 +4,8 @@ import { useState } from "react";
 import { useT } from "@/i18n";
 import { useServerFn } from "@tanstack/react-start";
 import { subscribeNewsletter } from "@/lib/contact.functions";
+import { CONTACT } from "@/config/contact";
+
 
 export function Footer() {
   const { t, locale } = useT();
