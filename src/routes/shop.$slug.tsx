@@ -202,22 +202,26 @@ function ProductPage() {
           </p>
 
           <div className="mt-8 space-y-5 rounded-2xl bg-card p-6 ring-1 ring-border/60">
-            <div>
-              <p className="eyebrow mb-2">{t("product.format")}</p>
-              <div className="flex flex-wrap gap-2">
-                {formats.map((f) => (
-                  <button
-                    key={f}
-                    onClick={() => setFormat(f)}
-                    className={`rounded-full border px-4 py-1.5 text-xs transition ${
-                      format === f ? "border-walnut bg-walnut text-cream" : "border-border bg-cream text-walnut"
-                    }`}
-                  >
-                    {f}
-                  </button>
-                ))}
+            {formats.length > 1 && (
+              <div>
+                <p className="eyebrow mb-2">{t("product.format")}</p>
+                <div role="radiogroup" aria-label={t("product.format")} className="flex flex-wrap gap-2">
+                  {formats.map((f) => (
+                    <button
+                      key={f}
+                      role="radio"
+                      aria-checked={format === f}
+                      onClick={() => setFormat(f)}
+                      className={`rounded-full border px-4 py-1.5 text-xs transition ${
+                        format === f ? "border-walnut bg-walnut text-cream" : "border-border bg-cream text-walnut"
+                      }`}
+                    >
+                      {f}
+                    </button>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
             <div>
               <p className="eyebrow mb-2">{t("product.material")}</p>
               <div className="flex flex-wrap gap-2">
