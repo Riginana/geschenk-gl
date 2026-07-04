@@ -7,6 +7,7 @@ import { Heart, Minus, Plus, ShoppingBag, ArrowLeft } from "lucide-react";
 import { listProducts, type ProductRow } from "@/lib/products.functions";
 import { listReviews } from "@/lib/reviews.functions";
 import { formatEUR, formatDate, useT } from "@/i18n";
+import { de } from "@/i18n/de";
 import { useCart } from "@/contexts/cart";
 import { useWishlist } from "@/contexts/wishlist";
 import { Reveal } from "@/components/reveal";
