@@ -72,6 +72,11 @@ export function ProductCard({ p, eager }: { p: ProductRow; eager?: boolean }) {
               {p.badge === "bestseller" ? t("badge.bestseller") : t("badge.neu")}
             </span>
           )}
+          {variantCount > 1 && (
+            <span className="absolute bottom-3 left-3 rounded-full bg-cream/95 px-2.5 py-1 text-[10px] font-medium text-walnut shadow-sm ring-1 ring-border/50 backdrop-blur">
+              +{variantCount - 1} {locale === "de" ? "Varianten" : "variants"}
+            </span>
+          )}
           <button
             type="button"
             aria-label="Wishlist"
