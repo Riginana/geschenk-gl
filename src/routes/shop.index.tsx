@@ -19,7 +19,7 @@ const productsQueryOptions = {
   queryFn: () => listProducts(),
 };
 
-export const Route = createFileRoute("/shop")({
+export const Route = createFileRoute("/shop/")({
   validateSearch: (s) => searchSchema.parse(s),
   loader: ({ context }) => context.queryClient.ensureQueryData(productsQueryOptions),
   head: () => ({
