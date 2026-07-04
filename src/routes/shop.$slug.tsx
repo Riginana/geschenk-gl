@@ -22,14 +22,20 @@ export const Route = createFileRoute("/shop/$slug")({
     const products = await context.queryClient.ensureQueryData(productsQueryOptions);
     const product = products.find((p) => p.slug === params.slug);
     if (!product) throw notFound();
-    return { slug: params.slug };
+    return { slug: params.slug, product };
   },
   head: ({ loaderData, params }) => {
     const slug = loaderData?.slug ?? params?.slug;
+    const product = loaderData?.product;
     if (!slug) return {};
+    const title = product ? `${product.name_de} | DigiNutz` : `Produkt | DigiNutz`;
+    const description = product?.meta_description_de || product?.description_de || "";
     return {
       meta: [
-        { title: `Produkt | DigiNutz` },
+        { title },
+        ...(description ? [{ name: "description", content: description.slice(0, 300) }] : []),
+        { property: "og:title", content: product?.name_de ?? "Produkt" },
+        ...(description ? [{ property: "og:description", content: description.slice(0, 300) }] : []),
         { property: "og:type", content: "product" },
         { property: "og:url", content: `/shop/${slug}` },
       ],
@@ -39,6 +45,7 @@ export const Route = createFileRoute("/shop/$slug")({
   component: ProductPage,
   notFoundComponent: ProductNotFound,
 });
+
 
 function detectFormats(text: string): Array<"A5" | "A4" | "A3"> {
   const out: Array<"A5" | "A4" | "A3"> = [];

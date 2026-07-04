@@ -20,6 +20,9 @@ export type ProductRow = {
   badge: string | null;
   tags: string[];
   inStock: boolean;
+  meta_description_de?: string;
+  meta_description_en?: string;
+
 };
 
 type RawEtsy = {
@@ -94,8 +97,11 @@ function mapDbProduct(p: DbProduct, fallbackIdx: number): ProductRow {
     badge: p.badge,
     tags: fallback?.tags ?? [],
     inStock: true,
+    meta_description_de: (p as unknown as { meta_description_de?: string | null }).meta_description_de ?? undefined,
+    meta_description_en: (p as unknown as { meta_description_en?: string | null }).meta_description_en ?? undefined,
   };
 }
+
 
 export const listProducts = createServerFn({ method: "GET" }).handler(
   async (): Promise<ProductRow[]> => {
