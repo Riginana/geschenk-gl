@@ -1,0 +1,1 @@
+ALTER TABLE public.products ADD COLUMN IF NOT EXISTS meta_description_de TEXT; ALTER TABLE public.products ADD COLUMN IF NOT EXISTS meta_description_en TEXT;

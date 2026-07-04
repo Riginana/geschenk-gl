@@ -119,6 +119,8 @@ export type Database = {
           images: Json
           is_active: boolean
           material: string
+          meta_description_de: string | null
+          meta_description_en: string | null
           name_de: string
           name_en: string
           occasion: string
@@ -135,6 +137,8 @@ export type Database = {
           images?: Json
           is_active?: boolean
           material?: string
+          meta_description_de?: string | null
+          meta_description_en?: string | null
           name_de: string
           name_en: string
           occasion: string
@@ -151,6 +155,8 @@ export type Database = {
           images?: Json
           is_active?: boolean
           material?: string
+          meta_description_de?: string | null
+          meta_description_en?: string | null
           name_de?: string
           name_en?: string
           occasion?: string
