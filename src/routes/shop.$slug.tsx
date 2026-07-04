@@ -18,6 +18,26 @@ const productsQueryOptions = {
   queryFn: () => listProducts(),
 };
 
+function getOccasionLabel(occasion: string): string {
+  const label = (de.occasions as Record<string, string>)[occasion];
+  return label || occasion;
+}
+
+function generateProductMetaDescription(name: string, occasion: string): string {
+  const occasionLabel = getOccasionLabel(occasion);
+  let desc = `${name} — personalisiertes Geldgeschenk für ${occasionLabel}. Handgefertigt aus Holz & Papier bei DigiNutz.`;
+  if (desc.length < 140) {
+    desc = `Entdecken Sie ${name} — das perfekte personalisierte Geldgeschenk für ${occasionLabel}. Handgefertigt aus Holz und Papier bei DigiNutz.`;
+  }
+  if (desc.length > 160) {
+    desc = `${name} — Geldgeschenk für ${occasionLabel} bei DigiNutz.`;
+  }
+  if (desc.length > 160) {
+    desc = desc.slice(0, 157) + "...";
+  }
+  return desc;
+}
+
 export const Route = createFileRoute("/shop/$slug")({
   loader: async ({ context, params }) => {
     const products = await context.queryClient.ensureQueryData(productsQueryOptions);
@@ -30,15 +50,21 @@ export const Route = createFileRoute("/shop/$slug")({
     const product = loaderData?.product;
     if (!slug) return {};
     const title = product ? `${product.name_de} | DigiNutz` : `Produkt | DigiNutz`;
-    const description = product?.meta_description_de || product?.description_de || "";
+    const description = product
+      ? generateProductMetaDescription(product.name_de, product.occasion)
+      : "";
+    const image = product?.images?.[0] ?? "";
     return {
       meta: [
         { title },
-        ...(description ? [{ name: "description", content: description.slice(0, 300) }] : []),
+        ...(description ? [{ name: "description", content: description }] : []),
         { property: "og:title", content: product?.name_de ?? "Produkt" },
-        ...(description ? [{ property: "og:description", content: description.slice(0, 300) }] : []),
+        ...(description ? [{ property: "og:description", content: description }] : []),
         { property: "og:type", content: "product" },
         { property: "og:url", content: `/shop/${slug}` },
+        ...(image ? [{ property: "og:image", content: image }] : []),
+        ...(description ? [{ name: "twitter:description", content: description }] : []),
+        ...(image ? [{ name: "twitter:image", content: image }] : []),
       ],
       links: [{ rel: "canonical", href: `/shop/${slug}` }],
     };
