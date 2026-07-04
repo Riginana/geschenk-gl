@@ -25,17 +25,27 @@ function getOccasionLabel(occasion: string): string {
 
 function generateProductMetaDescription(name: string, occasion: string): string {
   const occasionLabel = getOccasionLabel(occasion);
-  let desc = `${name} — personalisiertes Geldgeschenk für ${occasionLabel}. Handgefertigt aus Holz & Papier bei DigiNutz.`;
-  if (desc.length < 140) {
-    desc = `Entdecken Sie ${name} — das perfekte personalisierte Geldgeschenk für ${occasionLabel}. Handgefertigt aus Holz und Papier bei DigiNutz.`;
+
+  const candidates = [
+    `${name} — personalisiertes Geldgeschenk für ${occasionLabel}. Handgefertigt aus Holz & Papier bei DigiNutz.`,
+    `Entdecken Sie ${name} — das perfekte personalisierte Geldgeschenk für ${occasionLabel}. Handgefertigt aus Holz und Papier bei DigiNutz.`,
+    `${name} — einzigartiges Geldgeschenk für ${occasionLabel}. Handgefertigt aus Holz & Papier mit Liebe zum Detail bei DigiNutz.`,
+  ];
+
+  for (const c of candidates) {
+    if (c.length >= 140 && c.length <= 160) return c;
   }
-  if (desc.length > 160) {
-    desc = `${name} — Geldgeschenk für ${occasionLabel} bei DigiNutz.`;
+
+  const shortest = candidates.reduce((a, b) => (a.length < b.length ? a : b));
+  if (shortest.length > 160) {
+    return shortest.slice(0, 157) + "...";
   }
-  if (desc.length > 160) {
-    desc = desc.slice(0, 157) + "...";
-  }
-  return desc;
+
+  // Pad if still under 140 (unlikely with real product names)
+  let result = shortest;
+  const pad = " Jetzt bei DigiNutz entdecken.";
+  if (result.length + pad.length <= 160) result += pad;
+  return result;
 }
 
 export const Route = createFileRoute("/shop/$slug")({
