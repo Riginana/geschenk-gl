@@ -7,6 +7,8 @@ import { toast } from "sonner";
 import { useT } from "@/i18n";
 import { submitContact } from "@/lib/contact.functions";
 import { Reveal } from "@/components/reveal";
+import { CONTACT } from "@/config/contact";
+
 
 export const Route = createFileRoute("/kontakt")({
   head: () => ({
