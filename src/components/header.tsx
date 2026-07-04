@@ -8,7 +8,7 @@ import { useWishlist } from "@/contexts/wishlist";
 import logoAsset from "@/assets/diginutz-logo.jpeg.asset.json";
 
 export function Header() {
-  const { t } = useT();
+  const { t, locale, setLocale } = useT();
   const { count } = useCart();
   const { ids } = useWishlist();
   const [open, setOpen] = useState(false);
