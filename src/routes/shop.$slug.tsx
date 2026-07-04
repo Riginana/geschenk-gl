@@ -108,20 +108,26 @@ function ProductPage() {
 
   const title = product ? (locale === "de" ? product.name_de : product.name_en) : "";
   const description = product ? (locale === "de" ? product.description_de : product.description_en) : "";
-  const image = product?.images?.[0] ?? "";
+  const images = product?.images ?? [];
 
   const formats = useMemo(() => {
-    if (!product) return ["A5", "A4", "A3"] as const;
-    const f = detectFormats(`${title} ${description}`);
-    return (f.length ? f : (["A5", "A4", "A3"] as const).slice()) as Array<"A5" | "A4" | "A3">;
+    if (!product) return ["A5", "A4", "A3"] as Array<"A5" | "A4" | "A3">;
+    const fromDb = (product.formats ?? []).filter((f): f is "A5" | "A4" | "A3" =>
+      f === "A5" || f === "A4" || f === "A3",
+    );
+    if (fromDb.length) return fromDb;
+    const detected = detectFormats(`${title} ${description}`);
+    return detected.length ? detected : (["A5", "A4", "A3"] as Array<"A5" | "A4" | "A3">);
   }, [product, title, description]);
 
   const [format, setFormat] = useState<string>(formats[0]);
   const [frame, setFrame] = useState<string>(product?.material || "holz");
   const [qty, setQty] = useState(1);
+  const [activeImage, setActiveImage] = useState(0);
 
   if (!product) return <ProductNotFound />;
 
+  const image = images[activeImage] ?? images[0] ?? "";
   const basePrice = product.base_price_cents / 100;
   const unitPrice = basePrice + (PRICE_BY_FORMAT[format] ?? 0) + (PRICE_BY_FRAME[frame] ?? 0);
   const unitCents = Math.round(unitPrice * 100);
@@ -152,11 +158,33 @@ function ProductPage() {
 
       <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
         <Reveal>
-          <div className="relative aspect-square overflow-hidden rounded-2xl bg-linen ring-1 ring-border">
-            <img src={image} alt={title} className="h-full w-full object-cover" />
-            <span className="absolute left-4 top-4 rounded-full bg-walnut/90 px-3 py-1 text-[10px] font-medium uppercase tracking-widest text-cream">
-              {t(`occasions.${product.occasion}`) || product.occasion}
-            </span>
+          <div>
+            <div className="relative aspect-square overflow-hidden rounded-2xl bg-linen ring-1 ring-border">
+              <img src={image} alt={title} className="h-full w-full object-cover" />
+              <span className="absolute left-4 top-4 rounded-full bg-walnut/90 px-3 py-1 text-[10px] font-medium uppercase tracking-widest text-cream">
+                {t(`occasions.${product.occasion}`) || product.occasion}
+              </span>
+            </div>
+            {images.length > 1 && (
+              <div className="mt-3 grid grid-cols-5 gap-2 sm:grid-cols-6">
+                {images.map((src, i) => (
+                  <button
+                    key={`${src}-${i}`}
+                    type="button"
+                    onClick={() => setActiveImage(i)}
+                    aria-label={`${title} — ${i + 1}`}
+                    aria-current={i === activeImage}
+                    className={`relative aspect-square overflow-hidden rounded-lg bg-linen ring-1 transition ${
+                      i === activeImage
+                        ? "ring-2 ring-walnut"
+                        : "ring-border hover:ring-walnut/50"
+                    }`}
+                  >
+                    <img src={src} alt="" className="h-full w-full object-cover" loading="lazy" />
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         </Reveal>
 
@@ -174,22 +202,26 @@ function ProductPage() {
           </p>
 
           <div className="mt-8 space-y-5 rounded-2xl bg-card p-6 ring-1 ring-border/60">
-            <div>
-              <p className="eyebrow mb-2">{t("product.format")}</p>
-              <div className="flex flex-wrap gap-2">
-                {formats.map((f) => (
-                  <button
-                    key={f}
-                    onClick={() => setFormat(f)}
-                    className={`rounded-full border px-4 py-1.5 text-xs transition ${
-                      format === f ? "border-walnut bg-walnut text-cream" : "border-border bg-cream text-walnut"
-                    }`}
-                  >
-                    {f}
-                  </button>
-                ))}
+            {formats.length > 1 && (
+              <div>
+                <p className="eyebrow mb-2">{t("product.format")}</p>
+                <div role="radiogroup" aria-label={t("product.format")} className="flex flex-wrap gap-2">
+                  {formats.map((f) => (
+                    <button
+                      key={f}
+                      role="radio"
+                      aria-checked={format === f}
+                      onClick={() => setFormat(f)}
+                      className={`rounded-full border px-4 py-1.5 text-xs transition ${
+                        format === f ? "border-walnut bg-walnut text-cream" : "border-border bg-cream text-walnut"
+                      }`}
+                    >
+                      {f}
+                    </button>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
             <div>
               <p className="eyebrow mb-2">{t("product.material")}</p>
               <div className="flex flex-wrap gap-2">

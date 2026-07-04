@@ -15,7 +15,8 @@ export function ProductCard({ p, eager }: { p: ProductRow; eager?: boolean }) {
   const liked = has(p.id);
   const name = locale === "de" ? p.name_de : p.name_en;
   const img = p.images?.[0] || imageFor(p.occasion);
-  const hoverImg = p.hoverImage;
+  const variantCount = p.images?.length ?? 0;
+  const hoverImg = p.hoverImage ?? (variantCount > 1 ? p.images?.[1] : undefined);
 
   const onQuickAdd = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -69,6 +70,11 @@ export function ProductCard({ p, eager }: { p: ProductRow; eager?: boolean }) {
           {p.badge && (
             <span className="absolute left-3 top-3 rounded-full bg-walnut/90 px-3 py-1 text-[10px] font-medium uppercase tracking-widest text-cream">
               {p.badge === "bestseller" ? t("badge.bestseller") : t("badge.neu")}
+            </span>
+          )}
+          {variantCount > 1 && (
+            <span className="absolute bottom-3 left-3 rounded-full bg-cream/95 px-2.5 py-1 text-[10px] font-medium text-walnut shadow-sm ring-1 ring-border/50 backdrop-blur">
+              +{variantCount - 1} {locale === "de" ? "Varianten" : "variants"}
             </span>
           )}
           <button
