@@ -17,6 +17,7 @@ import { CartProvider } from "@/contexts/cart";
 import { WishlistProvider } from "@/contexts/wishlist";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { WhatsAppFloat } from "@/components/whatsapp-float";
 
 function NotFoundComponent() {
   return (
