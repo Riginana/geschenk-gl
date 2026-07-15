@@ -43,8 +43,8 @@ export function ProductCard({ p, eager }: { p: ProductRow; eager?: boolean }) {
       className="group relative"
     >
       <Link
-        to="/shop/$slug"
-        params={{ slug: p.slug }}
+        to="/product/$id"
+        params={{ id: p.id }}
         className="block overflow-hidden rounded-2xl bg-card shadow-[0_1px_2px_rgba(0,0,0,0.04)] ring-1 ring-border/60 transition-shadow duration-300 group-hover:shadow-[0_24px_50px_-24px_rgba(60,40,20,0.25)]"
       >
         <div className="relative aspect-[4/5] overflow-hidden bg-linen">
