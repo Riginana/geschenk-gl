@@ -29,7 +29,7 @@ type RealProduct = {
   description: string;
   price: number;
   currency: string;
-  url: string;
+  slug: string;
   quantity?: number;
   tags?: string[];
   materials?: string[];
