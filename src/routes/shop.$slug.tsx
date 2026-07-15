@@ -51,9 +51,9 @@ function generateProductMetaDescription(name: string, occasion: string): string 
 export const Route = createFileRoute("/shop/$slug")({
   loader: async ({ context, params }) => {
     const products = await context.queryClient.ensureQueryData(productsQueryOptions);
-    const product = products.find((p) => p.slug === params.slug);
+    const product = products.find((p) => p.slug === params.slug || p.id === params.slug);
     if (!product) throw notFound();
-    return { slug: params.slug, product };
+    return { slug: product.slug, product };
   },
   head: ({ loaderData, params }) => {
     const slug = loaderData?.slug ?? params?.slug;
