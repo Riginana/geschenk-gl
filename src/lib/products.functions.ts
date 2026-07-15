@@ -88,7 +88,7 @@ const PRODUCTS: ProductRow[] = (realData.products as RealProduct[]).map((p, i) =
     .filter(Boolean);
   return {
     id: `etsy-${p.listing_id}`,
-    slug: `etsy-${p.listing_id}`,
+    slug: p.slug,
     name_de: p.title,
     name_en: p.title,
     description_de: p.description,
@@ -102,7 +102,6 @@ const PRODUCTS: ProductRow[] = (realData.products as RealProduct[]).map((p, i) =
     badge: i < 8 ? "bestseller" : i < 16 ? "neu" : null,
     tags: p.tags ?? [],
     inStock: (p.quantity ?? 1) > 0,
-    etsyUrl: p.url,
   };
 });
 
