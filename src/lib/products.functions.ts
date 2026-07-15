@@ -18,7 +18,7 @@ export type ProductRow = {
   badge: string | null;
   tags: string[];
   inStock: boolean;
-  etsyUrl?: string;
+
   meta_description_de?: string;
   meta_description_en?: string;
 };
