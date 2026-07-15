@@ -35,64 +35,6 @@ export function ProductCard({ p, eager }: { p: ProductRow; eager?: boolean }) {
     toast.success(t("product.addedToCart"), { description: `${name.slice(0, 60)} · ${format}` });
   };
 
-  const isExternal = Boolean(p.etsyUrl);
-
-  const cardInner = (
-    <>
-      <div className="relative aspect-[4/5] overflow-hidden bg-linen">
-        <img
-          src={img}
-          alt={name}
-          width={1024}
-          height={1280}
-          loading={eager ? "eager" : "lazy"}
-          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-        />
-        {hoverImg && (
-          <img
-            src={hoverImg}
-            alt=""
-            aria-hidden
-            width={1024}
-            height={1280}
-            loading="lazy"
-            className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-          />
-        )}
-        {p.badge && (
-          <span className="absolute left-3 top-3 rounded-full bg-walnut/90 px-3 py-1 text-[10px] font-medium uppercase tracking-widest text-cream">
-            {p.badge === "bestseller" ? t("badge.bestseller") : t("badge.neu")}
-          </span>
-        )}
-      </div>
-      <div className="space-y-1 px-4 py-4">
-        <p className="eyebrow">{t(`occasions.${p.occasion}`)}</p>
-        <h3 className="line-clamp-2 font-serif text-lg text-walnut">{name}</h3>
-        <p className="pt-1 text-sm">
-          <span className="font-medium text-foreground">{formatEUR(p.base_price_cents, locale)}</span>
-        </p>
-      </div>
-    </>
-  );
-
-  if (isExternal) {
-    return (
-      <motion.div
-        whileHover={{ y: -4 }}
-        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-        className="group relative"
-      >
-        <a
-          href={p.etsyUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block overflow-hidden rounded-2xl bg-card shadow-[0_1px_2px_rgba(0,0,0,0.04)] ring-1 ring-border/60 transition-shadow duration-300 group-hover:shadow-[0_24px_50px_-24px_rgba(60,40,20,0.25)]"
-        >
-          {cardInner}
-        </a>
-      </motion.div>
-    );
-  }
 
   return (
     <motion.div
