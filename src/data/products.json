@@ -7,7 +7,7 @@
       "name_en": "Ostern Rabbit3",
       "description_de": "Personalisiertes Geschenk zum Thema Ostern - Motiv rabbit3",
       "description_en": "Personalisiertes Geschenk zum Thema Ostern - Motiv rabbit3",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "ostern",
       "material": "holz",
       "material_label": "Geschenk",
@@ -27,7 +27,8 @@
         "ostern",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "other"
     },
     {
       "id": "design-ostern-ostern-geschenk-rabbit",
@@ -36,7 +37,7 @@
       "name_en": "Ostern Rabbit",
       "description_de": "Personalisiertes Geschenk zum Thema Ostern - Motiv rabbit",
       "description_en": "Personalisiertes Geschenk zum Thema Ostern - Motiv rabbit",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "ostern",
       "material": "holz",
       "material_label": "Geschenk",
@@ -56,7 +57,8 @@
         "ostern",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "other"
     },
     {
       "id": "design-ostern-ostern-geschenk-rabbit2",
@@ -65,7 +67,7 @@
       "name_en": "Ostern Rabbit2",
       "description_de": "Personalisiertes Geschenk zum Thema Ostern - Motiv rabbit2",
       "description_en": "Personalisiertes Geschenk zum Thema Ostern - Motiv rabbit2",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "ostern",
       "material": "holz",
       "material_label": "Geschenk",
@@ -86,7 +88,8 @@
         "ostern",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "other"
     },
     {
       "id": "design-ostern-ostern-geschenk-personalisierte-ostern-geldgeschenk",
@@ -95,7 +98,7 @@
       "name_en": "Ostern Personalisierte Ostern Geldgeschenk",
       "description_de": "Personalisiertes Geschenk zum Thema Ostern - Motiv personalisierte ostern geldgeschenk",
       "description_en": "Personalisiertes Geschenk zum Thema Ostern - Motiv personalisierte ostern geldgeschenk",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "ostern",
       "material": "holz",
       "material_label": "Geschenk",
@@ -116,7 +119,8 @@
         "ostern",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "other"
     },
     {
       "id": "design-geburtstag-geburtstag-bilderrahmen-birthday-60",
@@ -125,12 +129,14 @@
       "name_en": "Bilderrahmen Geburtstag Birthday 60",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv birthday 60",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv birthday 60",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "geburtstag",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/geburtstag/product/geburtstag-bilderrahmen-birthday-60-01.webp",
@@ -145,7 +151,8 @@
         "geburtstag",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-geburtstag-geburtstag-bilderrahmen-mobilwagen",
@@ -154,12 +161,14 @@
       "name_en": "Bilderrahmen Geburtstag Mobilwagen",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv mobilwagen",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv mobilwagen",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "geburtstag",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/geburtstag/product/geburtstag-bilderrahmen-mobilwagen-01.webp",
@@ -174,7 +183,8 @@
         "geburtstag",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-geburtstag-geburtstag-bilderrahmen-bitrhday-18",
@@ -183,12 +193,14 @@
       "name_en": "Bilderrahmen Geburtstag Bitrhday 18",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv bitrhday 18",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv bitrhday 18",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "geburtstag",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/geburtstag/product/geburtstag-bilderrahmen-bitrhday-18-01.webp",
@@ -203,7 +215,8 @@
         "geburtstag",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-geburtstag-geburtstag-bilderrahmen-birthday-70",
@@ -212,12 +225,14 @@
       "name_en": "Bilderrahmen Geburtstag Birthday 70",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv birthday 70",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv birthday 70",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "geburtstag",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/geburtstag/product/geburtstag-bilderrahmen-birthday-70-01.webp",
@@ -232,7 +247,8 @@
         "geburtstag",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-geburtstag-geburtstag-bilderrahmen-birthday-18-2",
@@ -241,12 +257,14 @@
       "name_en": "Bilderrahmen Geburtstag Birthday 18 2",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv birthday 18 2",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv birthday 18 2",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "geburtstag",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/geburtstag/product/geburtstag-bilderrahmen-birthday-18-2-01.webp",
@@ -262,7 +280,8 @@
         "geburtstag",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-geburtstag-geburtstag-bilderrahmen-million2",
@@ -271,12 +290,14 @@
       "name_en": "Bilderrahmen Geburtstag Million2",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv million2",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv million2",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "geburtstag",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/geburtstag/product/geburtstag-bilderrahmen-million2-01.webp",
@@ -292,7 +313,8 @@
         "geburtstag",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-geburtstag-geburtstag-bilderrahmen-controller2",
@@ -301,12 +323,14 @@
       "name_en": "Bilderrahmen Geburtstag Controller2",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv controller2",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv controller2",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "geburtstag",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/geburtstag/product/geburtstag-bilderrahmen-controller2-01.webp",
@@ -321,7 +345,8 @@
         "geburtstag",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-geburtstag-geburtstag-bilderrahmen-birthday-90",
@@ -330,12 +355,14 @@
       "name_en": "Bilderrahmen Geburtstag Birthday 90",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv birthday 90",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv birthday 90",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "geburtstag",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/geburtstag/product/geburtstag-bilderrahmen-birthday-90-01.webp",
@@ -349,7 +376,8 @@
         "geburtstag",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-geburtstag-geburtstag-bilderrahmen-million",
@@ -358,12 +386,14 @@
       "name_en": "Bilderrahmen Geburtstag Million",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv million",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv million",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "geburtstag",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/geburtstag/product/geburtstag-bilderrahmen-million-01.webp",
@@ -377,7 +407,8 @@
         "geburtstag",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-geburtstag-geburtstag-bilderrahmen-birthday-80",
@@ -386,12 +417,14 @@
       "name_en": "Bilderrahmen Geburtstag Birthday 80",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv birthday 80",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv birthday 80",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "geburtstag",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/geburtstag/product/geburtstag-bilderrahmen-birthday-80-01.webp",
@@ -410,7 +443,8 @@
         "geburtstag",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-geburtstag-geburtstag-bilderrahmen-birthday-30-2",
@@ -419,12 +453,14 @@
       "name_en": "Bilderrahmen Geburtstag Birthday 30 2",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv birthday 30 2",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv birthday 30 2",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "geburtstag",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/geburtstag/product/geburtstag-bilderrahmen-birthday-30-2-01.webp",
@@ -439,7 +475,8 @@
         "geburtstag",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-geburtstag-geburtstag-bilderrahmen-nichts",
@@ -448,12 +485,14 @@
       "name_en": "Bilderrahmen Geburtstag Nichts",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv nichts",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv nichts",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "geburtstag",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/geburtstag/product/geburtstag-bilderrahmen-nichts-01.webp",
@@ -469,7 +508,8 @@
         "geburtstag",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-geburtstag-geburtstag-bilderrahmen-birthday-30",
@@ -478,12 +518,14 @@
       "name_en": "Bilderrahmen Geburtstag Birthday 30",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv birthday 30",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv birthday 30",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "geburtstag",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/geburtstag/product/geburtstag-bilderrahmen-birthday-30-01.webp"
@@ -496,7 +538,8 @@
         "geburtstag",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-geburtstag-geburtstag-bilderrahmen-rucksack",
@@ -505,12 +548,14 @@
       "name_en": "Bilderrahmen Geburtstag Rucksack",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv rucksack",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv rucksack",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "geburtstag",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/geburtstag/product/geburtstag-bilderrahmen-rucksack-01.webp",
@@ -526,7 +571,8 @@
         "geburtstag",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-geburtstag-geburtstag-bilderrahmen-map",
@@ -535,12 +581,14 @@
       "name_en": "Bilderrahmen Geburtstag Map",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv map",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv map",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "geburtstag",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/geburtstag/product/geburtstag-bilderrahmen-map-01.webp",
@@ -556,7 +604,8 @@
         "geburtstag",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-geburtstag-geburtstag-bilderrahmen-birthday-20",
@@ -565,12 +614,14 @@
       "name_en": "Bilderrahmen Geburtstag Birthday 20",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv birthday 20",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv birthday 20",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "geburtstag",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/geburtstag/product/geburtstag-bilderrahmen-birthday-20-01.webp",
@@ -584,7 +635,8 @@
         "geburtstag",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-geburtstag-geburtstag-bilderrahmen-torte",
@@ -593,12 +645,14 @@
       "name_en": "Bilderrahmen Geburtstag Torte",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv torte",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv torte",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "geburtstag",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/geburtstag/product/geburtstag-bilderrahmen-torte-01.webp",
@@ -618,7 +672,8 @@
         "geburtstag",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-geburtstag-geburtstag-bilderrahmen-controller",
@@ -627,12 +682,14 @@
       "name_en": "Bilderrahmen Geburtstag Controller",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv controller",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv controller",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "geburtstag",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/geburtstag/product/geburtstag-bilderrahmen-controller-01.webp",
@@ -652,7 +709,8 @@
         "geburtstag",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-geburtstag-geburtstag-bilderrahmen-birthday-40",
@@ -661,12 +719,14 @@
       "name_en": "Bilderrahmen Geburtstag Birthday 40",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv birthday 40",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv birthday 40",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "geburtstag",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/geburtstag/product/geburtstag-bilderrahmen-birthday-40-01.webp",
@@ -683,7 +743,8 @@
         "geburtstag",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-geburtstag-geburtstag-bilderrahmen-nix-blau",
@@ -692,12 +753,14 @@
       "name_en": "Bilderrahmen Geburtstag Nix Blau",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv nix blau",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv nix blau",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "geburtstag",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/geburtstag/product/geburtstag-bilderrahmen-nix-blau-01.webp",
@@ -712,7 +775,8 @@
         "geburtstag",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-geburtstag-geburtstag-bilderrahmen-horoskop",
@@ -721,12 +785,14 @@
       "name_en": "Bilderrahmen Geburtstag Horoskop",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv horoskop",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv horoskop",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "geburtstag",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/geburtstag/product/geburtstag-bilderrahmen-horoskop-01.webp",
@@ -743,7 +809,8 @@
         "geburtstag",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-geburtstag-geburtstag-bilderrahmen-travel",
@@ -752,12 +819,14 @@
       "name_en": "Bilderrahmen Geburtstag Travel",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv travel",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv travel",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "geburtstag",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/geburtstag/product/geburtstag-bilderrahmen-travel-01.webp",
@@ -773,7 +842,8 @@
         "geburtstag",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-geburtstag-geburtstag-bilderrahmen-nix",
@@ -782,12 +852,14 @@
       "name_en": "Bilderrahmen Geburtstag Nix",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv nix",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv nix",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "geburtstag",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/geburtstag/product/geburtstag-bilderrahmen-nix-01.webp",
@@ -802,7 +874,8 @@
         "geburtstag",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-geburtstag-geburtstag-holzschild-flower",
@@ -811,7 +884,7 @@
       "name_en": "Holzschild Geburtstag Flower",
       "description_de": "Personalisiertes Holzschild Geschenk zum Thema Geburtstag - Motiv flower",
       "description_en": "Personalisiertes Holzschild Geschenk zum Thema Geburtstag - Motiv flower",
-      "base_price_cents": 1600,
+      "base_price_cents": 1500,
       "occasion": "geburtstag",
       "material": "holz",
       "material_label": "Holzschild",
@@ -835,7 +908,8 @@
         "geburtstag",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "holzschild"
     },
     {
       "id": "design-geburtstag-geburtstag-holzbox-heart",
@@ -844,7 +918,7 @@
       "name_en": "Holzbox Geburtstag Heart",
       "description_de": "Personalisiertes Holzbox Geschenk zum Thema Geburtstag - Motiv heart",
       "description_en": "Personalisiertes Holzbox Geschenk zum Thema Geburtstag - Motiv heart",
-      "base_price_cents": 1600,
+      "base_price_cents": 2600,
       "occasion": "geburtstag",
       "material": "holz",
       "material_label": "Holzbox",
@@ -869,7 +943,8 @@
         "geburtstag",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "holzbox"
     },
     {
       "id": "design-geburtstag-geburtstag-bilderrahmen-birthday-18-hdf",
@@ -878,12 +953,14 @@
       "name_en": "Bilderrahmen Geburtstag Birthday 18 Hdf",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv birthday-18-hdf",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv birthday-18-hdf",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "geburtstag",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/geburtstag/product/geburtstag-bilderrahmen-birthday-18-hdf-01.webp",
@@ -903,7 +980,8 @@
         "geburtstag",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-geburtstag-geburtstag-bilderrahmen-heart",
@@ -912,12 +990,14 @@
       "name_en": "Bilderrahmen Geburtstag Heart",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv heart",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Geburtstag - Motiv heart",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "geburtstag",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/geburtstag/product/geburtstag-bilderrahmen-heart-01.webp",
@@ -931,7 +1011,8 @@
         "geburtstag",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-ruhestand-rente-bilderrahmen-map2",
@@ -940,12 +1021,14 @@
       "name_en": "Bilderrahmen Rente Map2",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Rente - Motiv map2",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Rente - Motiv map2",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "ruhestand",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/ruhestand/product/rente-bilderrahmen-map2-01.webp",
@@ -965,7 +1048,8 @@
         "ruhestand",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-ruhestand-rente-bilderrahmen-danke",
@@ -974,12 +1058,14 @@
       "name_en": "Bilderrahmen Rente Danke",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Rente - Motiv danke",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Rente - Motiv danke",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "ruhestand",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/ruhestand/product/rente-bilderrahmen-danke-01.webp",
@@ -996,7 +1082,8 @@
         "ruhestand",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-ruhestand-rente-bilderrahmen-schiff",
@@ -1005,12 +1092,14 @@
       "name_en": "Bilderrahmen Rente Schiff",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Rente - Motiv schiff",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Rente - Motiv schiff",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "ruhestand",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/ruhestand/product/rente-bilderrahmen-schiff-01.webp",
@@ -1032,7 +1121,8 @@
         "ruhestand",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-ruhestand-rente-bilderrahmen-map",
@@ -1041,12 +1131,14 @@
       "name_en": "Bilderrahmen Rente Map",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Rente - Motiv map",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Rente - Motiv map",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "ruhestand",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/ruhestand/product/rente-bilderrahmen-map-01.webp",
@@ -1066,7 +1158,8 @@
         "ruhestand",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-geburt-baby-geschenk-stork",
@@ -1075,7 +1168,7 @@
       "name_en": "Baby Stork",
       "description_de": "Personalisiertes Geschenk zum Thema Baby - Motiv stork",
       "description_en": "Personalisiertes Geschenk zum Thema Baby - Motiv stork",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "geburt",
       "material": "holz",
       "material_label": "Geschenk",
@@ -1096,7 +1189,8 @@
         "geburt",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "other"
     },
     {
       "id": "design-geburt-baby-geschenk-dino2",
@@ -1105,7 +1199,7 @@
       "name_en": "Baby Dino2",
       "description_de": "Personalisiertes Geschenk zum Thema Baby - Motiv dino2",
       "description_en": "Personalisiertes Geschenk zum Thema Baby - Motiv dino2",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "geburt",
       "material": "holz",
       "material_label": "Geschenk",
@@ -1129,7 +1223,8 @@
         "geburt",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "other"
     },
     {
       "id": "design-geburt-baby-geschenk-stroller",
@@ -1138,7 +1233,7 @@
       "name_en": "Baby Stroller",
       "description_de": "Personalisiertes Geschenk zum Thema Baby - Motiv stroller",
       "description_en": "Personalisiertes Geschenk zum Thema Baby - Motiv stroller",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "geburt",
       "material": "holz",
       "material_label": "Geschenk",
@@ -1158,7 +1253,8 @@
         "geburt",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "other"
     },
     {
       "id": "design-geburt-baby-geschenk-dino",
@@ -1167,7 +1263,7 @@
       "name_en": "Baby Dino",
       "description_de": "Personalisiertes Geschenk zum Thema Baby - Motiv dino",
       "description_en": "Personalisiertes Geschenk zum Thema Baby - Motiv dino",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "geburt",
       "material": "holz",
       "material_label": "Geschenk",
@@ -1186,7 +1282,8 @@
         "geburt",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "other"
     },
     {
       "id": "design-geburt-baby-geschenk-bear",
@@ -1195,7 +1292,7 @@
       "name_en": "Baby Bear",
       "description_de": "Personalisiertes Geschenk zum Thema Baby - Motiv bear",
       "description_en": "Personalisiertes Geschenk zum Thema Baby - Motiv bear",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "geburt",
       "material": "holz",
       "material_label": "Geschenk",
@@ -1213,7 +1310,8 @@
         "geburt",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "other"
     },
     {
       "id": "design-geburt-baby-geschenk-flowers",
@@ -1222,7 +1320,7 @@
       "name_en": "Baby Flowers",
       "description_de": "Personalisiertes Geschenk zum Thema Baby - Motiv flowers",
       "description_en": "Personalisiertes Geschenk zum Thema Baby - Motiv flowers",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "geburt",
       "material": "holz",
       "material_label": "Geschenk",
@@ -1244,7 +1342,8 @@
         "geburt",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "other"
     },
     {
       "id": "design-geburt-baby-geschenk-heels",
@@ -1253,7 +1352,7 @@
       "name_en": "Baby Heels",
       "description_de": "Personalisiertes Geschenk zum Thema Baby - Motiv heels",
       "description_en": "Personalisiertes Geschenk zum Thema Baby - Motiv heels",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "geburt",
       "material": "holz",
       "material_label": "Geschenk",
@@ -1275,7 +1374,8 @@
         "geburt",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "other"
     },
     {
       "id": "design-geburt-baby-geschenk-dino-rosa",
@@ -1284,7 +1384,7 @@
       "name_en": "Baby Dino Rosa",
       "description_de": "Personalisiertes Geschenk zum Thema Baby - Motiv dino rosa",
       "description_en": "Personalisiertes Geschenk zum Thema Baby - Motiv dino rosa",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "geburt",
       "material": "holz",
       "material_label": "Geschenk",
@@ -1304,7 +1404,8 @@
         "geburt",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "other"
     },
     {
       "id": "design-abitur-schulabschluss-bilderrahmen-map-abitur",
@@ -1313,12 +1414,14 @@
       "name_en": "Bilderrahmen Schulabschluss Map Abitur",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Schulabschluss - Motiv map abitur",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Schulabschluss - Motiv map abitur",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "abitur",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/abitur/product/schulabschluss-bilderrahmen-map-abitur-01.webp",
@@ -1337,7 +1440,8 @@
         "abitur",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-abitur-schulabschluss-bilderrahmen-abitur-2026",
@@ -1346,12 +1450,14 @@
       "name_en": "Bilderrahmen Schulabschluss Abitur 2026",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Schulabschluss - Motiv abitur 2026",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Schulabschluss - Motiv abitur 2026",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "abitur",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/abitur/product/schulabschluss-bilderrahmen-abitur-2026-01.webp",
@@ -1371,7 +1477,8 @@
         "abitur",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-abitur-schulabschluss-bilderrahmen-abitur",
@@ -1380,12 +1487,14 @@
       "name_en": "Bilderrahmen Schulabschluss Abitur",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Schulabschluss - Motiv abitur",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Schulabschluss - Motiv abitur",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "abitur",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/abitur/product/schulabschluss-bilderrahmen-abitur-01.webp",
@@ -1399,7 +1508,8 @@
         "abitur",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-abitur-schulabschluss-bilderrahmen-map",
@@ -1408,12 +1518,14 @@
       "name_en": "Bilderrahmen Schulabschluss Map",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Schulabschluss - Motiv map",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Schulabschluss - Motiv map",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "abitur",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/abitur/product/schulabschluss-bilderrahmen-map-01.webp",
@@ -1427,7 +1539,8 @@
         "abitur",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-abitur-schulabschluss-bilderrahmen-graduation-2026",
@@ -1436,12 +1549,14 @@
       "name_en": "Bilderrahmen Schulabschluss Graduation 2026",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Schulabschluss - Motiv graduation 2026",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Schulabschluss - Motiv graduation 2026",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "abitur",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/abitur/product/schulabschluss-bilderrahmen-graduation-2026-01.webp",
@@ -1459,7 +1574,8 @@
         "abitur",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-abitur-schulabschluss-bilderrahmen-graduation-2026-2",
@@ -1468,12 +1584,14 @@
       "name_en": "Bilderrahmen Schulabschluss Graduation 2026 2",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Schulabschluss - Motiv graduation 2026 2",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Schulabschluss - Motiv graduation 2026 2",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "abitur",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/abitur/product/schulabschluss-bilderrahmen-graduation-2026-2-01.webp",
@@ -1493,7 +1611,8 @@
         "abitur",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-abitur-schulabschluss-bilderrahmen-school-enrollment",
@@ -1502,12 +1621,14 @@
       "name_en": "Bilderrahmen Schulabschluss School Enrollment",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Schulabschluss - Motiv school enrollment",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Schulabschluss - Motiv school enrollment",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "abitur",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/abitur/product/schulabschluss-bilderrahmen-school-enrollment-01.webp",
@@ -1528,7 +1649,8 @@
         "abitur",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-firmung-firmung-geschenk-bildrahme",
@@ -1537,7 +1659,7 @@
       "name_en": "Firmung Bildrahme",
       "description_de": "Personalisiertes Geschenk zum Thema Firmung - Motiv bildrahme",
       "description_en": "Personalisiertes Geschenk zum Thema Firmung - Motiv bildrahme",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "firmung",
       "material": "holz",
       "material_label": "Geschenk",
@@ -1562,7 +1684,8 @@
         "firmung",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "other"
     },
     {
       "id": "design-firmung-firmung-geschenk-box",
@@ -1571,7 +1694,7 @@
       "name_en": "Firmung Box",
       "description_de": "Personalisiertes Geschenk zum Thema Firmung - Motiv box",
       "description_en": "Personalisiertes Geschenk zum Thema Firmung - Motiv box",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "firmung",
       "material": "holz",
       "material_label": "Geschenk",
@@ -1592,7 +1715,8 @@
         "firmung",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "other"
     },
     {
       "id": "design-firmung-firmung-geschenk-map",
@@ -1601,7 +1725,7 @@
       "name_en": "Firmung Map",
       "description_de": "Personalisiertes Geschenk zum Thema Firmung - Motiv map",
       "description_en": "Personalisiertes Geschenk zum Thema Firmung - Motiv map",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "firmung",
       "material": "holz",
       "material_label": "Geschenk",
@@ -1624,7 +1748,8 @@
         "firmung",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "other"
     },
     {
       "id": "design-taufe-taufe-geschenk-tree",
@@ -1633,7 +1758,7 @@
       "name_en": "Taufe Tree",
       "description_de": "Personalisiertes Geschenk zum Thema Taufe - Motiv tree",
       "description_en": "Personalisiertes Geschenk zum Thema Taufe - Motiv tree",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "taufe",
       "material": "holz",
       "material_label": "Geschenk",
@@ -1656,7 +1781,8 @@
         "taufe",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "other"
     },
     {
       "id": "design-taufe-taufe-geschenk-schiebbox",
@@ -1665,7 +1791,7 @@
       "name_en": "Taufe Schiebbox",
       "description_de": "Personalisiertes Geschenk zum Thema Taufe - Motiv schiebbox",
       "description_en": "Personalisiertes Geschenk zum Thema Taufe - Motiv schiebbox",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "taufe",
       "material": "holz",
       "material_label": "Geschenk",
@@ -1690,7 +1816,8 @@
         "taufe",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "other"
     },
     {
       "id": "design-taufe-taufe-geschenk-holzplatte",
@@ -1699,7 +1826,7 @@
       "name_en": "Taufe Holzplatte",
       "description_de": "Personalisiertes Geschenk zum Thema Taufe - Motiv holzplatte",
       "description_en": "Personalisiertes Geschenk zum Thema Taufe - Motiv holzplatte",
-      "base_price_cents": 1600,
+      "base_price_cents": 1500,
       "occasion": "taufe",
       "material": "holz",
       "material_label": "Geschenk",
@@ -1726,7 +1853,8 @@
         "taufe",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "holzplatte"
     },
     {
       "id": "design-konfirmation-konfirmation-geschenk-tree",
@@ -1735,7 +1863,7 @@
       "name_en": "Konfirmation Tree",
       "description_de": "Personalisiertes Geschenk zum Thema Konfirmation - Motiv tree",
       "description_en": "Personalisiertes Geschenk zum Thema Konfirmation - Motiv tree",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "konfirmation",
       "material": "holz",
       "material_label": "Geschenk",
@@ -1760,7 +1888,8 @@
         "konfirmation",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "other"
     },
     {
       "id": "design-konfirmation-konfirmation-geschenk-rainbow",
@@ -1769,7 +1898,7 @@
       "name_en": "Konfirmation Rainbow",
       "description_de": "Personalisiertes Geschenk zum Thema Konfirmation - Motiv rainbow",
       "description_en": "Personalisiertes Geschenk zum Thema Konfirmation - Motiv rainbow",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "konfirmation",
       "material": "holz",
       "material_label": "Geschenk",
@@ -1790,7 +1919,8 @@
         "konfirmation",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "other"
     },
     {
       "id": "design-konfirmation-konfirmation-geschenk-box",
@@ -1799,7 +1929,7 @@
       "name_en": "Konfirmation Box",
       "description_de": "Personalisiertes Geschenk zum Thema Konfirmation - Motiv box",
       "description_en": "Personalisiertes Geschenk zum Thema Konfirmation - Motiv box",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "konfirmation",
       "material": "holz",
       "material_label": "Geschenk",
@@ -1824,7 +1954,8 @@
         "konfirmation",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "other"
     },
     {
       "id": "design-kommunion-kommunion-geschenk-pigeon",
@@ -1833,7 +1964,7 @@
       "name_en": "Kommunion Pigeon",
       "description_de": "Personalisiertes Geschenk zum Thema Kommunion - Motiv pigeon",
       "description_en": "Personalisiertes Geschenk zum Thema Kommunion - Motiv pigeon",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "kommunion",
       "material": "holz",
       "material_label": "Geschenk",
@@ -1855,7 +1986,8 @@
         "kommunion",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "other"
     },
     {
       "id": "design-kommunion-kommunion-geschenk-rainbow-bild",
@@ -1864,7 +1996,7 @@
       "name_en": "Kommunion Rainbow Bild",
       "description_de": "Personalisiertes Geschenk zum Thema Kommunion - Motiv rainbow-bild",
       "description_en": "Personalisiertes Geschenk zum Thema Kommunion - Motiv rainbow-bild",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "kommunion",
       "material": "holz",
       "material_label": "Geschenk",
@@ -1891,7 +2023,8 @@
         "kommunion",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "other"
     },
     {
       "id": "design-jugendweihe-jugendweihe-geschenk-tree-bild",
@@ -1900,7 +2033,7 @@
       "name_en": "Jugendweihe Tree Bild",
       "description_de": "Personalisiertes Geschenk zum Thema Jugendweihe - Motiv tree bild",
       "description_en": "Personalisiertes Geschenk zum Thema Jugendweihe - Motiv tree bild",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "jugendweihe",
       "material": "holz",
       "material_label": "Geschenk",
@@ -1924,7 +2057,8 @@
         "jugendweihe",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "other"
     },
     {
       "id": "design-jugendweihe-jugendweihe-geschenk-rainbow-bild",
@@ -1933,7 +2067,7 @@
       "name_en": "Jugendweihe Rainbow Bild",
       "description_de": "Personalisiertes Geschenk zum Thema Jugendweihe - Motiv rainbow bild",
       "description_en": "Personalisiertes Geschenk zum Thema Jugendweihe - Motiv rainbow bild",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "jugendweihe",
       "material": "holz",
       "material_label": "Geschenk",
@@ -1957,7 +2091,8 @@
         "jugendweihe",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "other"
     },
     {
       "id": "design-sonstiges-sonstiges-geschenk-controller",
@@ -1966,7 +2101,7 @@
       "name_en": "Sonstiges Controller",
       "description_de": "Personalisiertes Geschenk zum Thema Sonstiges - Motiv controller",
       "description_en": "Personalisiertes Geschenk zum Thema Sonstiges - Motiv controller",
-      "base_price_cents": 1600,
+      "base_price_cents": 1700,
       "occasion": "sonstiges",
       "material": "holz",
       "material_label": "Geschenk",
@@ -1990,7 +2125,8 @@
         "sonstiges",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "sculpture"
     },
     {
       "id": "design-reise-reise-bilderrahmen-mobil",
@@ -1999,12 +2135,14 @@
       "name_en": "Bilderrahmen Reise Mobil",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Reise - Motiv mobil",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Reise - Motiv mobil",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "reise",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/reise/product/reise-bilderrahmen-mobil-01.webp",
@@ -2020,7 +2158,8 @@
         "reise",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-reise-reise-bilderrahmen-mobil2",
@@ -2029,12 +2168,14 @@
       "name_en": "Bilderrahmen Reise Mobil2",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Reise - Motiv mobil2",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Reise - Motiv mobil2",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "reise",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/reise/product/reise-bilderrahmen-mobil2-01.webp",
@@ -2054,7 +2195,8 @@
         "reise",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-reise-reise-bilderrahmen-map",
@@ -2063,12 +2205,14 @@
       "name_en": "Bilderrahmen Reise Map",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Reise - Motiv map",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Reise - Motiv map",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "reise",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/reise/product/reise-bilderrahmen-map-01.webp",
@@ -2085,7 +2229,8 @@
         "reise",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-reise-reise-bilderrahmen-reise1",
@@ -2094,12 +2239,14 @@
       "name_en": "Bilderrahmen Reise Reise1",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Reise - Motiv reise1",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Reise - Motiv reise1",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "reise",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/reise/product/reise-bilderrahmen-reise1-01.webp",
@@ -2119,7 +2266,8 @@
         "reise",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-reise-reise-holzbox-box",
@@ -2128,7 +2276,7 @@
       "name_en": "Holzbox Reise Box",
       "description_de": "Personalisiertes Holzbox Geschenk zum Thema Reise - Motiv box",
       "description_en": "Personalisiertes Holzbox Geschenk zum Thema Reise - Motiv box",
-      "base_price_cents": 1600,
+      "base_price_cents": 2600,
       "occasion": "reise",
       "material": "holz",
       "material_label": "Holzbox",
@@ -2152,7 +2300,8 @@
         "reise",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "holzbox"
     },
     {
       "id": "design-reise-reise-bilderrahmen-wohnmobil-geldgeschenk",
@@ -2161,12 +2310,14 @@
       "name_en": "Bilderrahmen Reise Wohnmobil Geldgeschenk",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Reise - Motiv wohnmobil geldgeschenk",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Reise - Motiv wohnmobil geldgeschenk",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "reise",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/reise/product/reise-bilderrahmen-wohnmobil-geldgeschenk-01.webp",
@@ -2187,7 +2338,8 @@
         "reise",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-reise-reise-bilderrahmen-weltkarte-geldgeschenk",
@@ -2196,12 +2348,14 @@
       "name_en": "Bilderrahmen Reise Weltkarte Geldgeschenk",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Reise - Motiv weltkarte geldgeschenk",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Reise - Motiv weltkarte geldgeschenk",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "reise",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/reise/product/reise-bilderrahmen-weltkarte-geldgeschenk-01.webp",
@@ -2223,7 +2377,8 @@
         "reise",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-mutterschutz-mutterschutz-bilderrahmen-mutterschutz2",
@@ -2232,12 +2387,14 @@
       "name_en": "Bilderrahmen Mutterschutz Mutterschutz2",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Mutterschutz - Motiv mutterschutz2",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Mutterschutz - Motiv mutterschutz2",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "mutterschutz",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/mutterschutz/product/mutterschutz-bilderrahmen-mutterschutz2-01.webp",
@@ -2253,7 +2410,8 @@
         "mutterschutz",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-mutterschutz-mutterschutz-bilderrahmen-mutterschutz3",
@@ -2262,12 +2420,14 @@
       "name_en": "Bilderrahmen Mutterschutz Mutterschutz3",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Mutterschutz - Motiv mutterschutz3",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Mutterschutz - Motiv mutterschutz3",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "mutterschutz",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/mutterschutz/product/mutterschutz-bilderrahmen-mutterschutz3-01.webp",
@@ -2288,7 +2448,8 @@
         "mutterschutz",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-mutterschutz-mutterschutz-bilderrahmen-mutterschutz",
@@ -2297,12 +2458,14 @@
       "name_en": "Bilderrahmen Mutterschutz Mutterschutz",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Mutterschutz - Motiv mutterschutz",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Mutterschutz - Motiv mutterschutz",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "mutterschutz",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/mutterschutz/product/mutterschutz-bilderrahmen-mutterschutz-01.webp",
@@ -2317,7 +2480,8 @@
         "mutterschutz",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-weihnachten-weihnachten-bilderrahmen-present",
@@ -2326,12 +2490,14 @@
       "name_en": "Bilderrahmen Weihnachten Present",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Weihnachten - Motiv present",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Weihnachten - Motiv present",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "weihnachten",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/weihnachten/product/weihnachten-bilderrahmen-present-01.webp",
@@ -2351,7 +2517,8 @@
         "weihnachten",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-weihnachten-weihnachten-bilderrahmen-tree",
@@ -2360,12 +2527,14 @@
       "name_en": "Bilderrahmen Weihnachten Tree",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Weihnachten - Motiv tree",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Weihnachten - Motiv tree",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "weihnachten",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/weihnachten/product/weihnachten-bilderrahmen-tree-01.webp",
@@ -2383,7 +2552,8 @@
         "weihnachten",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-weihnachten-weihnachten-bilderrahmen-christmas",
@@ -2392,12 +2562,14 @@
       "name_en": "Bilderrahmen Weihnachten Christmas",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Weihnachten - Motiv christmas",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Weihnachten - Motiv christmas",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "weihnachten",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/weihnachten/product/weihnachten-bilderrahmen-christmas-01.webp",
@@ -2411,7 +2583,8 @@
         "weihnachten",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-weihnachten-weihnachten-bilderrahmen-gnome",
@@ -2420,12 +2593,14 @@
       "name_en": "Bilderrahmen Weihnachten Gnome",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Weihnachten - Motiv gnome",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Weihnachten - Motiv gnome",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "weihnachten",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/weihnachten/product/weihnachten-bilderrahmen-gnome-01.webp",
@@ -2445,7 +2620,8 @@
         "weihnachten",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-weihnachten-weihnachten-bilderrahmen-deer",
@@ -2454,12 +2630,14 @@
       "name_en": "Bilderrahmen Weihnachten Deer",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Weihnachten - Motiv deer",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Weihnachten - Motiv deer",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "weihnachten",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/weihnachten/product/weihnachten-bilderrahmen-deer-01.webp",
@@ -2477,7 +2655,8 @@
         "weihnachten",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-weihnachten-weihnachten-bilderrahmen-bell",
@@ -2486,12 +2665,14 @@
       "name_en": "Bilderrahmen Weihnachten Bell",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Weihnachten - Motiv bell",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Weihnachten - Motiv bell",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "weihnachten",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/weihnachten/product/weihnachten-bilderrahmen-bell-01.webp",
@@ -2511,7 +2692,8 @@
         "weihnachten",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-weihnachten-weihnachten-holzschild-flowers",
@@ -2520,7 +2702,7 @@
       "name_en": "Holzschild Weihnachten Flowers",
       "description_de": "Personalisiertes Holzschild Geschenk zum Thema Weihnachten - Motiv flowers",
       "description_en": "Personalisiertes Holzschild Geschenk zum Thema Weihnachten - Motiv flowers",
-      "base_price_cents": 1600,
+      "base_price_cents": 1500,
       "occasion": "weihnachten",
       "material": "holz",
       "material_label": "Holzschild",
@@ -2545,7 +2727,8 @@
         "weihnachten",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "holzschild"
     },
     {
       "id": "design-weihnachten-weihnachten-holzplatte-holzplatte2",
@@ -2554,7 +2737,7 @@
       "name_en": "Holzplatte Weihnachten Holzplatte2",
       "description_de": "Personalisiertes Holzplatte Geschenk zum Thema Weihnachten - Motiv holzplatte2",
       "description_en": "Personalisiertes Holzplatte Geschenk zum Thema Weihnachten - Motiv holzplatte2",
-      "base_price_cents": 1600,
+      "base_price_cents": 1500,
       "occasion": "weihnachten",
       "material": "holz",
       "material_label": "Holzplatte",
@@ -2580,7 +2763,8 @@
         "weihnachten",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "holzplatte"
     },
     {
       "id": "design-weihnachten-weihnachten-holzplatte-nix",
@@ -2589,7 +2773,7 @@
       "name_en": "Holzplatte Weihnachten Nix",
       "description_de": "Personalisiertes Holzplatte Geschenk zum Thema Weihnachten - Motiv nix",
       "description_en": "Personalisiertes Holzplatte Geschenk zum Thema Weihnachten - Motiv nix",
-      "base_price_cents": 1600,
+      "base_price_cents": 1500,
       "occasion": "weihnachten",
       "material": "holz",
       "material_label": "Holzplatte",
@@ -2611,7 +2795,8 @@
         "weihnachten",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "holzplatte"
     },
     {
       "id": "design-weihnachten-weihnachten-schiebebox-tree2",
@@ -2620,7 +2805,7 @@
       "name_en": "Schiebebox Weihnachten Tree2",
       "description_de": "Personalisiertes Schiebebox Geschenk zum Thema Weihnachten - Motiv tree2",
       "description_en": "Personalisiertes Schiebebox Geschenk zum Thema Weihnachten - Motiv tree2",
-      "base_price_cents": 1600,
+      "base_price_cents": 1900,
       "occasion": "weihnachten",
       "material": "holz",
       "material_label": "Schiebebox",
@@ -2643,7 +2828,8 @@
         "weihnachten",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "schiebebox"
     },
     {
       "id": "design-weihnachten-weihnachten-bilderrahmen-weinachten",
@@ -2652,12 +2838,14 @@
       "name_en": "Bilderrahmen Weihnachten Weinachten",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Weihnachten - Motiv weinachten",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Weihnachten - Motiv weinachten",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "weihnachten",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/weihnachten/product/weihnachten-bilderrahmen-weinachten-01.webp",
@@ -2678,7 +2866,8 @@
         "weihnachten",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-weihnachten-weihnachten-holzplatte-holzplatte1",
@@ -2687,7 +2876,7 @@
       "name_en": "Holzplatte Weihnachten Holzplatte1",
       "description_de": "Personalisiertes Holzplatte Geschenk zum Thema Weihnachten - Motiv holzplatte1",
       "description_en": "Personalisiertes Holzplatte Geschenk zum Thema Weihnachten - Motiv holzplatte1",
-      "base_price_cents": 1600,
+      "base_price_cents": 1500,
       "occasion": "weihnachten",
       "material": "holz",
       "material_label": "Holzplatte",
@@ -2714,7 +2903,8 @@
         "weihnachten",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "holzplatte"
     },
     {
       "id": "design-weihnachten-weihnachten-holzplatte-sleigh",
@@ -2723,7 +2913,7 @@
       "name_en": "Holzplatte Weihnachten Sleigh",
       "description_de": "Personalisiertes Holzplatte Geschenk zum Thema Weihnachten - Motiv sleigh",
       "description_en": "Personalisiertes Holzplatte Geschenk zum Thema Weihnachten - Motiv sleigh",
-      "base_price_cents": 1600,
+      "base_price_cents": 1500,
       "occasion": "weihnachten",
       "material": "holz",
       "material_label": "Holzplatte",
@@ -2749,7 +2939,8 @@
         "weihnachten",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "holzplatte"
     },
     {
       "id": "design-weihnachten-weihnachten-holzplatte-deer2",
@@ -2758,7 +2949,7 @@
       "name_en": "Holzplatte Weihnachten Deer2",
       "description_de": "Personalisiertes Holzplatte Geschenk zum Thema Weihnachten - Motiv deer2",
       "description_en": "Personalisiertes Holzplatte Geschenk zum Thema Weihnachten - Motiv deer2",
-      "base_price_cents": 1600,
+      "base_price_cents": 1500,
       "occasion": "weihnachten",
       "material": "holz",
       "material_label": "Holzplatte",
@@ -2779,7 +2970,8 @@
         "weihnachten",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "holzplatte"
     },
     {
       "id": "design-weihnachten-weihnachten-holzplatte-nichts",
@@ -2788,7 +2980,7 @@
       "name_en": "Holzplatte Weihnachten Nichts",
       "description_de": "Personalisiertes Holzplatte Geschenk zum Thema Weihnachten - Motiv nichts",
       "description_en": "Personalisiertes Holzplatte Geschenk zum Thema Weihnachten - Motiv nichts",
-      "base_price_cents": 1600,
+      "base_price_cents": 1500,
       "occasion": "weihnachten",
       "material": "holz",
       "material_label": "Holzplatte",
@@ -2813,7 +3005,8 @@
         "weihnachten",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "holzplatte"
     },
     {
       "id": "design-weihnachten-weihnachten-holzplatte-deer",
@@ -2822,7 +3015,7 @@
       "name_en": "Holzplatte Weihnachten Deer",
       "description_de": "Personalisiertes Holzplatte Geschenk zum Thema Weihnachten - Motiv deer",
       "description_en": "Personalisiertes Holzplatte Geschenk zum Thema Weihnachten - Motiv deer",
-      "base_price_cents": 1600,
+      "base_price_cents": 1500,
       "occasion": "weihnachten",
       "material": "holz",
       "material_label": "Holzplatte",
@@ -2842,7 +3035,8 @@
         "weihnachten",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "holzplatte"
     },
     {
       "id": "design-weihnachten-weihnachten-holzplatte-bell",
@@ -2851,7 +3045,7 @@
       "name_en": "Holzplatte Weihnachten Bell",
       "description_de": "Personalisiertes Holzplatte Geschenk zum Thema Weihnachten - Motiv bell",
       "description_en": "Personalisiertes Holzplatte Geschenk zum Thema Weihnachten - Motiv bell",
-      "base_price_cents": 1600,
+      "base_price_cents": 1500,
       "occasion": "weihnachten",
       "material": "holz",
       "material_label": "Holzplatte",
@@ -2873,7 +3067,8 @@
         "weihnachten",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "holzplatte"
     },
     {
       "id": "design-weihnachten-weihnachten-holzbox-tree",
@@ -2882,7 +3077,7 @@
       "name_en": "Holzbox Weihnachten Tree",
       "description_de": "Personalisiertes Holzbox Geschenk zum Thema Weihnachten - Motiv tree",
       "description_en": "Personalisiertes Holzbox Geschenk zum Thema Weihnachten - Motiv tree",
-      "base_price_cents": 1600,
+      "base_price_cents": 2600,
       "occasion": "weihnachten",
       "material": "holz",
       "material_label": "Holzbox",
@@ -2908,7 +3103,8 @@
         "weihnachten",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "holzbox"
     },
     {
       "id": "design-weihnachten-weihnachten-schiebebox-tree",
@@ -2917,7 +3113,7 @@
       "name_en": "Schiebebox Weihnachten Tree",
       "description_de": "Personalisiertes Schiebebox Geschenk zum Thema Weihnachten - Motiv tree",
       "description_en": "Personalisiertes Schiebebox Geschenk zum Thema Weihnachten - Motiv tree",
-      "base_price_cents": 1600,
+      "base_price_cents": 1900,
       "occasion": "weihnachten",
       "material": "holz",
       "material_label": "Schiebebox",
@@ -2943,7 +3139,8 @@
         "weihnachten",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "schiebebox"
     },
     {
       "id": "design-wunscherfueller-wunscherfueller-geschenke-geschenk-moto",
@@ -2952,7 +3149,7 @@
       "name_en": "Wunscherfueller-Geschenke Moto",
       "description_de": "Personalisiertes Geschenk zum Thema Wunscherfueller-Geschenke - Motiv moto",
       "description_en": "Personalisiertes Geschenk zum Thema Wunscherfueller-Geschenke - Motiv moto",
-      "base_price_cents": 1600,
+      "base_price_cents": 1700,
       "occasion": "wunscherfueller",
       "material": "holz",
       "material_label": "Geschenk",
@@ -2973,7 +3170,8 @@
         "wunscherfueller",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "sculpture"
     },
     {
       "id": "design-wunscherfueller-wunscherfueller-geschenke-geschenk-bicycle",
@@ -2982,7 +3180,7 @@
       "name_en": "Wunscherfueller-Geschenke Bicycle",
       "description_de": "Personalisiertes Geschenk zum Thema Wunscherfueller-Geschenke - Motiv bicycle",
       "description_en": "Personalisiertes Geschenk zum Thema Wunscherfueller-Geschenke - Motiv bicycle",
-      "base_price_cents": 1600,
+      "base_price_cents": 1700,
       "occasion": "wunscherfueller",
       "material": "holz",
       "material_label": "Geschenk",
@@ -3001,7 +3199,8 @@
         "wunscherfueller",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "sculpture"
     },
     {
       "id": "design-wunscherfueller-wunscherfueller-geschenke-geschenk-car",
@@ -3010,7 +3209,7 @@
       "name_en": "Wunscherfueller-Geschenke Car",
       "description_de": "Personalisiertes Geschenk zum Thema Wunscherfueller-Geschenke - Motiv car",
       "description_en": "Personalisiertes Geschenk zum Thema Wunscherfueller-Geschenke - Motiv car",
-      "base_price_cents": 1600,
+      "base_price_cents": 1700,
       "occasion": "wunscherfueller",
       "material": "holz",
       "material_label": "Geschenk",
@@ -3029,7 +3228,8 @@
         "wunscherfueller",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "sculpture"
     },
     {
       "id": "design-wunscherfueller-wunscherfueller-geschenke-geschenk-mobilauto",
@@ -3038,7 +3238,7 @@
       "name_en": "Wunscherfueller-Geschenke Mobilauto",
       "description_de": "Personalisiertes Geschenk zum Thema Wunscherfueller-Geschenke - Motiv mobilauto",
       "description_en": "Personalisiertes Geschenk zum Thema Wunscherfueller-Geschenke - Motiv mobilauto",
-      "base_price_cents": 1600,
+      "base_price_cents": 1700,
       "occasion": "wunscherfueller",
       "material": "holz",
       "material_label": "Geschenk",
@@ -3057,7 +3257,8 @@
         "wunscherfueller",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "sculpture"
     },
     {
       "id": "design-wunscherfueller-wunscherfueller-geschenke-geschenk-map",
@@ -3066,7 +3267,7 @@
       "name_en": "Wunscherfueller-Geschenke Map",
       "description_de": "Personalisiertes Geschenk zum Thema Wunscherfueller-Geschenke - Motiv map",
       "description_en": "Personalisiertes Geschenk zum Thema Wunscherfueller-Geschenke - Motiv map",
-      "base_price_cents": 1600,
+      "base_price_cents": 1700,
       "occasion": "wunscherfueller",
       "material": "holz",
       "material_label": "Geschenk",
@@ -3084,7 +3285,8 @@
         "wunscherfueller",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "sculpture"
     },
     {
       "id": "design-wunscherfueller-wunscherfueller-geschenke-geschenk-heart",
@@ -3093,7 +3295,7 @@
       "name_en": "Wunscherfueller-Geschenke Heart",
       "description_de": "Personalisiertes Geschenk zum Thema Wunscherfueller-Geschenke - Motiv heart",
       "description_en": "Personalisiertes Geschenk zum Thema Wunscherfueller-Geschenke - Motiv heart",
-      "base_price_cents": 1600,
+      "base_price_cents": 1700,
       "occasion": "wunscherfueller",
       "material": "holz",
       "material_label": "Geschenk",
@@ -3116,7 +3318,8 @@
         "wunscherfueller",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "sculpture"
     },
     {
       "id": "design-wunscherfueller-wunscherfueller-geschenke-geschenk-sportcar",
@@ -3125,7 +3328,7 @@
       "name_en": "Wunscherfueller-Geschenke Sportcar",
       "description_de": "Personalisiertes Geschenk zum Thema Wunscherfueller-Geschenke - Motiv sportcar",
       "description_en": "Personalisiertes Geschenk zum Thema Wunscherfueller-Geschenke - Motiv sportcar",
-      "base_price_cents": 1600,
+      "base_price_cents": 1700,
       "occasion": "wunscherfueller",
       "material": "holz",
       "material_label": "Geschenk",
@@ -3146,7 +3349,8 @@
         "wunscherfueller",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "sculpture"
     },
     {
       "id": "design-einzug-neues-zuhause-bilderrahmen-home2",
@@ -3155,12 +3359,14 @@
       "name_en": "Bilderrahmen Neues-Zuhause Home2",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Neues-Zuhause - Motiv home2",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Neues-Zuhause - Motiv home2",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "einzug",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/einzug/product/neues-zuhause-bilderrahmen-home2-01.webp",
@@ -3180,7 +3386,8 @@
         "einzug",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-einzug-neues-zuhause-bilderrahmen-home",
@@ -3189,12 +3396,14 @@
       "name_en": "Bilderrahmen Neues-Zuhause Home",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Neues-Zuhause - Motiv home",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Neues-Zuhause - Motiv home",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "einzug",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/einzug/product/neues-zuhause-bilderrahmen-home-01.webp",
@@ -3210,7 +3419,8 @@
         "einzug",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-fuehrerschein-fuehrerschein-geschenk-personalisierte-fu-hrerschein-geldgeschenk",
@@ -3219,7 +3429,7 @@
       "name_en": "Fuehrerschein Personalisierte Fu Hrerschein Geldgeschenk",
       "description_de": "Personalisiertes Geschenk zum Thema Fuehrerschein - Motiv personalisierte-fu-hrerschein-geldgeschenk",
       "description_en": "Personalisiertes Geschenk zum Thema Fuehrerschein - Motiv personalisierte-fu-hrerschein-geldgeschenk",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "fuehrerschein",
       "material": "holz",
       "material_label": "Geschenk",
@@ -3240,7 +3450,8 @@
         "fuehrerschein",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "other"
     },
     {
       "id": "design-hochzeit-hochzeit-bilderrahmen-wedding-heart3",
@@ -3249,12 +3460,14 @@
       "name_en": "Bilderrahmen Hochzeit Wedding Heart3",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv wedding-heart3",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv wedding-heart3",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "hochzeit",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/hochzeit/product/hochzeit-bilderrahmen-wedding-heart3-01.webp",
@@ -3275,7 +3488,8 @@
         "hochzeit",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-hochzeit-hochzeit-bilderrahmen-wedding-tree",
@@ -3284,12 +3498,14 @@
       "name_en": "Bilderrahmen Hochzeit Wedding Tree",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv wedding-tree",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv wedding-tree",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "hochzeit",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/hochzeit/product/hochzeit-bilderrahmen-wedding-tree-01.webp",
@@ -3308,7 +3524,8 @@
         "hochzeit",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-hochzeit-hochzeit-bilderrahmen-wedding-car",
@@ -3317,12 +3534,14 @@
       "name_en": "Bilderrahmen Hochzeit Wedding Car",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv wedding-car",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv wedding-car",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "hochzeit",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/hochzeit/product/hochzeit-bilderrahmen-wedding-car-01.webp",
@@ -3341,7 +3560,8 @@
         "hochzeit",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-hochzeit-hochzeit-bilderrahmen-brautpaar-2",
@@ -3350,12 +3570,14 @@
       "name_en": "Bilderrahmen Hochzeit Brautpaar 2",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv brautpaar-2",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv brautpaar-2",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "hochzeit",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/hochzeit/product/hochzeit-bilderrahmen-brautpaar-2-01.webp",
@@ -3369,7 +3591,8 @@
         "hochzeit",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-hochzeit-hochzeit-bilderrahmen-ja",
@@ -3378,12 +3601,14 @@
       "name_en": "Bilderrahmen Hochzeit Ja",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv ja",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv ja",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "hochzeit",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/hochzeit/product/hochzeit-bilderrahmen-ja-01.webp",
@@ -3398,7 +3623,8 @@
         "hochzeit",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-hochzeit-hochzeit-bilderrahmen-wedding-map-wood",
@@ -3407,12 +3633,14 @@
       "name_en": "Bilderrahmen Hochzeit Wedding Map Wood",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv wedding-map-wood",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv wedding-map-wood",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "hochzeit",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/hochzeit/product/hochzeit-bilderrahmen-wedding-map-wood-01.webp",
@@ -3431,7 +3659,8 @@
         "hochzeit",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-hochzeit-hochzeit-bilderrahmen-wedding-heart4",
@@ -3440,12 +3669,14 @@
       "name_en": "Bilderrahmen Hochzeit Wedding Heart4",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv wedding-heart4",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv wedding-heart4",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "hochzeit",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/hochzeit/product/hochzeit-bilderrahmen-wedding-heart4-01.webp",
@@ -3460,7 +3691,8 @@
         "hochzeit",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-hochzeit-hochzeit-bilderrahmen-wedding-hearts3",
@@ -3469,12 +3701,14 @@
       "name_en": "Bilderrahmen Hochzeit Wedding Hearts3",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv wedding-hearts3",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv wedding-hearts3",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "hochzeit",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/hochzeit/product/hochzeit-bilderrahmen-wedding-hearts3-01.webp"
@@ -3487,7 +3721,8 @@
         "hochzeit",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-hochzeit-hochzeit-bilderrahmen-wedding-boat2",
@@ -3496,12 +3731,14 @@
       "name_en": "Bilderrahmen Hochzeit Wedding Boat2",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv wedding-boat2",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv wedding-boat2",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "hochzeit",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/hochzeit/product/hochzeit-bilderrahmen-wedding-boat2-01.webp"
@@ -3514,7 +3751,8 @@
         "hochzeit",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-hochzeit-hochzeit-bilderrahmen-wedding-tree2",
@@ -3523,12 +3761,14 @@
       "name_en": "Bilderrahmen Hochzeit Wedding Tree2",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv wedding-tree2",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv wedding-tree2",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "hochzeit",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/hochzeit/product/hochzeit-bilderrahmen-wedding-tree2-01.webp",
@@ -3543,7 +3783,8 @@
         "hochzeit",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-hochzeit-hochzeit-bilderrahmen-wedding-tree4",
@@ -3552,12 +3793,14 @@
       "name_en": "Bilderrahmen Hochzeit Wedding Tree4",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv wedding-tree4",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv wedding-tree4",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "hochzeit",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/hochzeit/product/hochzeit-bilderrahmen-wedding-tree4-01.webp",
@@ -3571,7 +3814,8 @@
         "hochzeit",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-hochzeit-hochzeit-bilderrahmen-wedding-heart2",
@@ -3580,12 +3824,14 @@
       "name_en": "Bilderrahmen Hochzeit Wedding Heart2",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv wedding-heart2",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv wedding-heart2",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "hochzeit",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/hochzeit/product/hochzeit-bilderrahmen-wedding-heart2-01.webp",
@@ -3602,7 +3848,8 @@
         "hochzeit",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-hochzeit-hochzeit-bilderrahmen-wedding-heart",
@@ -3611,12 +3858,14 @@
       "name_en": "Bilderrahmen Hochzeit Wedding Heart",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv wedding-heart",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv wedding-heart",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "hochzeit",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/hochzeit/product/hochzeit-bilderrahmen-wedding-heart-01.webp",
@@ -3633,7 +3882,8 @@
         "hochzeit",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-hochzeit-hochzeit-bilderrahmen-wedding-ja",
@@ -3642,12 +3892,14 @@
       "name_en": "Bilderrahmen Hochzeit Wedding Ja",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv wedding-ja",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv wedding-ja",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "hochzeit",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/hochzeit/product/hochzeit-bilderrahmen-wedding-ja-01.webp",
@@ -3661,7 +3913,8 @@
         "hochzeit",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-hochzeit-hochzeit-bilderrahmen-brautpaar",
@@ -3670,12 +3923,14 @@
       "name_en": "Bilderrahmen Hochzeit Brautpaar",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv brautpaar",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv brautpaar",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "hochzeit",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/hochzeit/product/hochzeit-bilderrahmen-brautpaar-01.webp",
@@ -3690,7 +3945,8 @@
         "hochzeit",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-hochzeit-hochzeit-bilderrahmen-wedding-pigeon",
@@ -3699,12 +3955,14 @@
       "name_en": "Bilderrahmen Hochzeit Wedding Pigeon",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv wedding-pigeon",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv wedding-pigeon",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "hochzeit",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/hochzeit/product/hochzeit-bilderrahmen-wedding-pigeon-01.webp",
@@ -3719,7 +3977,8 @@
         "hochzeit",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-hochzeit-hochzeit-bilderrahmen-wedding-world-map",
@@ -3728,12 +3987,14 @@
       "name_en": "Bilderrahmen Hochzeit Wedding World Map",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv wedding-world-map",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv wedding-world-map",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "hochzeit",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/hochzeit/product/hochzeit-bilderrahmen-wedding-world-map-01.webp",
@@ -3755,7 +4016,8 @@
         "hochzeit",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-hochzeit-hochzeit-bilderrahmen-wedding-paar",
@@ -3764,12 +4026,14 @@
       "name_en": "Bilderrahmen Hochzeit Wedding Paar",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv wedding-paar",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv wedding-paar",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "hochzeit",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/hochzeit/product/hochzeit-bilderrahmen-wedding-paar-01.webp"
@@ -3782,7 +4046,8 @@
         "hochzeit",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-hochzeit-hochzeit-bilderrahmen-wedding-map2",
@@ -3791,12 +4056,14 @@
       "name_en": "Bilderrahmen Hochzeit Wedding Map2",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv wedding-map2",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv wedding-map2",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "hochzeit",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/hochzeit/product/hochzeit-bilderrahmen-wedding-map2-01.webp",
@@ -3817,7 +4084,8 @@
         "hochzeit",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-hochzeit-hochzeit-bilderrahmen-wedding-swan",
@@ -3826,12 +4094,14 @@
       "name_en": "Bilderrahmen Hochzeit Wedding Swan",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv wedding-swan",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv wedding-swan",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "hochzeit",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/hochzeit/product/hochzeit-bilderrahmen-wedding-swan-01.webp",
@@ -3846,7 +4116,8 @@
         "hochzeit",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-hochzeit-hochzeit-bilderrahmen-braut-3",
@@ -3855,12 +4126,14 @@
       "name_en": "Bilderrahmen Hochzeit Braut 3",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv braut-3",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv braut-3",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "hochzeit",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/hochzeit/product/hochzeit-bilderrahmen-braut-3-01.webp",
@@ -3876,7 +4149,8 @@
         "hochzeit",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-hochzeit-hochzeit-bilderrahmen-wedding-tree3",
@@ -3885,12 +4159,14 @@
       "name_en": "Bilderrahmen Hochzeit Wedding Tree3",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv wedding-tree3",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv wedding-tree3",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "hochzeit",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/hochzeit/product/hochzeit-bilderrahmen-wedding-tree3-01.webp",
@@ -3908,7 +4184,8 @@
         "hochzeit",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-hochzeit-hochzeit-holzschild-flowers4",
@@ -3917,7 +4194,7 @@
       "name_en": "Holzschild Hochzeit Flowers4",
       "description_de": "Personalisiertes Holzschild Geschenk zum Thema Hochzeit - Motiv flowers4",
       "description_en": "Personalisiertes Holzschild Geschenk zum Thema Hochzeit - Motiv flowers4",
-      "base_price_cents": 1600,
+      "base_price_cents": 1500,
       "occasion": "hochzeit",
       "material": "holz",
       "material_label": "Holzschild",
@@ -3943,7 +4220,8 @@
         "hochzeit",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "holzschild"
     },
     {
       "id": "design-hochzeit-hochzeit-holzschild-flowers3",
@@ -3952,7 +4230,7 @@
       "name_en": "Holzschild Hochzeit Flowers3",
       "description_de": "Personalisiertes Holzschild Geschenk zum Thema Hochzeit - Motiv flowers3",
       "description_en": "Personalisiertes Holzschild Geschenk zum Thema Hochzeit - Motiv flowers3",
-      "base_price_cents": 1600,
+      "base_price_cents": 1500,
       "occasion": "hochzeit",
       "material": "holz",
       "material_label": "Holzschild",
@@ -3976,7 +4254,8 @@
         "hochzeit",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "holzschild"
     },
     {
       "id": "design-hochzeit-hochzeit-holzschild-flowers2",
@@ -3985,7 +4264,7 @@
       "name_en": "Holzschild Hochzeit Flowers2",
       "description_de": "Personalisiertes Holzschild Geschenk zum Thema Hochzeit - Motiv flowers2",
       "description_en": "Personalisiertes Holzschild Geschenk zum Thema Hochzeit - Motiv flowers2",
-      "base_price_cents": 1600,
+      "base_price_cents": 1500,
       "occasion": "hochzeit",
       "material": "holz",
       "material_label": "Holzschild",
@@ -4009,7 +4288,8 @@
         "hochzeit",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "holzschild"
     },
     {
       "id": "design-hochzeit-hochzeit-holzschild-flowers",
@@ -4018,7 +4298,7 @@
       "name_en": "Holzschild Hochzeit Flowers",
       "description_de": "Personalisiertes Holzschild Geschenk zum Thema Hochzeit - Motiv flowers",
       "description_en": "Personalisiertes Holzschild Geschenk zum Thema Hochzeit - Motiv flowers",
-      "base_price_cents": 1600,
+      "base_price_cents": 1500,
       "occasion": "hochzeit",
       "material": "holz",
       "material_label": "Holzschild",
@@ -4042,7 +4322,8 @@
         "hochzeit",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "holzschild"
     },
     {
       "id": "design-hochzeit-hochzeit-holzbox-heart",
@@ -4051,7 +4332,7 @@
       "name_en": "Holzbox Hochzeit Heart",
       "description_de": "Personalisiertes Holzbox Geschenk zum Thema Hochzeit - Motiv heart",
       "description_en": "Personalisiertes Holzbox Geschenk zum Thema Hochzeit - Motiv heart",
-      "base_price_cents": 1600,
+      "base_price_cents": 2600,
       "occasion": "hochzeit",
       "material": "holz",
       "material_label": "Holzbox",
@@ -4078,7 +4359,8 @@
         "hochzeit",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "holzbox"
     },
     {
       "id": "design-hochzeit-hochzeit-schiebebox-champagne",
@@ -4087,7 +4369,7 @@
       "name_en": "Schiebebox Hochzeit Champagne",
       "description_de": "Personalisiertes Schiebebox Geschenk zum Thema Hochzeit - Motiv champagne",
       "description_en": "Personalisiertes Schiebebox Geschenk zum Thema Hochzeit - Motiv champagne",
-      "base_price_cents": 1600,
+      "base_price_cents": 1900,
       "occasion": "hochzeit",
       "material": "holz",
       "material_label": "Schiebebox",
@@ -4113,7 +4395,8 @@
         "hochzeit",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "schiebebox"
     },
     {
       "id": "design-hochzeit-hochzeit-schiebebox-flower",
@@ -4122,7 +4405,7 @@
       "name_en": "Schiebebox Hochzeit Flower",
       "description_de": "Personalisiertes Schiebebox Geschenk zum Thema Hochzeit - Motiv flower",
       "description_en": "Personalisiertes Schiebebox Geschenk zum Thema Hochzeit - Motiv flower",
-      "base_price_cents": 1600,
+      "base_price_cents": 1900,
       "occasion": "hochzeit",
       "material": "holz",
       "material_label": "Schiebebox",
@@ -4144,7 +4427,8 @@
         "hochzeit",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "schiebebox"
     },
     {
       "id": "design-hochzeit-hochzeit-schiebebox-rings",
@@ -4153,7 +4437,7 @@
       "name_en": "Schiebebox Hochzeit Rings",
       "description_de": "Personalisiertes Schiebebox Geschenk zum Thema Hochzeit - Motiv rings",
       "description_en": "Personalisiertes Schiebebox Geschenk zum Thema Hochzeit - Motiv rings",
-      "base_price_cents": 1600,
+      "base_price_cents": 1900,
       "occasion": "hochzeit",
       "material": "holz",
       "material_label": "Schiebebox",
@@ -4174,7 +4458,8 @@
         "hochzeit",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "schiebebox"
     },
     {
       "id": "design-hochzeit-hochzeit-schiebebox-wreath",
@@ -4183,7 +4468,7 @@
       "name_en": "Schiebebox Hochzeit Wreath",
       "description_de": "Personalisiertes Schiebebox Geschenk zum Thema Hochzeit - Motiv wreath",
       "description_en": "Personalisiertes Schiebebox Geschenk zum Thema Hochzeit - Motiv wreath",
-      "base_price_cents": 1600,
+      "base_price_cents": 1900,
       "occasion": "hochzeit",
       "material": "holz",
       "material_label": "Schiebebox",
@@ -4208,7 +4493,8 @@
         "hochzeit",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "schiebebox"
     },
     {
       "id": "design-hochzeit-hochzeit-bilderrahmen-boat",
@@ -4217,12 +4503,14 @@
       "name_en": "Bilderrahmen Hochzeit Boat",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv boat",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv boat",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "hochzeit",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/hochzeit/product/hochzeit-bilderrahmen-boat-01.webp",
@@ -4239,7 +4527,8 @@
         "hochzeit",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-hochzeit-hochzeit-bilderrahmen-map",
@@ -4248,12 +4537,14 @@
       "name_en": "Bilderrahmen Hochzeit Map",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv map",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv map",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "hochzeit",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/hochzeit/product/hochzeit-bilderrahmen-map-01.webp",
@@ -4274,7 +4565,8 @@
         "hochzeit",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-hochzeit-hochzeit-bilderrahmen-heart2",
@@ -4283,12 +4575,14 @@
       "name_en": "Bilderrahmen Hochzeit Heart2",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv heart2",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv heart2",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "hochzeit",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/hochzeit/product/hochzeit-bilderrahmen-heart2-01.webp",
@@ -4308,7 +4602,8 @@
         "hochzeit",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-hochzeit-hochzeit-bilderrahmen-heart-butterfly",
@@ -4317,12 +4612,14 @@
       "name_en": "Bilderrahmen Hochzeit Heart Butterfly",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv heart-butterfly",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv heart-butterfly",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "hochzeit",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/hochzeit/product/hochzeit-bilderrahmen-heart-butterfly-01.webp",
@@ -4342,7 +4639,8 @@
         "hochzeit",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-hochzeit-hochzeit-bilderrahmen-butterfly",
@@ -4351,12 +4649,14 @@
       "name_en": "Bilderrahmen Hochzeit Butterfly",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv butterfly",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv butterfly",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "hochzeit",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/hochzeit/product/hochzeit-bilderrahmen-butterfly-01.webp",
@@ -4376,7 +4676,8 @@
         "hochzeit",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     },
     {
       "id": "design-hochzeit-hochzeit-holzbox-ja",
@@ -4385,7 +4686,7 @@
       "name_en": "Holzbox Hochzeit Ja",
       "description_de": "Personalisiertes Holzbox Geschenk zum Thema Hochzeit - Motiv ja",
       "description_en": "Personalisiertes Holzbox Geschenk zum Thema Hochzeit - Motiv ja",
-      "base_price_cents": 1600,
+      "base_price_cents": 2600,
       "occasion": "hochzeit",
       "material": "holz",
       "material_label": "Holzbox",
@@ -4412,7 +4713,8 @@
         "hochzeit",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "holzbox"
     },
     {
       "id": "design-hochzeit-hochzeit-schiebebox-heart",
@@ -4421,7 +4723,7 @@
       "name_en": "Schiebebox Hochzeit Heart",
       "description_de": "Personalisiertes Schiebebox Geschenk zum Thema Hochzeit - Motiv heart",
       "description_en": "Personalisiertes Schiebebox Geschenk zum Thema Hochzeit - Motiv heart",
-      "base_price_cents": 1600,
+      "base_price_cents": 1900,
       "occasion": "hochzeit",
       "material": "holz",
       "material_label": "Schiebebox",
@@ -4444,7 +4746,8 @@
         "hochzeit",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "schiebebox"
     },
     {
       "id": "design-hochzeit-hochzeit-bilderrahmen-heart",
@@ -4453,12 +4756,14 @@
       "name_en": "Bilderrahmen Hochzeit Heart",
       "description_de": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv heart",
       "description_en": "Personalisiertes Bilderrahmen Geschenk zum Thema Hochzeit - Motiv heart",
-      "base_price_cents": 1600,
+      "base_price_cents": 1300,
       "occasion": "hochzeit",
       "material": "holz",
       "material_label": "Bilderrahmen",
       "formats": [
-        "A4"
+        "A5",
+        "A4",
+        "A3"
       ],
       "images": [
         "https://kgkntuenlimuetxtevut.supabase.co/storage/v1/object/public/product-images/catalog/hochzeit/product/hochzeit-bilderrahmen-heart-01.webp",
@@ -4474,7 +4779,8 @@
         "hochzeit",
         "draft"
       ],
-      "inStock": true
+      "inStock": true,
+      "category": "bilderrahmen"
     }
   ]
 }
