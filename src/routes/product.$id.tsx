@@ -11,7 +11,7 @@ import { useCart } from "@/contexts/cart";
 import { useWishlist } from "@/contexts/wishlist";
 import { Reveal } from "@/components/reveal";
 import { StarRating } from "@/components/star-rating";
-import { PersonalizationPreview, type PreviewFont, type PreviewColor } from "@/components/personalization-preview";
+
 
 const productsQueryOptions = {
   queryKey: ["products"] as const,
@@ -85,8 +85,6 @@ function ProductPage() {
   const [persName, setPersName] = useState("");
   const [persDate, setPersDate] = useState("");
   const [persText, setPersText] = useState("");
-  const [previewFont, setPreviewFont] = useState<PreviewFont>("script");
-  const [previewColor, setPreviewColor] = useState<PreviewColor>("black");
 
   if (!product) return <ProductNotFound />;
 
@@ -107,7 +105,7 @@ function ProductPage() {
       image,
       unitPriceCents: unitCents,
       qty,
-      personalization: { format, material: frame, names: persName, date: persDate, message: persText, font: previewFont, color: previewColor },
+      personalization: { format, material: frame, names: persName, date: persDate, message: persText },
     });
     toast.success(t("product.addedToCart"), { description: `${title.slice(0, 60)} · ${format} · ${qty}×` });
   };
@@ -204,18 +202,6 @@ function ProductPage() {
               </div>
             </div>
           </div>
-
-          <PersonalizationPreview
-            image={image}
-            alt={title}
-            name={persName}
-            date={persDate}
-            message={persText}
-            font={previewFont}
-            color={previewColor}
-            onFontChange={setPreviewFont}
-            onColorChange={setPreviewColor}
-          />
 
           <div className="mt-6 space-y-4 rounded-2xl bg-card p-6 ring-1 ring-border/60">
             <p className="eyebrow">Personalisierung</p>
