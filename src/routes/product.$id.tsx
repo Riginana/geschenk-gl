@@ -246,7 +246,7 @@ function ProductReviews({ productId, occasion }: { productId: string; occasion: 
   const { t, locale } = useT();
   const { data: reviews } = useSuspenseQuery({
     queryKey: ["reviews", "product", productId, occasion],
-    queryFn: () => listReviews({ data: { productId, occasion, limit: 12 } }),
+    queryFn: () => listReviews({ data: { productId, occasion, limit: 12 } }).catch(() => []),
   });
   if (!reviews.length) return null;
   const avg = reviews.reduce((s, r) => s + r.rating, 0) / reviews.length;
