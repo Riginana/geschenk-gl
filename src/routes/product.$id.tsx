@@ -88,9 +88,12 @@ function ProductPage() {
   if (!product) return <ProductNotFound />;
 
   const image = images[activeImage] ?? images[0] ?? "";
-  const basePrice = product.base_price_cents / 100;
-  const unitPrice = basePrice + (PRICE_BY_FORMAT[format] ?? 0) + (PRICE_BY_FRAME[frame] ?? 0);
-  const unitCents = Math.round(unitPrice * 100);
+  const baseCents =
+    product.base_price_cents +
+    (PRICE_BY_FORMAT_CENTS[format] ?? 0) +
+    (PRICE_BY_FRAME_CENTS[frame] ?? 0);
+  const unitCents = withPromo(baseCents);
+
 
   const onAdd = () => {
     add({
