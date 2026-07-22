@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Facebook, Instagram, MessageCircle } from "lucide-react";
+import { Instagram, MessageCircle } from "lucide-react";
 import { useState } from "react";
 import { useT } from "@/i18n";
 import { useServerFn } from "@tanstack/react-start";
