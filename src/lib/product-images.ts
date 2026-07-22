@@ -1,44 +1,17 @@
-import wedding from "@/assets/p-wedding.jpg";
-import birthday from "@/assets/p-birthday.jpg";
-import baby from "@/assets/p-baby.jpg";
-import baptism from "@/assets/p-baptism.jpg";
-import confirmation from "@/assets/p-confirmation.jpg";
-import anniversary from "@/assets/p-anniversary.jpg";
-import retirement from "@/assets/p-retirement.jpg";
-import christmas from "@/assets/p-christmas.jpg";
-import farewell from "@/assets/p-farewell.jpg";
-import hero from "@/assets/hero-frame.jpg";
+import heroFallback from "@/assets/hero-frame.jpg";
+import heroes from "@/data/occasion-heroes.json";
 
-const byOccasion: Record<string, string> = {
-  hochzeit: wedding,
-  geburtstag: birthday,
-  geburt: baby,
-  taufe: baptism,
-  konfirmation: confirmation,
-  kommunion: confirmation,
-  firmung: confirmation,
-  jubilaeum: anniversary,
-  ruhestand: retirement,
-  weihnachten: christmas,
-  abschied: farewell,
-  einzug: farewell,
-  abitur: anniversary,
-  jugendweihe: confirmation,
-  einschulung: baby,
-  fuehrerschein: anniversary,
-  ostern: christmas,
-  mutterschutz: baby,
-  sonstiges: hero,
-};
+const heroMap = heroes as Record<string, string>;
 
 export function imageFor(occasion: string): string {
-  return byOccasion[occasion] ?? hero;
+  return heroMap[occasion] ?? heroFallback;
 }
 
 export function secondaryImageFor(occasion: string): string {
-  const list = Object.values(byOccasion);
-  const idx = Object.keys(byOccasion).indexOf(occasion);
-  return list[(idx + 1) % list.length];
+  const keys = Object.keys(heroMap);
+  const idx = keys.indexOf(occasion);
+  const nextKey = keys[(idx + 1) % keys.length] ?? keys[0];
+  return heroMap[nextKey] ?? heroFallback;
 }
 
-export { hero as heroImage };
+export { heroFallback as heroImage };
