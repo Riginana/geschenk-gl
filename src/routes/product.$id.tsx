@@ -18,8 +18,8 @@ const productsQueryOptions = {
 };
 
 const FRAMES = ["holz", "papier", "kraftpapier"] as const;
-const PRICE_BY_FORMAT: Record<string, number> = { A5: 0, A4: 5, A3: 12 };
-const PRICE_BY_FRAME: Record<string, number> = { papier: 0, kraftpapier: 2, holz: 8 };
+import { PRICE_BY_FORMAT_CENTS, PRICE_BY_FRAME_CENTS, withPromo } from "@/lib/pricing";
+
 
 function detectFormats(text: string): Array<"A5" | "A4" | "A3"> {
   const out: Array<"A5" | "A4" | "A3"> = [];
@@ -88,9 +88,12 @@ function ProductPage() {
   if (!product) return <ProductNotFound />;
 
   const image = images[activeImage] ?? images[0] ?? "";
-  const basePrice = product.base_price_cents / 100;
-  const unitPrice = basePrice + (PRICE_BY_FORMAT[format] ?? 0) + (PRICE_BY_FRAME[frame] ?? 0);
-  const unitCents = Math.round(unitPrice * 100);
+  const baseCents =
+    product.base_price_cents +
+    (PRICE_BY_FORMAT_CENTS[format] ?? 0) +
+    (PRICE_BY_FRAME_CENTS[frame] ?? 0);
+  const unitCents = withPromo(baseCents);
+
 
   const onAdd = () => {
     add({
@@ -150,10 +153,13 @@ function ProductPage() {
           <p className="eyebrow">{t(`occasions.${product.occasion}`) || product.occasion}</p>
           <h1 className="mt-2 font-serif text-3xl text-walnut sm:text-4xl">{title}</h1>
 
-          <div className="mt-6 flex items-baseline gap-3">
-            <span className="font-serif text-3xl text-walnut">{formatEUR(unitCents, locale)}</span>
+          <div className="mt-6 flex flex-wrap items-baseline gap-3">
+            <span className="font-serif text-3xl text-destructive">{formatEUR(unitCents, locale)}</span>
+            <span className="text-base text-muted-foreground line-through">{formatEUR(baseCents, locale)}</span>
+            <span className="rounded-full bg-destructive/10 px-2 py-0.5 text-xs font-semibold text-destructive">−30%</span>
             <span className="text-sm text-muted-foreground">inkl. MwSt. zzgl. Versand</span>
           </div>
+
 
           <p className="mt-6 whitespace-pre-line text-base leading-relaxed text-foreground/85">{description}</p>
 
