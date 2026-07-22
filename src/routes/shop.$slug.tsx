@@ -94,8 +94,8 @@ function detectFormats(text: string): Array<"A5" | "A4" | "A3"> {
 }
 
 const FRAMES = ["holz", "papier", "kraftpapier"] as const;
-const PRICE_BY_FORMAT: Record<string, number> = { A5: 0, A4: 5, A3: 12 };
-const PRICE_BY_FRAME: Record<string, number> = { papier: 0, kraftpapier: 2, holz: 8 };
+import { PRICE_BY_FORMAT_CENTS, PRICE_BY_FRAME_CENTS, withPromo } from "@/lib/pricing";
+
 
 function ProductPage() {
   const { slug } = Route.useLoaderData();
