@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { motion } from "framer-motion";
-import { Facebook, Instagram, Mail, MessageCircle, Phone } from "lucide-react";
+import { Instagram, Mail, MessageCircle, Phone } from "lucide-react";
 import { toast } from "sonner";
 import { useT } from "@/i18n";
 import { submitContact } from "@/lib/contact.functions";
