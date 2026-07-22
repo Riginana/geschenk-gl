@@ -14,8 +14,6 @@ export type CartItem = {
     message?: string;
     format: string;
     material: string;
-    font?: string;
-    color?: string;
   };
 };
 
