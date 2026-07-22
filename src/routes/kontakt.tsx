@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { motion } from "framer-motion";
-import { Facebook, Instagram, Mail, MessageCircle, Phone } from "lucide-react";
+import { Instagram, Mail, MessageCircle, Phone } from "lucide-react";
 import { toast } from "sonner";
 import { useT } from "@/i18n";
 import { submitContact } from "@/lib/contact.functions";
@@ -100,16 +100,16 @@ function ContactPage() {
             <h3 className="eyebrow mt-6">{t("contact.follow")}</h3>
             <div className="mt-4 flex gap-3">
               <a href={CONTACT.instagramUrl} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="grid h-10 w-10 place-items-center rounded-full bg-card ring-1 ring-border hover:bg-brass/10"><Instagram size={16} /></a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="grid h-10 w-10 place-items-center rounded-full bg-card ring-1 ring-border hover:bg-brass/10"><Facebook size={16} /></a>
               <a href={CONTACT.whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="grid h-10 w-10 place-items-center rounded-full bg-card ring-1 ring-border hover:bg-brass/10"><MessageCircle size={16} /></a>
             </div>
+
 
           </div>
 
           <div className="overflow-hidden rounded-2xl ring-1 ring-border">
             <iframe
               title="Map"
-              src="https://www.openstreetmap.org/export/embed.html?bbox=13.37%2C52.51%2C13.42%2C52.53&layer=mapnik"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=10.9850%2C49.5820%2C11.0180%2C49.5970&layer=mapnik&marker=49.5895%2C11.0015"
               className="block h-64 w-full"
               loading="lazy"
             />

@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Facebook, Instagram, MessageCircle } from "lucide-react";
+import { Instagram, MessageCircle } from "lucide-react";
 import { useState } from "react";
 import { useT } from "@/i18n";
 import { useServerFn } from "@tanstack/react-start";
@@ -98,8 +98,8 @@ export function Footer() {
           <div className="flex items-center gap-5">
             <span className="hidden text-xs uppercase tracking-widest md:inline">{t("contact.follow")}</span>
             <a href={CONTACT.instagramUrl} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-walnut hover:text-brass"><Instagram size={18} /></a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-walnut hover:text-brass"><Facebook size={18} /></a>
             <a href={CONTACT.whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="text-walnut hover:text-brass"><MessageCircle size={18} /></a>
+
 
           </div>
         </div>
