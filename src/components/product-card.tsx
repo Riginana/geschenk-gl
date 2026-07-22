@@ -101,8 +101,11 @@ export function ProductCard({ p, eager }: { p: ProductRow; eager?: boolean }) {
           <div className="flex items-center justify-between gap-2 pt-1">
             <p className="text-sm text-muted-foreground">
               <span className="opacity-70">{t("common.from")} </span>
-              <span className="font-medium text-foreground">{formatEUR(p.base_price_cents, locale)}</span>
+              <span className="font-medium text-destructive">{formatEUR(promoCents, locale)}</span>
+              <span className="ml-1.5 text-xs text-muted-foreground line-through">{formatEUR(p.base_price_cents, locale)}</span>
+              <span className="ml-1 text-[10px] font-semibold text-destructive">−30%</span>
             </p>
+
             <button
               type="button"
               onClick={onQuickAdd}
