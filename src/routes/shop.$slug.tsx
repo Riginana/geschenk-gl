@@ -195,10 +195,13 @@ function ProductPage() {
           <p className="eyebrow">{t(`occasions.${product.occasion}`) || product.occasion}</p>
           <h1 className="mt-2 font-serif text-3xl text-walnut sm:text-4xl">{title}</h1>
 
-          <div className="mt-6 flex items-baseline gap-3">
-            <span className="font-serif text-3xl text-walnut">{formatEUR(unitCents, locale)}</span>
+          <div className="mt-6 flex flex-wrap items-baseline gap-3">
+            <span className="font-serif text-3xl text-destructive">{formatEUR(unitCents, locale)}</span>
+            <span className="text-base text-muted-foreground line-through">{formatEUR(baseCents, locale)}</span>
+            <span className="rounded-full bg-destructive/10 px-2 py-0.5 text-xs font-semibold text-destructive">−30%</span>
             <span className="text-sm text-muted-foreground">inkl. MwSt. zzgl. Versand</span>
           </div>
+
 
           <p className="mt-6 whitespace-pre-line text-base leading-relaxed text-foreground/85">
             {description}
