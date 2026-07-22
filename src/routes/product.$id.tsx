@@ -94,14 +94,14 @@ function ProductPage() {
 
   const onAdd = () => {
     add({
-      id: `${product.id}-${format}-${frame}`,
+      id: `${product.id}-${format}-${frame}-${persName}-${persDate}`.slice(0, 200),
       productId: product.id,
       slug: product.slug,
       name: title,
       image,
       unitPriceCents: unitCents,
       qty,
-      personalization: { format, material: frame },
+      personalization: { format, material: frame, name: persName, date: persDate, text: persText },
     });
     toast.success(t("product.addedToCart"), { description: `${title.slice(0, 60)} · ${format} · ${qty}×` });
   };
