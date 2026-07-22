@@ -11,6 +11,7 @@ import { useCart } from "@/contexts/cart";
 import { useWishlist } from "@/contexts/wishlist";
 import { Reveal } from "@/components/reveal";
 import { StarRating } from "@/components/star-rating";
+import { PersonalizationPreview, type PreviewFont, type PreviewColor } from "@/components/personalization-preview";
 
 const productsQueryOptions = {
   queryKey: ["products"] as const,
