@@ -20,6 +20,8 @@ export function ProductCard({ p, eager }: { p: ProductRow; eager?: boolean }) {
   const variantCount = p.images?.length ?? 0;
   const hoverImg = p.hoverImage ?? (variantCount > 1 ? p.images?.[1] : undefined);
 
+  const promoCents = withPromo(p.base_price_cents);
+
   const onQuickAdd = (e: React.MouseEvent) => {
     e.preventDefault();
     const format = p.formats?.[0] ?? "A4";
@@ -30,12 +32,13 @@ export function ProductCard({ p, eager }: { p: ProductRow; eager?: boolean }) {
       slug: p.slug,
       name,
       image: img,
-      unitPriceCents: p.base_price_cents,
+      unitPriceCents: promoCents,
       qty: 1,
       personalization: { format, material },
     });
     toast.success(t("product.addedToCart"), { description: `${name.slice(0, 60)} · ${format}` });
   };
+
 
 
   return (
