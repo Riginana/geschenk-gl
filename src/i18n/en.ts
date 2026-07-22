@@ -53,6 +53,8 @@ export const en: Dictionary = {
     einschulung: "First day at school",
     abschied: "Farewell & Moving",
     sonstiges: "Other",
+    reise: "Travel",
+    wunscherfueller: "Wish fulfiller",
   },
 
   bestsellers: {

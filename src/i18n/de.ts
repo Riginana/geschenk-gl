@@ -57,6 +57,8 @@ export const de = {
     einschulung: "Einschulung",
     abschied: "Abschied & Umzug",
     sonstiges: "Sonstiges",
+    reise: "Reise",
+    wunscherfueller: "Wunscherfüller",
   },
 
   bestsellers: {

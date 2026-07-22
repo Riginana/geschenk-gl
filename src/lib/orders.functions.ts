@@ -2,7 +2,7 @@ import { createServerFn } from "@tanstack/react-start";
 import { createClient } from "@supabase/supabase-js";
 import { z } from "zod";
 import type { Database } from "@/integrations/supabase/types";
-import rawProducts from "@/data/etsy-products.json";
+import rawProducts from "@/data/products.json";
 
 function pub() {
   return createClient<Database>(process.env.SUPABASE_URL!, process.env.SUPABASE_PUBLISHABLE_KEY!, {
@@ -10,9 +10,9 @@ function pub() {
   });
 }
 
-type RawProduct = { id: string; price: number };
+type RawProduct = { id: string; base_price_cents: number };
 const PRODUCT_PRICE_CENTS = new Map<string, number>(
-  (rawProducts as RawProduct[]).map((p) => [p.id, Math.round(p.price * 100)]),
+  (rawProducts.products as RawProduct[]).map((p) => [p.id, p.base_price_cents]),
 );
 
 const PRICE_BY_FORMAT_CENTS: Record<string, number> = { A5: 0, A4: 500, A3: 1200 };

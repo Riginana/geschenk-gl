@@ -69,8 +69,8 @@ export function ProductCard({ p, eager }: { p: ProductRow; eager?: boolean }) {
           )}
 
           {p.badge && (
-            <span className="absolute left-3 top-3 rounded-full bg-walnut/90 px-3 py-1 text-[10px] font-medium uppercase tracking-widest text-cream">
-              {p.badge === "bestseller" ? t("badge.bestseller") : t("badge.neu")}
+            <span className={`absolute left-3 top-3 rounded-full px-3 py-1 text-[10px] font-medium uppercase tracking-widest ${p.badge === "draft" ? "bg-muted/90 text-walnut" : "bg-walnut/90 text-cream"}`}>
+              {p.badge === "bestseller" ? t("badge.bestseller") : p.badge === "draft" ? (locale === "de" ? "Entwurf" : "Draft") : t("badge.neu")}
             </span>
           )}
           {variantCount > 1 && (
