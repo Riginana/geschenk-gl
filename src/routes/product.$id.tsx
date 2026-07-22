@@ -81,6 +81,9 @@ function ProductPage() {
   const [frame, setFrame] = useState<string>(product?.material || "holz");
   const [qty, setQty] = useState(1);
   const [activeImage, setActiveImage] = useState(0);
+  const [persName, setPersName] = useState("");
+  const [persDate, setPersDate] = useState("");
+  const [persText, setPersText] = useState("");
 
   if (!product) return <ProductNotFound />;
 
