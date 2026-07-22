@@ -7,6 +7,8 @@ import { imageFor } from "@/lib/product-images";
 import { formatEUR, useT } from "@/i18n";
 import { useWishlist } from "@/contexts/wishlist";
 import { useCart } from "@/contexts/cart";
+import { withPromo } from "@/lib/pricing";
+
 
 export function ProductCard({ p, eager }: { p: ProductRow; eager?: boolean }) {
   const { locale, t } = useT();
