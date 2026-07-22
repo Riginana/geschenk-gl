@@ -196,6 +196,44 @@ function ProductPage() {
             </div>
           </div>
 
+          <div className="mt-6 space-y-4 rounded-2xl bg-card p-6 ring-1 ring-border/60">
+            <p className="eyebrow">Personalisierung</p>
+            <label className="block">
+              <span className="text-xs text-muted-foreground">Name(n)</span>
+              <input
+                type="text"
+                value={persName}
+                onChange={(e) => setPersName(e.target.value)}
+                maxLength={80}
+                placeholder="z. B. Julia & Max"
+                className="mt-1.5 w-full rounded-lg border border-border bg-cream px-4 py-2.5 text-sm outline-none focus:border-brass"
+              />
+            </label>
+            <label className="block">
+              <span className="text-xs text-muted-foreground">Datum (optional)</span>
+              <input
+                type="text"
+                value={persDate}
+                onChange={(e) => setPersDate(e.target.value)}
+                maxLength={40}
+                placeholder="z. B. 24.12.2026"
+                className="mt-1.5 w-full rounded-lg border border-border bg-cream px-4 py-2.5 text-sm outline-none focus:border-brass"
+              />
+            </label>
+            <label className="block">
+              <span className="text-xs text-muted-foreground">Wunschtext (optional)</span>
+              <textarea
+                rows={3}
+                value={persText}
+                onChange={(e) => setPersText(e.target.value)}
+                maxLength={400}
+                placeholder="Persönliche Widmung, Grußworte…"
+                className="mt-1.5 w-full resize-none rounded-lg border border-border bg-cream px-4 py-2.5 text-sm outline-none focus:border-brass"
+              />
+            </label>
+          </div>
+
+
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <div className="flex items-center rounded-full border border-border bg-card">
               <button aria-label="−" onClick={() => setQty((q) => Math.max(1, q - 1))} className="grid h-11 w-11 place-items-center text-walnut">
