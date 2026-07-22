@@ -109,7 +109,7 @@ function ContactPage() {
           <div className="overflow-hidden rounded-2xl ring-1 ring-border">
             <iframe
               title="Map"
-              src="https://www.openstreetmap.org/export/embed.html?bbox=13.37%2C52.51%2C13.42%2C52.53&layer=mapnik"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=10.9850%2C49.5820%2C11.0180%2C49.5970&layer=mapnik&marker=49.5895%2C11.0015"
               className="block h-64 w-full"
               loading="lazy"
             />
