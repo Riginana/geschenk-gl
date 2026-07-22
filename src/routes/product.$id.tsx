@@ -101,7 +101,7 @@ function ProductPage() {
       image,
       unitPriceCents: unitCents,
       qty,
-      personalization: { format, material: frame, name: persName, date: persDate, text: persText },
+      personalization: { format, material: frame, names: persName, date: persDate, message: persText },
     });
     toast.success(t("product.addedToCart"), { description: `${title.slice(0, 60)} · ${format} · ${qty}×` });
   };
