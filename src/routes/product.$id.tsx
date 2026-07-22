@@ -85,6 +85,8 @@ function ProductPage() {
   const [persName, setPersName] = useState("");
   const [persDate, setPersDate] = useState("");
   const [persText, setPersText] = useState("");
+  const [previewFont, setPreviewFont] = useState<PreviewFont>("script");
+  const [previewColor, setPreviewColor] = useState<PreviewColor>("black");
 
   if (!product) return <ProductNotFound />;
 
