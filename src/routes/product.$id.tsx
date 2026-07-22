@@ -205,6 +205,18 @@ function ProductPage() {
             </div>
           </div>
 
+          <PersonalizationPreview
+            image={image}
+            alt={title}
+            name={persName}
+            date={persDate}
+            message={persText}
+            font={previewFont}
+            color={previewColor}
+            onFontChange={setPreviewFont}
+            onColorChange={setPreviewColor}
+          />
+
           <div className="mt-6 space-y-4 rounded-2xl bg-card p-6 ring-1 ring-border/60">
             <p className="eyebrow">Personalisierung</p>
             <label className="block">
