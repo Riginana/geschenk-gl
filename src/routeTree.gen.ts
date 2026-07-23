@@ -14,6 +14,7 @@ import { Route as WiderrufRouteImport } from './routes/widerruf'
 import { Route as WarenkorbRouteImport } from './routes/warenkorb'
 import { Route as VersandRouteImport } from './routes/versand'
 import { Route as UeberUnsRouteImport } from './routes/ueber-uns'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as KontaktRouteImport } from './routes/kontakt'
 import { Route as KasseRouteImport } from './routes/kasse'
 import { Route as ImpressumRouteImport } from './routes/impressum'
@@ -22,10 +23,13 @@ import { Route as DatenschutzRouteImport } from './routes/datenschutz'
 import { Route as BewertungenRouteImport } from './routes/bewertungen'
 import { Route as BestellungBestaetigtRouteImport } from './routes/bestellung-bestaetigt'
 import { Route as AgbRouteImport } from './routes/agb'
+import { Route as AdminRouteRouteImport } from './routes/admin/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ShopIndexRouteImport } from './routes/shop.index'
+import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as ShopSlugRouteImport } from './routes/shop.$slug'
 import { Route as ProductIdRouteImport } from './routes/product.$id'
+import { Route as AdminLoginRouteImport } from './routes/admin/login'
 
 const WunschlisteRoute = WunschlisteRouteImport.update({
   id: '/wunschliste',
@@ -50,6 +54,11 @@ const VersandRoute = VersandRouteImport.update({
 const UeberUnsRoute = UeberUnsRouteImport.update({
   id: '/ueber-uns',
   path: '/ueber-uns',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
   getParentRoute: () => rootRouteImport,
 } as any)
 const KontaktRoute = KontaktRouteImport.update({
@@ -92,6 +101,11 @@ const AgbRoute = AgbRouteImport.update({
   path: '/agb',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminRouteRoute = AdminRouteRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -101,6 +115,11 @@ const ShopIndexRoute = ShopIndexRouteImport.update({
   id: '/shop/',
   path: '/shop/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRouteRoute,
 } as any)
 const ShopSlugRoute = ShopSlugRouteImport.update({
   id: '/shop/$slug',
@@ -112,9 +131,15 @@ const ProductIdRoute = ProductIdRouteImport.update({
   path: '/product/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteRouteWithChildren
   '/agb': typeof AgbRoute
   '/bestellung-bestaetigt': typeof BestellungBestaetigtRoute
   '/bewertungen': typeof BewertungenRoute
@@ -123,13 +148,16 @@ export interface FileRoutesByFullPath {
   '/impressum': typeof ImpressumRoute
   '/kasse': typeof KasseRoute
   '/kontakt': typeof KontaktRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/ueber-uns': typeof UeberUnsRoute
   '/versand': typeof VersandRoute
   '/warenkorb': typeof WarenkorbRoute
   '/widerruf': typeof WiderrufRoute
   '/wunschliste': typeof WunschlisteRoute
+  '/admin/login': typeof AdminLoginRoute
   '/product/$id': typeof ProductIdRoute
   '/shop/$slug': typeof ShopSlugRoute
+  '/admin/': typeof AdminIndexRoute
   '/shop/': typeof ShopIndexRoute
 }
 export interface FileRoutesByTo {
@@ -142,18 +170,22 @@ export interface FileRoutesByTo {
   '/impressum': typeof ImpressumRoute
   '/kasse': typeof KasseRoute
   '/kontakt': typeof KontaktRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/ueber-uns': typeof UeberUnsRoute
   '/versand': typeof VersandRoute
   '/warenkorb': typeof WarenkorbRoute
   '/widerruf': typeof WiderrufRoute
   '/wunschliste': typeof WunschlisteRoute
+  '/admin/login': typeof AdminLoginRoute
   '/product/$id': typeof ProductIdRoute
   '/shop/$slug': typeof ShopSlugRoute
+  '/admin': typeof AdminIndexRoute
   '/shop': typeof ShopIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteRouteWithChildren
   '/agb': typeof AgbRoute
   '/bestellung-bestaetigt': typeof BestellungBestaetigtRoute
   '/bewertungen': typeof BewertungenRoute
@@ -162,19 +194,23 @@ export interface FileRoutesById {
   '/impressum': typeof ImpressumRoute
   '/kasse': typeof KasseRoute
   '/kontakt': typeof KontaktRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/ueber-uns': typeof UeberUnsRoute
   '/versand': typeof VersandRoute
   '/warenkorb': typeof WarenkorbRoute
   '/widerruf': typeof WiderrufRoute
   '/wunschliste': typeof WunschlisteRoute
+  '/admin/login': typeof AdminLoginRoute
   '/product/$id': typeof ProductIdRoute
   '/shop/$slug': typeof ShopSlugRoute
+  '/admin/': typeof AdminIndexRoute
   '/shop/': typeof ShopIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/admin'
     | '/agb'
     | '/bestellung-bestaetigt'
     | '/bewertungen'
@@ -183,13 +219,16 @@ export interface FileRouteTypes {
     | '/impressum'
     | '/kasse'
     | '/kontakt'
+    | '/reset-password'
     | '/ueber-uns'
     | '/versand'
     | '/warenkorb'
     | '/widerruf'
     | '/wunschliste'
+    | '/admin/login'
     | '/product/$id'
     | '/shop/$slug'
+    | '/admin/'
     | '/shop/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -202,17 +241,21 @@ export interface FileRouteTypes {
     | '/impressum'
     | '/kasse'
     | '/kontakt'
+    | '/reset-password'
     | '/ueber-uns'
     | '/versand'
     | '/warenkorb'
     | '/widerruf'
     | '/wunschliste'
+    | '/admin/login'
     | '/product/$id'
     | '/shop/$slug'
+    | '/admin'
     | '/shop'
   id:
     | '__root__'
     | '/'
+    | '/admin'
     | '/agb'
     | '/bestellung-bestaetigt'
     | '/bewertungen'
@@ -221,18 +264,22 @@ export interface FileRouteTypes {
     | '/impressum'
     | '/kasse'
     | '/kontakt'
+    | '/reset-password'
     | '/ueber-uns'
     | '/versand'
     | '/warenkorb'
     | '/widerruf'
     | '/wunschliste'
+    | '/admin/login'
     | '/product/$id'
     | '/shop/$slug'
+    | '/admin/'
     | '/shop/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRouteRoute: typeof AdminRouteRouteWithChildren
   AgbRoute: typeof AgbRoute
   BestellungBestaetigtRoute: typeof BestellungBestaetigtRoute
   BewertungenRoute: typeof BewertungenRoute
@@ -241,6 +288,7 @@ export interface RootRouteChildren {
   ImpressumRoute: typeof ImpressumRoute
   KasseRoute: typeof KasseRoute
   KontaktRoute: typeof KontaktRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
   UeberUnsRoute: typeof UeberUnsRoute
   VersandRoute: typeof VersandRoute
   WarenkorbRoute: typeof WarenkorbRoute
@@ -286,6 +334,13 @@ declare module '@tanstack/react-router' {
       path: '/ueber-uns'
       fullPath: '/ueber-uns'
       preLoaderRoute: typeof UeberUnsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/kontakt': {
@@ -344,6 +399,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AgbRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -357,6 +419,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/shop/'
       preLoaderRoute: typeof ShopIndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRouteRoute
     }
     '/shop/$slug': {
       id: '/shop/$slug'
@@ -372,11 +441,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/login': {
+      id: '/admin/login'
+      path: '/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
   }
 }
 
+interface AdminRouteRouteChildren {
+  AdminLoginRoute: typeof AdminLoginRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+}
+
+const AdminRouteRouteChildren: AdminRouteRouteChildren = {
+  AdminLoginRoute: AdminLoginRoute,
+  AdminIndexRoute: AdminIndexRoute,
+}
+
+const AdminRouteRouteWithChildren = AdminRouteRoute._addFileChildren(
+  AdminRouteRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRouteRoute: AdminRouteRouteWithChildren,
   AgbRoute: AgbRoute,
   BestellungBestaetigtRoute: BestellungBestaetigtRoute,
   BewertungenRoute: BewertungenRoute,
@@ -385,6 +476,7 @@ const rootRouteChildren: RootRouteChildren = {
   ImpressumRoute: ImpressumRoute,
   KasseRoute: KasseRoute,
   KontaktRoute: KontaktRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
   UeberUnsRoute: UeberUnsRoute,
   VersandRoute: VersandRoute,
   WarenkorbRoute: WarenkorbRoute,
