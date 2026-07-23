@@ -107,60 +107,220 @@ export type Database = {
         }
         Relationships: []
       }
+      product_images: {
+        Row: {
+          alt: string | null
+          created_at: string
+          id: string
+          product_id: string
+          role: string
+          sort_order: number
+          url: string
+        }
+        Insert: {
+          alt?: string | null
+          created_at?: string
+          id?: string
+          product_id: string
+          role: string
+          sort_order?: number
+          url: string
+        }
+        Update: {
+          alt?: string | null
+          created_at?: string
+          id?: string
+          product_id?: string
+          role?: string
+          sort_order?: number
+          url?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "product_images_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      product_variants: {
+        Row: {
+          created_at: string
+          format: string | null
+          id: string
+          is_default: boolean
+          material: string
+          price_cents: number
+          product_id: string
+          sort_order: number
+        }
+        Insert: {
+          created_at?: string
+          format?: string | null
+          id?: string
+          is_default?: boolean
+          material: string
+          price_cents: number
+          product_id: string
+          sort_order?: number
+        }
+        Update: {
+          created_at?: string
+          format?: string | null
+          id?: string
+          is_default?: boolean
+          material?: string
+          price_cents?: number
+          product_id?: string
+          sort_order?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "product_variants_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       products: {
         Row: {
           badge: string | null
           base_price_cents: number
+          category: string
           created_at: string
           description_de: string
           description_en: string
-          formats: Json
+          discount_percent: number
+          hero_image: string | null
+          hover_image: string | null
           id: string
-          images: Json
+          in_stock: boolean
           is_active: boolean
+          is_bestseller: boolean
           material: string
+          material_label: string | null
           meta_description_de: string | null
           meta_description_en: string | null
           name_de: string
           name_en: string
           occasion: string
           slug: string
+          sort_order: number
+          tags: Json
+          updated_at: string
         }
         Insert: {
           badge?: string | null
           base_price_cents: number
+          category?: string
           created_at?: string
           description_de: string
           description_en: string
-          formats?: Json
+          discount_percent?: number
+          hero_image?: string | null
+          hover_image?: string | null
           id?: string
-          images?: Json
+          in_stock?: boolean
           is_active?: boolean
+          is_bestseller?: boolean
           material?: string
+          material_label?: string | null
           meta_description_de?: string | null
           meta_description_en?: string | null
           name_de: string
           name_en: string
           occasion: string
           slug: string
+          sort_order?: number
+          tags?: Json
+          updated_at?: string
         }
         Update: {
           badge?: string | null
           base_price_cents?: number
+          category?: string
           created_at?: string
           description_de?: string
           description_en?: string
-          formats?: Json
+          discount_percent?: number
+          hero_image?: string | null
+          hover_image?: string | null
           id?: string
-          images?: Json
+          in_stock?: boolean
           is_active?: boolean
+          is_bestseller?: boolean
           material?: string
+          material_label?: string | null
           meta_description_de?: string | null
           meta_description_en?: string | null
           name_de?: string
           name_en?: string
           occasion?: string
           slug?: string
+          sort_order?: number
+          tags?: Json
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      products_backup_20260723: {
+        Row: {
+          badge: string | null
+          base_price_cents: number | null
+          created_at: string | null
+          description_de: string | null
+          description_en: string | null
+          formats: Json | null
+          id: string | null
+          images: Json | null
+          is_active: boolean | null
+          material: string | null
+          meta_description_de: string | null
+          meta_description_en: string | null
+          name_de: string | null
+          name_en: string | null
+          occasion: string | null
+          slug: string | null
+        }
+        Insert: {
+          badge?: string | null
+          base_price_cents?: number | null
+          created_at?: string | null
+          description_de?: string | null
+          description_en?: string | null
+          formats?: Json | null
+          id?: string | null
+          images?: Json | null
+          is_active?: boolean | null
+          material?: string | null
+          meta_description_de?: string | null
+          meta_description_en?: string | null
+          name_de?: string | null
+          name_en?: string | null
+          occasion?: string | null
+          slug?: string | null
+        }
+        Update: {
+          badge?: string | null
+          base_price_cents?: number | null
+          created_at?: string | null
+          description_de?: string | null
+          description_en?: string | null
+          formats?: Json | null
+          id?: string | null
+          images?: Json | null
+          is_active?: boolean | null
+          material?: string | null
+          meta_description_de?: string | null
+          meta_description_en?: string | null
+          name_de?: string | null
+          name_en?: string | null
+          occasion?: string | null
+          slug?: string | null
         }
         Relationships: []
       }
@@ -210,6 +370,24 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      reviews_product_link_backup_20260723: {
+        Row: {
+          old_product_id: string | null
+          product_slug: string | null
+          review_id: string | null
+        }
+        Insert: {
+          old_product_id?: string | null
+          product_slug?: string | null
+          review_id?: string | null
+        }
+        Update: {
+          old_product_id?: string | null
+          product_slug?: string | null
+          review_id?: string | null
+        }
+        Relationships: []
       }
     }
     Views: {
