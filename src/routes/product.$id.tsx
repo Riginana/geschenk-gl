@@ -19,7 +19,7 @@ const productsQueryOptions = {
 };
 
 const FRAMES = ["holz", "papier", "kraftpapier"] as const;
-import { PRICE_BY_FORMAT_CENTS, PRICE_BY_FRAME_CENTS, withPromo } from "@/lib/pricing";
+import { PRICE_BY_FORMAT_CENTS, PRICE_BY_FRAME_CENTS, calculateDiscountedPrice } from "@/lib/pricing";
 
 
 function detectFormats(text: string): Array<"A5" | "A4" | "A3"> {
@@ -89,11 +89,15 @@ function ProductPage() {
   if (!product) return <ProductNotFound />;
 
   const image = images[activeImage] ?? images[0] ?? "";
-  const baseCents =
-    product.base_price_cents +
-    (PRICE_BY_FORMAT_CENTS[format] ?? 0) +
-    (PRICE_BY_FRAME_CENTS[frame] ?? 0);
-  const unitCents = withPromo(baseCents);
+  // Prefer explicit variant pricing when a matching format+material variant exists.
+  const matchedVariant = product.variants?.find((v) => v.format === format && v.material === frame);
+  const materialsForFormat = product.variants?.filter((v) => v.format === format) ?? [];
+  const availableMaterials = Array.from(new Set(materialsForFormat.map((v) => v.material))).filter(Boolean) as string[];
+  const baseCents = matchedVariant
+    ? matchedVariant.price_cents
+    : product.base_price_cents + (PRICE_BY_FORMAT_CENTS[format] ?? 0) + (PRICE_BY_FRAME_CENTS[frame] ?? 0);
+  const unitCents = calculateDiscountedPrice(baseCents, product.discount_percent);
+  const hasDiscount = (product.discount_percent ?? 0) > 0;
 
 
   const onAdd = () => {
@@ -155,9 +159,13 @@ function ProductPage() {
           <h1 className="mt-2 font-serif text-3xl text-walnut sm:text-4xl">{title}</h1>
 
           <div className="mt-6 flex flex-wrap items-baseline gap-3">
-            <span className="font-serif text-3xl text-destructive">{formatEUR(unitCents, locale)}</span>
-            <span className="text-base text-muted-foreground line-through">{formatEUR(baseCents, locale)}</span>
-            <span className="rounded-full bg-destructive/10 px-2 py-0.5 text-xs font-semibold text-destructive">−30%</span>
+            <span className={`font-serif text-3xl ${hasDiscount ? "text-destructive" : "text-walnut"}`}>{formatEUR(unitCents, locale)}</span>
+            {hasDiscount && (
+              <>
+                <span className="text-base text-muted-foreground line-through">{formatEUR(baseCents, locale)}</span>
+                <span className="rounded-full bg-destructive/10 px-2 py-0.5 text-xs font-semibold text-destructive">−{product.discount_percent}%</span>
+              </>
+            )}
             <span className="text-sm text-muted-foreground">inkl. MwSt. zzgl. Versand</span>
           </div>
 
@@ -188,17 +196,21 @@ function ProductPage() {
             <div>
               <p className="eyebrow mb-2">{t("product.material")}</p>
               <div className="flex flex-wrap gap-2">
-                {FRAMES.map((m) => (
-                  <button
-                    key={m}
-                    onClick={() => setFrame(m)}
-                    className={`rounded-full border px-4 py-1.5 text-xs transition ${
-                      frame === m ? "border-walnut bg-walnut text-cream" : "border-border bg-cream text-walnut"
-                    }`}
-                  >
-                    {t(`shop.${m}`)}
-                  </button>
-                ))}
+                {FRAMES.map((m) => {
+                  const enabled = availableMaterials.length === 0 || availableMaterials.includes(m);
+                  return (
+                    <button
+                      key={m}
+                      onClick={() => enabled && setFrame(m)}
+                      disabled={!enabled}
+                      className={`rounded-full border px-4 py-1.5 text-xs transition ${
+                        frame === m ? "border-walnut bg-walnut text-cream" : "border-border bg-cream text-walnut"
+                      } ${!enabled ? "opacity-40 cursor-not-allowed" : ""}`}
+                    >
+                      {t(`shop.${m}`)}
+                    </button>
+                  );
+                })}
               </div>
             </div>
           </div>
