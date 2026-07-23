@@ -1,0 +1,1 @@
+DROP FUNCTION IF EXISTS public.migration_exec_sql(text); DROP TABLE IF EXISTS public.products_backup_20260723; DROP TABLE IF EXISTS public.reviews_product_link_backup_20260723;
