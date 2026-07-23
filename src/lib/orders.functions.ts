@@ -88,7 +88,7 @@ export const submitOrder = createServerFn({ method: "POST" })
         subtotal_cents: subtotalCents,
         shipping_cents: shippingCents,
         total_cents: totalCents,
-        status: "pending_mock", // TODO: real payment integration
+        status: "pending", // TODO: real payment integration
         locale: data.locale,
       })
       .select("id")
