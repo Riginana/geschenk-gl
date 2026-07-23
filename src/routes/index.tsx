@@ -313,7 +313,7 @@ function Occasions() {
 function Bestsellers() {
   const { t } = useT();
   const { data: products } = useSuspenseQuery({ queryKey: ["products"], queryFn: () => listProducts() });
-  const best = products.filter((p) => p.badge === "bestseller").slice(0, 4);
+  const best = products.filter((p) => p.is_bestseller).slice(0, 4);
 
   return (
     <section className="border-t border-border/60 bg-cream">
