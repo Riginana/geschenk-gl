@@ -196,17 +196,21 @@ function ProductPage() {
             <div>
               <p className="eyebrow mb-2">{t("product.material")}</p>
               <div className="flex flex-wrap gap-2">
-                {FRAMES.map((m) => (
-                  <button
-                    key={m}
-                    onClick={() => setFrame(m)}
-                    className={`rounded-full border px-4 py-1.5 text-xs transition ${
-                      frame === m ? "border-walnut bg-walnut text-cream" : "border-border bg-cream text-walnut"
-                    }`}
-                  >
-                    {t(`shop.${m}`)}
-                  </button>
-                ))}
+                {FRAMES.map((m) => {
+                  const enabled = availableMaterials.length === 0 || availableMaterials.includes(m);
+                  return (
+                    <button
+                      key={m}
+                      onClick={() => enabled && setFrame(m)}
+                      disabled={!enabled}
+                      className={`rounded-full border px-4 py-1.5 text-xs transition ${
+                        frame === m ? "border-walnut bg-walnut text-cream" : "border-border bg-cream text-walnut"
+                      } ${!enabled ? "opacity-40 cursor-not-allowed" : ""}`}
+                    >
+                      {t(`shop.${m}`)}
+                    </button>
+                  );
+                })}
               </div>
             </div>
           </div>
