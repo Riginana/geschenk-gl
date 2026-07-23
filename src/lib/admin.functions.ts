@@ -106,7 +106,7 @@ export const adminUpdateProduct = createServerFn({ method: "POST" })
   .handler(async ({ data, context }) => {
     await requireAdmin(context);
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-    const { error } = await supabaseAdmin.from("products").update(data.patch).eq("id", data.id);
+    const { error } = await supabaseAdmin.from("products").update(data.patch as any).eq("id", data.id);
     if (error) throw new Error(error.message);
     return { ok: true };
   });
