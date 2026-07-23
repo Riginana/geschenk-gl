@@ -1,71 +1,99 @@
-# Kataloger­satz aus `website-media-final`
+# Миграция каталога 142 товаров в Supabase — v2
 
-## Ausgangs­lage
-- Aktueller Katalog: 90+ Etsy-Produkte, statisch aus `src/data/products.json` via `listProducts` (kein DB-Read).
-- Archiv liefert **142 Design-Gruppen** über **18 Anlässe**, insgesamt **784 WebP**-Dateien (~47 MB), plus `images.csv` (title/alt/material) und `media.json` (Rollen hero/gallery/product je Anlass).
-- Bucket `product-images` (public) existiert bereits.
+## Проверка FK перед DELETE (выполнено сейчас)
 
-## Umfang je Anlass (Designs)
-Hochzeit 39, Geburtstag 27, Weihnachten 19, Baby 8, Reise 7, Schulabschluss 7, Wunscherfüller 7, Ostern 4, Rente 4, Firmung 3, Taufe 3, Konfirmation 3, Mutterschutz 3, Kommunion 2, Jugendweihe 2, Neues-Zuhause 2, Führerschein 1, Sonstiges 1.
+Запрос `pg_constraint` по `confrelid='public.products'` вернул ровно одну ссылку:
 
-## Schritte
+- `reviews.product_id → products(id)` **ON DELETE SET NULL**
 
-### 1. Medien hochladen (Storage)
-- Alle `Website/<Anlass>/{Hero,Gallery,Product,Thumbnail}/*.webp` in Bucket `product-images` unter Präfix `catalog/<anlass-slug>/<role>/<filename>` hochladen (service_role).
-- Log `upload_map.json`: `{ originalPath: publicUrl }`.
-- Fehler → `failed_uploads.json`, weiter mit nächster Datei.
+Других таблиц со ссылкой на `products(id)` нет. Таблица `orders` хранит позиции в JSONB (`items jsonb`) и **не имеет FK** на `products` — заказы покупателей DELETE'ом не затрагиваются. Значит `DELETE FROM public.products`:
 
-### 2. Produkt­daten generieren (`src/data/products.json` neu schreiben)
-Ein Produkt = eine Design-Gruppe (Basisname ohne `-NN.webp`), zusammengeführt aus `media.json`.
+- обнулит `reviews.product_id` у отзывов (не удалит сами отзывы),
+- не тронет `orders`.
 
-Felder je Produkt:
-- `id`: `design-<anlass-slug>-<base>` (deterministisch, ersetzt `etsy-…`)
-- `slug`: `<base>` (aus Dateiname; bereits SEO)
-- `name_de`, `name_en`: `title` aus CSV (identisch; en=de vorerst)
-- `description_de`/`description_en`: leer / `alt`-Text als Fallback
-- `base_price_cents`: `1600` (Platzhalter „ab 16,00 €")
-- `occasion`: Mapping (siehe unten)
-- `material`: aus CSV (`Bilderrahmen | Holzbox | Holzschild | Holzplatte | Schiebebox | Geschenk`) → als Tag/Attribut, plus interner `material`-Key `holz` für alle.
-- `formats`: `["A4"]` (Standard)
-- `images`: alle `Product/…webp` (Fallback: `Gallery/…webp`) der Design-Gruppe, geordnet nach `-NN`
-- `hoverImage`: 2. Bild derselben Gruppe
-- `badge`: `"draft"` (neuer Badge-Wert, um manuelle Nach­bearbeitung sichtbar zu markieren)
-- `tags`: `[material, anlass, "draft"]`
-- `inStock`: `true`
+Дополнительно перед DELETE делаем снапшот отзывов (`review_id → old product_id`), чтобы после bulk-insert восстановить связи там, где slug/id совпал.
 
-### 3. Anlass-Filter erweitern
-`src/routes/shop.index.tsx` – `OCCASIONS`-Array um neue Keys ergänzen:
-`firmung, kommunion, jugendweihe, ostern, reise, mutterschutz, fuehrerschein, wunscherfueller, sonstiges` (die meisten sind bereits enthalten; fehlen tatsächlich nur `reise`, `wunscherfueller`).
-i18n-Labels ergänzen in `src/i18n/de.ts` + `en.ts` unter `occasions.*`.
+## Шаг 1. Схема (одна migration-транзакция)
 
-Kategorien-Mapping (Archiv → intern):
-| Archiv | intern |
-|---|---|
-| Baby | `geburt` |
-| Schulabschluss | `abitur` |
-| Rente | `ruhestand` |
-| Neues-Zuhause | `einzug` |
-| Fuehrerschein | `fuehrerschein` |
-| Wunscherfueller-Geschenke | `wunscherfueller` *(neu)* |
-| Reise | `reise` *(neu)* |
-| Hochzeit / Geburtstag / Taufe / Konfirmation / Firmung / Kommunion / Jugendweihe / Ostern / Weihnachten / Mutterschutz / Sonstiges | unverändert |
+Migration-tool сам оборачивает SQL в транзакцию. В этой migration:
 
-### 4. Hero-Banner je Anlass
-- `src/lib/product-images.ts`: `imageFor(occasion)` mappt jetzt auf das erste `Hero/`-Bild des jeweiligen Anlasses aus `upload_map.json`.
-- Startseite / Anlass-Kacheln bekommen so automatisch die neuen Fotos.
-- Auf `/shop?occasion=…` (in `shop.index.tsx`) einen Hero-Banner oberhalb der Grid einfügen (nur wenn `search.occasion` gesetzt): `<img src={heroFor(occasion)}>` mit Titel des Anlasses.
+1. Создать `public.products_backup_20260723` как полную копию `products` (`CREATE TABLE ... AS SELECT * FROM products`) — для ручного отката.
+2. Создать `public.reviews_product_link_backup_20260723` (`review_id`, `product_id`) — снапшот текущих связей отзывов.
+3. `ALTER TABLE public.products` — добавить `category`, `material_label`, `discount_percent` (default 30, CHECK 0..90), `hero_image`, `hover_image`, `is_bestseller`, `in_stock`, `sort_order`, `tags jsonb`, `updated_at`; удалить устаревшие `formats`, `images`.
+4. `CREATE TABLE public.product_images` (`product_id` FK ON DELETE CASCADE, `url`, `role` в {hero,gallery,product,thumbnail}, `sort_order`, `alt`) + GRANT + RLS + policy «читать фото только опубликованных товаров».
+5. `CREATE TABLE public.product_variants` (`product_id` FK ON DELETE CASCADE, `format` nullable в {A5,A4,A3}, `material` в {holz,papier,kraftpapier}, `price_cents`, `is_default`, `sort_order`) + два частичных UNIQUE-индекса (с и без `format`) + GRANT + RLS + policy «читать варианты только опубликованных товаров».
+6. Триггер `updated_at` на `products`.
 
-### 5. DB-Aufräumung
-`products`-Tabelle existiert zwar (aus früherer Migration), aber `listProducts` liest ausschließlich JSON. Trotzdem: Migration, die alle Zeilen aus `public.products` löscht, damit spätere Wechsel zu DB-Backend nicht auf Altbestand stoßen.
+Backup-таблицы: `GRANT ALL ... TO service_role` (без anon/authenticated), RLS enabled без policies — публично недоступны.
 
-### 6. Design-System
-Keine Änderungen an Farben/Schriften/Card-Layout. `ProductCard`, `shop.index.tsx`, `product.$id.tsx` bleiben strukturell gleich; nur der Draft-Badge (grauer Chip „Entwurf") wird ergänzt.
+## Шаг 2. Bulk-insert (одна insert-транзакция)
 
-### 7. Verifikation
-Nach Import Ausgabe pro Anlass: `slug → #Bilder`. Playwright: `/shop`, `/shop?occasion=hochzeit`, ein Produkt mit ≥5 Bildern – bestätigen, dass alle `product-images/catalog/...` mit HTTP 200 laden.
+Отдельный вызов, всё внутри `BEGIN ... COMMIT`:
 
-## Technische Notizen
-- Uploads gehen über `supabase--storage_upload` in Batches (~30 Dateien / Aufruf), service_role → RLS-konform (bestehende Policy erlaubt nur service_role write).
-- `products.json` wird komplett neu geschrieben (kein Merge mit Etsy-Daten).
-- Alle Etsy-`etsy-…`-Produkte verschwinden mit dem Overwrite; die Route `/shop/$slug` funktioniert weiter, weil sie nach neuem `slug`/`id` matcht.
-- Keine Preisspalte / kein Beschreibungstext – Sie tragen später manuell nach. Draft-Badge bleibt sichtbar bis Sie ihn im JSON auf `null` setzen.
+```sql
+BEGIN;
+  UPDATE public.reviews SET product_id = NULL WHERE product_id IS NOT NULL;
+  DELETE FROM public.products;                       -- products_backup_* уже создан migration'ом
+  INSERT INTO public.products (...) VALUES (...);    -- 142 строки
+  INSERT INTO public.product_images (...) VALUES (...);
+  INSERT INTO public.product_variants (...) VALUES (...);
+  -- восстановить reviews.product_id по совпадению нового products.id со снапшотом
+  UPDATE public.reviews r
+    SET product_id = b.product_id
+    FROM public.reviews_product_link_backup_20260723 b
+    WHERE r.id = b.review_id
+      AND EXISTS (SELECT 1 FROM public.products p WHERE p.id = b.product_id);
+COMMIT;
+```
+
+Если любая из INSERT-строк падает (CHECK, UNIQUE, тип) — вся транзакция откатывается, `products` остаётся пустой **только внутри отката**, снаружи она вернётся к исходному состоянию, backup-таблицы остаются нетронуты для ручного восстановления при необходимости.
+
+Данные генерирую из `src/data/products.json` (142 продукта):
+
+- **products**: `id`, `slug`, `name_de/en`, `description_de/en`, `occasion`, `material`, `material_label`, `category`, `base_price_cents`, `discount_percent=30`, `hero_image`, `hover_image`, `is_bestseller` (для 4 текущих bestseller-slug'ов из `index.tsx`), `in_stock`, `is_active=true`, `sort_order` по индексу в JSON, `tags`.
+- **product_images**: по одному ряду с `role='hero'` (из `heroImage`) + N рядов `role='gallery'` (из массива `images` с sort_order).
+- **product_variants**: комбинации `formats × material` с ценами по `calculateVariantPrice(base_price_cents, category, format, material)` — та же формула, что и в `src/lib/pricing.ts` сейчас (Bilderrahmen: A5=1300/A4=1600/A3=1900; Holzbox=2600; Holzschild=1500; Schiebebox=1900; +300 за `holz`). `is_default=true` для первой пары `(formats[0], material)`.
+
+## Шаг 3. Отчёт
+
+После insert выполняю и вставляю в ответ фактический вывод:
+
+```sql
+SELECT count(*) FROM public.products;
+SELECT count(*) FROM public.product_images;
+SELECT count(*) FROM public.product_variants;
+SELECT slug, is_bestseller FROM public.products WHERE is_bestseller = true;
+SELECT slug, count(*) AS images FROM public.products p
+  JOIN public.product_images i ON i.product_id = p.id
+  GROUP BY slug ORDER BY images LIMIT 5;
+```
+
+## Шаг 4. Единая формула цены
+
+`src/lib/pricing.ts`:
+
+```ts
+export function calculateDiscountedPrice(priceCents: number, discountPercent: number): number {
+  return Math.round(priceCents * (1 - discountPercent / 100));
+}
+```
+
+Все места (карточки, PDP, cart, orders) переводятся на неё; старые константы удаляются.
+
+## Шаг 5. Переключение источника данных
+
+- `src/lib/products.functions.ts` — читать `products + product_images + product_variants` из Supabase (публикабельный ключ на сервере, RLS-safe), собирать в тот же DTO, что ждут страницы.
+- `src/lib/orders.functions.ts` — валидировать цены по `product_variants` из БД + `calculateDiscountedPrice`.
+- `src/routes/product.$id.tsx`, `shop.index.tsx`, `index.tsx` (Bestseller) — работать с новым DTO.
+- `src/data/products.json` — удалить после того, как всё работает.
+
+## Шаг 6. Верификация и Publish
+
+- Локально: `tsgo` + Playwright — открыть `/shop`, `/product/<slug>`, проверить цену, галерею, `In den Warenkorb`.
+- Publish. Жду завершения, затем curl'ом проверяю `https://geschenk-gl.lovable.app/product/…` — статус 200, наличие `<h1>`, цена, `og:image`. В отчёт: timestamp, ссылка, фрагмент HTML.
+
+Если любой шаг падает — останавливаюсь и пишу, что произошло.
+
+## Стратегия отката
+
+- `products_backup_20260723` и `reviews_product_link_backup_20260723` живут в БД до явного удаления. Ручной откат: `TRUNCATE products CASCADE; INSERT INTO products SELECT * FROM products_backup_20260723; UPDATE reviews … FROM reviews_product_link_backup_20260723`.
