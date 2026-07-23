@@ -73,7 +73,7 @@ export type Database = {
           payment_method: string
           shipping_cents: number
           shipping_method: string
-          status: string
+          status: Database["public"]["Enums"]["order_status"]
           subtotal_cents: number
           total_cents: number
         }
@@ -87,7 +87,7 @@ export type Database = {
           payment_method: string
           shipping_cents: number
           shipping_method: string
-          status?: string
+          status?: Database["public"]["Enums"]["order_status"]
           subtotal_cents: number
           total_cents: number
         }
@@ -101,7 +101,7 @@ export type Database = {
           payment_method?: string
           shipping_cents?: number
           shipping_method?: string
-          status?: string
+          status?: Database["public"]["Enums"]["order_status"]
           subtotal_cents?: number
           total_cents?: number
         }
@@ -201,6 +201,7 @@ export type Database = {
           in_stock: boolean
           is_active: boolean
           is_bestseller: boolean
+          is_featured: boolean
           material: string
           material_label: string | null
           meta_description_de: string | null
@@ -227,6 +228,7 @@ export type Database = {
           in_stock?: boolean
           is_active?: boolean
           is_bestseller?: boolean
+          is_featured?: boolean
           material?: string
           material_label?: string | null
           meta_description_de?: string | null
@@ -253,6 +255,7 @@ export type Database = {
           in_stock?: boolean
           is_active?: boolean
           is_bestseller?: boolean
+          is_featured?: boolean
           material?: string
           material_label?: string | null
           meta_description_de?: string | null
@@ -389,6 +392,57 @@ export type Database = {
         }
         Relationships: []
       }
+      site_settings: {
+        Row: {
+          address_city: string | null
+          address_street: string | null
+          address_zip: string | null
+          email: string | null
+          facebook: string | null
+          id: number
+          impressum_owner_name: string | null
+          impressum_vat_id: string | null
+          instagram: string | null
+          map_lat: number | null
+          map_lng: number | null
+          phone: string | null
+          updated_at: string
+          whatsapp: string | null
+        }
+        Insert: {
+          address_city?: string | null
+          address_street?: string | null
+          address_zip?: string | null
+          email?: string | null
+          facebook?: string | null
+          id?: number
+          impressum_owner_name?: string | null
+          impressum_vat_id?: string | null
+          instagram?: string | null
+          map_lat?: number | null
+          map_lng?: number | null
+          phone?: string | null
+          updated_at?: string
+          whatsapp?: string | null
+        }
+        Update: {
+          address_city?: string | null
+          address_street?: string | null
+          address_zip?: string | null
+          email?: string | null
+          facebook?: string | null
+          id?: number
+          impressum_owner_name?: string | null
+          impressum_vat_id?: string | null
+          instagram?: string | null
+          map_lat?: number | null
+          map_lng?: number | null
+          phone?: string | null
+          updated_at?: string
+          whatsapp?: string | null
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
@@ -426,6 +480,7 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "user"
+      order_status: "pending" | "paid" | "shipped" | "done" | "cancelled"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -554,6 +609,7 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "user"],
+      order_status: ["pending", "paid", "shipped", "done", "cancelled"],
     },
   },
 } as const
