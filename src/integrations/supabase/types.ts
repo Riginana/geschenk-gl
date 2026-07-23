@@ -270,63 +270,6 @@ export type Database = {
         }
         Relationships: []
       }
-      products_backup_20260723: {
-        Row: {
-          badge: string | null
-          base_price_cents: number | null
-          created_at: string | null
-          description_de: string | null
-          description_en: string | null
-          formats: Json | null
-          id: string | null
-          images: Json | null
-          is_active: boolean | null
-          material: string | null
-          meta_description_de: string | null
-          meta_description_en: string | null
-          name_de: string | null
-          name_en: string | null
-          occasion: string | null
-          slug: string | null
-        }
-        Insert: {
-          badge?: string | null
-          base_price_cents?: number | null
-          created_at?: string | null
-          description_de?: string | null
-          description_en?: string | null
-          formats?: Json | null
-          id?: string | null
-          images?: Json | null
-          is_active?: boolean | null
-          material?: string | null
-          meta_description_de?: string | null
-          meta_description_en?: string | null
-          name_de?: string | null
-          name_en?: string | null
-          occasion?: string | null
-          slug?: string | null
-        }
-        Update: {
-          badge?: string | null
-          base_price_cents?: number | null
-          created_at?: string | null
-          description_de?: string | null
-          description_en?: string | null
-          formats?: Json | null
-          id?: string | null
-          images?: Json | null
-          is_active?: boolean | null
-          material?: string | null
-          meta_description_de?: string | null
-          meta_description_en?: string | null
-          name_de?: string | null
-          name_en?: string | null
-          occasion?: string | null
-          slug?: string | null
-        }
-        Relationships: []
-      }
       reviews: {
         Row: {
           created_at: string
@@ -373,24 +316,6 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
-      }
-      reviews_product_link_backup_20260723: {
-        Row: {
-          old_product_id: string | null
-          product_slug: string | null
-          review_id: string | null
-        }
-        Insert: {
-          old_product_id?: string | null
-          product_slug?: string | null
-          review_id?: string | null
-        }
-        Update: {
-          old_product_id?: string | null
-          product_slug?: string | null
-          review_id?: string | null
-        }
-        Relationships: []
       }
       site_settings: {
         Row: {
@@ -476,7 +401,6 @@ export type Database = {
         }
         Returns: boolean
       }
-      migration_exec_sql: { Args: { sql: string }; Returns: undefined }
     }
     Enums: {
       app_role: "admin" | "user"
