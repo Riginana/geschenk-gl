@@ -43,7 +43,9 @@ export type ProductRow = {
   discount_percent: number;
   is_bestseller: boolean;
   variants: ProductVariant[];
+  product_video_url?: string;
 };
+
 
 type DbProduct = {
   id: string;
