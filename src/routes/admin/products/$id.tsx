@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 import {
   adminGetProduct,
   adminUpdateProduct,
@@ -11,8 +12,10 @@ import {
   adminAddVariant,
   adminUpdateVariant,
   adminDeleteVariant,
+  adminCreateUploadUrl,
   type AdminProductRow,
 } from "@/lib/admin.functions";
+
 
 export const Route = createFileRoute("/admin/products/$id")({
   ssr: false,
@@ -33,6 +36,7 @@ function AdminProductEdit() {
   const addVar = useServerFn(adminAddVariant);
   const updVar = useServerFn(adminUpdateVariant);
   const delVar = useServerFn(adminDeleteVariant);
+  const createUpload = useServerFn(adminCreateUploadUrl);
 
   const [product, setProduct] = useState<AdminProductRow | null>(null);
   const [images, setImages] = useState<ImageRow[]>([]);
@@ -43,6 +47,10 @@ function AdminProductEdit() {
   const [newImgUrl, setNewImgUrl] = useState("");
   const [newImgRole, setNewImgRole] = useState("gallery");
   const [newVar, setNewVar] = useState({ format: "", material: "", price_cents: 0 });
+  const [uploading, setUploading] = useState<null | { name: string; progress: number }>(null);
+  const [dragOver, setDragOver] = useState(false);
+  const fileRef = useRef<HTMLInputElement>(null);
+
 
   async function reload() {
     setLoading(true);
@@ -81,6 +89,69 @@ function AdminProductEdit() {
       toast.success("Bild hinzugefügt");
     } catch (e: any) { toast.error(e?.message ?? "Fehler"); }
   }
+
+  async function uploadFile(file: File) {
+    if (!product) return;
+    const isVideo = file.type.startsWith("video/");
+    const kind: "image" | "video" = isVideo ? "video" : "image";
+    const maxImage = 20 * 1024 * 1024;
+    const maxVideo = 100 * 1024 * 1024;
+    if (kind === "image" && file.size > maxImage) {
+      toast.error("Bild größer als 20 MB. Bitte komprimieren.");
+      return;
+    }
+    if (kind === "video" && file.size > maxVideo) {
+      toast.error("Video größer als 100 MB. Bitte komprimieren oder auf YouTube hochladen und Link einfügen.");
+      return;
+    }
+    const allowedImage = ["image/jpeg", "image/png", "image/webp"];
+    const allowedVideo = ["video/mp4", "video/webm"];
+    const allowed = kind === "image" ? allowedImage : allowedVideo;
+    if (!allowed.includes(file.type)) {
+      toast.error(`Format nicht unterstützt: ${file.type || "unbekannt"}`);
+      return;
+    }
+    setUploading({ name: file.name, progress: 0 });
+    try {
+      const signed = await createUpload({
+        data: {
+          product_id: id,
+          filename: file.name,
+          content_type: file.type,
+          kind,
+          size: file.size,
+        },
+      });
+      const { error: upErr } = await supabase.storage
+        .from(signed.bucket)
+        .uploadToSignedUrl(signed.path, signed.token, file, { contentType: file.type });
+      if (upErr) throw new Error(upErr.message);
+      setUploading({ name: file.name, progress: 100 });
+      if (kind === "video") {
+        await saveField("product_video_url", signed.publicUrl as any);
+        toast.success("Video hochgeladen");
+      } else {
+        const row = await addImg({
+          data: { product_id: id, url: signed.publicUrl, role: newImgRole, sort_order: images.length },
+        });
+        setImages([...images, row as ImageRow]);
+        toast.success("Bild hochgeladen");
+      }
+    } catch (e: any) {
+      toast.error(e?.message ?? "Upload fehlgeschlagen");
+    } finally {
+      setUploading(null);
+    }
+  }
+
+  async function onPickFiles(files: FileList | null) {
+    if (!files) return;
+    for (const f of Array.from(files)) {
+      await uploadFile(f);
+    }
+    if (fileRef.current) fileRef.current.value = "";
+  }
+
 
   async function onDeleteImage(imgId: string) {
     if (!confirm("Löschen?")) return;
@@ -169,6 +240,24 @@ function AdminProductEdit() {
           <TextField label="hero_image URL" value={product.hero_image ?? ""} onSave={(v) => saveField("hero_image", (v || null) as any)} />
           <TextField label="hover_image URL" value={product.hover_image ?? ""} onSave={(v) => saveField("hover_image", (v || null) as any)} />
         </div>
+        <div className="mt-4 grid gap-4 md:grid-cols-2">
+          <TextField
+            label="product_video_url"
+            value={product.product_video_url ?? ""}
+            onSave={(v) => saveField("product_video_url", (v || null) as any)}
+          />
+          {product.product_video_url ? (
+            <div className="flex items-end gap-2">
+              <video src={product.product_video_url} controls className="h-24 rounded border border-border" />
+              <button
+                className="rounded border border-destructive px-2 py-1 text-xs text-destructive"
+                onClick={() => saveField("product_video_url", null as any)}
+              >
+                Video entfernen
+              </button>
+            </div>
+          ) : null}
+        </div>
         <div className="mt-4 flex flex-wrap gap-4">
           <Toggle label="is_active" value={product.is_active} onSave={(v) => saveField("is_active", v)} />
           <Toggle label="is_bestseller" value={product.is_bestseller} onSave={(v) => saveField("is_bestseller", v)} />
@@ -180,10 +269,46 @@ function AdminProductEdit() {
       {/* Images */}
       <section className="mb-6 rounded-xl border border-border bg-card p-5">
         <h2 className="mb-3 font-serif text-lg">Галерея ({images.length})</h2>
+
+        <div
+          onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
+          onDragLeave={() => setDragOver(false)}
+          onDrop={(e) => {
+            e.preventDefault();
+            setDragOver(false);
+            onPickFiles(e.dataTransfer.files);
+          }}
+          className={`mb-4 flex flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed p-6 text-center text-sm transition-colors ${
+            dragOver ? "border-walnut bg-accent" : "border-border"
+          }`}
+        >
+          <input
+            ref={fileRef}
+            type="file"
+            accept="image/jpeg,image/png,image/webp,video/mp4,video/webm"
+            multiple
+            className="hidden"
+            onChange={(e) => onPickFiles(e.target.files)}
+          />
+          <div className="font-medium">Datei hochladen</div>
+          <div className="text-xs text-muted-foreground">
+            Ziehen &amp; ablegen oder klicken. JPG/PNG/WebP bis 20 MB · MP4/WebM bis 100 MB.
+            Größere Videos bitte komprimieren oder auf YouTube hosten und Link einfügen.
+          </div>
+          <button
+            type="button"
+            onClick={() => fileRef.current?.click()}
+            className="mt-1 rounded-md bg-walnut px-4 py-2 text-xs text-cream"
+            disabled={!!uploading}
+          >
+            {uploading ? `Lade hoch: ${uploading.name}` : "Datei auswählen"}
+          </button>
+        </div>
+
         <div className="mb-4 flex flex-wrap items-end gap-2">
           <input
             className="min-w-[280px] flex-1 rounded-md border border-input bg-background px-3 py-2 text-sm"
-            placeholder="URL нового изображения"
+            placeholder="oder URL нового изображения"
             value={newImgUrl}
             onChange={(e) => setNewImgUrl(e.target.value)}
           />
@@ -197,8 +322,9 @@ function AdminProductEdit() {
             <option value="hero">hero</option>
             <option value="thumbnail">thumbnail</option>
           </select>
-          <button onClick={onAddImage} className="rounded-md bg-walnut px-4 py-2 text-sm text-cream">Добавить</button>
+          <button onClick={onAddImage} className="rounded-md border border-border px-4 py-2 text-sm">URL hinzufügen</button>
         </div>
+
         <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
           {images.map((im, i) => (
             <div key={im.id} className="flex gap-3 rounded-lg border border-border p-2">
