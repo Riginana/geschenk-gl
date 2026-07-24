@@ -151,8 +151,22 @@ function ProductPage() {
                 ))}
               </div>
             )}
+            {product.product_video_url && (
+              <div className="mt-4 overflow-hidden rounded-2xl bg-black ring-1 ring-border">
+                <video
+                  src={product.product_video_url}
+                  controls
+                  muted
+                  playsInline
+                  preload="metadata"
+                  className="h-full w-full"
+                  aria-label={`${title} — Video`}
+                />
+              </div>
+            )}
           </div>
         </Reveal>
+
 
         <div>
           <p className="eyebrow">{t(`occasions.${product.occasion}`) || product.occasion}</p>
