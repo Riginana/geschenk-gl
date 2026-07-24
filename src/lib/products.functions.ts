@@ -68,7 +68,9 @@ type DbProduct = {
   meta_description_en: string | null;
   discount_percent: number | null;
   sort_order: number | null;
+  product_video_url: string | null;
 };
+
 
 type DbImage = { product_id: string; url: string; role: string; sort_order: number };
 type DbVariant = { id: string; product_id: string; format: string; material: string; price_cents: number; is_default: boolean; sort_order: number };
