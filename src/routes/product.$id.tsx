@@ -1,9 +1,9 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { Heart, Minus, Plus, ShoppingBag, ArrowLeft } from "lucide-react";
+import { Heart, Minus, Plus, ShoppingBag, ArrowLeft, Play, X } from "lucide-react";
 import { listProducts, type ProductRow } from "@/lib/products.functions";
 import { listReviews } from "@/lib/reviews.functions";
 import { formatEUR, formatDate, useT } from "@/i18n";
