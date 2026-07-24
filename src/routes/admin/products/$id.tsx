@@ -36,6 +36,7 @@ function AdminProductEdit() {
   const addVar = useServerFn(adminAddVariant);
   const updVar = useServerFn(adminUpdateVariant);
   const delVar = useServerFn(adminDeleteVariant);
+  const createUpload = useServerFn(adminCreateUploadUrl);
 
   const [product, setProduct] = useState<AdminProductRow | null>(null);
   const [images, setImages] = useState<ImageRow[]>([]);
@@ -46,6 +47,10 @@ function AdminProductEdit() {
   const [newImgUrl, setNewImgUrl] = useState("");
   const [newImgRole, setNewImgRole] = useState("gallery");
   const [newVar, setNewVar] = useState({ format: "", material: "", price_cents: 0 });
+  const [uploading, setUploading] = useState<null | { name: string; progress: number }>(null);
+  const [dragOver, setDragOver] = useState(false);
+  const fileRef = useRef<HTMLInputElement>(null);
+
 
   async function reload() {
     setLoading(true);
