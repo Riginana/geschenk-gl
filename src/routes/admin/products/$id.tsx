@@ -90,6 +90,69 @@ function AdminProductEdit() {
     } catch (e: any) { toast.error(e?.message ?? "Fehler"); }
   }
 
+  async function uploadFile(file: File) {
+    if (!product) return;
+    const isVideo = file.type.startsWith("video/");
+    const kind: "image" | "video" = isVideo ? "video" : "image";
+    const maxImage = 20 * 1024 * 1024;
+    const maxVideo = 100 * 1024 * 1024;
+    if (kind === "image" && file.size > maxImage) {
+      toast.error("Bild größer als 20 MB. Bitte komprimieren.");
+      return;
+    }
+    if (kind === "video" && file.size > maxVideo) {
+      toast.error("Video größer als 100 MB. Bitte komprimieren oder auf YouTube hochladen und Link einfügen.");
+      return;
+    }
+    const allowedImage = ["image/jpeg", "image/png", "image/webp"];
+    const allowedVideo = ["video/mp4", "video/webm"];
+    const allowed = kind === "image" ? allowedImage : allowedVideo;
+    if (!allowed.includes(file.type)) {
+      toast.error(`Format nicht unterstützt: ${file.type || "unbekannt"}`);
+      return;
+    }
+    setUploading({ name: file.name, progress: 0 });
+    try {
+      const signed = await createUpload({
+        data: {
+          product_id: id,
+          filename: file.name,
+          content_type: file.type,
+          kind,
+          size: file.size,
+        },
+      });
+      const { error: upErr } = await supabase.storage
+        .from(signed.bucket)
+        .uploadToSignedUrl(signed.path, signed.token, file, { contentType: file.type });
+      if (upErr) throw new Error(upErr.message);
+      setUploading({ name: file.name, progress: 100 });
+      if (kind === "video") {
+        await saveField("product_video_url", signed.publicUrl as any);
+        toast.success("Video hochgeladen");
+      } else {
+        const row = await addImg({
+          data: { product_id: id, url: signed.publicUrl, role: newImgRole, sort_order: images.length },
+        });
+        setImages([...images, row as ImageRow]);
+        toast.success("Bild hochgeladen");
+      }
+    } catch (e: any) {
+      toast.error(e?.message ?? "Upload fehlgeschlagen");
+    } finally {
+      setUploading(null);
+    }
+  }
+
+  async function onPickFiles(files: FileList | null) {
+    if (!files) return;
+    for (const f of Array.from(files)) {
+      await uploadFile(f);
+    }
+    if (fileRef.current) fileRef.current.value = "";
+  }
+
+
   async function onDeleteImage(imgId: string) {
     if (!confirm("Löschen?")) return;
     try {
