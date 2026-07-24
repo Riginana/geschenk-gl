@@ -146,11 +146,13 @@ function assemble(
       is_default: v.is_default,
       sort_order: v.sort_order ?? 0,
     })),
+    product_video_url: p.product_video_url ?? undefined,
   };
 }
 
 const PRODUCT_COLS =
-  "id,slug,name_de,name_en,description_de,description_en,base_price_cents,occasion,material,material_label,badge,hero_image,hover_image,is_bestseller,in_stock,tags,meta_description_de,meta_description_en,discount_percent,sort_order";
+  "id,slug,name_de,name_en,description_de,description_en,base_price_cents,occasion,material,material_label,badge,hero_image,hover_image,is_bestseller,in_stock,tags,meta_description_de,meta_description_en,discount_percent,sort_order,product_video_url";
+
 
 export const listProducts = createServerFn({ method: "GET" }).handler(async (): Promise<ProductRow[]> => {
   const sb = pub();
