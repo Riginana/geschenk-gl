@@ -209,6 +209,7 @@ export type Database = {
           name_de: string
           name_en: string
           occasion: string
+          product_video_url: string | null
           slug: string
           sort_order: number
           tags: Json
@@ -236,6 +237,7 @@ export type Database = {
           name_de: string
           name_en: string
           occasion: string
+          product_video_url?: string | null
           slug: string
           sort_order?: number
           tags?: Json
@@ -263,6 +265,7 @@ export type Database = {
           name_de?: string
           name_en?: string
           occasion?: string
+          product_video_url?: string | null
           slug?: string
           sort_order?: number
           tags?: Json
