@@ -133,7 +133,58 @@ export const adminBulkSetActive = createServerFn({ method: "POST" })
     return { ok: true, count: data.ids.length };
   });
 
+// ---------------- Storage uploads (signed URL) ----------------
+
+const UPLOAD_BUCKET = "product-images";
+
+export const adminCreateUploadUrl = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((d) =>
+    z
+      .object({
+        product_id: z.string().uuid(),
+        filename: z.string().min(1).max(200),
+        content_type: z.string().min(1).max(100),
+        kind: z.enum(["image", "video"]),
+        size: z.number().int().min(1).max(100 * 1024 * 1024),
+      })
+      .parse(d),
+  )
+  .handler(async ({ data, context }) => {
+    await requireAdmin(context);
+    const maxImage = 20 * 1024 * 1024;
+    const maxVideo = 100 * 1024 * 1024;
+    if (data.kind === "image" && data.size > maxImage) {
+      throw new Error("Bild überschreitet 20 MB Limit");
+    }
+    if (data.kind === "video" && data.size > maxVideo) {
+      throw new Error("Video überschreitet 100 MB Limit");
+    }
+    const allowedImage = ["image/jpeg", "image/png", "image/webp"];
+    const allowedVideo = ["video/mp4", "video/webm"];
+    const allowed = data.kind === "image" ? allowedImage : allowedVideo;
+    if (!allowed.includes(data.content_type)) {
+      throw new Error(`Format nicht unterstützt: ${data.content_type}`);
+    }
+    const safeName = data.filename.replace(/[^a-zA-Z0-9._-]/g, "_").slice(-80);
+    const path = `${data.product_id}/${Date.now()}-${Math.random().toString(36).slice(2, 8)}-${safeName}`;
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { data: signed, error } = await supabaseAdmin.storage
+      .from(UPLOAD_BUCKET)
+      .createSignedUploadUrl(path);
+    if (error || !signed) throw new Error(error?.message ?? "Signed URL Fehler");
+    const { data: pub } = supabaseAdmin.storage.from(UPLOAD_BUCKET).getPublicUrl(path);
+    return {
+      bucket: UPLOAD_BUCKET,
+      path,
+      token: signed.token,
+      signedUrl: signed.signedUrl,
+      publicUrl: pub.publicUrl,
+    };
+  });
+
 // ---------------- Product images ----------------
+
 
 export const adminAddImage = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
