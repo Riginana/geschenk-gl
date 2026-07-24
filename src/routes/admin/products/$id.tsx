@@ -327,12 +327,12 @@ function AdminProductEdit() {
 
         <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
           {images.map((im, i) => (
-            <div key={im.id} className="flex gap-3 rounded-lg border border-border p-2">
-              <img src={im.url} alt="" className="h-24 w-24 rounded object-cover" />
-              <div className="flex flex-1 flex-col justify-between text-xs">
-                <div>
+            <div key={im.id} className="flex min-w-0 gap-3 overflow-hidden rounded-lg border border-border p-2">
+              <img src={im.url} alt="" className="h-24 w-24 flex-shrink-0 rounded object-cover" />
+              <div className="flex min-w-0 flex-1 flex-col justify-between text-xs">
+                <div className="min-w-0">
                   <div className="text-muted-foreground">{im.role}</div>
-                  <div className="truncate" title={im.url}>{im.url}</div>
+                  <div className="truncate" title={im.url}>{fileNameFromUrl(im.url)}</div>
                 </div>
                 <div className="flex gap-1">
                   <button className="rounded border border-border px-2 py-1" onClick={() => moveImage(im.id, -1)} disabled={i === 0}>↑</button>
