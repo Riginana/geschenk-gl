@@ -35,10 +35,12 @@ export type AdminProductRow = {
   badge: string | null;
   meta_description_de: string | null;
   meta_description_en: string | null;
+  product_video_url: string | null;
 };
 
 const PRODUCT_COLS =
-  "id,slug,name_de,name_en,description_de,description_en,base_price_cents,discount_percent,occasion,category,material,material_label,hero_image,hover_image,is_active,is_bestseller,is_featured,in_stock,sort_order,badge,meta_description_de,meta_description_en";
+  "id,slug,name_de,name_en,description_de,description_en,base_price_cents,discount_percent,occasion,category,material,material_label,hero_image,hover_image,is_active,is_bestseller,is_featured,in_stock,sort_order,badge,meta_description_de,meta_description_en,product_video_url";
+
 
 export const adminListProducts = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
