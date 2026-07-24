@@ -26,6 +26,16 @@ export const Route = createFileRoute("/admin/products/$id")({
 type ImageRow = { id: string; product_id: string; url: string; role: string; alt: string | null; sort_order: number };
 type VariantRow = { id: string; product_id: string; format: string | null; material: string; price_cents: number; is_default: boolean; sort_order: number };
 
+function fileNameFromUrl(url: string) {
+  try {
+    const pathname = new URL(url).pathname;
+    return pathname.slice(pathname.lastIndexOf("/") + 1) || url;
+  } catch {
+    return url;
+  }
+}
+
+
 function AdminProductEdit() {
   const { id } = Route.useParams();
   const get = useServerFn(adminGetProduct);
