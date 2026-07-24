@@ -93,11 +93,13 @@ const productUpdateSchema = z.object({
       badge: z.string().max(50).nullable().optional(),
       meta_description_de: z.string().max(500).nullable().optional(),
       meta_description_en: z.string().max(500).nullable().optional(),
+      product_video_url: z.string().max(2000).nullable().optional(),
       is_active: z.boolean().optional(),
       is_bestseller: z.boolean().optional(),
       is_featured: z.boolean().optional(),
       in_stock: z.boolean().optional(),
       sort_order: z.number().int().optional(),
+
     })
     .refine((v) => Object.keys(v).length > 0, "patch is empty"),
 });
