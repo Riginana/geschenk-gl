@@ -1,9 +1,9 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { Heart, Minus, Plus, ShoppingBag, ArrowLeft } from "lucide-react";
+import { Heart, Minus, Plus, ShoppingBag, ArrowLeft, Play, X } from "lucide-react";
 import { listProducts, type ProductRow } from "@/lib/products.functions";
 import { listReviews } from "@/lib/reviews.functions";
 import { formatEUR, formatDate, useT } from "@/i18n";
@@ -82,6 +82,16 @@ function ProductPage() {
   const [frame, setFrame] = useState<string>(product?.material || "holz");
   const [qty, setQty] = useState(1);
   const [activeImage, setActiveImage] = useState(0);
+  const [videoOpen, setVideoOpen] = useState(false);
+
+  useEffect(() => {
+    if (!videoOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setVideoOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [videoOpen]);
   const [persName, setPersName] = useState("");
   const [persDate, setPersDate] = useState("");
   const [persText, setPersText] = useState("");
@@ -133,7 +143,7 @@ function ProductPage() {
                 {t(`occasions.${product.occasion}`) || product.occasion}
               </span>
             </div>
-            {images.length > 1 && (
+            {(images.length > 1 || product.product_video_url) && (
               <div className="mt-3 grid grid-cols-5 gap-2 sm:grid-cols-6">
                 {images.map((src, i) => (
                   <button
@@ -149,23 +159,66 @@ function ProductPage() {
                     <img src={src} alt="" className="h-full w-full object-cover" loading="lazy" />
                   </button>
                 ))}
-              </div>
-            )}
-            {product.product_video_url && (
-              <div className="mt-4 overflow-hidden rounded-2xl bg-black ring-1 ring-border">
-                <video
-                  src={product.product_video_url}
-                  controls
-                  muted
-                  playsInline
-                  preload="metadata"
-                  className="h-full w-full"
-                  aria-label={`${title} — Video`}
-                />
+                {product.product_video_url && (
+                  <button
+                    type="button"
+                    onClick={() => setVideoOpen(true)}
+                    aria-label="Video ansehen"
+                    title="Video ansehen"
+                    className="relative aspect-square overflow-hidden rounded-lg bg-black ring-1 ring-border transition hover:ring-walnut/50"
+                  >
+                    <video
+                      src={product.product_video_url}
+                      muted
+                      playsInline
+                      preload="metadata"
+                      className="h-full w-full object-cover"
+                    />
+                    <span className="pointer-events-none absolute inset-0 grid place-items-center bg-black/25 transition group-hover:bg-black/10">
+                      <span className="grid h-8 w-8 place-items-center rounded-full bg-white/90 text-walnut shadow">
+                        <Play size={14} className="ml-0.5 fill-walnut" />
+                      </span>
+                    </span>
+                  </button>
+                )}
               </div>
             )}
           </div>
         </Reveal>
+
+        {videoOpen && product.product_video_url && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
+            onClick={() => setVideoOpen(false)}
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${title} — Video`}
+          >
+            <button
+              type="button"
+              onClick={() => setVideoOpen(false)}
+              aria-label="Schließen"
+              className="absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-full bg-white/90 text-walnut hover:bg-white"
+            >
+              <X size={18} />
+            </button>
+            <div
+              className="w-full max-w-4xl overflow-hidden rounded-2xl bg-black shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <video
+                src={product.product_video_url}
+                controls
+                autoPlay
+                muted
+                playsInline
+                className="h-auto w-full"
+              />
+            </div>
+          </div>
+        )}
+
+
 
 
         <div>
