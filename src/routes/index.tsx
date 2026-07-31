@@ -1,9 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import useEmblaCarousel from "embla-carousel-react";
-import { ArrowRight, Heart, Package, Sparkles } from "lucide-react";
+import { ArrowLeft, ArrowRight, Heart, Package, Sparkles } from "lucide-react";
 import heroNew2Asset from "@/assets/hero-new2.jpg.asset.json";
 import atelierImg from "@/assets/atelier.jpg";
 import featuredWedding from "@/assets/featured-wedding.webp.asset.json";
@@ -11,11 +11,11 @@ import featuredAdventure from "@/assets/featured-adventure.webp.asset.json";
 import featuredController from "@/assets/featured-controller.jpg.asset.json";
 import { useT } from "@/i18n";
 import { listProducts } from "@/lib/products.functions";
-import { listReviews } from "@/lib/reviews.functions";
 import { ProductCard, ProductCardSkeleton } from "@/components/product-card";
 import { Reveal } from "@/components/reveal";
 import { StarRating } from "@/components/star-rating";
 import { imageFor } from "@/lib/product-images";
+import { averageRating, reviewCount, topReviews } from "@/data/reviews";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -33,13 +33,7 @@ export const Route = createFileRoute("/")({
     links: [{ rel: "canonical", href: "/" }],
   }),
   loader: async ({ context }) => {
-    await Promise.all([
-      context.queryClient.ensureQueryData({ queryKey: ["products"], queryFn: () => listProducts() }),
-      context.queryClient.ensureQueryData({
-        queryKey: ["reviews", "home"],
-        queryFn: () => listReviews({ data: { limit: 12 } }),
-      }),
-    ]);
+    await context.queryClient.ensureQueryData({ queryKey: ["products"], queryFn: () => listProducts() });
   },
   component: Home,
 });
@@ -117,8 +111,10 @@ function Hero() {
 
           <div className="mt-10 flex items-center gap-6">
             <div className="flex items-center gap-2">
-              <StarRating value={5} size={16} />
-              <span className="text-sm text-muted-foreground">4,9 / 5 · 276 Bewertungen</span>
+              <StarRating value={averageRating} size={16} />
+              <span className="text-sm text-muted-foreground">
+                {averageRating.toFixed(1).replace(".", ",")} / 5 · {reviewCount} Bewertungen
+              </span>
             </div>
           </div>
         </motion.div>
@@ -339,12 +335,14 @@ function Bestsellers() {
 }
 
 function ReviewsBlock() {
-  const { t, locale } = useT();
-  const { data: reviews } = useSuspenseQuery({
-    queryKey: ["reviews", "home"],
-    queryFn: () => listReviews({ data: { limit: 12 } }),
-  });
-  const [emblaRef] = useEmblaCarousel({ loop: true, align: "start", dragFree: true });
+  const { t } = useT();
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" });
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    const id = setInterval(() => emblaApi.scrollNext(), 4000);
+    return () => clearInterval(id);
+  }, [emblaApi]);
 
   return (
     <section className="border-y border-border/60 bg-linen/40">
@@ -354,30 +352,51 @@ function ReviewsBlock() {
             <p className="eyebrow">{t("reviews.eyebrow")}</p>
             <h2 className="mt-3 font-serif text-3xl text-walnut sm:text-4xl lg:text-5xl">{t("reviews.title")}</h2>
             <div className="mt-4 flex items-center gap-3">
-              <StarRating value={5} size={18} />
-              <span className="text-sm text-muted-foreground">4,9 / 5 · 276 Bewertungen</span>
+              <StarRating value={averageRating} size={18} />
+              <span className="text-sm text-muted-foreground">
+                {averageRating.toFixed(1).replace(".", ",")} / 5 · {reviewCount} Bewertungen
+              </span>
             </div>
           </div>
         </Reveal>
+
         <div className="mt-12 overflow-hidden" ref={emblaRef}>
           <div className="flex gap-5">
-            {reviews.map((r) => (
+            {topReviews.map((r) => (
               <div
                 key={r.id}
-                className="min-w-[280px] max-w-[340px] flex-[0_0_85%] sm:flex-[0_0_45%] lg:flex-[0_0_30%]"
+                className="min-w-0 flex-[0_0_85%] sm:flex-[0_0_45%] lg:flex-[0_0_31%]"
               >
                 <div className="h-full rounded-2xl bg-card p-6 ring-1 ring-border/60">
                   <StarRating value={r.rating} size={14} />
-                  <p className="mt-4 text-sm leading-relaxed text-foreground/85">
-                    „{locale === "de" ? r.text_de : r.text_en}"
-                  </p>
-                  <p className="mt-5 text-sm font-medium text-walnut">{r.customer_name}</p>
+                  <p className="mt-4 text-sm leading-relaxed text-foreground/85">„{r.text}“</p>
+                  <p className="mt-5 text-sm font-medium text-walnut">{r.name}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
-        <div className="mt-10 text-center">
+
+        <div className="mt-6 flex items-center justify-center gap-3">
+          <button
+            type="button"
+            aria-label="Vorherige Bewertung"
+            onClick={() => emblaApi?.scrollPrev()}
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-walnut/20 text-walnut transition hover:bg-walnut/5"
+          >
+            <ArrowLeft size={16} />
+          </button>
+          <button
+            type="button"
+            aria-label="Nächste Bewertung"
+            onClick={() => emblaApi?.scrollNext()}
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-walnut/20 text-walnut transition hover:bg-walnut/5"
+          >
+            <ArrowRight size={16} />
+          </button>
+        </div>
+
+        <div className="mt-8 text-center">
           <Link
             to="/bewertungen"
             className="inline-flex items-center gap-2 rounded-full border border-walnut/20 px-6 py-3 text-sm font-medium text-walnut hover:bg-walnut/5"
@@ -428,8 +447,8 @@ function TrustStrip() {
     <section className="border-t border-border/60 bg-walnut text-cream">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:grid-cols-3 sm:px-6 lg:px-10">
         {[
-          { kpi: "276+", label: "zufriedene Kunden" },
-          { kpi: "4,9 ★", label: "durchschnittliche Bewertung" },
+          { kpi: `${reviewCount}+`, label: "zufriedene Kunden" },
+          { kpi: `${averageRating.toFixed(1).replace(".", ",")} ★`, label: "durchschnittliche Bewertung" },
           { kpi: "100 %", label: "Handarbeit in Deutschland" },
         ].map((s) => (
           <div key={s.label} className="text-center">
