@@ -1,25 +1,22 @@
-## Цель
-Видео на `/product/[id]` должно занимать столько же места, что и одна миниатюра-фото (аспект 1:1, в той же сетке), а при клике — открываться в увеличенном виде (лайтбокс) с воспроизведением.
+## Ziel
+Der Recovery-Link öffnet direkt `/reset-password`, zeigt zwei Passwortfelder, speichert das neue Passwort und leitet den Admin anschließend nach `/admin` weiter.
 
-## Что меняется
-Только `src/routes/product.$id.tsx` — визуальная правка блока галереи/видео. БД и другие компоненты не трогаем.
+## Umsetzung
+1. **Recovery-Weiterleitung robust machen**
+   - Recovery-Parameter sowohl aus URL-Hash als auch Query-Parametern erkennen.
+   - Links, die auf `/` ankommen, inklusive aller Token-/Code-Parameter verlustfrei nach `/reset-password` weiterleiten.
+   - PKCE-Code sowie klassische Recovery-Tokens unterstützen.
 
-## Изменения
-1. Убрать текущий большой видео-блок под сеткой миниатюр (строки ~154-166).
-2. Добавить видео как ещё одну плитку в сетке миниатюр (`grid-cols-5 sm:grid-cols-6`), в том же квадратном формате `aspect-square`, `rounded-lg`, `ring-1`:
-   - превью — первый кадр (`preload="metadata"`, без controls, `muted`, `object-cover`);
-   - поверх — полупрозрачная иконка Play, чтобы отличать от фото;
-   - `title="Video ansehen"`, `aria-label` для доступности.
-3. По клику на плитку — открывается лайтбокс (модалка на весь экран, затемнённый фон, кнопка закрытия, закрытие по Esc и клику на фон):
-   - внутри — тот же `<video>` во весь размер модалки (`max-w-4xl`, `aspect-video` или естественный), `controls`, автозапуск с `muted` для мобильных, `playsInline`.
-4. Сетка миниатюр должна показываться, даже если у товара только 1 фото, но есть видео (сейчас условие `images.length > 1` спрячет её — расширить на `images.length > 1 || product.product_video_url`).
-5. Клик на фото-плитку продолжает менять активное большое фото сверху (как сейчас) — поведение фото не меняется.
+2. **Passwortseite korrigieren**
+   - Recovery-Session ausdrücklich aus dem Link herstellen und nicht lediglich irgendeine vorhandene Session als gültigen Recovery-Vorgang behandeln.
+   - Während der Prüfung einen klaren Ladezustand anzeigen.
+   - Bei abgelaufenem/ungültigem Link eine verständliche Fehlermeldung mit Rückweg zu `/admin/login` anzeigen.
+   - Nach erfolgreichem `updateUser({ password })` die Session validieren und zu `/admin` navigieren.
 
-## Технические детали
-- Состояние лайтбокса: локальный `const [videoOpen, setVideoOpen] = useState(false)`.
-- Модалка — простой div с `fixed inset-0 z-50 bg-black/80`, без новых зависимостей.
-- Обработчик Esc через `useEffect` + `keydown` слушатель, активный только при `videoOpen`.
-- Иконка Play — `Play` из уже импортируемого `lucide-react` (добавить в существующий импорт).
+3. **Redirect-Konfiguration prüfen/anpassen**
+   - `https://geschenk-gl.lovable.app/reset-password` als erlaubtes Recovery-Ziel sicherstellen.
+   - Der „Passwort vergessen?“-Flow auf `/admin/login` verwendet weiterhin genau diese Route auf der jeweils aktuellen Domain.
 
-## Что не меняется
-Админка, схема БД, серверные функции, дизайн-токены, поведение фото-галереи.
+4. **End-to-End verifizieren**
+   - `/admin/login`, Recovery-Link, sichtbares Passwortformular, Passwortänderung und anschließenden Admin-Zugriff prüfen.
+   - Danach muss die korrigierte Version veröffentlicht und ein **neues** Recovery-Schreiben angefordert werden; bereits versandte Links behalten ihren bisherigen Zielaufbau.

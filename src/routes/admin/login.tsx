@@ -8,6 +8,17 @@ export const Route = createFileRoute("/admin/login")({
   head: () => ({
     meta: [
       { title: "Admin Login — DigiNutz" },
+      {
+        name: "description",
+        content: "Geschützter Zugang zur Verwaltung des DigiNutz-Onlineshops.",
+      },
+      { property: "og:title", content: "Admin Login — DigiNutz" },
+      {
+        property: "og:description",
+        content: "Geschützter Zugang zur Verwaltung des DigiNutz-Onlineshops.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
       { name: "robots", content: "noindex, nofollow" },
     ],
   }),

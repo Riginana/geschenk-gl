@@ -105,6 +105,24 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     links: [{ rel: "stylesheet", href: appCss }],
     scripts: [
       {
+        children: `
+          (() => {
+            if (window.location.pathname === "/reset-password") return;
+            const params = new URLSearchParams(window.location.search);
+            const isRecovery =
+              window.location.hash.includes("type=recovery") ||
+              params.get("type") === "recovery" ||
+              params.has("token_hash") ||
+              params.has("code");
+            if (!isRecovery) return;
+            window.sessionStorage.setItem("diginutz-password-recovery", "pending");
+            window.location.replace(
+              "/reset-password" + window.location.search + window.location.hash
+            );
+          })();
+        `,
+      },
+      {
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
@@ -143,18 +161,6 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-
-  // Recovery-Links landen ggf. auf "/" — dann zur Passwort-Seite weiterleiten.
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const hash = window.location.hash;
-    if (
-      hash.includes("type=recovery") &&
-      window.location.pathname !== "/reset-password"
-    ) {
-      window.location.replace(`/reset-password${hash}`);
-    }
-  }, []);
 
 
 
