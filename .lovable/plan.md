@@ -1,22 +1,14 @@
 ## Ziel
-Der Recovery-Link öffnet direkt `/reset-password`, zeigt zwei Passwortfelder, speichert das neue Passwort und leitet den Admin anschließend nach `/admin` weiter.
+Eine neue Recovery-E-Mail an `kontakt.diginutz@gmail.com` senden, die zuverlässig auf `/reset-password` führt.
 
-## Umsetzung
-1. **Recovery-Weiterleitung robust machen**
-   - Recovery-Parameter sowohl aus URL-Hash als auch Query-Parametern erkennen.
-   - Links, die auf `/` ankommen, inklusive aller Token-/Code-Parameter verlustfrei nach `/reset-password` weiterleiten.
-   - PKCE-Code sowie klassische Recovery-Tokens unterstützen.
+## Wichtige Voraussetzung
+Der korrigierte Recovery-Flow (Interceptor in `__root.tsx` + validierte Session in `reset-password.tsx`) ist aktuell nur in der Preview-Version aktiv. Damit der Link in der E-Mail (der auf die Live-Domain `geschenk-gl.lovable.app` zeigt) funktioniert, muss die App **vor** dem Mailversand veröffentlicht werden.
 
-2. **Passwortseite korrigieren**
-   - Recovery-Session ausdrücklich aus dem Link herstellen und nicht lediglich irgendeine vorhandene Session als gültigen Recovery-Vorgang behandeln.
-   - Während der Prüfung einen klaren Ladezustand anzeigen.
-   - Bei abgelaufenem/ungültigem Link eine verständliche Fehlermeldung mit Rückweg zu `/admin/login` anzeigen.
-   - Nach erfolgreichem `updateUser({ password })` die Session validieren und zu `/admin` navigieren.
+## Schritte
+1. Prüfen, ob die aktuellen Änderungen live sind; falls nicht, Publish anstoßen (Klick durch dich im Publish-Dialog).
+2. Recovery-E-Mail über die Admin-API auslösen, mit explizitem `redirect_to` = `https://geschenk-gl.lovable.app/reset-password`.
+3. Auth-Logs prüfen, ob der Versand registriert wurde (Rate-Limit von Standard-Mails beachten: max. wenige Mails/Stunde).
+4. Falls der Versand blockiert wird oder die Mail erneut im Spam landet: alternativ einen direkten, einmalig gültigen Recovery-Link generieren und dir hier im Chat ausgeben, damit das Passwort ohne E-Mail gesetzt werden kann.
 
-3. **Redirect-Konfiguration prüfen/anpassen**
-   - `https://geschenk-gl.lovable.app/reset-password` als erlaubtes Recovery-Ziel sicherstellen.
-   - Der „Passwort vergessen?“-Flow auf `/admin/login` verwendet weiterhin genau diese Route auf der jeweils aktuellen Domain.
-
-4. **End-to-End verifizieren**
-   - `/admin/login`, Recovery-Link, sichtbares Passwortformular, Passwortänderung und anschließenden Admin-Zugriff prüfen.
-   - Danach muss die korrigierte Version veröffentlicht und ein **neues** Recovery-Schreiben angefordert werden; bereits versandte Links behalten ihren bisherigen Zielaufbau.
+## Hinweis
+Alte Links aus früheren E-Mails bleiben ungültig – bitte nur den neuesten Link verwenden.
