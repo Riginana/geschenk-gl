@@ -18,7 +18,6 @@ import { WishlistProvider } from "@/contexts/wishlist";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { WhatsAppFloat } from "@/components/whatsapp-float";
-import { supabase } from "@/integrations/supabase/client";
 
 function NotFoundComponent() {
   return (
@@ -106,6 +105,24 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     links: [{ rel: "stylesheet", href: appCss }],
     scripts: [
       {
+        children: `
+          (() => {
+            if (window.location.pathname === "/reset-password") return;
+            const params = new URLSearchParams(window.location.search);
+            const isRecovery =
+              window.location.hash.includes("type=recovery") ||
+              params.get("type") === "recovery" ||
+              params.has("token_hash") ||
+              params.has("code");
+            if (!isRecovery) return;
+            window.sessionStorage.setItem("diginutz-password-recovery", "pending");
+            window.location.replace(
+              "/reset-password" + window.location.search + window.location.hash
+            );
+          })();
+        `,
+      },
+      {
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
@@ -144,33 +161,6 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const forwardToPasswordReset = () => {
-      if (window.location.pathname === "/reset-password") return;
-      window.sessionStorage.setItem("diginutz-password-recovery", "pending");
-      window.location.replace(
-        `/reset-password${window.location.search}${window.location.hash}`,
-      );
-    };
-
-    const params = new URLSearchParams(window.location.search);
-    const isRecoveryUrl =
-      window.location.hash.includes("type=recovery") ||
-      params.get("type") === "recovery" ||
-      params.has("token_hash") ||
-      params.has("code");
-
-    const { data: authListener } = supabase.auth.onAuthStateChange((event) => {
-      if (event === "PASSWORD_RECOVERY") forwardToPasswordReset();
-    });
-
-    if (isRecoveryUrl) forwardToPasswordReset();
-
-    return () => authListener.subscription.unsubscribe();
-  }, []);
 
 
 
