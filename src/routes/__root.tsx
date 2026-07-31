@@ -144,6 +144,20 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
+  // Recovery-Links landen ggf. auf "/" — dann zur Passwort-Seite weiterleiten.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const hash = window.location.hash;
+    if (
+      hash.includes("type=recovery") &&
+      window.location.pathname !== "/reset-password"
+    ) {
+      window.location.replace(`/reset-password${hash}`);
+    }
+  }, []);
+
+
+
   return (
     <QueryClientProvider client={queryClient}>
       <LanguageProvider>
