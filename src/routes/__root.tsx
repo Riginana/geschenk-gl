@@ -18,6 +18,7 @@ import { WishlistProvider } from "@/contexts/wishlist";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { WhatsAppFloat } from "@/components/whatsapp-float";
+import { supabase } from "@/integrations/supabase/client";
 
 function NotFoundComponent() {
   return (
@@ -144,16 +145,31 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
-  // Recovery-Links landen ggf. auf "/" — dann zur Passwort-Seite weiterleiten.
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const hash = window.location.hash;
-    if (
-      hash.includes("type=recovery") &&
-      window.location.pathname !== "/reset-password"
-    ) {
-      window.location.replace(`/reset-password${hash}`);
-    }
+
+    const forwardToPasswordReset = () => {
+      if (window.location.pathname === "/reset-password") return;
+      window.sessionStorage.setItem("diginutz-password-recovery", "pending");
+      window.location.replace(
+        `/reset-password${window.location.search}${window.location.hash}`,
+      );
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const isRecoveryUrl =
+      window.location.hash.includes("type=recovery") ||
+      params.get("type") === "recovery" ||
+      params.has("token_hash") ||
+      params.has("code");
+
+    const { data: authListener } = supabase.auth.onAuthStateChange((event) => {
+      if (event === "PASSWORD_RECOVERY") forwardToPasswordReset();
+    });
+
+    if (isRecoveryUrl) forwardToPasswordReset();
+
+    return () => authListener.subscription.unsubscribe();
   }, []);
 
 
