@@ -68,6 +68,20 @@ function ResetPasswordPage() {
         window.history.replaceState({}, "", "/reset-password");
       }
 
+      const tokenHash = searchParams.get("token_hash");
+      if (tokenHash && searchParams.get("type") === "recovery") {
+        const { error } = await supabase.auth.verifyOtp({
+          token_hash: tokenHash,
+          type: "recovery",
+        });
+        if (error) {
+          if (active) setStatus("invalid");
+          return;
+        }
+        recoveryConfirmed = true;
+        window.history.replaceState({}, "", "/reset-password");
+      }
+
       const { data, error } = await supabase.auth.getSession();
       if (!active) return;
       if (!error && data.session && recoveryConfirmed) {
