@@ -20,6 +20,19 @@ const productsQueryOptions = {
 
 const FRAMES = ["holz", "papier", "kraftpapier"] as const;
 import { PRICE_BY_FORMAT_CENTS, PRICE_BY_FRAME_CENTS, calculateDiscountedPrice } from "@/lib/pricing";
+import { listFramePrices } from "@/lib/frame-prices.functions";
+import {
+  FRAME_SIZES,
+  FRAME_VARIANTS,
+  FRAME_SIZE_LABELS,
+  FRAME_VARIANT_LABELS,
+  resolveFramePriceCents,
+} from "@/lib/frame-pricing";
+
+const framePricesQueryOptions = {
+  queryKey: ["frame-prices"] as const,
+  queryFn: () => listFramePrices(),
+};
 
 
 function detectFormats(text: string): Array<"A5" | "A4" | "A3"> {
@@ -34,6 +47,7 @@ function detectFormats(text: string): Array<"A5" | "A4" | "A3"> {
 export const Route = createFileRoute("/product/$id")({
   loader: async ({ context, params }) => {
     const products = await context.queryClient.ensureQueryData(productsQueryOptions);
+    void context.queryClient.prefetchQuery(framePricesQueryOptions);
     const product = products.find((p) => p.id === params.id || p.slug === params.id);
     if (!product) throw notFound();
     return { id: product.id, product };
@@ -59,6 +73,7 @@ function ProductPage() {
   const { id } = Route.useLoaderData();
   const { t, locale } = useT();
   const { data: products } = useSuspenseQuery(productsQueryOptions);
+  const { data: framePrices } = useSuspenseQuery(framePricesQueryOptions);
   const product = products.find((p) => p.id === id) as ProductRow | undefined;
 
   const { add } = useCart();
@@ -78,6 +93,9 @@ function ProductPage() {
     return detected.length ? detected : (["A5", "A4", "A3"] as Array<"A5" | "A4" | "A3">);
   }, [product, title, description]);
 
+  const isFrameProduct = product?.category === "bilderrahmen";
+  const [frameSize, setFrameSize] = useState<string>("A4");
+  const [frameVariant, setFrameVariant] = useState<string>("standard_weiss");
   const [format, setFormat] = useState<string>(formats[0]);
   const [frame, setFrame] = useState<string>(product?.material || "holz");
   const [qty, setQty] = useState(1);
@@ -103,25 +121,41 @@ function ProductPage() {
   const matchedVariant = product.variants?.find((v) => v.format === format && v.material === frame);
   const materialsForFormat = product.variants?.filter((v) => v.format === format) ?? [];
   const availableMaterials = Array.from(new Set(materialsForFormat.map((v) => v.material))).filter(Boolean) as string[];
-  const baseCents = matchedVariant
-    ? matchedVariant.price_cents
-    : product.base_price_cents + (PRICE_BY_FORMAT_CENTS[format] ?? 0) + (PRICE_BY_FRAME_CENTS[frame] ?? 0);
+  const framePriceCents = isFrameProduct
+    ? resolveFramePriceCents(framePrices, product.id, frameSize, frameVariant)
+    : null;
+  const baseCents =
+    framePriceCents ??
+    (matchedVariant
+      ? matchedVariant.price_cents
+      : product.base_price_cents + (PRICE_BY_FORMAT_CENTS[format] ?? 0) + (PRICE_BY_FRAME_CENTS[frame] ?? 0));
   const unitCents = calculateDiscountedPrice(baseCents, product.discount_percent);
   const hasDiscount = (product.discount_percent ?? 0) > 0;
 
 
+  const chosenFormat = isFrameProduct ? frameSize : format;
+  const chosenMaterial = isFrameProduct ? FRAME_VARIANT_LABELS[frameVariant] ?? frameVariant : frame;
+
   const onAdd = () => {
     add({
-      id: `${product.id}-${format}-${frame}-${persName}-${persDate}`.slice(0, 200),
+      id: `${product.id}-${chosenFormat}-${chosenMaterial}-${persName}-${persDate}`.slice(0, 200),
       productId: product.id,
       slug: product.slug,
       name: title,
       image,
       unitPriceCents: unitCents,
       qty,
-      personalization: { format, material: frame, names: persName, date: persDate, message: persText },
+      personalization: {
+        format: chosenFormat,
+        material: chosenMaterial,
+        names: persName,
+        date: persDate,
+        message: persText,
+      },
     });
-    toast.success(t("product.addedToCart"), { description: `${title.slice(0, 60)} · ${format} · ${qty}×` });
+    toast.success(t("product.addedToCart"), {
+      description: `${title.slice(0, 60)} · ${chosenFormat} · ${qty}×`,
+    });
   };
 
   return (
@@ -239,6 +273,40 @@ function ProductPage() {
 
           <p className="mt-6 whitespace-pre-line text-base leading-relaxed text-foreground/85">{description}</p>
 
+          {isFrameProduct && (
+            <div className="mt-8 space-y-5 rounded-2xl bg-card p-6 ring-1 ring-border/60">
+              <label className="block">
+                <span className="eyebrow mb-2 block">Größe</span>
+                <select
+                  value={frameSize}
+                  onChange={(e) => setFrameSize(e.target.value)}
+                  className="w-full rounded-lg border border-border bg-cream px-4 py-2.5 text-sm text-walnut outline-none transition focus:border-brass"
+                >
+                  {FRAME_SIZES.map((s) => (
+                    <option key={s} value={s}>
+                      {FRAME_SIZE_LABELS[s]}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label className="block">
+                <span className="eyebrow mb-2 block">Rahmen-Variante</span>
+                <select
+                  value={frameVariant}
+                  onChange={(e) => setFrameVariant(e.target.value)}
+                  className="w-full rounded-lg border border-border bg-cream px-4 py-2.5 text-sm text-walnut outline-none transition focus:border-brass"
+                >
+                  {FRAME_VARIANTS.map((v) => (
+                    <option key={v} value={v}>
+                      {FRAME_VARIANT_LABELS[v]}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
+          )}
+
+          {!isFrameProduct && (
           <div className="mt-8 space-y-5 rounded-2xl bg-card p-6 ring-1 ring-border/60">
             {formats.length > 1 && (
               <div>
@@ -281,6 +349,7 @@ function ProductPage() {
               </div>
             </div>
           </div>
+          )}
 
           <div className="mt-6 space-y-4 rounded-2xl bg-card p-6 ring-1 ring-border/60">
             <p className="eyebrow">Personalisierung</p>

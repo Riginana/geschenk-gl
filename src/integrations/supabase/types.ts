@@ -41,6 +41,44 @@ export type Database = {
         }
         Relationships: []
       }
+      frame_prices: {
+        Row: {
+          created_at: string
+          id: string
+          price_cents: number
+          product_id: string | null
+          size: string
+          updated_at: string
+          variant: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          price_cents: number
+          product_id?: string | null
+          size: string
+          updated_at?: string
+          variant: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          price_cents?: number
+          product_id?: string | null
+          size?: string
+          updated_at?: string
+          variant?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "frame_prices_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       newsletter_subscribers: {
         Row: {
           created_at: string
