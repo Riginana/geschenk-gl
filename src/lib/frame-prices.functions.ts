@@ -3,28 +3,7 @@ import { createClient } from "@supabase/supabase-js";
 import { z } from "zod";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import type { Database } from "@/integrations/supabase/types";
-
-export const FRAME_SIZES = ["A5", "A4", "A3"] as const;
-export type FrameSize = (typeof FRAME_SIZES)[number];
-
-export const FRAME_VARIANTS = [
-  "ohne_bilderrahmen",
-  "standard_weiss",
-  "echtholz_weiss",
-  "standard_schwarz",
-  "echtholz_schwarz",
-  "standard_dunkelbraun",
-  "echtholz_dunkelbraun",
-] as const;
-export type FrameVariant = (typeof FRAME_VARIANTS)[number];
-
-export type FramePriceRow = {
-  id: string;
-  product_id: string | null;
-  size: string;
-  variant: string;
-  price_cents: number;
-};
+import { FRAME_SIZES, FRAME_VARIANTS, type FramePriceRow } from "@/lib/frame-pricing";
 
 const sizeSchema = z.enum(FRAME_SIZES);
 const variantSchema = z.enum(FRAME_VARIANTS);
