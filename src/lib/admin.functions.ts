@@ -133,6 +133,76 @@ export const adminBulkSetActive = createServerFn({ method: "POST" })
     return { ok: true, count: data.ids.length };
   });
 
+export const adminCreateProduct = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((d) =>
+    z
+      .object({
+        name_de: z.string().trim().min(1).max(500),
+        name_en: z.string().trim().max(500).optional(),
+        occasion: z.string().trim().min(1).max(100),
+        category: z.string().trim().max(100).optional(),
+        material: z.string().trim().max(100).optional(),
+        base_price_cents: z.number().int().min(0).max(1000000),
+        discount_percent: z.number().int().min(0).max(100).optional(),
+      })
+      .parse(d),
+  )
+  .handler(async ({ data, context }) => {
+    await requireAdmin(context);
+    const { slugify } = await import("@/lib/slug");
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+
+    const base = slugify(data.name_de) || "produkt";
+    let slug = base;
+    for (let i = 0; i < 30; i++) {
+      const { data: existing } = await supabaseAdmin
+        .from("products")
+        .select("id")
+        .eq("slug", slug)
+        .maybeSingle();
+      if (!existing) break;
+      slug = `${base}-${Math.random().toString(36).slice(2, 6)}`;
+    }
+
+    const nameEn = (data.name_en ?? "").trim() || data.name_de;
+    const { data: created, error } = await supabaseAdmin
+      .from("products")
+      .insert({
+        slug,
+        name_de: data.name_de,
+        name_en: nameEn,
+        description_de: "",
+        description_en: "",
+        base_price_cents: data.base_price_cents,
+        discount_percent: data.discount_percent ?? 30,
+        occasion: data.occasion,
+        category: data.category || "other",
+        material: data.material || "karton",
+        is_active: false,
+      })
+      .select("id")
+      .single();
+    if (error || !created) throw new Error(error?.message ?? "Anlegen fehlgeschlagen");
+    return { id: created.id as string, slug };
+  });
+
+export const adminDeleteProduct = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((d) => z.object({ id: z.string().uuid() }).parse(d))
+  .handler(async ({ data, context }) => {
+    await requireAdmin(context);
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    await supabaseAdmin.from("product_images").delete().eq("product_id", data.id);
+    await supabaseAdmin.from("product_variants").delete().eq("product_id", data.id);
+    await supabaseAdmin.from("frame_prices").delete().eq("product_id", data.id);
+    const { error } = await supabaseAdmin.from("products").delete().eq("id", data.id);
+    if (error) throw new Error(error.message);
+    return { ok: true };
+  });
+
+
+
 // ---------------- Storage uploads (signed URL) ----------------
 
 const UPLOAD_BUCKET = "product-images";
