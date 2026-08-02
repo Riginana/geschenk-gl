@@ -6,8 +6,21 @@ import {
   adminListProducts,
   adminUpdateProduct,
   adminBulkSetActive,
+  adminCreateProduct,
+  adminDeleteProduct,
   type AdminProductRow,
 } from "@/lib/admin.functions";
+
+const CATEGORY_OPTIONS = [
+  "bilderrahmen",
+  "holzbox",
+  "holzschild",
+  "schiebebox",
+  "holzplatte",
+  "sculpture",
+  "other",
+];
+
 
 export const Route = createFileRoute("/admin/products/")({
   ssr: false,
