@@ -1,38 +1,33 @@
-## Ziel
+## Warum fehlen die Dropdowns?
 
-Für Rahmen-Produkte (Kategorie `bilderrahmen`, 77 aktive Artikel) gibt es künftig zwei Auswahlfelder – Größe und Rahmen-Variante – deren Preise zentral über eine neue Admin-Seite gepflegt werden.
+Die Größen-/Varianten-Auswahl wird auf der Produktseite nur gerendert, wenn das Produkt in der Kategorie `bilderrahmen` liegt. Produkte, die inhaltlich Rahmen sind, aber in der Datenbank auf `other` (oder einer anderen Kategorie) stehen, bekommen deshalb keine Dropdowns.
 
-## 1. Datenbank
+Aktueller Stand der aktiven Produkte:
 
-Neue Tabelle `frame_prices`:
-- `id`, `product_id` (nullable → NULL = globaler Standardpreis), `size` (`A5`/`A4`/`A3`), `variant` (7 Werte), `price_cents` (Integer, statt numeric – konsistent zum restlichen Shop, der überall in Cent rechnet), `updated_at`
-- Eindeutigkeit über (`product_id`, `size`, `variant`) inkl. korrekter Behandlung von NULL (Unique-Index auf COALESCE)
-- Zugriff: Lesen für alle, Ändern nur für eingeloggte Admins (`has_role(auth.uid(),'admin')`), plus GRANTs
-- Startbefüllung mit den 21 genannten globalen Preisen (product_id = NULL)
+```text
+bilderrahmen  77   (60 mit "Rahmen" im Text)
+other         23   (18 mit "Rahmen" im Text)
+sculpture      7   (6 mit "Rahmen" im Text)
+holzplatte     9
+schiebebox     7
+holzschild     6
+holzbox        5
+```
 
-Preislogik: gilt ein Produkt-Override, hat er Vorrang; sonst greift der globale Preis.
+## Was gemacht wird
 
-## 2. Produktseite `/product/[id]`
+1. **Datenbank aufräumen (Migration)**
+   Alle aktiven Produkte, deren Titel/Beschreibung „Bilderrahmen" oder „Echtholzrahmen" enthält und die **nicht** als Box/Schild/Schiebebox beschrieben sind, werden auf die Kategorie `bilderrahmen` gesetzt. Betroffen sind die Oster-, Firmung-, Jugendweihe- und Taufe-Motive sowie die entsprechenden Einträge aus `sculpture`. Reine Holzboxen (z. B. „Holzbox mit Name & Datum") bleiben unverändert.
 
-Nur bei Kategorie `bilderrahmen`:
-- Dropdown „Größe": A5 (14,8 × 21 cm), A4 (21 × 29,7 cm), A3 (29,7 × 42 cm)
-- Dropdown „Rahmen-Variante": ohne Bilderrahmen, Standard Weiß, Echtholz Weiß, Standard Schwarz, Echtholz Schwarz, Standard Dunkelbraun, Echtholz Dunkelbraun
-- Optik wie die bestehenden Auswahlelemente (Card, `eyebrow`-Label, Cream-Hintergrund, Walnut-Rahmen)
-- Preis aktualisiert sich sofort bei Auswahl; der bestehende Rabatt (`discount_percent`) wird angewendet, mit Streichpreis und Prozent-Badge wie bisher
-- Warenkorb: Größe und Variante werden in der Personalisierung mitgeführt, fließen in die Artikel-ID ein und erscheinen in Warenkorb/Kasse/Bestellung
-- Alle anderen Produktkategorien behalten unverändert die bisherigen Format-/Material-Buttons
+2. **Kategorie im Admin editierbar machen**
+   Auf `/admin/products/[id]` kommt ein Auswahlfeld „Kategorie" (bilderrahmen, holzbox, holzschild, schiebebox, holzplatte, sculpture, other) dazu, damit künftige Fehleinordnungen ohne Migration korrigierbar sind. Das ist der dauerhafte Kontrollpunkt: Kategorie = `bilderrahmen` ⇒ Rahmen-Dropdowns erscheinen.
 
-## 3. Admin `/admin/frame-prices`
-
-- Neuer Menüpunkt im Admin-Bereich
-- Raster 3 Größen × 7 Varianten mit Euro-Eingabefeldern für die globalen Standardpreise, „Speichern" schreibt alle geänderten Zellen
-- Produkt-Override: Auswahl eines Rahmen-Produkts, gleiches Raster; leere Zelle = globaler Preis, ausgefüllte Zelle = Override; Override je Zelle löschbar
-- Speichern läuft über geschützte Server-Funktionen mit Admin-Rollenprüfung
+3. **Sichtbarer Hinweis im Admin**
+   Neben dem Feld ein kurzer Hilfetext: „Nur Produkte der Kategorie *bilderrahmen* zeigen im Shop die Größen- und Rahmenauswahl."
 
 ## Technische Details
 
-- Migration über das Migrationstool (Tabelle + GRANTs + RLS + Policies + Seed-INSERTs in einem Schritt)
-- Lesen: neue öffentliche Server-Funktion `frame-prices.functions.ts` (publishable Client), per TanStack Query gecacht und im Loader von `/product/$id` vorgeladen
-- Schreiben: Server-Funktionen mit `requireSupabaseAuth` + `has_role`-Prüfung, analog zu `admin.functions.ts`
-- Anzeige weiterhin über `calculateDiscountedPrice` aus `src/lib/pricing.ts`
-- Betroffene Dateien: neue Migration, `src/lib/frame-prices.functions.ts`, `src/routes/product.$id.tsx`, `src/routes/admin/frame-prices.tsx`, Admin-Navigation, i18n-Texte
+- Migration: gezieltes `UPDATE public.products SET category = 'bilderrahmen'` mit Textfilter, ohne Schemaänderung.
+- `src/lib/admin.functions.ts`: `category` in das Update-Schema der Produktbearbeitung aufnehmen (validiert gegen die erlaubte Liste).
+- `src/routes/admin/products/$id.tsx`: Select-Feld ergänzen.
+- `src/routes/product.$id.tsx` bleibt unverändert – die Bedingung `category === "bilderrahmen"` ist die gewollte Logik.
