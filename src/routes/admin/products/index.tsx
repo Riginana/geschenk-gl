@@ -33,6 +33,8 @@ function AdminProductsList() {
   const list = useServerFn(adminListProducts);
   const update = useServerFn(adminUpdateProduct);
   const bulk = useServerFn(adminBulkSetActive);
+  const createProduct = useServerFn(adminCreateProduct);
+  const deleteProduct = useServerFn(adminDeleteProduct);
 
   const [rows, setRows] = useState<AdminProductRow[]>([]);
   const [loading, setLoading] = useState(true);
@@ -41,6 +43,16 @@ function AdminProductsList() {
   const [fOccasion, setFOccasion] = useState("");
   const [fCategory, setFCategory] = useState("");
   const [fActive, setFActive] = useState<"all" | "1" | "0">("all");
+  const [showNew, setShowNew] = useState(false);
+  const [creating, setCreating] = useState(false);
+  const [form, setForm] = useState({
+    name_de: "",
+    name_en: "",
+    occasion: "",
+    category: "other",
+    price: "",
+  });
+
 
   async function reload() {
     setLoading(true);
