@@ -74,7 +74,6 @@ function ShopPage() {
         </div>
       </Reveal>
 
-
       <div className="mt-10 flex flex-col gap-6 lg:flex-row">
         <aside className="lg:w-64 lg:shrink-0">
           <button
