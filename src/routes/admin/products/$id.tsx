@@ -234,7 +234,21 @@ function AdminProductEdit() {
           <TextField label="Name (EN)" value={product.name_en} onSave={(v) => saveField("name_en", v)} />
           <TextField label="Slug" value={product.slug} onSave={(v) => saveField("slug", v)} />
           <TextField label="Occasion" value={product.occasion} onSave={(v) => saveField("occasion", v)} />
-          <TextField label="Category" value={product.category ?? ""} onSave={(v) => saveField("category", (v || null) as any)} />
+          <div>
+            <label className="mb-1 block text-xs font-medium text-muted-foreground">Kategorie</label>
+            <select
+              value={product.category ?? "other"}
+              onChange={(e) => saveField("category", e.target.value as any)}
+              className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm"
+            >
+              {PRODUCT_CATEGORIES.map((c) => (
+                <option key={c} value={c}>{c}</option>
+              ))}
+            </select>
+            <p className="mt-1 text-[11px] leading-snug text-muted-foreground">
+              Nur Produkte der Kategorie <strong>bilderrahmen</strong> zeigen im Shop die Größen- und Rahmenauswahl.
+            </p>
+          </div>
           <TextField label="Material" value={product.material} onSave={(v) => saveField("material", v)} />
           <TextField label="Material label" value={product.material_label ?? ""} onSave={(v) => saveField("material_label", (v || null) as any)} />
           <TextField label="Badge" value={product.badge ?? ""} onSave={(v) => saveField("badge", (v || null) as any)} />
