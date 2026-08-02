@@ -6,7 +6,6 @@ import { useT } from "@/i18n";
 import { listProducts } from "@/lib/products.functions";
 import { ProductCard } from "@/components/product-card";
 import { Reveal } from "@/components/reveal";
-import { imageFor } from "@/lib/product-images";
 
 const searchSchema = z.object({
   occasion: z.string().optional(),
@@ -75,23 +74,6 @@ function ShopPage() {
         </div>
       </Reveal>
 
-      {search.occasion && (
-        <Reveal>
-          <div className="mt-8 relative overflow-hidden rounded-3xl ring-1 ring-border/60">
-            <img
-              src={imageFor(search.occasion)}
-              alt={t(`occasions.${search.occasion}`)}
-              className="h-48 w-full object-cover sm:h-64 lg:h-80"
-              loading="eager"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-walnut/70 via-walnut/20 to-transparent" aria-hidden />
-            <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
-              <p className="eyebrow text-cream/80">{t("occasions.eyebrow")}</p>
-              <h2 className="mt-1 font-serif text-3xl text-cream sm:text-4xl">{t(`occasions.${search.occasion}`)}</h2>
-            </div>
-          </div>
-        </Reveal>
-      )}
 
       <div className="mt-10 flex flex-col gap-6 lg:flex-row">
         <aside className="lg:w-64 lg:shrink-0">
