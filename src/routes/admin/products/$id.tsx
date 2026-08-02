@@ -16,6 +16,17 @@ import {
   type AdminProductRow,
 } from "@/lib/admin.functions";
 
+const PRODUCT_CATEGORIES: string[] = [
+  "bilderrahmen",
+  "holzbox",
+  "holzschild",
+  "schiebebox",
+  "holzplatte",
+  "sculpture",
+  "other",
+];
+
+
 
 export const Route = createFileRoute("/admin/products/$id")({
   ssr: false,
