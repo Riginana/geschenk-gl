@@ -125,6 +125,46 @@ function AdminProductsList() {
     }
   }
 
+  async function submitNew(e: React.FormEvent) {
+    e.preventDefault();
+    const price = Math.round(parseFloat(form.price.replace(",", ".")) * 100);
+    if (!form.name_de.trim()) return toast.error("Название (DE) обязательно");
+    if (!form.occasion.trim()) return toast.error("Повод обязателен");
+    if (!Number.isFinite(price) || price < 0) return toast.error("Некорректная цена");
+    setCreating(true);
+    try {
+      const res = await createProduct({
+        data: {
+          name_de: form.name_de.trim(),
+          name_en: form.name_en.trim() || undefined,
+          occasion: form.occasion.trim(),
+          category: form.category,
+          base_price_cents: price,
+        },
+      });
+      toast.success("Товар создан (черновик)");
+      setShowNew(false);
+      setForm({ name_de: "", name_en: "", occasion: "", category: "other", price: "" });
+      navigate({ to: "/admin/products/$id", params: { id: res.id } });
+    } catch (err: any) {
+      toast.error(err?.message ?? "Fehler");
+    } finally {
+      setCreating(false);
+    }
+  }
+
+  async function removeProduct(r: AdminProductRow) {
+    if (!window.confirm(`Товар «${r.name_de}» будет удалён безвозвратно. Продолжить?`)) return;
+    try {
+      await deleteProduct({ data: { id: r.id } });
+      setRows((rs) => rs.filter((x) => x.id !== r.id));
+      toast.success("Товар удалён");
+    } catch (e: any) {
+      toast.error(e?.message ?? "Fehler");
+    }
+  }
+
+
   return (
     <div>
       <div className="mb-6 flex items-center justify-between">
