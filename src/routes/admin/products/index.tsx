@@ -407,14 +407,23 @@ function AdminProductsList() {
                   />
                 </td>
                 <td className="px-3 py-2">
-                  <Link
-                    to="/admin/products/$id"
-                    params={{ id: r.id }}
-                    className="rounded-md border border-border px-3 py-1 text-xs hover:bg-accent"
-                  >
-                    Bearbeiten
-                  </Link>
+                  <div className="flex items-center gap-2">
+                    <Link
+                      to="/admin/products/$id"
+                      params={{ id: r.id }}
+                      className="rounded-md border border-border px-3 py-1 text-xs hover:bg-accent"
+                    >
+                      Bearbeiten
+                    </Link>
+                    <button
+                      onClick={() => removeProduct(r)}
+                      className="rounded-md border border-destructive/40 px-2 py-1 text-xs text-destructive hover:bg-destructive/10"
+                    >
+                      Löschen
+                    </button>
+                  </div>
                 </td>
+
               </tr>
             ))}
           </tbody>
