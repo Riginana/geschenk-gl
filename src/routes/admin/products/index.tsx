@@ -167,12 +167,108 @@ function AdminProductsList() {
 
   return (
     <div>
-      <div className="mb-6 flex items-center justify-between">
+      <div className="mb-2 flex items-center justify-between gap-4">
         <h1 className="font-serif text-3xl text-walnut">Товары</h1>
-        <div className="text-sm text-muted-foreground">
-          Всего: {rows.length} • Показано: {filtered.length}
+        <div className="flex items-center gap-4">
+          <div className="text-sm text-muted-foreground">
+            Всего: {rows.length} • Показано: {filtered.length}
+          </div>
+          <button
+            className="rounded-md bg-walnut px-4 py-2 text-sm text-cream hover:opacity-90"
+            onClick={() => setShowNew(true)}
+          >
+            + Neues Produkt
+          </button>
         </div>
       </div>
+
+      <p className="mb-5 text-xs text-muted-foreground">
+        Ablauf: Produkt anlegen → im Editor Fotos/Video hochladen, Beschreibung & Preis pflegen →
+        Schalter <strong>Veröffentlicht</strong> aktivieren → Produkt erscheint im Shop.
+      </p>
+
+      {showNew && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+          <form
+            onSubmit={submitNew}
+            className="w-full max-w-md rounded-xl border border-border bg-card p-5 shadow-xl"
+          >
+            <h2 className="mb-4 font-serif text-xl text-walnut">Neues Produkt</h2>
+            <div className="space-y-3">
+              <div>
+                <label className="mb-1 block text-xs text-muted-foreground">Name (DE) *</label>
+                <input
+                  autoFocus
+                  className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                  value={form.name_de}
+                  onChange={(e) => setForm({ ...form, name_de: e.target.value })}
+                />
+              </div>
+              <div>
+                <label className="mb-1 block text-xs text-muted-foreground">Name (EN)</label>
+                <input
+                  className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                  value={form.name_en}
+                  onChange={(e) => setForm({ ...form, name_en: e.target.value })}
+                />
+              </div>
+              <div>
+                <label className="mb-1 block text-xs text-muted-foreground">Anlass *</label>
+                <input
+                  list="occasion-options"
+                  className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                  value={form.occasion}
+                  onChange={(e) => setForm({ ...form, occasion: e.target.value })}
+                />
+                <datalist id="occasion-options">
+                  {occasions.map((o) => (
+                    <option key={o} value={o} />
+                  ))}
+                </datalist>
+              </div>
+              <div>
+                <label className="mb-1 block text-xs text-muted-foreground">Kategorie</label>
+                <select
+                  className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                  value={form.category}
+                  onChange={(e) => setForm({ ...form, category: e.target.value })}
+                >
+                  {CATEGORY_OPTIONS.map((c) => (
+                    <option key={c} value={c}>{c}</option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label className="mb-1 block text-xs text-muted-foreground">Grundpreis € *</label>
+                <input
+                  inputMode="decimal"
+                  placeholder="26.00"
+                  className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                  value={form.price}
+                  onChange={(e) => setForm({ ...form, price: e.target.value })}
+                />
+              </div>
+            </div>
+            <div className="mt-5 flex justify-end gap-2">
+              <button
+                type="button"
+                className="rounded-md border border-border px-4 py-2 text-sm"
+                onClick={() => setShowNew(false)}
+              >
+                Abbrechen
+              </button>
+              <button
+                type="submit"
+                disabled={creating}
+                className="rounded-md bg-walnut px-4 py-2 text-sm text-cream disabled:opacity-60"
+              >
+                {creating ? "Wird angelegt…" : "Anlegen & bearbeiten"}
+              </button>
+            </div>
+          </form>
+        </div>
+      )}
+
 
       <div className="mb-4 flex flex-wrap gap-3 rounded-xl border border-border bg-card p-4">
         <input
