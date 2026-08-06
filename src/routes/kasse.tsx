@@ -1,12 +1,13 @@
 import { CartItemConfig } from "@/components/cart-item-config";
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { useServerFn } from "@tanstack/react-start";
+import { PaymentTestModeBanner } from "@/components/payment-test-mode-banner";
+import { StripeEmbeddedCheckout } from "@/components/stripe-embedded-checkout";
+import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
 import { formatEUR, useT } from "@/i18n";
 import { useCart } from "@/contexts/cart";
-import { submitOrder } from "@/lib/orders.functions";
+import type { CheckoutInput } from "@/lib/checkout-schema";
 
 export const Route = createFileRoute("/kasse")({
   head: () => ({
@@ -21,13 +22,11 @@ export const Route = createFileRoute("/kasse")({
   component: CheckoutPage,
 });
 
-type PaymentMethod = "paypal" | "stripe" | "kreditkarte" | "apple_pay" | "google_pay";
+type CheckoutPayload = Omit<CheckoutInput, "origin" | "environment">;
 
 function CheckoutPage() {
   const { t, locale } = useT();
-  const navigate = useNavigate();
-  const { items, subtotalCents, clear } = useCart();
-  const place = useServerFn(submitOrder);
+  const { items, subtotalCents } = useCart();
 
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -38,48 +37,37 @@ function CheckoutPage() {
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("Deutschland");
   const [shipping, setShipping] = useState<"standard" | "express">("standard");
-  const [payment, setPayment] = useState<PaymentMethod>("paypal");
-  const [submitting, setSubmitting] = useState(false);
+  const [payload, setPayload] = useState<CheckoutPayload | null>(null);
 
   const shippingCents = shipping === "express" ? 990 : subtotalCents >= 5000 ? 0 : 490;
   const total = subtotalCents + shippingCents;
 
-  const submit = async (e: React.FormEvent) => {
+  const submit = (e: React.FormEvent) => {
     e.preventDefault();
     if (items.length === 0) {
       toast.error(t("cart.empty"));
       return;
     }
-    setSubmitting(true);
-    try {
-      // TODO: real payment integration (PayPal / Stripe / Apple Pay / Google Pay)
-      const res = await place({
-        data: {
-          email,
-          address: { firstName, lastName, street, houseNumber, plz, city, country },
-          items: items.map((i) => ({
-            productId: i.productId,
-            slug: i.slug,
-            name: i.name,
-            qty: i.qty,
-            personalization: Object.fromEntries(
-              Object.entries(i.personalization).filter(([, v]) => v != null) as [string, string][],
-            ),
-          })),
-          shippingMethod: shipping,
-          paymentMethod: payment,
-          locale,
-        },
-      });
-      clear();
-      navigate({ to: "/bestellung-bestaetigt", search: { id: res.id } });
-    } catch (err) {
-      console.error("[kasse] submit failed", err);
-      toast.error("Bestellung fehlgeschlagen", { description: "Bitte versuchen Sie es erneut." });
-    } finally {
-      setSubmitting(false);
-    }
+    setPayload({
+      email,
+      address: { firstName, lastName, street, houseNumber, plz, city, country },
+      items: items.map((i) => ({
+        productId: i.productId,
+        slug: i.slug,
+        name: i.name,
+        qty: i.qty,
+        personalization: Object.fromEntries(
+          Object.entries(i.personalization).filter(([, v]) => v != null) as [string, string][],
+        ),
+      })),
+      shippingMethod: shipping,
+      locale,
+    });
+    requestAnimationFrame(() => {
+      document.getElementById("checkout")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
   };
+
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-10">
