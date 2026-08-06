@@ -481,6 +481,7 @@ function ProductPage() {
                 placeholder="z. B. Julia & Max"
                 className="mt-1.5 w-full rounded-lg border border-border bg-cream px-4 py-2.5 text-sm outline-none focus:border-brass"
               />
+              {errors.pers && <span className="mt-1 block text-[11px] text-destructive">{errors.pers}</span>}
             </label>
             <label className="block">
               <span className="text-xs text-muted-foreground">Datum (optional)</span>
