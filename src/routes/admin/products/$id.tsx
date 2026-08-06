@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
+import { isConfigurableCategory } from "@/lib/product-config";
+import { ProductConfigEditor } from "@/components/admin/product-config-editor";
 import {
   adminGetProduct,
   adminUpdateProduct,
@@ -300,6 +302,13 @@ function AdminProductEdit() {
           <Toggle label="in_stock" value={product.in_stock} onSave={(v) => saveField("in_stock", v)} />
         </div>
       </section>
+
+      {isConfigurableCategory(product.category) && (
+        <section className="mb-6 rounded-xl border border-border bg-card p-5">
+          <h2 className="mb-4 font-serif text-lg">Schiebebox: Größen &amp; Motive</h2>
+          <ProductConfigEditor productId={product.id} />
+        </section>
+      )}
 
       {/* Images */}
       <section className="mb-6 rounded-xl border border-border bg-card p-5">
