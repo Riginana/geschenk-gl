@@ -55,10 +55,14 @@ function CartPage() {
                           {it.name}
                         </Link>
                         <p className="mt-1 text-xs text-muted-foreground">
-                          {it.personalization.format} · {t(`shop.${it.personalization.material}`)}
+                          {it.personalization.sizeLabel
+                            ? it.personalization.sizeLabel
+                            : `${it.personalization.format} · ${t(`shop.${it.personalization.material}`)}`}
                           {it.personalization.names ? ` · „${it.personalization.names}"` : ""}
                           {it.personalization.date ? ` · ${it.personalization.date}` : ""}
                         </p>
+                        <CartItemConfig item={it} />
+
                       </div>
                       <button onClick={() => remove(it.id)} aria-label={t("cart.remove")} className="text-muted-foreground hover:text-destructive">
                         <Trash2 size={16} />
