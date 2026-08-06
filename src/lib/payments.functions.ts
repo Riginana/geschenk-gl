@@ -60,15 +60,33 @@ export const createCartCheckoutSession = createServerFn({ method: "POST" })
         });
       }
 
-      const session = await stripe.checkout.sessions.create({
+      const sessionParams = {
         line_items: lineItems,
-        mode: "payment",
-        ui_mode: "embedded_page",
+        mode: "payment" as const,
+        ui_mode: "embedded_page" as const,
         return_url: `${data.origin}/bestellung-bestaetigt?id=${orderId}&session_id={CHECKOUT_SESSION_ID}`,
         customer_email: data.email,
         payment_intent_data: { description: `DigiNutz Bestellung ${orderId.slice(0, 8)}` },
         metadata: { orderId },
-      });
+      };
+
+      // PayPal runs through the same Checkout Session as cards. If the Stripe
+      // account has not activated PayPal yet, fall back to cards only so the
+      // checkout never breaks.
+      let session;
+      try {
+        session = await stripe.checkout.sessions.create({
+          ...sessionParams,
+          payment_method_types: ["card", "paypal"],
+        });
+      } catch (paypalError) {
+        console.warn(
+          "[createCartCheckoutSession] paypal unavailable, falling back to card:",
+          getStripeErrorMessage(paypalError),
+        );
+        session = await stripe.checkout.sessions.create(sessionParams);
+      }
+
 
       const { error } = await pub()
         .from("orders")
