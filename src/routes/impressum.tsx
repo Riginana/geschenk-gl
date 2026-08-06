@@ -19,8 +19,8 @@ export const Route = createFileRoute("/impressum")({
           <h2>Angaben gemäß § 5 TMG</h2>
           <p>
             Kubanych Susamyrbek uulu<br />
-            Am Färberhof 9<br />
-            91052 Erlangen<br />
+            Karl-Bröger-Str 5<br />
+            91058 Erlangen<br />
             Deutschland
           </p>
 
@@ -34,7 +34,7 @@ export const Route = createFileRoute("/impressum")({
           <p>Gemäß § 19 UStG wird keine Umsatzsteuer berechnet (Kleinunternehmerregelung).</p>
 
           <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
-          <p>Kubanych Susamyrbek uulu, Am Färberhof 9, 91052 Erlangen</p>
+          <p>Kubanych Susamyrbek uulu, Karl-Bröger-Str 5, 91058 Erlangen</p>
 
           <h2>Verbraucherstreitbeilegung</h2>
           <p>
@@ -49,8 +49,8 @@ export const Route = createFileRoute("/impressum")({
           <h2>Information according to § 5 TMG</h2>
           <p>
             Kubanych Susamyrbek uulu<br />
-            Am Färberhof 9<br />
-            91052 Erlangen<br />
+            Karl-Bröger-Str 5<br />
+            91058 Erlangen<br />
             Germany
           </p>
 
@@ -64,7 +64,7 @@ export const Route = createFileRoute("/impressum")({
           <p>Pursuant to § 19 of the German VAT Act (small business rule), no VAT is charged.</p>
 
           <h2>Responsible for content under § 18 (2) MStV</h2>
-          <p>Kubanych Susamyrbek uulu, Am Färberhof 9, 91052 Erlangen, Germany</p>
+          <p>Kubanych Susamyrbek uulu, Karl-Bröger-Str 5, 91058 Erlangen, Germany</p>
 
           <h2>Consumer dispute resolution</h2>
           <p>

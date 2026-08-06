@@ -22,8 +22,8 @@ export const Route = createFileRoute("/datenschutz")({
           </p>
           <p>
             Kubanych Susamyrbek uulu<br />
-            Am Färberhof 9<br />
-            91052 Erlangen<br />
+            Karl-Bröger-Str 5<br />
+            91058 Erlangen<br />
             Deutschland
           </p>
           <p>
@@ -208,8 +208,8 @@ export const Route = createFileRoute("/datenschutz")({
           </p>
           <p>
             Kubanych Susamyrbek uulu<br />
-            Am Färberhof 9<br />
-            91052 Erlangen<br />
+            Karl-Bröger-Str 5<br />
+            91058 Erlangen<br />
             Germany
           </p>
           <p>

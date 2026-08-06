@@ -25,7 +25,7 @@ export const Route = createFileRoute("/widerruf")({
           </p>
           <p>
             Um Ihr Widerrufsrecht auszuüben, müssen Sie uns (Kubanych Susamyrbek uulu,
-            Am Färberhof 9, 91052 Erlangen, Deutschland, Tel.: 017624299597,
+            Karl-Bröger-Str 5, 91058 Erlangen, Deutschland, Tel.: 017624299597,
             E-Mail: diginutz.e@gmail.com) mittels einer eindeutigen Erklärung
             (z. B. Brief oder E-Mail) über Ihren Entschluss, diesen Vertrag zu
             widerrufen, informieren. Sie können dafür das unten stehende
@@ -74,8 +74,8 @@ export const Route = createFileRoute("/widerruf")({
             <p className="font-semibold">An</p>
             <p className="mt-1">
               Kubanych Susamyrbek uulu<br />
-              Am Färberhof 9<br />
-              91052 Erlangen<br />
+              Karl-Bröger-Str 5<br />
+              91058 Erlangen<br />
               Deutschland<br />
               E-Mail: diginutz.e@gmail.com
             </p>
@@ -115,7 +115,7 @@ export const Route = createFileRoute("/widerruf")({
           </p>
           <p>
             To exercise your right of withdrawal, you must inform us (Kubanych
-            Susamyrbek uulu, Am Färberhof 9, 91052 Erlangen, Germany, Phone:
+            Susamyrbek uulu, Karl-Bröger-Str 5, 91058 Erlangen, Germany, Phone:
             +49 176 24299597, Email: diginutz.e@gmail.com) by means of a clear
             declaration (e.g. letter or email) of your decision to withdraw from
             this contract. You may use the model withdrawal form below, which is
@@ -159,8 +159,8 @@ export const Route = createFileRoute("/widerruf")({
             <p className="font-semibold">To</p>
             <p className="mt-1">
               Kubanych Susamyrbek uulu<br />
-              Am Färberhof 9<br />
-              91052 Erlangen<br />
+              Karl-Bröger-Str 5<br />
+              91058 Erlangen<br />
               Germany<br />
               Email: diginutz.e@gmail.com
             </p>
