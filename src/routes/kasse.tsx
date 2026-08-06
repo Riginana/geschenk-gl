@@ -38,6 +38,8 @@ function CheckoutPage() {
   const [country, setCountry] = useState("Deutschland");
   const [shipping, setShipping] = useState<"standard" | "express">("standard");
   const [payload, setPayload] = useState<CheckoutPayload | null>(null);
+  const [, setPendingOrderId] = useState<string | null>(null);
+
 
   const shippingCents = shipping === "express" ? 990 : subtotalCents >= 5000 ? 0 : 490;
   const total = subtotalCents + shippingCents;
