@@ -146,13 +146,15 @@ function CheckoutPage() {
           <h3 className="eyebrow">Ihre Bestellung</h3>
           <ul className="space-y-3">
             {items.map((it) => (
-              <li key={it.id} className="flex items-center gap-3 text-sm">
+              <li key={it.id} className="flex items-start gap-3 text-sm">
                 <img src={it.image} alt="" width={48} height={48} className="h-12 w-12 rounded-md object-cover" />
                 <div className="flex-1">
                   <p className="line-clamp-1 font-medium text-walnut">{it.name}</p>
                   <p className="text-xs text-muted-foreground">{it.qty} × {formatEUR(it.unitPriceCents, locale)}</p>
+                  <CartItemConfig item={it} />
                 </div>
               </li>
+
             ))}
           </ul>
           <div className="gold-divider" />
