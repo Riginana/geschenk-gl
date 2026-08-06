@@ -1,6 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
 import type { Database } from "@/integrations/supabase/types";
-import rawProducts from "@/data/products.json";
+import { calculateDiscountedPrice, PRICE_BY_FORMAT_CENTS, PRICE_BY_FRAME_CENTS } from "@/lib/pricing";
+import { resolveFramePriceCents, type FramePriceRow } from "@/lib/frame-pricing";
 
 /** Publishable-key client for public catalog reads (RLS applies as anon). */
 export function pub() {
@@ -11,48 +12,70 @@ export function pub() {
   );
 }
 
-type RawProduct = { id: string; base_price_cents: number };
-const PRODUCT_PRICE_CENTS = new Map<string, number>(
-  (rawProducts.products as RawProduct[]).map((p) => [p.id, p.base_price_cents]),
-);
-
-const PRICE_BY_FORMAT_CENTS: Record<string, number> = { A5: 0, A4: 500, A3: 1200 };
-const PRICE_BY_FRAME_CENTS: Record<string, number> = { papier: 0, kraftpapier: 200, holz: 800 };
-
 /**
- * Server-side price for one configured item.
- * Configurable products (Schiebebox) price from `product_size_variants`
- * (single source of truth), everything else from the static catalog price.
+ * Server-side price for one configured item, mirroring the storefront rules:
+ * size variant > frame price grid > product variant > base price + legacy offsets,
+ * with the product's discount applied last.
  */
 export async function computeUnitPriceCents(
   productId: string,
   personalization?: Record<string, string>,
 ): Promise<number | null> {
+  const db = pub();
+  const { data: product } = await db
+    .from("products")
+    .select("id, category, base_price_cents, discount_percent, is_active")
+    .eq("id", productId)
+    .maybeSingle();
+  if (!product || !product.is_active) return null;
+
+  const discount = (cents: number) => calculateDiscountedPrice(cents, product.discount_percent);
+
+  // 1. Configurable products (Schiebebox): price comes from the size variant.
   const sizeId = personalization?.sizeId;
   if (sizeId) {
-    const { data } = await pub()
+    const { data } = await db
       .from("product_size_variants")
       .select("price_cents, product_id, is_active")
       .eq("id", sizeId)
       .maybeSingle();
     if (!data || !data.is_active || data.product_id !== productId) return null;
-    const { data: prod } = await pub()
-      .from("products")
-      .select("discount_percent")
-      .eq("id", productId)
-      .maybeSingle();
-    const pct = Math.min(100, Math.max(0, prod?.discount_percent ?? 0));
-    return Math.round(data.price_cents * (1 - pct / 100));
+    return discount(data.price_cents);
   }
 
-  const base = PRODUCT_PRICE_CENTS.get(productId);
-  if (base == null) return null;
+  // 2. Frame products: price grid (product override wins over the global row).
+  const frameSize = personalization?.frameSize;
+  const frameVariant = personalization?.frameVariant;
+  if (frameSize && frameVariant) {
+    const { data } = await db
+      .from("frame_prices")
+      .select("id, product_id, size, variant, price_cents")
+      .eq("size", frameSize)
+      .eq("variant", frameVariant);
+    const cents = resolveFramePriceCents((data ?? []) as FramePriceRow[], productId, frameSize, frameVariant);
+    if (cents != null) return discount(cents);
+  }
+
+  // 3. Explicit product variant for the chosen format + material.
   const format = personalization?.format;
   const material = personalization?.material;
+  if (format && material) {
+    const { data } = await db
+      .from("product_variants")
+      .select("price_cents, format, material")
+      .eq("product_id", productId)
+      .eq("format", format)
+      .eq("material", material)
+      .maybeSingle();
+    if (data) return discount(data.price_cents);
+  }
+
+  // 4. Base price plus legacy format/material offsets.
   const formatExtra = format ? PRICE_BY_FORMAT_CENTS[format] ?? 0 : 0;
   const frameExtra = material ? PRICE_BY_FRAME_CENTS[material] ?? 0 : 0;
-  return base + formatExtra + frameExtra;
+  return discount(product.base_price_cents + formatExtra + frameExtra);
 }
+
 
 export function computeShippingCents(
   method: "standard" | "express",
