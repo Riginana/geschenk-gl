@@ -65,6 +65,7 @@ export const Route = createFileRoute("/product/$id")({
   loader: async ({ context, params }) => {
     const products = await context.queryClient.ensureQueryData(productsQueryOptions);
     void context.queryClient.prefetchQuery(framePricesQueryOptions);
+    void context.queryClient.prefetchQuery(productConfigQueryOptions);
     const product = products.find((p) => p.id === params.id || p.slug === params.id);
     if (!product) throw notFound();
     return { id: product.id, product };
@@ -91,6 +92,7 @@ function ProductPage() {
   const { t, locale } = useT();
   const { data: products } = useSuspenseQuery(productsQueryOptions);
   const { data: framePrices } = useSuspenseQuery(framePricesQueryOptions);
+  const { data: config } = useSuspenseQuery(productConfigQueryOptions);
   const product = products.find((p) => p.id === id) as ProductRow | undefined;
 
   const { add } = useCart();
