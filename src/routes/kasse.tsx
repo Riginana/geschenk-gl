@@ -70,8 +70,11 @@ function CheckoutPage() {
 
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-10">
+    <div>
+      <PaymentTestModeBanner />
+      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-10">
       <h1 className="font-serif text-4xl text-walnut sm:text-5xl">{t("checkout.title")}</h1>
+
 
       <form onSubmit={submit} className="mt-10 grid gap-10 lg:grid-cols-3">
         <div className="space-y-8 lg:col-span-2">
