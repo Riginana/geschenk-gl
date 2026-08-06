@@ -1,4 +1,5 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
+import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import { Heart, ShoppingBag } from "lucide-react";
 import { toast } from "sonner";
@@ -8,6 +9,8 @@ import { formatEUR, useT } from "@/i18n";
 import { useWishlist } from "@/contexts/wishlist";
 import { useCart } from "@/contexts/cart";
 import { calculateDiscountedPrice } from "@/lib/pricing";
+import { fromPriceCents, isConfigurableCategory } from "@/lib/product-config";
+import { productConfigQueryOptions } from "@/lib/product-config.query";
 
 
 export function ProductCard({ p, eager }: { p: ProductRow; eager?: boolean }) {
@@ -20,11 +23,23 @@ export function ProductCard({ p, eager }: { p: ProductRow; eager?: boolean }) {
   const variantCount = p.images?.length ?? 0;
   const hoverImg = p.hoverImage ?? (variantCount > 1 ? p.images?.[1] : undefined);
 
-  const promoCents = calculateDiscountedPrice(p.base_price_cents, p.discount_percent);
+  const navigate = useNavigate();
+  const configurable = isConfigurableCategory(p.category);
+  const { data: config } = useQuery({ ...productConfigQueryOptions, enabled: configurable });
+  const sizeFrom = configurable
+    ? fromPriceCents((config?.sizes ?? []).filter((s) => s.product_id === p.id))
+    : null;
+  const listCents = sizeFrom ?? p.base_price_cents;
+  const promoCents = calculateDiscountedPrice(listCents, p.discount_percent);
   const hasDiscount = (p.discount_percent ?? 0) > 0;
 
   const onQuickAdd = (e: React.MouseEvent) => {
     e.preventDefault();
+    if (configurable) {
+      // Size + motif must be chosen on the product page.
+      void navigate({ to: "/product/$id", params: { id: p.id } });
+      return;
+    }
     const format = p.formats?.[0] ?? "A4";
     const material = p.material ?? "holz";
     add({
@@ -105,7 +120,7 @@ export function ProductCard({ p, eager }: { p: ProductRow; eager?: boolean }) {
               <span className={`font-medium ${hasDiscount ? "text-destructive" : "text-walnut"}`}>{formatEUR(promoCents, locale)}</span>
               {hasDiscount && (
                 <>
-                  <span className="ml-1.5 text-xs text-muted-foreground line-through">{formatEUR(p.base_price_cents, locale)}</span>
+                  <span className="ml-1.5 text-xs text-muted-foreground line-through">{formatEUR(listCents, locale)}</span>
                   <span className="ml-1 text-[10px] font-semibold text-destructive">−{p.discount_percent}%</span>
                 </>
               )}
