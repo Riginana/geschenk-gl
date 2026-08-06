@@ -29,13 +29,13 @@ import {
   resolveFramePriceCents,
 } from "@/lib/frame-pricing";
 
-import { listProductConfig } from "@/lib/product-config.functions";
 import {
   activeMotifs,
   activeSizes,
   defaultSize,
   isConfigurableCategory,
 } from "@/lib/product-config";
+import { productConfigQueryOptions } from "@/lib/product-config.query";
 import { ProductSizeSelector } from "@/components/product/size-selector";
 import { ProductMotifSelector, CustomMotifTextField } from "@/components/product/motif-selector";
 
@@ -44,10 +44,6 @@ const framePricesQueryOptions = {
   queryFn: () => listFramePrices(),
 };
 
-const productConfigQueryOptions = {
-  queryKey: ["product-config"] as const,
-  queryFn: () => listProductConfig(),
-};
 
 
 
