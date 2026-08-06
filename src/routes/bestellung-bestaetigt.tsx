@@ -1,11 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import { z } from "zod";
 import { useT } from "@/i18n";
+import { useCart } from "@/contexts/cart";
 
 export const Route = createFileRoute("/bestellung-bestaetigt")({
-  validateSearch: (s) => z.object({ id: z.string().optional() }).parse(s),
+  validateSearch: (s) =>
+    z.object({ id: z.string().optional(), session_id: z.string().optional() }).parse(s),
   head: () => ({
     meta: [
       { title: "Vielen Dank für Ihre Bestellung! | DigiNutz" },
@@ -19,6 +22,13 @@ export const Route = createFileRoute("/bestellung-bestaetigt")({
 function SuccessPage() {
   const { t } = useT();
   const { id } = Route.useSearch();
+  const { clear } = useCart();
+
+  // The customer returned from the payment form — the cart is now obsolete.
+  useEffect(() => {
+    clear();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-24 text-center sm:px-6">

@@ -1,12 +1,13 @@
 import { CartItemConfig } from "@/components/cart-item-config";
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { useServerFn } from "@tanstack/react-start";
+import { PaymentTestModeBanner } from "@/components/payment-test-mode-banner";
+import { StripeEmbeddedCheckout } from "@/components/stripe-embedded-checkout";
+import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
 import { formatEUR, useT } from "@/i18n";
 import { useCart } from "@/contexts/cart";
-import { submitOrder } from "@/lib/orders.functions";
+import type { CheckoutInput } from "@/lib/checkout-schema";
 
 export const Route = createFileRoute("/kasse")({
   head: () => ({
@@ -21,13 +22,11 @@ export const Route = createFileRoute("/kasse")({
   component: CheckoutPage,
 });
 
-type PaymentMethod = "paypal" | "stripe" | "kreditkarte" | "apple_pay" | "google_pay";
+type CheckoutPayload = Omit<CheckoutInput, "origin" | "environment">;
 
 function CheckoutPage() {
   const { t, locale } = useT();
-  const navigate = useNavigate();
-  const { items, subtotalCents, clear } = useCart();
-  const place = useServerFn(submitOrder);
+  const { items, subtotalCents } = useCart();
 
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -38,52 +37,46 @@ function CheckoutPage() {
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("Deutschland");
   const [shipping, setShipping] = useState<"standard" | "express">("standard");
-  const [payment, setPayment] = useState<PaymentMethod>("paypal");
-  const [submitting, setSubmitting] = useState(false);
+  const [payload, setPayload] = useState<CheckoutPayload | null>(null);
+  const [, setPendingOrderId] = useState<string | null>(null);
+
 
   const shippingCents = shipping === "express" ? 990 : subtotalCents >= 5000 ? 0 : 490;
   const total = subtotalCents + shippingCents;
 
-  const submit = async (e: React.FormEvent) => {
+  const submit = (e: React.FormEvent) => {
     e.preventDefault();
     if (items.length === 0) {
       toast.error(t("cart.empty"));
       return;
     }
-    setSubmitting(true);
-    try {
-      // TODO: real payment integration (PayPal / Stripe / Apple Pay / Google Pay)
-      const res = await place({
-        data: {
-          email,
-          address: { firstName, lastName, street, houseNumber, plz, city, country },
-          items: items.map((i) => ({
-            productId: i.productId,
-            slug: i.slug,
-            name: i.name,
-            qty: i.qty,
-            personalization: Object.fromEntries(
-              Object.entries(i.personalization).filter(([, v]) => v != null) as [string, string][],
-            ),
-          })),
-          shippingMethod: shipping,
-          paymentMethod: payment,
-          locale,
-        },
-      });
-      clear();
-      navigate({ to: "/bestellung-bestaetigt", search: { id: res.id } });
-    } catch (err) {
-      console.error("[kasse] submit failed", err);
-      toast.error("Bestellung fehlgeschlagen", { description: "Bitte versuchen Sie es erneut." });
-    } finally {
-      setSubmitting(false);
-    }
+    setPayload({
+      email,
+      address: { firstName, lastName, street, houseNumber, plz, city, country },
+      items: items.map((i) => ({
+        productId: i.productId,
+        slug: i.slug,
+        name: i.name,
+        qty: i.qty,
+        personalization: Object.fromEntries(
+          Object.entries(i.personalization).filter(([, v]) => v != null) as [string, string][],
+        ),
+      })),
+      shippingMethod: shipping,
+      locale,
+    });
+    requestAnimationFrame(() => {
+      document.getElementById("checkout")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
   };
 
+
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-10">
+    <div>
+      <PaymentTestModeBanner />
+      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-10">
       <h1 className="font-serif text-4xl text-walnut sm:text-5xl">{t("checkout.title")}</h1>
+
 
       <form onSubmit={submit} className="mt-10 grid gap-10 lg:grid-cols-3">
         <div className="space-y-8 lg:col-span-2">
@@ -115,30 +108,9 @@ function CheckoutPage() {
           </Section>
 
           <Section title={t("checkout.payment")}>
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {(
-                [
-                  { id: "paypal", label: "PayPal", style: "bg-[#003087] text-white" },
-                  { id: "stripe", label: "Stripe", style: "bg-[#635bff] text-white" },
-                  { id: "kreditkarte", label: "Kreditkarte", style: "bg-card text-walnut" },
-                  { id: "apple_pay", label: "Apple Pay", style: "bg-black text-white" },
-                  { id: "google_pay", label: "Google Pay", style: "bg-white text-[#202124] ring-1 ring-border" },
-                ] as { id: PaymentMethod; label: string; style: string }[]
-              ).map((p) => (
-                <button
-                  key={p.id}
-                  type="button"
-                  onClick={() => setPayment(p.id)}
-                  className={`relative rounded-xl px-5 py-4 text-sm font-medium transition ${p.style} ${
-                    payment === p.id ? "ring-2 ring-brass" : "ring-1 ring-transparent"
-                  }`}
-                >
-                  {p.label}
-                </button>
-              ))}
-            </div>
-            <p className="mt-3 text-xs text-muted-foreground">
-              Vorschau-Bestellung — echte Zahlungsabwicklung folgt in der nächsten Version.
+            <p className="text-sm text-muted-foreground">
+              Karte, Apple&nbsp;Pay, Google&nbsp;Pay und weitere Methoden werden nach dem Klick auf
+              „{t("checkout.placeOrder")}" direkt hier auf der Seite angezeigt.
             </p>
           </Section>
         </div>
@@ -165,16 +137,36 @@ function CheckoutPage() {
           <motion.button
             whileTap={{ scale: 0.98 }}
             type="submit"
-            disabled={submitting}
+            disabled={payload !== null}
             className="mt-3 w-full rounded-full bg-walnut px-6 py-3.5 text-sm font-medium text-cream hover:bg-walnut/90 disabled:opacity-60"
           >
-            {submitting ? t("checkout.processing") : t("checkout.placeOrder")}
+            {payload ? t("checkout.processing") : t("checkout.placeOrder")}
           </motion.button>
+          {payload && (
+            <button
+              type="button"
+              onClick={() => setPayload(null)}
+              className="w-full text-center text-xs text-muted-foreground hover:text-walnut"
+            >
+              Angaben ändern
+            </button>
+          )}
         </aside>
       </form>
+
+      {payload && (
+        <section className="mt-10">
+          <h2 className="font-serif text-2xl text-walnut">Zahlung</h2>
+          <div className="mt-4">
+            <StripeEmbeddedCheckout payload={payload} onOrderCreated={setPendingOrderId} />
+          </div>
+        </section>
+      )}
+      </div>
     </div>
   );
 }
+
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (

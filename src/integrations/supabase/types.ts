@@ -108,10 +108,12 @@ export type Database = {
           id: string
           items: Json
           locale: string
+          payment_environment: string
           payment_method: string
           shipping_cents: number
           shipping_method: string
           status: Database["public"]["Enums"]["order_status"]
+          stripe_session_id: string | null
           subtotal_cents: number
           total_cents: number
         }
@@ -122,10 +124,12 @@ export type Database = {
           id?: string
           items: Json
           locale?: string
+          payment_environment?: string
           payment_method: string
           shipping_cents: number
           shipping_method: string
           status?: Database["public"]["Enums"]["order_status"]
+          stripe_session_id?: string | null
           subtotal_cents: number
           total_cents: number
         }
@@ -136,10 +140,12 @@ export type Database = {
           id?: string
           items?: Json
           locale?: string
+          payment_environment?: string
           payment_method?: string
           shipping_cents?: number
           shipping_method?: string
           status?: Database["public"]["Enums"]["order_status"]
+          stripe_session_id?: string | null
           subtotal_cents?: number
           total_cents?: number
         }

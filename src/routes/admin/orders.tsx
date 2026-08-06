@@ -100,11 +100,35 @@ function OrderCard({ order }: { order: AdminOrderRow }) {
         <div>
           <p className="font-medium text-walnut">{order.email}</p>
           <p className="text-xs text-muted-foreground">
-            {new Date(order.created_at).toLocaleString("de-DE")} · {order.status} ·{" "}
-            {(order.items ?? []).length} Position(en)
+            {new Date(order.created_at).toLocaleString("de-DE")} · {(order.items ?? []).length}{" "}
+            Position(en)
           </p>
         </div>
-        <p className="shrink-0 font-medium text-walnut">{formatEUR(order.total_cents)}</p>
+        <div className="shrink-0 text-right">
+          <p className="font-medium text-walnut">{formatEUR(order.total_cents)}</p>
+          <p className="mt-1 text-xs">
+            <span
+              className={
+                order.status === "pending"
+                  ? "rounded-full bg-muted px-2 py-0.5 text-muted-foreground"
+                  : order.status === "cancelled"
+                    ? "rounded-full bg-destructive/10 px-2 py-0.5 text-destructive"
+                    : "rounded-full bg-brass/20 px-2 py-0.5 text-walnut"
+              }
+            >
+              {order.status === "pending"
+                ? "Zahlung offen"
+                : order.status === "paid"
+                  ? "Bezahlt"
+                  : order.status === "cancelled"
+                    ? "Abgebrochen"
+                    : order.status}
+            </span>
+            {order.payment_environment === "sandbox" && (
+              <span className="ml-2 rounded-full bg-muted px-2 py-0.5 text-muted-foreground">Test</span>
+            )}
+          </p>
+        </div>
       </button>
 
       {open && (
