@@ -29,10 +29,23 @@ import {
   resolveFramePriceCents,
 } from "@/lib/frame-pricing";
 
+import {
+  activeMotifs,
+  activeSizes,
+  defaultSize,
+  isConfigurableCategory,
+} from "@/lib/product-config";
+import { productConfigQueryOptions } from "@/lib/product-config.query";
+import { ProductSizeSelector } from "@/components/product/size-selector";
+import { ProductMotifSelector, CustomMotifTextField } from "@/components/product/motif-selector";
+
 const framePricesQueryOptions = {
   queryKey: ["frame-prices"] as const,
   queryFn: () => listFramePrices(),
 };
+
+
+
 
 
 function detectFormats(text: string): Array<"A5" | "A4" | "A3"> {
@@ -48,6 +61,7 @@ export const Route = createFileRoute("/product/$id")({
   loader: async ({ context, params }) => {
     const products = await context.queryClient.ensureQueryData(productsQueryOptions);
     void context.queryClient.prefetchQuery(framePricesQueryOptions);
+    void context.queryClient.prefetchQuery(productConfigQueryOptions);
     const product = products.find((p) => p.id === params.id || p.slug === params.id);
     if (!product) throw notFound();
     return { id: product.id, product };
@@ -74,6 +88,7 @@ function ProductPage() {
   const { t, locale } = useT();
   const { data: products } = useSuspenseQuery(productsQueryOptions);
   const { data: framePrices } = useSuspenseQuery(framePricesQueryOptions);
+  const { data: config } = useSuspenseQuery(productConfigQueryOptions);
   const product = products.find((p) => p.id === id) as ProductRow | undefined;
 
   const { add } = useCart();
@@ -94,6 +109,17 @@ function ProductPage() {
   }, [product, title, description]);
 
   const isFrameProduct = product?.category === "bilderrahmen";
+  const isConfigurable = isConfigurableCategory(product?.category);
+  const productSizes = useMemo(
+    () => (product ? activeSizes(config.sizes.filter((s) => s.product_id === product.id)) : []),
+    [config.sizes, product],
+  );
+  const productMotifs = useMemo(
+    () => (product ? activeMotifs(config.motifs.filter((m) => m.product_id === product.id)) : []),
+    [config.motifs, product],
+  );
+  const hasConfig = isConfigurable && productSizes.length > 0;
+
   const [frameSize, setFrameSize] = useState<string>("A4");
   const [frameVariant, setFrameVariant] = useState<string>("standard_weiss");
   const [format, setFormat] = useState<string>(formats[0]);
@@ -101,6 +127,15 @@ function ProductPage() {
   const [qty, setQty] = useState(1);
   const [activeImage, setActiveImage] = useState(0);
   const [videoOpen, setVideoOpen] = useState(false);
+  const [sizeId, setSizeId] = useState<string | null>(null);
+  const [motifId, setMotifId] = useState<string | null>(null);
+  const [customMotifText, setCustomMotifText] = useState("");
+  const [errors, setErrors] = useState<{ size?: string; motif?: string; custom?: string; pers?: string }>({});
+
+  useEffect(() => {
+    if (!productSizes.length) return;
+    setSizeId((cur) => (cur && productSizes.some((s) => s.id === cur) ? cur : defaultSize(productSizes)?.id ?? null));
+  }, [productSizes]);
 
   useEffect(() => {
     if (!videoOpen) return;
@@ -117,6 +152,8 @@ function ProductPage() {
   if (!product) return <ProductNotFound />;
 
   const image = images[activeImage] ?? images[0] ?? "";
+  const selectedSize = productSizes.find((s) => s.id === sizeId) ?? null;
+  const selectedMotif = productMotifs.find((m) => m.id === motifId) ?? null;
   // Prefer explicit variant pricing when a matching format+material variant exists.
   const matchedVariant = product.variants?.find((v) => v.format === format && v.material === frame);
   const materialsForFormat = product.variants?.filter((v) => v.format === format) ?? [];
@@ -124,21 +161,45 @@ function ProductPage() {
   const framePriceCents = isFrameProduct
     ? resolveFramePriceCents(framePrices, product.id, frameSize, frameVariant)
     : null;
-  const baseCents =
-    framePriceCents ??
-    (matchedVariant
-      ? matchedVariant.price_cents
-      : product.base_price_cents + (PRICE_BY_FORMAT_CENTS[format] ?? 0) + (PRICE_BY_FRAME_CENTS[frame] ?? 0));
+  const baseCents = hasConfig
+    ? selectedSize?.price_cents ?? product.base_price_cents
+    : framePriceCents ??
+      (matchedVariant
+        ? matchedVariant.price_cents
+        : product.base_price_cents + (PRICE_BY_FORMAT_CENTS[format] ?? 0) + (PRICE_BY_FRAME_CENTS[frame] ?? 0));
   const unitCents = calculateDiscountedPrice(baseCents, product.discount_percent);
   const hasDiscount = (product.discount_percent ?? 0) > 0;
 
 
-  const chosenFormat = isFrameProduct ? frameSize : format;
-  const chosenMaterial = isFrameProduct ? FRAME_VARIANT_LABELS[frameVariant] ?? frameVariant : frame;
+  const chosenFormat = hasConfig
+    ? selectedSize?.label ?? ""
+    : isFrameProduct
+      ? frameSize
+      : format;
+  const chosenMaterial = hasConfig
+    ? product.material_label || product.material
+    : isFrameProduct
+      ? FRAME_VARIANT_LABELS[frameVariant] ?? frameVariant
+      : frame;
 
   const onAdd = () => {
+    if (hasConfig) {
+      const next: typeof errors = {};
+      if (!selectedSize) next.size = "Bitte wählen Sie eine Größe aus.";
+      if (productMotifs.length && !selectedMotif) next.motif = "Bitte wählen Sie ein Motiv aus.";
+      if (selectedMotif?.requires_custom_text && !customMotifText.trim())
+        next.custom = "Bitte geben Sie Ihren Wunschtext ein.";
+      if (!persName.trim()) next.pers = "Bitte geben Sie Ihre Personalisierung ein.";
+      setErrors(next);
+      if (Object.keys(next).length) {
+        toast.error(Object.values(next)[0]);
+        return;
+      }
+    }
+
+    const motifPart = selectedMotif ? `-m${selectedMotif.number}-${customMotifText.trim()}` : "";
     add({
-      id: `${product.id}-${chosenFormat}-${chosenMaterial}-${persName}-${persDate}`.slice(0, 200),
+      id: `${product.id}-${chosenFormat}-${chosenMaterial}${motifPart}-${persName}-${persDate}`.slice(0, 200),
       productId: product.id,
       slug: product.slug,
       name: title,
@@ -151,12 +212,26 @@ function ProductPage() {
         names: persName,
         date: persDate,
         message: persText,
+        ...(selectedSize
+          ? { sizeId: selectedSize.id, sizeLabel: selectedSize.label, dimensions: selectedSize.dimensions }
+          : {}),
+        ...(selectedMotif
+          ? {
+              motifId: selectedMotif.id,
+              motifNumber: String(selectedMotif.number),
+              motifTitle: selectedMotif.title,
+              motifText: selectedMotif.predefined_text,
+              ...(customMotifText.trim() ? { customMotifText: customMotifText.trim() } : {}),
+            }
+          : {}),
       },
     });
+    setErrors({});
     toast.success(t("product.addedToCart"), {
       description: `${title.slice(0, 60)} · ${chosenFormat} · ${qty}×`,
     });
   };
+
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-10 lg:py-16">
@@ -273,7 +348,45 @@ function ProductPage() {
 
           <p className="mt-6 whitespace-pre-line text-base leading-relaxed text-foreground/85">{description}</p>
 
-          {isFrameProduct && (
+          {hasConfig && (
+            <div className="mt-8">
+              <ProductSizeSelector
+                sizes={productSizes}
+                selectedId={sizeId}
+                onSelect={(s) => {
+                  setSizeId(s.id);
+                  setErrors((e) => ({ ...e, size: undefined }));
+                }}
+                discountPercent={product.discount_percent}
+                locale={locale}
+              />
+              <ProductMotifSelector
+                motifs={productMotifs}
+                selectedId={motifId}
+                onSelect={(m) => {
+                  setMotifId(m.id);
+                  setErrors((e) => ({ ...e, motif: undefined, custom: undefined }));
+                }}
+                error={errors.motif ?? null}
+              />
+              {selectedMotif?.allows_custom_text && (
+                <div className="mt-4 rounded-2xl bg-card p-6 ring-1 ring-border/60">
+                  <CustomMotifTextField
+                    value={customMotifText}
+                    onChange={(v) => {
+                      setCustomMotifText(v);
+                      setErrors((e) => ({ ...e, custom: undefined }));
+                    }}
+                    maxLength={selectedMotif.custom_text_max_length ?? 150}
+                    required={selectedMotif.requires_custom_text}
+                    error={errors.custom ?? null}
+                  />
+                </div>
+              )}
+            </div>
+          )}
+
+          {isFrameProduct && !hasConfig && (
             <div className="mt-8 space-y-5 rounded-2xl bg-card p-6 ring-1 ring-border/60">
               <label className="block">
                 <span className="eyebrow mb-2 block">Größe</span>
@@ -306,7 +419,8 @@ function ProductPage() {
             </div>
           )}
 
-          {!isFrameProduct && (
+          {!isFrameProduct && !hasConfig && (
+
           <div className="mt-8 space-y-5 rounded-2xl bg-card p-6 ring-1 ring-border/60">
             {formats.length > 1 && (
               <div>
@@ -363,6 +477,7 @@ function ProductPage() {
                 placeholder="z. B. Julia & Max"
                 className="mt-1.5 w-full rounded-lg border border-border bg-cream px-4 py-2.5 text-sm outline-none focus:border-brass"
               />
+              {errors.pers && <span className="mt-1 block text-[11px] text-destructive">{errors.pers}</span>}
             </label>
             <label className="block">
               <span className="text-xs text-muted-foreground">Datum (optional)</span>

@@ -14,7 +14,17 @@ export type CartItem = {
     message?: string;
     format: string;
     material: string;
+    /** Configurable products (Schiebebox): snapshot of the chosen options. */
+    sizeId?: string;
+    sizeLabel?: string;
+    dimensions?: string;
+    motifId?: string;
+    motifNumber?: string;
+    motifTitle?: string;
+    motifText?: string;
+    customMotifText?: string;
   };
+
 };
 
 type Ctx = {

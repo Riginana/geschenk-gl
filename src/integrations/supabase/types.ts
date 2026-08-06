@@ -183,6 +183,112 @@ export type Database = {
           },
         ]
       }
+      product_motifs: {
+        Row: {
+          allows_custom_text: boolean
+          created_at: string
+          custom_text_max_length: number
+          description: string
+          id: string
+          is_active: boolean
+          number: number
+          predefined_text: string
+          preview_image_url: string | null
+          product_id: string
+          requires_custom_text: boolean
+          sort_order: number
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          allows_custom_text?: boolean
+          created_at?: string
+          custom_text_max_length?: number
+          description?: string
+          id?: string
+          is_active?: boolean
+          number: number
+          predefined_text?: string
+          preview_image_url?: string | null
+          product_id: string
+          requires_custom_text?: boolean
+          sort_order?: number
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          allows_custom_text?: boolean
+          created_at?: string
+          custom_text_max_length?: number
+          description?: string
+          id?: string
+          is_active?: boolean
+          number?: number
+          predefined_text?: string
+          preview_image_url?: string | null
+          product_id?: string
+          requires_custom_text?: boolean
+          sort_order?: number
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "product_motifs_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      product_size_variants: {
+        Row: {
+          created_at: string
+          dimensions: string
+          id: string
+          is_active: boolean
+          is_default: boolean
+          label: string
+          price_cents: number
+          product_id: string
+          sort_order: number
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          dimensions?: string
+          id?: string
+          is_active?: boolean
+          is_default?: boolean
+          label: string
+          price_cents?: number
+          product_id: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          dimensions?: string
+          id?: string
+          is_active?: boolean
+          is_default?: boolean
+          label?: string
+          price_cents?: number
+          product_id?: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "product_size_variants_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       product_variants: {
         Row: {
           created_at: string
