@@ -29,10 +29,27 @@ import {
   resolveFramePriceCents,
 } from "@/lib/frame-pricing";
 
+import { listProductConfig } from "@/lib/product-config.functions";
+import {
+  activeMotifs,
+  activeSizes,
+  defaultSize,
+  isConfigurableCategory,
+} from "@/lib/product-config";
+import { ProductSizeSelector } from "@/components/product/size-selector";
+import { ProductMotifSelector, CustomMotifTextField } from "@/components/product/motif-selector";
+
 const framePricesQueryOptions = {
   queryKey: ["frame-prices"] as const,
   queryFn: () => listFramePrices(),
 };
+
+const productConfigQueryOptions = {
+  queryKey: ["product-config"] as const,
+  queryFn: () => listProductConfig(),
+};
+
+
 
 
 function detectFormats(text: string): Array<"A5" | "A4" | "A3"> {
