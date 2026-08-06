@@ -352,7 +352,45 @@ function ProductPage() {
 
           <p className="mt-6 whitespace-pre-line text-base leading-relaxed text-foreground/85">{description}</p>
 
-          {isFrameProduct && (
+          {hasConfig && (
+            <div className="mt-8">
+              <ProductSizeSelector
+                sizes={productSizes}
+                selectedId={sizeId}
+                onSelect={(s) => {
+                  setSizeId(s.id);
+                  setErrors((e) => ({ ...e, size: undefined }));
+                }}
+                discountPercent={product.discount_percent}
+                locale={locale}
+              />
+              <ProductMotifSelector
+                motifs={productMotifs}
+                selectedId={motifId}
+                onSelect={(m) => {
+                  setMotifId(m.id);
+                  setErrors((e) => ({ ...e, motif: undefined, custom: undefined }));
+                }}
+                error={errors.motif ?? null}
+              />
+              {selectedMotif?.allows_custom_text && (
+                <div className="mt-4 rounded-2xl bg-card p-6 ring-1 ring-border/60">
+                  <CustomMotifTextField
+                    value={customMotifText}
+                    onChange={(v) => {
+                      setCustomMotifText(v);
+                      setErrors((e) => ({ ...e, custom: undefined }));
+                    }}
+                    maxLength={selectedMotif.custom_text_max_length ?? 150}
+                    required={selectedMotif.requires_custom_text}
+                    error={errors.custom ?? null}
+                  />
+                </div>
+              )}
+            </div>
+          )}
+
+          {isFrameProduct && !hasConfig && (
             <div className="mt-8 space-y-5 rounded-2xl bg-card p-6 ring-1 ring-border/60">
               <label className="block">
                 <span className="eyebrow mb-2 block">Größe</span>
@@ -385,7 +423,8 @@ function ProductPage() {
             </div>
           )}
 
-          {!isFrameProduct && (
+          {!isFrameProduct && !hasConfig && (
+
           <div className="mt-8 space-y-5 rounded-2xl bg-card p-6 ring-1 ring-border/60">
             {formats.length > 1 && (
               <div>
