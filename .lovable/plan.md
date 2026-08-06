@@ -1,31 +1,19 @@
-## Ausgangslage (geprüft)
+# Motiv-Bilder für Schiebebox-Motive
 
-Im Admin gibt es aktuell nur Bearbeiten von bestehenden Produkten: `src/lib/admin.functions.ts` enthält `adminListProducts`, `adminGetProduct`, `adminUpdateProduct`, `adminBulkSetActive`, Bild-Upload und Varianten — aber **keine** Funktion zum Anlegen oder Löschen eines Produkts. Deshalb kann der Kunde heute kein neues Produkt hinzufügen.
+Die vier hochgeladenen Bilder werden als Vorschaubilder für die Motive 1–4 hinterlegt. Auf der Produktseite erscheinen sie dann oben in jeder Motiv-Karte, direkt über Titel und Beschreibung.
 
-Auf der Website erscheinen Produkte automatisch, sobald `is_active = true` ist (Shop liest aktive Produkte aus der Datenbank) — es braucht also keinen extra „Veröffentlichen"-Mechanismus, nur das Aktiv-Flag.
+## Zuordnung
 
-## Was gebaut wird
+- Motiv 1 — Zwei Herzen → `1_motiv_-_2_herzen`
+- Motiv 2 — Wunschtext → `2_motiv_-_wunschtext`
+- Motiv 3 — Hand in Hand → `3_motiv_-_hand_in_hand`
+- Motiv 4 — Eure Liebe → `4_motiv_-_eure_liebe`
 
-**1. Backend-Funktionen (`src/lib/admin.functions.ts`)**
-- `adminCreateProduct`: legt ein Produkt an (Admin-Rolle wird wie bisher geprüft). Eingaben: Name DE/EN, Anlass, Kategorie, Grundpreis, Rabatt. Slug wird aus dem Namen automatisch erzeugt und bei Kollision mit Suffix eindeutig gemacht. Neues Produkt startet als **Entwurf** (`is_active = false`), damit nichts Halbfertiges im Shop steht.
-- `adminDeleteProduct`: löscht Produkt inkl. zugehöriger Bilder/Varianten (mit Bestätigungsdialog im UI).
+## Umsetzung
 
-**2. Produktliste `/admin/products`**
-- Button „+ Neues Produkt" oben rechts öffnet ein kleines Formular (Dialog): Name DE, Name EN, Anlass, Kategorie, Preis in €.
-- Nach dem Speichern springt die Seite direkt in den Editor `/admin/products/[id]`.
-- Pro Zeile ein Löschen-Button mit Rückfrage.
+1. Die vier Bilder in den bestehenden öffentlichen Storage-Bucket `product-images` hochladen (Ordner `motifs/`), als WebP konvertiert für schnelle Ladezeiten.
+2. In `product_motifs` das Feld `preview_image_url` für alle Schiebebox-Produkte anhand der Motiv-Nummer auf die jeweilige öffentliche URL setzen (gilt für alle Produkte, die diese Motive haben).
+3. Keine Code-Änderung nötig: die Motiv-Karten (`src/components/product/motif-selector.tsx`) und der Admin-Editor zeigen das Bild bereits an, sobald eine URL gesetzt ist — inklusive Zoom-Ansicht.
+4. Prüfung auf der Produktseite, dass die Bilder in allen vier Karten oberhalb des Texts erscheinen.
 
-**3. Editor `/admin/products/[id]`** (bereits vorhanden)
-- Dort werden dann wie gewohnt Fotos/Video hochgeladen, Beschreibung, Varianten, Bilderrahmen-Preise und SEO gepflegt.
-- Der bestehende Schalter „aktiv" schaltet das Produkt live in den Shop.
-
-**4. Kurzanleitung**
-Auf der Produktliste ein dezenter Hinweistext: Produkt anlegen → Bilder hochladen → Beschreibung/Preis → Schalter „aktiv" → Produkt ist auf der Website sichtbar.
-
-## Technische Details
-- Keine Datenbank-Migration nötig: alle Pflichtfelder der Tabelle `products` haben Defaults oder werden im Formular gesetzt (`slug`, `name_de/en`, `description_de/en`, `base_price_cents`, `occasion`).
-- Alle Schreibzugriffe laufen weiterhin über Server-Funktionen mit `requireSupabaseAuth` + `has_role(admin)`; keine neuen öffentlichen Endpunkte, RLS bleibt unverändert.
-- Löschen entfernt zuerst `product_images`/`product_variants`, dann die Produktzeile (Storage-Dateien bleiben erhalten).
-
-## Danach
-Änderungen sind sofort in der Vorschau aktiv; für geschenk-gl.lovable.app einmal „Update" im Publish-Dialog.
+Über den Admin-Bereich („Schiebebox: Größen & Motive") bleiben die Bilder pro Produkt später einzeln austauschbar.
