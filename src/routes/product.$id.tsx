@@ -212,6 +212,8 @@ function ProductPage() {
         names: persName,
         date: persDate,
         message: persText,
+        ...(isFrameProduct ? { frameSize, frameVariant } : {}),
+
         ...(selectedSize
           ? { sizeId: selectedSize.id, sizeLabel: selectedSize.label, dimensions: selectedSize.dimensions }
           : {}),
