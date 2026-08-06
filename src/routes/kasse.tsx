@@ -106,30 +106,9 @@ function CheckoutPage() {
           </Section>
 
           <Section title={t("checkout.payment")}>
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {(
-                [
-                  { id: "paypal", label: "PayPal", style: "bg-[#003087] text-white" },
-                  { id: "stripe", label: "Stripe", style: "bg-[#635bff] text-white" },
-                  { id: "kreditkarte", label: "Kreditkarte", style: "bg-card text-walnut" },
-                  { id: "apple_pay", label: "Apple Pay", style: "bg-black text-white" },
-                  { id: "google_pay", label: "Google Pay", style: "bg-white text-[#202124] ring-1 ring-border" },
-                ] as { id: PaymentMethod; label: string; style: string }[]
-              ).map((p) => (
-                <button
-                  key={p.id}
-                  type="button"
-                  onClick={() => setPayment(p.id)}
-                  className={`relative rounded-xl px-5 py-4 text-sm font-medium transition ${p.style} ${
-                    payment === p.id ? "ring-2 ring-brass" : "ring-1 ring-transparent"
-                  }`}
-                >
-                  {p.label}
-                </button>
-              ))}
-            </div>
-            <p className="mt-3 text-xs text-muted-foreground">
-              Vorschau-Bestellung — echte Zahlungsabwicklung folgt in der nächsten Version.
+            <p className="text-sm text-muted-foreground">
+              Karte, Apple&nbsp;Pay, Google&nbsp;Pay und weitere Methoden werden nach dem Klick auf
+              „{t("checkout.placeOrder")}" direkt hier auf der Seite angezeigt.
             </p>
           </Section>
         </div>
@@ -156,16 +135,36 @@ function CheckoutPage() {
           <motion.button
             whileTap={{ scale: 0.98 }}
             type="submit"
-            disabled={submitting}
+            disabled={payload !== null}
             className="mt-3 w-full rounded-full bg-walnut px-6 py-3.5 text-sm font-medium text-cream hover:bg-walnut/90 disabled:opacity-60"
           >
-            {submitting ? t("checkout.processing") : t("checkout.placeOrder")}
+            {payload ? t("checkout.processing") : t("checkout.placeOrder")}
           </motion.button>
+          {payload && (
+            <button
+              type="button"
+              onClick={() => setPayload(null)}
+              className="w-full text-center text-xs text-muted-foreground hover:text-walnut"
+            >
+              Angaben ändern
+            </button>
+          )}
         </aside>
       </form>
+
+      {payload && (
+        <section className="mt-10">
+          <h2 className="font-serif text-2xl text-walnut">Zahlung</h2>
+          <div className="mt-4">
+            <StripeEmbeddedCheckout payload={payload} onOrderCreated={setPendingOrderId} />
+          </div>
+        </section>
+      )}
+      </div>
     </div>
   );
 }
+
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
