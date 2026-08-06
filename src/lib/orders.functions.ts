@@ -18,7 +18,32 @@ const PRODUCT_PRICE_CENTS = new Map<string, number>(
 const PRICE_BY_FORMAT_CENTS: Record<string, number> = { A5: 0, A4: 500, A3: 1200 };
 const PRICE_BY_FRAME_CENTS: Record<string, number> = { papier: 0, kraftpapier: 200, holz: 800 };
 
-function computeUnitPriceCents(productId: string, personalization?: Record<string, string>): number | null {
+/**
+ * Server-side price for one configured item.
+ * Configurable products (Schiebebox) price from `product_size_variants`
+ * (single source of truth), everything else from the static catalog price.
+ */
+async function computeUnitPriceCents(
+  productId: string,
+  personalization?: Record<string, string>,
+): Promise<number | null> {
+  const sizeId = personalization?.sizeId;
+  if (sizeId) {
+    const { data } = await pub()
+      .from("product_size_variants")
+      .select("price_cents, product_id, is_active")
+      .eq("id", sizeId)
+      .maybeSingle();
+    if (!data || !data.is_active || data.product_id !== productId) return null;
+    const { data: prod } = await pub()
+      .from("products")
+      .select("discount_percent")
+      .eq("id", productId)
+      .maybeSingle();
+    const pct = Math.min(100, Math.max(0, prod?.discount_percent ?? 0));
+    return Math.round(data.price_cents * (1 - pct / 100));
+  }
+
   const base = PRODUCT_PRICE_CENTS.get(productId);
   if (base == null) return null;
   const format = personalization?.format;
@@ -27,6 +52,7 @@ function computeUnitPriceCents(productId: string, personalization?: Record<strin
   const frameExtra = material ? PRICE_BY_FRAME_CENTS[material] ?? 0 : 0;
   return base + formatExtra + frameExtra;
 }
+
 
 function computeShippingCents(method: "standard" | "express", subtotalCents: number): number {
   if (method === "express") return 990;
