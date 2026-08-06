@@ -106,9 +106,13 @@ export const submitOrder = createServerFn({ method: "POST" })
     const shippingCents = computeShippingCents(data.shippingMethod, subtotalCents);
     const totalCents = subtotalCents + shippingCents;
 
-    const { data: row, error } = await pub()
+    // Orders are write-only for the public role (no SELECT policy), so the id
+    // is generated here instead of read back via .select().
+    const id = crypto.randomUUID();
+    const { error } = await pub()
       .from("orders")
       .insert({
+        id,
         email: data.email,
         address: data.address,
         items: verifiedItems,
@@ -119,12 +123,11 @@ export const submitOrder = createServerFn({ method: "POST" })
         total_cents: totalCents,
         status: "pending", // TODO: real payment integration
         locale: data.locale,
-      })
-      .select("id")
-      .single();
+      });
     if (error) {
       console.error("[submitOrder]", error.message);
       throw new Error("We couldn't place your order. Please try again.");
     }
-    return { id: row.id };
+    return { id };
+
   });
