@@ -91,13 +91,16 @@ export const submitOrder = createServerFn({ method: "POST" })
   .inputValidator((d) => orderSchema.parse(d))
   .handler(async ({ data }): Promise<{ id: string }> => {
     // Recompute prices server-side from the trusted catalog. Never trust client totals.
-    const verifiedItems = data.items.map((item) => {
-      const unitPriceCents = computeUnitPriceCents(item.productId, item.personalization);
-      if (unitPriceCents == null) {
-        throw new Error("One or more items in your cart are no longer available. Please refresh and try again.");
-      }
-      return { ...item, unitPriceCents };
-    });
+    const verifiedItems = await Promise.all(
+      data.items.map(async (item) => {
+        const unitPriceCents = await computeUnitPriceCents(item.productId, item.personalization);
+        if (unitPriceCents == null) {
+          throw new Error("One or more items in your cart are no longer available. Please refresh and try again.");
+        }
+        return { ...item, unitPriceCents };
+      }),
+    );
+
 
     const subtotalCents = verifiedItems.reduce((sum, i) => sum + i.unitPriceCents * i.qty, 0);
     const shippingCents = computeShippingCents(data.shippingMethod, subtotalCents);
