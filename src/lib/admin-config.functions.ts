@@ -224,11 +224,31 @@ export const adminSeedSchiebeboxDefaults = createServerFn({ method: "POST" })
 
 // ---------------- Orders (admin) ----------------
 
+export type AdminOrderAddress = {
+  firstName?: string;
+  lastName?: string;
+  street?: string;
+  houseNumber?: string;
+  plz?: string;
+  city?: string;
+  country?: string;
+};
+
+export type AdminOrderItem = {
+  productId?: string;
+  slug?: string;
+  name?: string;
+  qty?: number;
+  unitPriceCents?: number;
+  personalization?: Record<string, string>;
+};
+
 export type AdminOrderRow = {
   id: string;
   email: string;
-  address: unknown;
-  items: unknown;
+  address: AdminOrderAddress;
+  items: AdminOrderItem[];
+
   shipping_method: string;
   payment_method: string;
   subtotal_cents: number;
