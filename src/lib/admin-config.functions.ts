@@ -256,6 +256,8 @@ export type AdminOrderRow = {
   total_cents: number;
   status: string;
   created_at: string;
+  payment_environment?: string | null;
+  stripe_session_id?: string | null;
 };
 
 export const adminListOrders = createServerFn({ method: "GET" })
@@ -265,7 +267,7 @@ export const adminListOrders = createServerFn({ method: "GET" })
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     const { data, error } = await supabaseAdmin
       .from("orders")
-      .select("id,email,address,items,shipping_method,payment_method,subtotal_cents,shipping_cents,total_cents,status,created_at")
+      .select("id,email,address,items,shipping_method,payment_method,subtotal_cents,shipping_cents,total_cents,status,created_at,payment_environment,stripe_session_id")
       .order("created_at", { ascending: false })
       .limit(200);
     if (error) throw new Error(error.message);
