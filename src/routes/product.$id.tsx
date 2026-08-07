@@ -127,6 +127,7 @@ function ProductPage() {
   }, [product, title, description]);
 
   const isFrameProduct = product?.category === "bilderrahmen";
+  const isHolzplatteProduct = isHolzplatteCategory(product?.category);
   const isConfigurable = isConfigurableCategory(product?.category);
   const productSizes = useMemo(
     () => (product ? activeSizes(config.sizes.filter((s) => s.product_id === product.id)) : []),
