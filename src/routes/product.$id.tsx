@@ -181,21 +181,32 @@ function ProductPage() {
   const framePriceCents = isFrameProduct
     ? resolveFramePriceCents(framePrices, product.id, frameSize, frameVariant)
     : null;
-  const baseCents = hasConfig
-    ? selectedSize?.price_cents ?? product.base_price_cents
-    : framePriceCents ??
-      (matchedVariant
-        ? matchedVariant.price_cents
-        : product.base_price_cents + (PRICE_BY_FORMAT_CENTS[format] ?? 0) + (PRICE_BY_FRAME_CENTS[frame] ?? 0));
-  const unitCents = calculateDiscountedPrice(baseCents, product.discount_percent);
-  const hasDiscount = (product.discount_percent ?? 0) > 0;
+  const holzplatteRow =
+    isHolzplatteProduct && !hasConfig
+      ? resolveHolzplattePrice(holzplattePrices, product.id, holzplatteSize)
+      : null;
+  const baseCents = holzplatteRow
+    ? euroToCents(holzplatteRow.original_price)
+    : hasConfig
+      ? selectedSize?.price_cents ?? product.base_price_cents
+      : framePriceCents ??
+        (matchedVariant
+          ? matchedVariant.price_cents
+          : product.base_price_cents + (PRICE_BY_FORMAT_CENTS[format] ?? 0) + (PRICE_BY_FRAME_CENTS[frame] ?? 0));
+  const discountPercent = holzplatteRow ? holzplatteRow.discount_percent : product.discount_percent ?? 0;
+  const unitCents = holzplatteRow
+    ? finalPriceCents(holzplatteRow.original_price, holzplatteRow.discount_percent)
+    : calculateDiscountedPrice(baseCents, product.discount_percent);
+  const hasDiscount = discountPercent > 0;
 
 
   const chosenFormat = hasConfig
     ? selectedSize?.label ?? ""
     : isFrameProduct
       ? frameSize
-      : format;
+      : holzplatteRow
+        ? HOLZPLATTE_SIZE_LABELS[holzplatteSize] ?? holzplatteSize
+        : format;
   const chosenMaterial = hasConfig
     ? product.material_label || product.material
     : isFrameProduct
