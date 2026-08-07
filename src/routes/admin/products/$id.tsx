@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { isConfigurableCategory } from "@/lib/product-config";
 import { ProductConfigEditor } from "@/components/admin/product-config-editor";
+import { HolzplattePriceTable } from "@/components/admin/holzplatte-price-table";
 import {
   adminGetProduct,
   adminUpdateProduct,
