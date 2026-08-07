@@ -310,6 +310,16 @@ function AdminProductEdit() {
         </section>
       )}
 
+      {product.category === "holzplatte" && (
+        <section className="mb-6 rounded-xl border border-border bg-card p-5">
+          <h2 className="mb-1 font-serif text-lg">Holzplatte: Preis-Override</h2>
+          <p className="mb-4 text-xs text-muted-foreground">
+            Nur ausfüllen, wenn dieses Produkt vom globalen Preis abweichen soll.
+          </p>
+          <HolzplattePriceTable productId={product.id} />
+        </section>
+      )}
+
       {/* Images */}
       <section className="mb-6 rounded-xl border border-border bg-card p-5">
         <h2 className="mb-3 font-serif text-lg">Галерея ({images.length})</h2>
