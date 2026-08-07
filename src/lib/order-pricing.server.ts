@@ -2,6 +2,11 @@ import { createClient } from "@supabase/supabase-js";
 import type { Database } from "@/integrations/supabase/types";
 import { calculateDiscountedPrice, PRICE_BY_FORMAT_CENTS, PRICE_BY_FRAME_CENTS } from "@/lib/pricing";
 import { resolveFramePriceCents, type FramePriceRow } from "@/lib/frame-pricing";
+import {
+  resolveHolzplattePrice,
+  finalPriceCents,
+  type HolzplattePriceRow,
+} from "@/lib/holzplatte-pricing";
 
 /** Publishable-key client for public catalog reads (RLS applies as anon). */
 export function pub() {
