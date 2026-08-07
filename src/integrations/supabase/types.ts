@@ -79,6 +79,44 @@ export type Database = {
           },
         ]
       }
+      holzplatte_prices: {
+        Row: {
+          created_at: string
+          discount_percent: number
+          id: string
+          original_price: number
+          product_id: string | null
+          size: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          discount_percent?: number
+          id?: string
+          original_price: number
+          product_id?: string | null
+          size: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          discount_percent?: number
+          id?: string
+          original_price?: number
+          product_id?: string | null
+          size?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "holzplatte_prices_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       newsletter_subscribers: {
         Row: {
           created_at: string
