@@ -461,7 +461,41 @@ function ProductPage() {
             </div>
           )}
 
-          {!isFrameProduct && !hasConfig && (
+          {holzplatteRow && (
+            <div className="mt-8 space-y-4 rounded-2xl bg-card p-6 ring-1 ring-border/60">
+              <label className="block">
+                <span className="eyebrow mb-2 block">Größe</span>
+                <select
+                  value={holzplatteSize}
+                  onChange={(e) => setHolzplatteSize(e.target.value)}
+                  className="w-full rounded-lg border border-border bg-cream px-4 py-2.5 text-sm text-walnut outline-none transition focus:border-brass"
+                >
+                  {HOLZPLATTE_SIZES.map((s) => (
+                    <option key={s} value={s}>
+                      {HOLZPLATTE_SIZE_LABELS[s]}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <div className="flex flex-wrap items-baseline gap-2">
+                {hasDiscount && (
+                  <span className="text-sm text-muted-foreground line-through">
+                    {formatEUR(baseCents, locale)}
+                  </span>
+                )}
+                <span className={`text-xl font-semibold ${hasDiscount ? "text-destructive" : "text-walnut"}`}>
+                  {formatEUR(unitCents, locale)}
+                </span>
+                {hasDiscount && (
+                  <span className="rounded-full bg-destructive/10 px-2 py-0.5 text-xs font-semibold text-destructive">
+                    −{Math.round(discountPercent)}%
+                  </span>
+                )}
+              </div>
+            </div>
+          )}
+
+          {!isFrameProduct && !holzplatteRow && !hasConfig && (
 
           <div className="mt-8 space-y-5 rounded-2xl bg-card p-6 ring-1 ring-border/60">
             {formats.length > 1 && (
