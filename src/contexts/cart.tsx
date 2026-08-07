@@ -23,6 +23,14 @@ export type CartItem = {
     motifTitle?: string;
     motifText?: string;
     customMotifText?: string;
+    /** Frame products. */
+    frameSize?: string;
+    frameVariant?: string;
+    /** Holzplatte products: chosen size + price snapshot. */
+    holzplatteSize?: string;
+    originalPrice?: string;
+    discountPercent?: string;
+    finalPrice?: string;
   };
 
 };

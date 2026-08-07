@@ -2,6 +2,11 @@ import { createClient } from "@supabase/supabase-js";
 import type { Database } from "@/integrations/supabase/types";
 import { calculateDiscountedPrice, PRICE_BY_FORMAT_CENTS, PRICE_BY_FRAME_CENTS } from "@/lib/pricing";
 import { resolveFramePriceCents, type FramePriceRow } from "@/lib/frame-pricing";
+import {
+  resolveHolzplattePrice,
+  finalPriceCents,
+  type HolzplattePriceRow,
+} from "@/lib/holzplatte-pricing";
 
 /** Publishable-key client for public catalog reads (RLS applies as anon). */
 export function pub() {
@@ -42,6 +47,28 @@ export async function computeUnitPriceCents(
     if (!data || !data.is_active || data.product_id !== productId) return null;
     return discount(data.price_cents);
   }
+
+  // 1b. Holzplatte products: price from holzplatte_prices (override before global).
+  const holzplatteSize = personalization?.["holzplatteSize"];
+  if (holzplatteSize) {
+    const { data } = await (db as any)
+      .from("holzplatte_prices")
+      .select("id, product_id, size, original_price, discount_percent, updated_at")
+      .eq("size", holzplatteSize);
+    const row = resolveHolzplattePrice(
+      ((data ?? []) as any[]).map((r) => ({
+        ...r,
+        original_price: Number(r.original_price),
+        discount_percent: Number(r.discount_percent),
+      })) as HolzplattePriceRow[],
+      productId,
+      holzplatteSize,
+    );
+    if (!row) return null;
+    // The discount already lives in the price table; product discount is not re-applied.
+    return finalPriceCents(row.original_price, row.discount_percent);
+  }
+
 
   // 2. Frame products: price grid (product override wins over the global row).
   const frameSize = personalization?.frameSize;

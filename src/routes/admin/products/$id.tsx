@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { isConfigurableCategory } from "@/lib/product-config";
 import { ProductConfigEditor } from "@/components/admin/product-config-editor";
+import { HolzplattePriceTable } from "@/components/admin/holzplatte-price-table";
 import {
   adminGetProduct,
   adminUpdateProduct,
@@ -307,6 +308,16 @@ function AdminProductEdit() {
         <section className="mb-6 rounded-xl border border-border bg-card p-5">
           <h2 className="mb-4 font-serif text-lg">Schiebebox: Größen &amp; Motive</h2>
           <ProductConfigEditor productId={product.id} />
+        </section>
+      )}
+
+      {product.category === "holzplatte" && (
+        <section className="mb-6 rounded-xl border border-border bg-card p-5">
+          <h2 className="mb-1 font-serif text-lg">Holzplatte: Preis-Override</h2>
+          <p className="mb-4 text-xs text-muted-foreground">
+            Nur ausfüllen, wenn dieses Produkt vom globalen Preis abweichen soll.
+          </p>
+          <HolzplattePriceTable productId={product.id} />
         </section>
       )}
 

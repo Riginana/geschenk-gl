@@ -39,9 +39,25 @@ import { productConfigQueryOptions } from "@/lib/product-config.query";
 import { ProductSizeSelector } from "@/components/product/size-selector";
 import { ProductMotifSelector, CustomMotifTextField } from "@/components/product/motif-selector";
 
+import { listHolzplattePrices } from "@/lib/holzplatte-prices.functions";
+import {
+  HOLZPLATTE_SIZES,
+  HOLZPLATTE_SIZE_LABELS,
+  HOLZPLATTE_DEFAULT_SIZE,
+  isHolzplatteCategory,
+  resolveHolzplattePrice,
+  finalPriceCents,
+  euroToCents,
+} from "@/lib/holzplatte-pricing";
+
 const framePricesQueryOptions = {
   queryKey: ["frame-prices"] as const,
   queryFn: () => listFramePrices(),
+};
+
+const holzplattePricesQueryOptions = {
+  queryKey: ["holzplatte-prices"] as const,
+  queryFn: () => listHolzplattePrices(),
 };
 
 
@@ -61,6 +77,7 @@ export const Route = createFileRoute("/product/$id")({
   loader: async ({ context, params }) => {
     const products = await context.queryClient.ensureQueryData(productsQueryOptions);
     void context.queryClient.prefetchQuery(framePricesQueryOptions);
+    void context.queryClient.prefetchQuery(holzplattePricesQueryOptions);
     void context.queryClient.prefetchQuery(productConfigQueryOptions);
     const product = products.find((p) => p.id === params.id || p.slug === params.id);
     if (!product) throw notFound();
@@ -88,6 +105,7 @@ function ProductPage() {
   const { t, locale } = useT();
   const { data: products } = useSuspenseQuery(productsQueryOptions);
   const { data: framePrices } = useSuspenseQuery(framePricesQueryOptions);
+  const { data: holzplattePrices } = useSuspenseQuery(holzplattePricesQueryOptions);
   const { data: config } = useSuspenseQuery(productConfigQueryOptions);
   const product = products.find((p) => p.id === id) as ProductRow | undefined;
 
@@ -109,6 +127,7 @@ function ProductPage() {
   }, [product, title, description]);
 
   const isFrameProduct = product?.category === "bilderrahmen";
+  const isHolzplatteProduct = isHolzplatteCategory(product?.category);
   const isConfigurable = isConfigurableCategory(product?.category);
   const productSizes = useMemo(
     () => (product ? activeSizes(config.sizes.filter((s) => s.product_id === product.id)) : []),
@@ -121,6 +140,7 @@ function ProductPage() {
   const hasConfig = isConfigurable && productSizes.length > 0;
 
   const [frameSize, setFrameSize] = useState<string>("A4");
+  const [holzplatteSize, setHolzplatteSize] = useState<string>(HOLZPLATTE_DEFAULT_SIZE);
   const [frameVariant, setFrameVariant] = useState<string>("standard_weiss");
   const [format, setFormat] = useState<string>(formats[0]);
   const [frame, setFrame] = useState<string>(product?.material || "holz");
@@ -161,21 +181,32 @@ function ProductPage() {
   const framePriceCents = isFrameProduct
     ? resolveFramePriceCents(framePrices, product.id, frameSize, frameVariant)
     : null;
-  const baseCents = hasConfig
-    ? selectedSize?.price_cents ?? product.base_price_cents
-    : framePriceCents ??
-      (matchedVariant
-        ? matchedVariant.price_cents
-        : product.base_price_cents + (PRICE_BY_FORMAT_CENTS[format] ?? 0) + (PRICE_BY_FRAME_CENTS[frame] ?? 0));
-  const unitCents = calculateDiscountedPrice(baseCents, product.discount_percent);
-  const hasDiscount = (product.discount_percent ?? 0) > 0;
+  const holzplatteRow =
+    isHolzplatteProduct && !hasConfig
+      ? resolveHolzplattePrice(holzplattePrices, product.id, holzplatteSize)
+      : null;
+  const baseCents = holzplatteRow
+    ? euroToCents(holzplatteRow.original_price)
+    : hasConfig
+      ? selectedSize?.price_cents ?? product.base_price_cents
+      : framePriceCents ??
+        (matchedVariant
+          ? matchedVariant.price_cents
+          : product.base_price_cents + (PRICE_BY_FORMAT_CENTS[format] ?? 0) + (PRICE_BY_FRAME_CENTS[frame] ?? 0));
+  const discountPercent = holzplatteRow ? holzplatteRow.discount_percent : product.discount_percent ?? 0;
+  const unitCents = holzplatteRow
+    ? finalPriceCents(holzplatteRow.original_price, holzplatteRow.discount_percent)
+    : calculateDiscountedPrice(baseCents, product.discount_percent);
+  const hasDiscount = discountPercent > 0;
 
 
   const chosenFormat = hasConfig
     ? selectedSize?.label ?? ""
     : isFrameProduct
       ? frameSize
-      : format;
+      : holzplatteRow
+        ? HOLZPLATTE_SIZE_LABELS[holzplatteSize] ?? holzplatteSize
+        : format;
   const chosenMaterial = hasConfig
     ? product.material_label || product.material
     : isFrameProduct
@@ -213,6 +244,15 @@ function ProductPage() {
         date: persDate,
         message: persText,
         ...(isFrameProduct ? { frameSize, frameVariant } : {}),
+        ...(holzplatteRow
+          ? {
+              holzplatteSize,
+              sizeLabel: HOLZPLATTE_SIZE_LABELS[holzplatteSize] ?? holzplatteSize,
+              originalPrice: holzplatteRow.original_price.toFixed(2),
+              discountPercent: String(holzplatteRow.discount_percent),
+              finalPrice: (unitCents / 100).toFixed(2),
+            }
+          : {}),
 
         ...(selectedSize
           ? { sizeId: selectedSize.id, sizeLabel: selectedSize.label, dimensions: selectedSize.dimensions }
@@ -341,7 +381,7 @@ function ProductPage() {
             {hasDiscount && (
               <>
                 <span className="text-base text-muted-foreground line-through">{formatEUR(baseCents, locale)}</span>
-                <span className="rounded-full bg-destructive/10 px-2 py-0.5 text-xs font-semibold text-destructive">−{product.discount_percent}%</span>
+                <span className="rounded-full bg-destructive/10 px-2 py-0.5 text-xs font-semibold text-destructive">−{Math.round(discountPercent)}%</span>
               </>
             )}
             <span className="text-sm text-muted-foreground">inkl. MwSt. zzgl. Versand</span>
@@ -421,7 +461,41 @@ function ProductPage() {
             </div>
           )}
 
-          {!isFrameProduct && !hasConfig && (
+          {holzplatteRow && (
+            <div className="mt-8 space-y-4 rounded-2xl bg-card p-6 ring-1 ring-border/60">
+              <label className="block">
+                <span className="eyebrow mb-2 block">Größe</span>
+                <select
+                  value={holzplatteSize}
+                  onChange={(e) => setHolzplatteSize(e.target.value)}
+                  className="w-full rounded-lg border border-border bg-cream px-4 py-2.5 text-sm text-walnut outline-none transition focus:border-brass"
+                >
+                  {HOLZPLATTE_SIZES.map((s) => (
+                    <option key={s} value={s}>
+                      {HOLZPLATTE_SIZE_LABELS[s]}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <div className="flex flex-wrap items-baseline gap-2">
+                {hasDiscount && (
+                  <span className="text-sm text-muted-foreground line-through">
+                    {formatEUR(baseCents, locale)}
+                  </span>
+                )}
+                <span className={`text-xl font-semibold ${hasDiscount ? "text-destructive" : "text-walnut"}`}>
+                  {formatEUR(unitCents, locale)}
+                </span>
+                {hasDiscount && (
+                  <span className="rounded-full bg-destructive/10 px-2 py-0.5 text-xs font-semibold text-destructive">
+                    −{Math.round(discountPercent)}%
+                  </span>
+                )}
+              </div>
+            </div>
+          )}
+
+          {!isFrameProduct && !holzplatteRow && !hasConfig && (
 
           <div className="mt-8 space-y-5 rounded-2xl bg-card p-6 ring-1 ring-border/60">
             {formats.length > 1 && (
