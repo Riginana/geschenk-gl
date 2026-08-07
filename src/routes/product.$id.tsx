@@ -381,7 +381,7 @@ function ProductPage() {
             {hasDiscount && (
               <>
                 <span className="text-base text-muted-foreground line-through">{formatEUR(baseCents, locale)}</span>
-                <span className="rounded-full bg-destructive/10 px-2 py-0.5 text-xs font-semibold text-destructive">−{product.discount_percent}%</span>
+                <span className="rounded-full bg-destructive/10 px-2 py-0.5 text-xs font-semibold text-destructive">−{Math.round(discountPercent)}%</span>
               </>
             )}
             <span className="text-sm text-muted-foreground">inkl. MwSt. zzgl. Versand</span>
