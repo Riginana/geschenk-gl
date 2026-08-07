@@ -17,6 +17,7 @@ import {
   resolveFramePriceCents,
   type FramePriceRow,
 } from "@/lib/frame-pricing";
+import { HolzplattePriceTable } from "@/components/admin/holzplatte-price-table";
 
 export const Route = createFileRoute("/admin/frame-prices")({
   head: () => ({
