@@ -244,6 +244,15 @@ function ProductPage() {
         date: persDate,
         message: persText,
         ...(isFrameProduct ? { frameSize, frameVariant } : {}),
+        ...(holzplatteRow
+          ? {
+              holzplatteSize,
+              sizeLabel: HOLZPLATTE_SIZE_LABELS[holzplatteSize] ?? holzplatteSize,
+              originalPrice: holzplatteRow.original_price.toFixed(2),
+              discountPercent: String(holzplatteRow.discount_percent),
+              finalPrice: (unitCents / 100).toFixed(2),
+            }
+          : {}),
 
         ...(selectedSize
           ? { sizeId: selectedSize.id, sizeLabel: selectedSize.label, dimensions: selectedSize.dimensions }
