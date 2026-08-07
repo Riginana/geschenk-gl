@@ -77,6 +77,7 @@ export const Route = createFileRoute("/product/$id")({
   loader: async ({ context, params }) => {
     const products = await context.queryClient.ensureQueryData(productsQueryOptions);
     void context.queryClient.prefetchQuery(framePricesQueryOptions);
+    void context.queryClient.prefetchQuery(holzplattePricesQueryOptions);
     void context.queryClient.prefetchQuery(productConfigQueryOptions);
     const product = products.find((p) => p.id === params.id || p.slug === params.id);
     if (!product) throw notFound();
