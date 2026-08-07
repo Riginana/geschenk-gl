@@ -43,6 +43,28 @@ export async function computeUnitPriceCents(
     return discount(data.price_cents);
   }
 
+  // 1b. Holzplatte products: price from holzplatte_prices (override before global).
+  const holzplatteSize = personalization?.["holzplatteSize"];
+  if (holzplatteSize) {
+    const { data } = await (db as any)
+      .from("holzplatte_prices")
+      .select("id, product_id, size, original_price, discount_percent, updated_at")
+      .eq("size", holzplatteSize);
+    const row = resolveHolzplattePrice(
+      ((data ?? []) as any[]).map((r) => ({
+        ...r,
+        original_price: Number(r.original_price),
+        discount_percent: Number(r.discount_percent),
+      })) as HolzplattePriceRow[],
+      productId,
+      holzplatteSize,
+    );
+    if (!row) return null;
+    // The discount already lives in the price table; product discount is not re-applied.
+    return finalPriceCents(row.original_price, row.discount_percent);
+  }
+
+
   // 2. Frame products: price grid (product override wins over the global row).
   const frameSize = personalization?.frameSize;
   const frameVariant = personalization?.frameVariant;
