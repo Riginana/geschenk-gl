@@ -140,6 +140,7 @@ function ProductPage() {
   const hasConfig = isConfigurable && productSizes.length > 0;
 
   const [frameSize, setFrameSize] = useState<string>("A4");
+  const [holzplatteSize, setHolzplatteSize] = useState<string>(HOLZPLATTE_DEFAULT_SIZE);
   const [frameVariant, setFrameVariant] = useState<string>("standard_weiss");
   const [format, setFormat] = useState<string>(formats[0]);
   const [frame, setFrame] = useState<string>(product?.material || "holz");
