@@ -39,9 +39,25 @@ import { productConfigQueryOptions } from "@/lib/product-config.query";
 import { ProductSizeSelector } from "@/components/product/size-selector";
 import { ProductMotifSelector, CustomMotifTextField } from "@/components/product/motif-selector";
 
+import { listHolzplattePrices } from "@/lib/holzplatte-prices.functions";
+import {
+  HOLZPLATTE_SIZES,
+  HOLZPLATTE_SIZE_LABELS,
+  HOLZPLATTE_DEFAULT_SIZE,
+  isHolzplatteCategory,
+  resolveHolzplattePrice,
+  finalPriceCents,
+  euroToCents,
+} from "@/lib/holzplatte-pricing";
+
 const framePricesQueryOptions = {
   queryKey: ["frame-prices"] as const,
   queryFn: () => listFramePrices(),
+};
+
+const holzplattePricesQueryOptions = {
+  queryKey: ["holzplatte-prices"] as const,
+  queryFn: () => listHolzplattePrices(),
 };
 
 
