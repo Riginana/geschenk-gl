@@ -216,6 +216,17 @@ function FramePricesAdmin() {
           gespeichert.
         </p>
       )}
+
+      <section className="mt-12">
+        <h2 className="font-serif text-xl text-walnut">Holzplatte-Preise</h2>
+        <p className="mt-1 text-sm text-muted-foreground">
+          Globale Standardpreise für alle Produkte der Kategorie <strong>holzplatte</strong>.
+          Produktspezifische Overrides werden direkt beim jeweiligen Produkt gepflegt.
+        </p>
+        <div className="mt-4">
+          <HolzplattePriceTable productId={null} />
+        </div>
+      </section>
     </div>
   );
 }
