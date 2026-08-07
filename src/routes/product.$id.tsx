@@ -105,6 +105,7 @@ function ProductPage() {
   const { t, locale } = useT();
   const { data: products } = useSuspenseQuery(productsQueryOptions);
   const { data: framePrices } = useSuspenseQuery(framePricesQueryOptions);
+  const { data: holzplattePrices } = useSuspenseQuery(holzplattePricesQueryOptions);
   const { data: config } = useSuspenseQuery(productConfigQueryOptions);
   const product = products.find((p) => p.id === id) as ProductRow | undefined;
 
