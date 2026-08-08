@@ -1,4 +1,4 @@
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 
 export function Reveal({
@@ -12,8 +12,10 @@ export function Reveal({
   className?: string;
   y?: number;
 }) {
-  const reduce = useReducedMotion();
-  if (reduce) return <div className={className}>{children}</div>;
+  // Do not branch the rendered element or its props on `useReducedMotion()`:
+  // the server always renders the animated variant, so a different client
+  // output causes a hydration mismatch that can trip the route error boundary.
+  // Reduced motion is handled globally via <MotionConfig reducedMotion="user">.
   return (
     <motion.div
       className={className}
@@ -26,3 +28,4 @@ export function Reveal({
     </motion.div>
   );
 }
+

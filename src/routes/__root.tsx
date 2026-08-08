@@ -8,7 +8,9 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
+import { MotionConfig } from "framer-motion";
 import { Toaster } from "sonner";
+
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -166,32 +168,35 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <LanguageProvider>
-        <WishlistProvider>
-          <CartProvider>
-            <div className="flex min-h-screen flex-col bg-background">
-              <Header />
-              <main className="flex-1">
-                <Outlet />
-              </main>
-              <Footer />
-            </div>
-            <WhatsAppFloat />
-            <Toaster
-              position="bottom-right"
-              toastOptions={{
-                style: {
-                  background: "var(--card)",
-                  color: "var(--foreground)",
-                  border: "1px solid var(--border)",
-                  borderRadius: "12px",
-                  fontFamily: "var(--font-sans)",
-                },
-              }}
-            />
-          </CartProvider>
-        </WishlistProvider>
-      </LanguageProvider>
+      <MotionConfig reducedMotion="user">
+        <LanguageProvider>
+          <WishlistProvider>
+            <CartProvider>
+              <div className="flex min-h-screen flex-col bg-background">
+                <Header />
+                <main className="flex-1">
+                  <Outlet />
+                </main>
+                <Footer />
+              </div>
+              <WhatsAppFloat />
+              <Toaster
+                position="bottom-right"
+                toastOptions={{
+                  style: {
+                    background: "var(--card)",
+                    color: "var(--foreground)",
+                    border: "1px solid var(--border)",
+                    borderRadius: "12px",
+                    fontFamily: "var(--font-sans)",
+                  },
+                }}
+              />
+            </CartProvider>
+          </WishlistProvider>
+        </LanguageProvider>
+      </MotionConfig>
     </QueryClientProvider>
   );
+
 }
