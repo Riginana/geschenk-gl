@@ -184,7 +184,7 @@ export const de = {
   about: {
     title: "Unsere Geschichte",
     intro:
-      "Aus der Liebe zur Handarbeit entstand unser Atelier — ein kleines Studio, in dem jedes Geldgeschenk mit Sorgfalt von Hand gefertigt wird.",
+      "Wir sind eine junge Familie mit zwei Kindern und die Gründer von DigiNutz.\n\nDie Idee entstand während der Elternzeit unseres zweiten Kindes, als wir auf der Suche nach einem persönlichen Hochzeitsgeschenk waren und nichts Passendes fanden. So wurde DigiNutz geboren.\n\nGestartet sind wir mit digitalen Produkten – daher der Name „DigiNutz“ (Digitale Nutzung). Heute bieten wir zusätzlich personalisierte Geschenkartikel aus Holz und anderen hochwertigen Materialien an.\n\nWir gestalten individuelle Geschenke für viele Anlässe wie Hochzeiten, Geburtstage, Geburten, Einschulungen oder Jubiläen. Dabei legen wir großen Wert auf Qualität, Liebe zum Detail und stetige Weiterentwicklung.\n\nJedes Produkt wird von uns sorgfältig personalisiert, um ein einzigartiges und emotionales Geschenk zu schaffen.\n\nMit unserer Erfahrung im Online-Handel und tausenden zufriedenen Kunden auf Etsy und Amazon stehen wir für Qualität, Präzision und zuverlässigen Versand.\n\nVielen Dank für Ihr Vertrauen in DigiNutz – wir freuen uns auf Ihr persönliches Geschenk.",
   },
   footer: {
     rights: "Alle Rechte vorbehalten.",

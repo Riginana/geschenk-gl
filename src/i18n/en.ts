@@ -178,7 +178,7 @@ export const en: Dictionary = {
   },
   about: {
     title: "Our story",
-    intro: "Our atelier was born from a love of craftsmanship — a small studio where every money gift is made by hand.",
+    intro: "We are a young family with two children and the founders of DigiNutz.\n\nThe idea was born during our second child's parental leave when we were looking for a personal wedding gift and couldn't find anything suitable. Thus, DigiNutz was born.\n\nWe started with digital products – hence the name \"DigiNutz\" (Digital Usage). Today, we additionally offer personalized gift items made of wood and other high-quality materials.\n\nWe design individual gifts for many occasions such as weddings, birthdays, births, school enrollments, or anniversaries. In doing so, we place great value on quality, attention to detail, and constant development.\n\nEach product is carefully personalized by us to create a unique and emotional gift.\n\nWith our experience in online retail and thousands of satisfied customers on Etsy and Amazon, we stand for quality, precision, and reliable shipping.\n\nThank you for your trust in DigiNutz – we look forward to your personal gift.",
   },
   footer: {
     rights: "All rights reserved.",

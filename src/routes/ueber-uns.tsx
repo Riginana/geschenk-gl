@@ -43,7 +43,7 @@ function AboutPage() {
         <div className="text-center">
           <p className="eyebrow">{t("atelier.eyebrow")}</p>
           <h1 className="mt-3 font-serif text-4xl text-walnut sm:text-6xl">{t("about.title")}</h1>
-          <p className="mx-auto mt-6 max-w-2xl text-base text-muted-foreground">{t("about.intro")}</p>
+          <p className="mx-auto mt-6 max-w-2xl whitespace-pre-line text-base text-muted-foreground">{t("about.intro")}</p>
         </div>
       </Reveal>
 
