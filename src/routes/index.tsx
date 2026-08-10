@@ -110,14 +110,7 @@ function Hero() {
             </a>
           </motion.div>
 
-          <div className="mt-10 flex items-center gap-6">
-            <div className="flex items-center gap-2">
-              <StarRating value={averageRating} size={16} />
-              <span className="text-sm text-muted-foreground">
-                {"\n"}
-              </span>
-            </div>
-          </div>
+          {/* Rating strip removed per request */}
         </motion.div>
 
         <motion.div style={{ y }} className="relative">
