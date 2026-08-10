@@ -19,6 +19,12 @@ export const en: Dictionary = {
     cta: "Design money gift",
     ctaSecondary: "How it works",
   },
+  trustBar: {
+    handmade: "Handcrafted in Germany",
+    customizable: "Customizable",
+    shipping: "Fast shipping",
+    rating: "4.9/5 from 292 reviews",
+  },
   how: {
     eyebrow: "How it works",
     title: "Three steps to your keepsake",

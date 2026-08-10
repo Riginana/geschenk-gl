@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef } from "react";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import useEmblaCarousel from "embla-carousel-react";
-import { ArrowLeft, ArrowRight, Heart, Package, Sparkles } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Heart, Package, Sparkles } from "lucide-react";
 import heroNew2Asset from "@/assets/hero-new2.jpg.asset.json";
 import atelierImg from "@/assets/atelier.jpg";
 import featuredWedding from "@/assets/featured-wedding.webp.asset.json";
@@ -42,6 +42,7 @@ function Home() {
   return (
     <>
       <Hero />
+      <TrustBar />
       <FeaturedTrio />
       <HowItWorks />
       <Occasions />
