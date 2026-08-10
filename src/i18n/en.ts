@@ -14,7 +14,7 @@ export const en: Dictionary = {
   },
   hero: {
     eyebrow: "Handmade in Germany",
-    title: "Money gifts that stay with you",
+    title: "Personalized wood money gifts - handmade in Germany",
     sub: "We create personal frames and boxes from real wood and fine paper — with your name, your date, your story.",
     cta: "Discover now",
     ctaSecondary: "How it works",
