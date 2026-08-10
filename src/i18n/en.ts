@@ -73,7 +73,7 @@ export const en: Dictionary = {
   },
   reviews: {
     eyebrow: "What our customers say",
-    title: "Over 270 happy customers",
+    title: "292+ happy customers",
     seeAll: "See all reviews",
   },
   atelier: {
