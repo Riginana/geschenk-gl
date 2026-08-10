@@ -14,7 +14,7 @@ export const de = {
     eyebrow: "Handgefertigt in Deutschland",
     title: "Personalisierte Geldgeschenke aus Holz - handgefertigt in Deutschland",
     sub: "Wir gestalten persönliche Rahmen und Boxen aus echtem Holz und feinem Papier — mit Ihrem Namen, Ihrem Datum, Ihrer Geschichte.",
-    cta: "Jetzt entdecken",
+    cta: "Geldgeschenk gestalten",
     ctaSecondary: "Wie es funktioniert",
   },
   how: {
