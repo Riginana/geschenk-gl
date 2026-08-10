@@ -151,6 +151,34 @@ function Hero() {
   );
 }
 
+function TrustBar() {
+  const { t } = useT();
+  return (
+    <section className="border-b border-border/60 bg-cream">
+      <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-10">
+        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm font-medium text-walnut sm:gap-x-10">
+          <div className="flex items-center gap-2">
+            <Check size={16} className="text-brass" />
+            <span>{t("trustBar.handmade")}</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Check size={16} className="text-brass" />
+            <span>{t("trustBar.customizable")}</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Check size={16} className="text-brass" />
+            <span>{t("trustBar.shipping")}</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <StarRating value={4.9} size={14} />
+            <span className="text-muted-foreground">{t("trustBar.rating")}</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function FeaturedTrio() {
   const { t } = useT();
   const items = [
