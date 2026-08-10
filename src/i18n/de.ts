@@ -77,7 +77,7 @@ export const de = {
   },
   reviews: {
     eyebrow: "Stimmen unserer Kunden",
-    title: "Über 270 zufriedene Kunden",
+    title: "292+ glückliche Kunden",
     seeAll: "Alle Bewertungen ansehen",
   },
   atelier: {
