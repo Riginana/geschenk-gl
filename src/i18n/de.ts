@@ -17,6 +17,12 @@ export const de = {
     cta: "Geldgeschenk gestalten",
     ctaSecondary: "Wie es funktioniert",
   },
+  trustBar: {
+    handmade: "Handgefertigt in Deutschland",
+    customizable: "Personalisierbar",
+    shipping: "Schneller Versand",
+    rating: "4,9/5 aus 292 Bewertungen",
+  },
   how: {
     eyebrow: "So einfach geht's",
     title: "Drei Schritte zu Ihrem Lieblingsstück",

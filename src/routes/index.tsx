@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef } from "react";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import useEmblaCarousel from "embla-carousel-react";
-import { ArrowLeft, ArrowRight, Heart, Package, Sparkles } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Heart, Package, Sparkles } from "lucide-react";
 import heroNew2Asset from "@/assets/hero-new2.jpg.asset.json";
 import atelierImg from "@/assets/atelier.jpg";
 import featuredWedding from "@/assets/featured-wedding.webp.asset.json";
@@ -42,6 +42,7 @@ function Home() {
   return (
     <>
       <Hero />
+      <TrustBar />
       <FeaturedTrio />
       <HowItWorks />
       <Occasions />
@@ -145,6 +146,34 @@ function Hero() {
             <p className="mt-1 font-serif text-lg text-walnut">in Eichenholz & Papier</p>
           </motion.div>
         </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function TrustBar() {
+  const { t } = useT();
+  return (
+    <section className="border-b border-border/60 bg-cream">
+      <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-10">
+        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm font-medium text-walnut sm:gap-x-10">
+          <div className="flex items-center gap-2">
+            <Check size={16} className="text-brass" />
+            <span>{t("trustBar.handmade")}</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Check size={16} className="text-brass" />
+            <span>{t("trustBar.customizable")}</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Check size={16} className="text-brass" />
+            <span>{t("trustBar.shipping")}</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <StarRating value={4.9} size={14} />
+            <span className="text-muted-foreground">{t("trustBar.rating")}</span>
+          </div>
+        </div>
       </div>
     </section>
   );
