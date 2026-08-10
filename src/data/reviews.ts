@@ -58,13 +58,6 @@ export const customerReviews: CustomerReview[] = [
     "text": "Tolles Produkt! Kann ich nur weiter empfehlen"
   },
   {
-    "id": "r8",
-    "name": "Verifizierter Käufer",
-    "date": "2026-06-24",
-    "rating": 5,
-    "text": "Ich lasse mich nicht zu ausformulierten Bewertungen zwingen."
-  },
-  {
     "id": "r9",
     "name": "Verifizierter Käufer",
     "date": "2026-06-24",
