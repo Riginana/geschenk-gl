@@ -114,7 +114,7 @@ function Hero() {
             <div className="flex items-center gap-2">
               <StarRating value={averageRating} size={16} />
               <span className="text-sm text-muted-foreground">
-                {averageRating.toFixed(1).replace(".", ",")} / 5 · {reviewCount} Bewertungen
+                {"\n"}
               </span>
             </div>
           </div>
