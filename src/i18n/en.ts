@@ -23,7 +23,7 @@ export const en: Dictionary = {
     handmade: "Handcrafted in Germany",
     customizable: "Customizable",
     shipping: "Fast shipping",
-    rating: "4.9/5 from 292 reviews",
+    rating: "4.9/5 from 291 reviews",
   },
   how: {
     eyebrow: "How it works",
@@ -73,7 +73,7 @@ export const en: Dictionary = {
   },
   reviews: {
     eyebrow: "What our customers say",
-    title: "292+ happy customers",
+    title: "291+ happy customers",
     seeAll: "See all reviews",
   },
   atelier: {

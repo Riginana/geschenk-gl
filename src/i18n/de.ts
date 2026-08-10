@@ -21,7 +21,7 @@ export const de = {
     handmade: "Handgefertigt in Deutschland",
     customizable: "Personalisierbar",
     shipping: "Schneller Versand",
-    rating: "4,9/5 aus 292 Bewertungen",
+    rating: "4,9/5 aus 291 Bewertungen",
   },
   how: {
     eyebrow: "So einfach geht's",
@@ -77,7 +77,7 @@ export const de = {
   },
   reviews: {
     eyebrow: "Stimmen unserer Kunden",
-    title: "292+ glückliche Kunden",
+    title: "291+ glückliche Kunden",
     seeAll: "Alle Bewertungen ansehen",
   },
   atelier: {
