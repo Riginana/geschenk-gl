@@ -13,7 +13,7 @@ export const en: Dictionary = {
     cart: "Cart",
   },
   hero: {
-    eyebrow: "Handmade in Germany",
+    eyebrow: "\n",
     title: "Personalized wood money gifts - handmade in Germany",
     sub: "We create personal frames and boxes from real wood and fine paper — with your name, your date, your story.",
     cta: "Design money gift",
