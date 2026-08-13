@@ -1,4 +1,5 @@
 import { CartItemConfig } from "@/components/cart-item-config";
+import { FreeShippingProgress, ShippingSelector } from "@/components/shipping-selector";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { Minus, Plus, Trash2 } from "lucide-react";
