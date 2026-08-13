@@ -1,4 +1,6 @@
 import { CartItemConfig } from "@/components/cart-item-config";
+import { FreeShippingProgress, ShippingSelector } from "@/components/shipping-selector";
+import { zoneCountryDefault } from "@/lib/shipping";
 import { PaymentTestModeBanner } from "@/components/payment-test-mode-banner";
 import { StripeEmbeddedCheckout } from "@/components/stripe-embedded-checkout";
 import { createFileRoute } from "@tanstack/react-router";
@@ -26,7 +28,8 @@ type CheckoutPayload = Omit<CheckoutInput, "origin" | "environment">;
 
 function CheckoutPage() {
   const { t, locale } = useT();
-  const { items, subtotalCents } = useCart();
+  const { items, subtotalCents, shippingMethod, shippingZone, shippingCents, totalCents } =
+    useCart();
 
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -36,13 +39,10 @@ function CheckoutPage() {
   const [plz, setPlz] = useState("");
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("Deutschland");
-  const [shipping, setShipping] = useState<"standard" | "express">("standard");
   const [payload, setPayload] = useState<CheckoutPayload | null>(null);
   const [, setPendingOrderId] = useState<string | null>(null);
 
 
-  const shippingCents = shipping === "express" ? 990 : subtotalCents >= 5000 ? 0 : 490;
-  const total = subtotalCents + shippingCents;
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -62,7 +62,8 @@ function CheckoutPage() {
           Object.entries(i.personalization).filter(([, v]) => v != null) as [string, string][],
         ),
       })),
-      shippingMethod: shipping,
+      shippingMethod,
+      shippingZone,
       locale,
     });
     requestAnimationFrame(() => {
@@ -101,9 +102,14 @@ function CheckoutPage() {
           </Section>
 
           <Section title={t("checkout.shipping")}>
-            <div className="grid gap-3 sm:grid-cols-2">
-              <RadioCard active={shipping === "standard"} onClick={() => setShipping("standard")} title={t("checkout.standard")} price={subtotalCents >= 5000 ? "Kostenlos" : formatEUR(490, locale)} />
-              <RadioCard active={shipping === "express"} onClick={() => setShipping("express")} title={t("checkout.express")} price={formatEUR(990, locale)} />
+            <ShippingSelector
+              onZoneChange={(zone) => {
+                const preset = zoneCountryDefault(zone);
+                if (preset) setCountry(preset);
+              }}
+            />
+            <div className="mt-4">
+              <FreeShippingProgress />
             </div>
           </Section>
 
@@ -132,8 +138,17 @@ function CheckoutPage() {
           </ul>
           <div className="gold-divider" />
           <Row label={t("cart.subtotal")} value={formatEUR(subtotalCents, locale)} />
-          <Row label={t("cart.shipping")} value={shippingCents === 0 ? "Kostenlos" : formatEUR(shippingCents, locale)} />
-          <Row label={t("cart.total")} value={formatEUR(total, locale)} big />
+          <Row
+            label={locale === "en" ? "Shipping costs" : "Versandkosten"}
+            value={
+              shippingCents === 0
+                ? locale === "en"
+                  ? "Free shipping"
+                  : "Versandkostenfrei"
+                : formatEUR(shippingCents, locale)
+            }
+          />
+          <Row label={t("cart.total")} value={formatEUR(totalCents, locale)} big />
           <motion.button
             whileTap={{ scale: 0.98 }}
             type="submit"
@@ -193,21 +208,6 @@ function Input({
         className="mt-2 w-full rounded-lg border border-border bg-cream px-4 py-2.5 text-sm outline-none focus:border-brass"
       />
     </label>
-  );
-}
-
-function RadioCard({ active, onClick, title, price }: { active: boolean; onClick: () => void; title: string; price: string }) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className={`flex items-center justify-between rounded-xl border px-5 py-4 text-left text-sm transition ${
-        active ? "border-walnut bg-walnut/5" : "border-border bg-cream"
-      }`}
-    >
-      <span className="font-medium text-walnut">{title}</span>
-      <span className="text-muted-foreground">{price}</span>
-    </button>
   );
 }
 
