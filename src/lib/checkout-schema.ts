@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { SHIPPING_METHODS, SHIPPING_ZONES } from "@/lib/shipping";
 
 export const checkoutSchema = z.object({
   email: z.string().email().max(255),
@@ -23,7 +24,8 @@ export const checkoutSchema = z.object({
     )
     .min(1)
     .max(50),
-  shippingMethod: z.enum(["standard", "express"]),
+  shippingMethod: z.enum(SHIPPING_METHODS),
+  shippingZone: z.enum(SHIPPING_ZONES),
   locale: z.enum(["de", "en"]).default("de"),
   /** Same-origin base URL the customer returns to after paying. */
   origin: z.string().url().max(300),

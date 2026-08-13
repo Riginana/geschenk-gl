@@ -1,4 +1,9 @@
 import { createClient } from "@supabase/supabase-js";
+import {
+  computeShippingCents,
+  type ShippingMethod,
+  type ShippingZone,
+} from "@/lib/shipping";
 import type { Database } from "@/integrations/supabase/types";
 import { calculateDiscountedPrice, PRICE_BY_FORMAT_CENTS, PRICE_BY_FRAME_CENTS } from "@/lib/pricing";
 import { resolveFramePriceCents, type FramePriceRow } from "@/lib/frame-pricing";
@@ -104,13 +109,7 @@ export async function computeUnitPriceCents(
 }
 
 
-export function computeShippingCents(
-  method: "standard" | "express",
-  subtotalCents: number,
-): number {
-  if (method === "express") return 990;
-  return subtotalCents >= 5000 ? 0 : 490;
-}
+
 
 export type CheckoutItemInput = {
   productId: string;
@@ -125,7 +124,8 @@ export type VerifiedItem = CheckoutItemInput & { unitPriceCents: number };
 /** Recomputes every price from the trusted catalog. Never trust client totals. */
 export async function priceCart(
   items: CheckoutItemInput[],
-  shippingMethod: "standard" | "express",
+  shippingMethod: ShippingMethod,
+  shippingZone: ShippingZone,
 ): Promise<{
   verifiedItems: VerifiedItem[];
   subtotalCents: number;
@@ -145,6 +145,6 @@ export async function priceCart(
   );
 
   const subtotalCents = verifiedItems.reduce((sum, i) => sum + i.unitPriceCents * i.qty, 0);
-  const shippingCents = computeShippingCents(shippingMethod, subtotalCents);
+  const shippingCents = computeShippingCents(shippingMethod, shippingZone, subtotalCents);
   return { verifiedItems, subtotalCents, shippingCents, totalCents: subtotalCents + shippingCents };
 }

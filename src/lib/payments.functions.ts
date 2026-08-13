@@ -1,5 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { checkoutSchema } from "@/lib/checkout-schema";
+import { shippingMethodLabel, shippingZoneLabel } from "@/lib/shipping";
 
 export type CheckoutSessionResult =
   | { orderId: string; clientSecret: string }
@@ -27,7 +28,7 @@ export const createCartCheckoutSession = createServerFn({ method: "POST" })
 
     let priced: Awaited<ReturnType<typeof priceCart>>;
     try {
-      priced = await priceCart(data.items, data.shippingMethod);
+      priced = await priceCart(data.items, data.shippingMethod, data.shippingZone);
     } catch (error) {
       return { error: error instanceof Error ? error.message : "Preisprüfung fehlgeschlagen" };
     }
@@ -52,7 +53,7 @@ export const createCartCheckoutSession = createServerFn({ method: "POST" })
           price_data: {
             currency: "eur",
             product_data: {
-              name: data.shippingMethod === "express" ? "Expressversand" : "Standardversand",
+              name: `${shippingMethodLabel(data.shippingMethod, "de")} (${shippingZoneLabel(data.shippingZone, "de")})`,
             },
             unit_amount: shippingCents,
           },
@@ -95,7 +96,7 @@ export const createCartCheckoutSession = createServerFn({ method: "POST" })
           email: data.email,
           address: data.address,
           items: verifiedItems,
-          shipping_method: data.shippingMethod,
+          shipping_method: `${data.shippingMethod}_${data.shippingZone}`,
           payment_method: "stripe",
           subtotal_cents: subtotalCents,
           shipping_cents: shippingCents,
