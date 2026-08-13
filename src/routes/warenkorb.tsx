@@ -88,11 +88,24 @@ function CartPage() {
           </ul>
 
           <aside className="h-fit rounded-2xl bg-linen/60 p-6 ring-1 ring-border">
+            <ShippingSelector />
+            <div className="my-4">
+              <FreeShippingProgress />
+            </div>
             <div className="space-y-3 text-sm">
               <Row label={t("cart.subtotal")} value={formatEUR(subtotalCents, locale)} />
-              <Row label={t("cart.shipping")} value={shipping === 0 ? "Kostenlos" : formatEUR(shipping, locale)} />
+              <Row
+                label={locale === "en" ? "Shipping costs" : "Versandkosten"}
+                value={
+                  shippingCents === 0
+                    ? locale === "en"
+                      ? "Free shipping"
+                      : "Versandkostenfrei"
+                    : formatEUR(shippingCents, locale)
+                }
+              />
               <div className="gold-divider my-3" />
-              <Row label={t("cart.total")} value={formatEUR(subtotalCents + shipping, locale)} big />
+              <Row label={t("cart.total")} value={formatEUR(totalCents, locale)} big />
             </div>
             <Link
               to="/kasse"
