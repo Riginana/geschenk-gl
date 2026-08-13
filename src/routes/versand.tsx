@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Clock, Truck, Wallet, Globe, ShieldCheck, Package } from "lucide-react";
+import { Clock, Truck, Globe, Package } from "lucide-react";
 import { useT } from "@/i18n";
 import { Reveal } from "@/components/reveal";
+import { formatEUR } from "@/i18n";
+import { SHIPPING_METHODS, SHIPPING_RATES_CENTS, shippingMethodLabel, shippingZoneLabel, SHIPPING_ZONES } from "@/lib/shipping";
 
 export const Route = createFileRoute("/versand")({
   head: () => ({
@@ -27,19 +29,9 @@ const itemsDe = [
     text: '[z. B. "1–3 Werktage innerhalb Deutschlands"]',
   },
   {
-    icon: Wallet,
-    title: "Versandkosten",
-    text: "[genauer Betrag oder Staffelung nach Gewicht/Land]",
-  },
-  {
     icon: Globe,
     title: "Versandländer",
-    text: '[z. B. "Deutschland, Österreich, Schweiz, EU"]',
-  },
-  {
-    icon: ShieldCheck,
-    title: "Versandart",
-    text: '[z. B. "DHL Paket, versichert"]',
+    text: "Deutschland, EU-Länder und die Schweiz.",
   },
   {
     icon: Package,
@@ -60,19 +52,9 @@ const itemsEn = [
     text: '[e.g. "1–3 business days within Germany"]',
   },
   {
-    icon: Wallet,
-    title: "Shipping Costs",
-    text: "[exact amount or tiered pricing by weight/country]",
-  },
-  {
     icon: Globe,
     title: "Shipping Countries",
-    text: '[e.g. "Germany, Austria, Switzerland, EU"]',
-  },
-  {
-    icon: ShieldCheck,
-    title: "Shipping Method",
-    text: '[e.g. "DHL parcel, insured"]',
+    text: "Germany, EU countries and Switzerland.",
   },
   {
     icon: Package,
@@ -102,7 +84,45 @@ function ShippingPage() {
         </div>
       </Reveal>
 
-      <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-14 grid gap-6 md:grid-cols-2">
+        {SHIPPING_METHODS.map((method, i) => (
+          <Reveal key={method} delay={i * 0.06}>
+            <div className="h-full rounded-2xl bg-card p-7 ring-1 ring-border/60">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-brass/15 text-walnut">
+                {method === "kleinpaket" ? (
+                  <Package size={20} strokeWidth={1.6} />
+                ) : (
+                  <Truck size={20} strokeWidth={1.6} />
+                )}
+              </div>
+              <h2 className="mt-5 font-serif text-2xl text-walnut">
+                {shippingMethodLabel(method, locale)}
+              </h2>
+              <ul className="mt-4 divide-y divide-border/60 text-sm">
+                {SHIPPING_ZONES.map((zone) => (
+                  <li key={zone} className="flex items-center justify-between gap-3 py-2.5">
+                    <span className="text-muted-foreground">{shippingZoneLabel(zone, locale)}</span>
+                    <span className="flex items-center gap-2">
+                      {method === "kleinpaket" && zone === "de" && (
+                        <span className="rounded-full bg-brass/20 px-2.5 py-1 text-[11px] font-medium text-walnut">
+                          {isEn
+                            ? "free from 50 € order value"
+                            : "ab 50 € Bestellwert versandkostenfrei"}
+                        </span>
+                      )}
+                      <span className="font-medium text-walnut">
+                        {formatEUR(SHIPPING_RATES_CENTS[method][zone], locale)}
+                      </span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+
+      <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {items.map((item, i) => {
           const Icon = item.icon;
           return (

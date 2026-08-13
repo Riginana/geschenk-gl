@@ -1,4 +1,5 @@
 import { CartItemConfig } from "@/components/cart-item-config";
+import { FreeShippingProgress, ShippingSelector } from "@/components/shipping-selector";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { Minus, Plus, Trash2 } from "lucide-react";
@@ -20,8 +21,7 @@ export const Route = createFileRoute("/warenkorb")({
 
 function CartPage() {
   const { t, locale } = useT();
-  const { items, remove, update, subtotalCents, count } = useCart();
-  const shipping = subtotalCents >= 5000 || subtotalCents === 0 ? 0 : 490;
+  const { items, remove, update, subtotalCents, count, shippingCents, totalCents } = useCart();
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-10">
@@ -88,11 +88,24 @@ function CartPage() {
           </ul>
 
           <aside className="h-fit rounded-2xl bg-linen/60 p-6 ring-1 ring-border">
+            <ShippingSelector />
+            <div className="my-4">
+              <FreeShippingProgress />
+            </div>
             <div className="space-y-3 text-sm">
               <Row label={t("cart.subtotal")} value={formatEUR(subtotalCents, locale)} />
-              <Row label={t("cart.shipping")} value={shipping === 0 ? "Kostenlos" : formatEUR(shipping, locale)} />
+              <Row
+                label={locale === "en" ? "Shipping costs" : "Versandkosten"}
+                value={
+                  shippingCents === 0
+                    ? locale === "en"
+                      ? "Free shipping"
+                      : "Versandkostenfrei"
+                    : formatEUR(shippingCents, locale)
+                }
+              />
               <div className="gold-divider my-3" />
-              <Row label={t("cart.total")} value={formatEUR(subtotalCents + shipping, locale)} big />
+              <Row label={t("cart.total")} value={formatEUR(totalCents, locale)} big />
             </div>
             <Link
               to="/kasse"
