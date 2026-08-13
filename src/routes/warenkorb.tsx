@@ -21,8 +21,7 @@ export const Route = createFileRoute("/warenkorb")({
 
 function CartPage() {
   const { t, locale } = useT();
-  const { items, remove, update, subtotalCents, count } = useCart();
-  const shipping = subtotalCents >= 5000 || subtotalCents === 0 ? 0 : 490;
+  const { items, remove, update, subtotalCents, count, shippingCents, totalCents } = useCart();
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-10">
