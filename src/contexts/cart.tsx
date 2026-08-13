@@ -49,19 +49,37 @@ type Ctx = {
   clear: () => void;
   count: number;
   subtotalCents: number;
+  shippingMethod: ShippingMethod;
+  shippingZone: ShippingZone;
+  setShippingMethod: (m: ShippingMethod) => void;
+  setShippingZone: (z: ShippingZone) => void;
+  shippingCents: number;
+  freeShipping: boolean;
+  totalCents: number;
 };
 
 const CartContext = createContext<Ctx | null>(null);
 
 const STORAGE = "cart_v1";
+const SHIPPING_STORAGE = "cart_shipping_v1";
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
+  const [shippingMethod, setShippingMethod] = useState<ShippingMethod>("kleinpaket");
+  const [shippingZone, setShippingZone] = useState<ShippingZone>("de");
 
   useEffect(() => {
     try {
       const raw = localStorage.getItem(STORAGE);
       if (raw) setItems(JSON.parse(raw));
+      const rawShipping = localStorage.getItem(SHIPPING_STORAGE);
+      if (rawShipping) {
+        const parsed = JSON.parse(rawShipping);
+        if (parsed?.method === "kleinpaket" || parsed?.method === "paket")
+          setShippingMethod(parsed.method);
+        if (parsed?.zone === "de" || parsed?.zone === "eu" || parsed?.zone === "ch")
+          setShippingZone(parsed.zone);
+      }
     } catch {}
   }, []);
 
@@ -70,6 +88,15 @@ export function CartProvider({ children }: { children: ReactNode }) {
       localStorage.setItem(STORAGE, JSON.stringify(items));
     } catch {}
   }, [items]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(
+        SHIPPING_STORAGE,
+        JSON.stringify({ method: shippingMethod, zone: shippingZone }),
+      );
+    } catch {}
+  }, [shippingMethod, shippingZone]);
 
   const add: Ctx["add"] = (item) =>
     setItems((prev) => {
