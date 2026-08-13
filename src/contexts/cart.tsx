@@ -113,9 +113,28 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   const count = items.reduce((s, i) => s + i.qty, 0);
   const subtotalCents = items.reduce((s, i) => s + i.qty * i.unitPriceCents, 0);
+  const shippingCents = computeShippingCents(shippingMethod, shippingZone, subtotalCents);
+  const freeShipping = isFreeShippingEligible(shippingMethod, shippingZone, subtotalCents);
 
   return (
-    <CartContext.Provider value={{ items, add, remove, update, clear, count, subtotalCents }}>
+    <CartContext.Provider
+      value={{
+        items,
+        add,
+        remove,
+        update,
+        clear,
+        count,
+        subtotalCents,
+        shippingMethod,
+        shippingZone,
+        setShippingMethod,
+        setShippingZone,
+        shippingCents,
+        freeShipping,
+        totalCents: subtotalCents + shippingCents,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
