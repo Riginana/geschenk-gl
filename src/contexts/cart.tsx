@@ -1,4 +1,10 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import {
+  computeShippingCents,
+  isFreeShippingEligible,
+  type ShippingMethod,
+  type ShippingZone,
+} from "@/lib/shipping";
 
 export type CartItem = {
   id: string;
