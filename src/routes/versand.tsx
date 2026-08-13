@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Clock, Truck, Wallet, Globe, ShieldCheck, Package } from "lucide-react";
+import { Clock, Truck, Globe, Package } from "lucide-react";
 import { useT } from "@/i18n";
 import { Reveal } from "@/components/reveal";
 import { formatEUR } from "@/i18n";
