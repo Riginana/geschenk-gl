@@ -33,7 +33,7 @@ const PRODUCT_CATEGORIES: string[] = [
 
 export const Route = createFileRoute("/admin/products/$id")({
   ssr: false,
-  head: () => ({ meta: [{ title: "Товар — Admin" }, { name: "robots", content: "noindex" }] }),
+  head: () => ({ meta: [{ title: "Produkt — Admin" }, { name: "robots", content: "noindex" }] }),
   component: AdminProductEdit,
 });
 
@@ -227,22 +227,22 @@ function AdminProductEdit() {
     setVariants((vs) => vs.map((v) => ({ ...v, is_default: v.id === vid })));
   }
 
-  if (loading) return <div className="text-muted-foreground">Загрузка…</div>;
-  if (!product) return <div>Не найдено</div>;
+  if (loading) return <div className="text-muted-foreground">Wird geladen…</div>;
+  if (!product) return <div>Nicht gefunden</div>;
 
   return (
     <div className="max-w-5xl">
       <div className="mb-4 flex items-center justify-between">
         <div>
-          <Link to="/admin/products" className="text-sm text-muted-foreground hover:underline">← Товары</Link>
+          <Link to="/admin/products" className="text-sm text-muted-foreground hover:underline">← Produkte</Link>
           <h1 className="mt-1 font-serif text-2xl text-walnut">{product.name_de}</h1>
         </div>
-        <div className="text-xs text-muted-foreground">{saving ? "Сохраняю…" : "Сохранено"}</div>
+        <div className="text-xs text-muted-foreground">{saving ? "Wird gespeichert…" : "Gespeichert"}</div>
       </div>
 
       {/* Base fields */}
       <section className="mb-6 rounded-xl border border-border bg-card p-5">
-        <h2 className="mb-3 font-serif text-lg">Основные поля</h2>
+        <h2 className="mb-3 font-serif text-lg">Grunddaten</h2>
         <div className="grid gap-4 md:grid-cols-2">
           <TextField label="Name (DE)" value={product.name_de} onSave={(v) => saveField("name_de", v)} />
           <TextField label="Name (EN)" value={product.name_en} onSave={(v) => saveField("name_en", v)} />
@@ -323,7 +323,7 @@ function AdminProductEdit() {
 
       {/* Images */}
       <section className="mb-6 rounded-xl border border-border bg-card p-5">
-        <h2 className="mb-3 font-serif text-lg">Галерея ({images.length})</h2>
+        <h2 className="mb-3 font-serif text-lg">Galerie ({images.length})</h2>
 
         <div
           onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
@@ -363,7 +363,7 @@ function AdminProductEdit() {
         <div className="mb-4 flex flex-wrap items-end gap-2">
           <input
             className="min-w-[280px] flex-1 rounded-md border border-input bg-background px-3 py-2 text-sm"
-            placeholder="oder URL нового изображения"
+            placeholder="oder URL des neuen Bildes"
             value={newImgUrl}
             onChange={(e) => setNewImgUrl(e.target.value)}
           />
@@ -402,7 +402,7 @@ function AdminProductEdit() {
 
       {/* Variants */}
       <section className="mb-6 rounded-xl border border-border bg-card p-5">
-        <h2 className="mb-3 font-serif text-lg">Варианты ({variants.length})</h2>
+        <h2 className="mb-3 font-serif text-lg">Varianten ({variants.length})</h2>
         <table className="w-full text-sm">
           <thead className="text-left text-xs uppercase text-muted-foreground">
             <tr>

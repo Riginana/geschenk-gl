@@ -24,7 +24,7 @@ const CATEGORY_OPTIONS = [
 
 export const Route = createFileRoute("/admin/products/")({
   ssr: false,
-  head: () => ({ meta: [{ title: "Товары — Admin" }, { name: "robots", content: "noindex" }] }),
+  head: () => ({ meta: [{ title: "Produkte — Admin" }, { name: "robots", content: "noindex" }] }),
   component: AdminProductsList,
 });
 
@@ -117,7 +117,7 @@ function AdminProductsList() {
     if (selected.size === 0) return;
     try {
       await bulk({ data: { ids: Array.from(selected), is_active: v } });
-      toast.success(`${selected.size} обновлено`);
+      toast.success(`${selected.size} aktualisiert`);
       setSelected(new Set());
       reload();
     } catch (e: any) {
@@ -128,9 +128,9 @@ function AdminProductsList() {
   async function submitNew(e: React.FormEvent) {
     e.preventDefault();
     const price = Math.round(parseFloat(form.price.replace(",", ".")) * 100);
-    if (!form.name_de.trim()) return toast.error("Название (DE) обязательно");
-    if (!form.occasion.trim()) return toast.error("Повод обязателен");
-    if (!Number.isFinite(price) || price < 0) return toast.error("Некорректная цена");
+    if (!form.name_de.trim()) return toast.error("Name (DE) ist erforderlich");
+    if (!form.occasion.trim()) return toast.error("Anlass ist erforderlich");
+    if (!Number.isFinite(price) || price < 0) return toast.error("Ungültiger Preis");
     setCreating(true);
     try {
       const res = await createProduct({
@@ -142,7 +142,7 @@ function AdminProductsList() {
           base_price_cents: price,
         },
       });
-      toast.success("Товар создан (черновик)");
+      toast.success("Produkt erstellt (Entwurf)");
       setShowNew(false);
       setForm({ name_de: "", name_en: "", occasion: "", category: "other", price: "" });
       navigate({ to: "/admin/products/$id", params: { id: res.id } });
@@ -154,11 +154,11 @@ function AdminProductsList() {
   }
 
   async function removeProduct(r: AdminProductRow) {
-    if (!window.confirm(`Товар «${r.name_de}» будет удалён безвозвратно. Продолжить?`)) return;
+    if (!window.confirm(`Produkt „${r.name_de}" wird unwiderruflich gelöscht. Fortfahren?`)) return;
     try {
       await deleteProduct({ data: { id: r.id } });
       setRows((rs) => rs.filter((x) => x.id !== r.id));
-      toast.success("Товар удалён");
+      toast.success("Produkt gelöscht");
     } catch (e: any) {
       toast.error(e?.message ?? "Fehler");
     }
@@ -168,10 +168,10 @@ function AdminProductsList() {
   return (
     <div>
       <div className="mb-2 flex items-center justify-between gap-4">
-        <h1 className="font-serif text-3xl text-walnut">Товары</h1>
+        <h1 className="font-serif text-3xl text-walnut">Produkte</h1>
         <div className="flex items-center gap-4">
           <div className="text-sm text-muted-foreground">
-            Всего: {rows.length} • Показано: {filtered.length}
+            Gesamt: {rows.length} • Angezeigt: {filtered.length}
           </div>
           <button
             className="rounded-md bg-walnut px-4 py-2 text-sm text-cream hover:opacity-90"
@@ -273,7 +273,7 @@ function AdminProductsList() {
       <div className="mb-4 flex flex-wrap gap-3 rounded-xl border border-border bg-card p-4">
         <input
           className="min-w-[220px] flex-1 rounded-md border border-input bg-background px-3 py-2 text-sm"
-          placeholder="Поиск по названию/slug…"
+          placeholder="Suche nach Name/Slug…"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
@@ -282,7 +282,7 @@ function AdminProductsList() {
           value={fOccasion}
           onChange={(e) => setFOccasion(e.target.value)}
         >
-          <option value="">Все поводы</option>
+          <option value="">Alle Anlässe</option>
           {occasions.map((o) => (
             <option key={o} value={o}>{o}</option>
           ))}
@@ -292,7 +292,7 @@ function AdminProductsList() {
           value={fCategory}
           onChange={(e) => setFCategory(e.target.value)}
         >
-          <option value="">Все категории</option>
+          <option value="">Alle Kategorien</option>
           {categories.map((o) => (
             <option key={o} value={o}>{o}</option>
           ))}
@@ -302,15 +302,15 @@ function AdminProductsList() {
           value={fActive}
           onChange={(e) => setFActive(e.target.value as any)}
         >
-          <option value="all">Все статусы</option>
-          <option value="1">Только опубликованные</option>
-          <option value="0">Только черновики</option>
+          <option value="all">Alle Status</option>
+          <option value="1">Nur veröffentlicht</option>
+          <option value="0">Nur Entwürfe</option>
         </select>
       </div>
 
       {selected.size > 0 && (
         <div className="mb-3 flex items-center gap-3 rounded-lg border border-border bg-accent/40 px-4 py-2 text-sm">
-          <span>Выбрано: {selected.size}</span>
+          <span>Ausgewählt: {selected.size}</span>
           <button className="rounded-md bg-walnut px-3 py-1 text-cream" onClick={() => bulkToggle(true)}>
             Veröffentlichen
           </button>
@@ -318,7 +318,7 @@ function AdminProductsList() {
             Entwurf
           </button>
           <button className="ml-auto text-xs text-muted-foreground underline" onClick={() => setSelected(new Set())}>
-            Сбросить
+            Zurücksetzen
           </button>
         </div>
       )}
@@ -330,13 +330,13 @@ function AdminProductsList() {
               <th className="w-10 px-3 py-2">
                 <input type="checkbox" checked={allChecked} onChange={toggleAll} />
               </th>
-              <th className="w-16 px-3 py-2">Фото</th>
-              <th className="px-3 py-2">Название</th>
-              <th className="px-3 py-2">Повод</th>
-              <th className="px-3 py-2">Категория</th>
-              <th className="px-3 py-2">Цена €</th>
-              <th className="px-3 py-2">Скидка %</th>
-              <th className="px-3 py-2">Статус</th>
+              <th className="w-16 px-3 py-2">Foto</th>
+              <th className="px-3 py-2">Name</th>
+              <th className="px-3 py-2">Anlass</th>
+              <th className="px-3 py-2">Kategorie</th>
+              <th className="px-3 py-2">Preis €</th>
+              <th className="px-3 py-2">Rabatt %</th>
+              <th className="px-3 py-2">Status</th>
               <th className="px-3 py-2">Best</th>
               <th className="px-3 py-2">Feat</th>
               <th className="px-3 py-2">Stock</th>
@@ -346,10 +346,10 @@ function AdminProductsList() {
           </thead>
           <tbody>
             {loading && (
-              <tr><td colSpan={13} className="px-3 py-6 text-center text-muted-foreground">Загрузка…</td></tr>
+              <tr><td colSpan={13} className="px-3 py-6 text-center text-muted-foreground">Wird geladen…</td></tr>
             )}
             {!loading && filtered.length === 0 && (
-              <tr><td colSpan={13} className="px-3 py-6 text-center text-muted-foreground">Нет товаров</td></tr>
+              <tr><td colSpan={13} className="px-3 py-6 text-center text-muted-foreground">Keine Produkte</td></tr>
             )}
             {filtered.map((r) => (
               <tr key={r.id} className="border-t border-border">
