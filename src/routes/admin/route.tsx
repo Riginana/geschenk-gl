@@ -37,11 +37,11 @@ export const Route = createFileRoute("/admin")({
 
 const nav = [
   { to: "/admin", label: "Übersicht", icon: Home, exact: true },
-  { to: "/admin/products", label: "Товары", icon: Package },
+  { to: "/admin/products", label: "Produkte", icon: Package },
   { to: "/admin/frame-prices", label: "Rahmenpreise", icon: Euro },
-  { to: "/admin/homepage", label: "Главная", icon: Home },
-  { to: "/admin/settings", label: "Настройки", icon: Settings },
-  { to: "/admin/orders", label: "Заказы", icon: ShoppingBag },
+  { to: "/admin/homepage", label: "Startseite", icon: Home },
+  { to: "/admin/settings", label: "Einstellungen", icon: Settings },
+  { to: "/admin/orders", label: "Bestellungen", icon: ShoppingBag },
 ];
 
 function AdminLayout() {

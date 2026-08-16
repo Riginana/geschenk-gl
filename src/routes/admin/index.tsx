@@ -12,10 +12,10 @@ function AdminIndex() {
         Willkommen. Wählen Sie einen Bereich in der Seitenleiste.
       </p>
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
-        {["Товары", "Главная", "Настройки", "Заказы"].map((s) => (
+        {["Produkte", "Startseite", "Einstellungen", "Bestellungen"].map((s) => (
           <div key={s} className="rounded-2xl border border-border bg-card p-6">
             <h2 className="font-serif text-xl">{s}</h2>
-            <p className="mt-1 text-sm text-muted-foreground">В разработке.</p>
+            <p className="mt-1 text-sm text-muted-foreground">In Arbeit.</p>
           </div>
         ))}
       </div>
