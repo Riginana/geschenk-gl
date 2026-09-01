@@ -58,7 +58,7 @@ export function ExpandableText({
         <button
           type="button"
           onClick={() => setExpanded((v) => !v)}
-          className="mt-2 inline-flex items-center gap-1 text-sm font-medium text-walnut transition hover:text-brass"
+          className="mt-2 inline-flex items-center gap-1 text-sm font-medium text-muted-foreground transition hover:text-brass"
           aria-expanded={expanded}
         >
           {expanded ? t("product.showLess") : t("product.showMore")}
