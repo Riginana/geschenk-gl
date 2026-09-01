@@ -11,6 +11,7 @@ import { de } from "@/i18n/de";
 import { useCart } from "@/contexts/cart";
 import { useWishlist } from "@/contexts/wishlist";
 import { Reveal } from "@/components/reveal";
+import { ExpandableText } from "@/components/expandable-text";
 import { StarRating } from "@/components/star-rating";
 
 const productsQueryOptions = {
@@ -203,9 +204,8 @@ function ProductPage() {
           </div>
 
 
-          <p className="mt-6 whitespace-pre-line text-base leading-relaxed text-foreground/85">
-            {description}
-          </p>
+          <ExpandableText text={description} />
+
 
           <div className="mt-8 space-y-5 rounded-2xl bg-card p-6 ring-1 ring-border/60">
             {formats.length > 1 && (

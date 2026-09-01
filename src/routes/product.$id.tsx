@@ -10,6 +10,7 @@ import { formatEUR, formatDate, useT } from "@/i18n";
 import { useCart } from "@/contexts/cart";
 import { useWishlist } from "@/contexts/wishlist";
 import { Reveal } from "@/components/reveal";
+import { ExpandableText } from "@/components/expandable-text";
 import { StarRating } from "@/components/star-rating";
 
 
@@ -390,7 +391,8 @@ function ProductPage() {
           </div>
 
 
-          <p className="mt-6 whitespace-pre-line text-base leading-relaxed text-foreground/85">{description}</p>
+          <ExpandableText text={description} />
+
 
           {hasConfig && (
             <div className="mt-8">
