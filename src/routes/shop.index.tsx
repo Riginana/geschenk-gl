@@ -1,11 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { z } from "zod";
-import { useSuspenseQuery } from "@tanstack/react-query";
+import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
 import { useT } from "@/i18n";
 import { listProducts } from "@/lib/products.functions";
 import { ProductCard } from "@/components/product-card";
 import { Reveal } from "@/components/reveal";
+import { catalogFromPrice } from "@/lib/catalog-pricing";
+import { productConfigQueryOptions } from "@/lib/product-config.query";
+import { framePricesQueryOptions, holzplattePricesQueryOptions } from "@/lib/catalog-pricing.query";
 
 const searchSchema = z.object({
   occasion: z.string().optional(),
@@ -42,18 +45,28 @@ function ShopPage() {
   const navigate = Route.useNavigate();
   const [openFilters, setOpenFilters] = useState(false);
   const { data: allProducts } = useSuspenseQuery(productsQueryOptions);
+  const { data: config } = useQuery(productConfigQueryOptions);
+  const { data: framePrices } = useQuery(framePricesQueryOptions);
+  const { data: holzplattePrices } = useQuery(holzplattePricesQueryOptions);
 
   const filtered = useMemo(() => {
     let arr = allProducts.slice();
     if (search.occasion) arr = arr.filter((p) => p.occasion === search.occasion);
     if (search.material) arr = arr.filter((p) => p.material === search.material);
     if (search.format) arr = arr.filter((p) => (p.formats ?? []).includes(search.format!));
+    const priceOf = (p: (typeof arr)[number]) =>
+      catalogFromPrice(p, {
+        sizes: config?.sizes,
+        motifs: config?.motifs,
+        framePrices,
+        holzplattePrices,
+      }).finalCents;
     switch (search.sort) {
       case "price_asc":
-        arr.sort((a, b) => a.base_price_cents - b.base_price_cents);
+        arr.sort((a, b) => priceOf(a) - priceOf(b));
         break;
       case "price_desc":
-        arr.sort((a, b) => b.base_price_cents - a.base_price_cents);
+        arr.sort((a, b) => priceOf(b) - priceOf(a));
         break;
       case "new":
       case "popular":
@@ -61,7 +74,7 @@ function ShopPage() {
         break;
     }
     return arr;
-  }, [search, allProducts]);
+  }, [search, allProducts, config, framePrices, holzplattePrices]);
 
   const update = (patch: Partial<typeof search>) => navigate({ search: (prev: typeof search) => ({ ...prev, ...patch }) });
 
