@@ -131,7 +131,7 @@ export function ProductCard({ p, eager }: { p: ProductRow; eager?: boolean }) {
               {hasDiscount && (
                 <>
                   <span className="ml-1.5 text-xs text-muted-foreground line-through">{formatEUR(listCents, locale)}</span>
-                  <span className="ml-1 text-[10px] font-semibold text-destructive">−{p.discount_percent}%</span>
+                  <span className="ml-1 text-[10px] font-semibold text-destructive">−{Math.round(price.discountPercent)}%</span>
                 </>
               )}
             </p>
