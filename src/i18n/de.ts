@@ -120,6 +120,8 @@ export const de = {
   product: {
     addToCart: "In den Warenkorb",
     addedToCart: "Zum Warenkorb hinzugefügt",
+    showMore: "Mehr anzeigen",
+    showLess: "Weniger anzeigen",
     name: "Name(n)",
     namePlaceholder: "z.B. Anna & Markus",
     date: "Datum",

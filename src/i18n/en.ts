@@ -116,6 +116,8 @@ export const en: Dictionary = {
   product: {
     addToCart: "Add to cart",
     addedToCart: "Added to cart",
+    showMore: "Show more",
+    showLess: "Show less",
     name: "Name(s)",
     namePlaceholder: "e.g. Anna & Mark",
     date: "Date",
