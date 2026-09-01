@@ -19,6 +19,8 @@ export type Motif = {
   id: string;
   product_id: string;
   number: number;
+  /** Surcharge added on top of the chosen size price (in cents). */
+  price_delta_cents: number;
   title: string;
   description: string;
   predefined_text: string;
