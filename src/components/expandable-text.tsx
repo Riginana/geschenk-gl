@@ -3,48 +3,57 @@ import { ChevronDown } from "lucide-react";
 import { useT } from "@/i18n";
 
 /**
- * Renders product/body text that is clipped to a maximum height until
+ * Renders product/body text clamped to a fixed number of lines until
  * expanded. The toggle button only appears when the text actually overflows
- * the collapsed height (measured after mount), so short descriptions render
+ * the clamped lines (measured after mount), so short descriptions render
  * exactly like a plain paragraph.
  *
+ * Clamping is line-based (CSS line-clamp), so the text is never cut in the
+ * middle of a line and no fade gradient is needed.
+ *
  * The server always renders the collapsed variant, so there is no
- * hydration mismatch — clipping state is derived in useEffect.
+ * hydration mismatch — clamping state is derived in useEffect.
  */
 export function ExpandableText({
   text,
-  maxCollapsedHeight = 144,
+  collapsedLines = 3,
   className = "",
 }: {
   text: string;
-  maxCollapsedHeight?: number;
+  collapsedLines?: number;
   className?: string;
 }) {
   const { t } = useT();
   const [expanded, setExpanded] = useState(false);
   const [clippable, setClippable] = useState(false);
-  const [fullHeight, setFullHeight] = useState<number | null>(null);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    setFullHeight(el.scrollHeight);
-    setClippable(el.scrollHeight - maxCollapsedHeight > 4);
-  }, [text, maxCollapsedHeight]);
+    // With line-clamp active, scrollHeight exceeds clientHeight when the
+    // text overflows the clamped number of lines.
+    setClippable(el.scrollHeight - el.clientHeight > 4);
+  }, [text, collapsedLines]);
 
   return (
-    <div className={`relative mt-6 ${className}`}>
+    <div className={`mt-6 ${className}`}>
       <div
         ref={ref}
-        className="overflow-hidden whitespace-pre-line text-base leading-relaxed text-foreground/85 transition-[max-height] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
-        style={{ maxHeight: expanded ? `${fullHeight ?? 9999}px` : `${maxCollapsedHeight}px` }}
+        className="whitespace-pre-line text-base leading-relaxed text-foreground/85"
+        style={
+          expanded
+            ? undefined
+            : {
+                display: "-webkit-box",
+                WebkitBoxOrient: "vertical",
+                WebkitLineClamp: collapsedLines,
+                overflow: "hidden",
+              }
+        }
       >
         {text}
       </div>
-      {!expanded && clippable && (
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-card to-transparent" />
-      )}
       {clippable && (
         <button
           type="button"
