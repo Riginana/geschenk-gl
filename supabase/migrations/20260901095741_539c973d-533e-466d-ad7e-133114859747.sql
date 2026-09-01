@@ -1,0 +1,1 @@
+ALTER TABLE public.product_motifs ADD COLUMN IF NOT EXISTS price_delta_cents integer NOT NULL DEFAULT 0;
