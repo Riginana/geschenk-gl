@@ -32,10 +32,12 @@ export type Motif = {
   sort_order: number;
 };
 
-export const CONFIGURABLE_CATEGORY = "schiebebox";
+/** Categories that use size variants + motifs. */
+export const CONFIGURABLE_CATEGORIES = ["schiebebox", "holzbox"] as const;
+export const CONFIGURABLE_CATEGORY = CONFIGURABLE_CATEGORIES[0];
 
 export function isConfigurableCategory(category?: string | null): boolean {
-  return (category ?? "").toLowerCase() === CONFIGURABLE_CATEGORY;
+  return (CONFIGURABLE_CATEGORIES as readonly string[]).includes((category ?? "").toLowerCase());
 }
 
 export function sortSizes<T extends { sort_order: number; label: string }>(list: T[]): T[] {
