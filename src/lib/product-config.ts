@@ -62,11 +62,24 @@ export function defaultSize(list: SizeVariant[]): SizeVariant | undefined {
   return act.find((s) => s.is_default) ?? act[0];
 }
 
-/** Lowest active size price, used for "Ab …" catalog labels. */
-export function fromPriceCents(list: SizeVariant[]): number | null {
+/** Price of one configuration: size price + motif surcharge. */
+export function unitPriceCents(
+  size?: Pick<SizeVariant, "price_cents"> | null,
+  motif?: Pick<Motif, "price_delta_cents"> | null,
+): number {
+  return (size?.price_cents ?? 0) + (motif?.price_delta_cents ?? 0);
+}
+
+/** Lowest active combination price, used for "Ab …" catalog labels. */
+export function fromPriceCents(list: SizeVariant[], motifs: Motif[] = []): number | null {
   const act = activeSizes(list);
   if (!act.length) return null;
-  return act.reduce((min, s) => Math.min(min, s.price_cents), act[0].price_cents);
+  const minSize = act.reduce((min, s) => Math.min(min, s.price_cents), act[0].price_cents);
+  const act2 = activeMotifs(motifs);
+  const minDelta = act2.length
+    ? act2.reduce((min, m) => Math.min(min, m.price_delta_cents ?? 0), act2[0].price_delta_cents ?? 0)
+    : 0;
+  return minSize + minDelta;
 }
 
 export function hasMixedPrices(list: SizeVariant[]): boolean {
