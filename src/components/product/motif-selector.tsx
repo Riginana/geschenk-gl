@@ -59,7 +59,14 @@ export function MotifPreviewCard({
         <span className="block text-[10px] uppercase tracking-widest text-muted-foreground">
           Motiv {motif.number}
         </span>
-        <span className="mt-0.5 block text-sm font-medium text-walnut">{motif.title}</span>
+        <span className="mt-0.5 flex items-center justify-between gap-2 text-sm font-medium text-walnut">
+          <span>{motif.title}</span>
+          {motif.price_delta_cents > 0 && (
+            <span className="shrink-0 rounded-full bg-walnut/10 px-2 py-0.5 text-[10px] font-medium text-walnut">
+              +{(motif.price_delta_cents / 100).toFixed(2).replace(".", ",")} €
+            </span>
+          )}
+        </span>
         {motif.description && (
           <span className="mt-1 line-clamp-2 block text-[11px] leading-snug text-muted-foreground">
             {motif.description}

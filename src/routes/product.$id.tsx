@@ -34,6 +34,7 @@ import {
   activeSizes,
   defaultSize,
   isConfigurableCategory,
+  unitPriceCents,
 } from "@/lib/product-config";
 import { productConfigQueryOptions } from "@/lib/product-config.query";
 import { ProductSizeSelector } from "@/components/product/size-selector";
@@ -188,7 +189,7 @@ function ProductPage() {
   const baseCents = holzplatteRow
     ? euroToCents(holzplatteRow.original_price)
     : hasConfig
-      ? selectedSize?.price_cents ?? product.base_price_cents
+      ? unitPriceCents(selectedSize, selectedMotif) || product.base_price_cents
       : framePriceCents ??
         (matchedVariant
           ? matchedVariant.price_cents
@@ -263,6 +264,7 @@ function ProductPage() {
               motifNumber: String(selectedMotif.number),
               motifTitle: selectedMotif.title,
               motifText: selectedMotif.predefined_text,
+              motifSurchargeCents: String(selectedMotif.price_delta_cents ?? 0),
               ...(customMotifText.trim() ? { customMotifText: customMotifText.trim() } : {}),
             }
           : {}),
