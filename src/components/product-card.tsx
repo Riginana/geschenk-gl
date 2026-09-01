@@ -45,8 +45,8 @@ export function ProductCard({ p, eager }: { p: ProductRow; eager?: boolean }) {
 
   const onQuickAdd = (e: React.MouseEvent) => {
     e.preventDefault();
-    if (configurable) {
-      // Size + motif must be chosen on the product page.
+    if (configurable || isFrame || isHolzplatte) {
+      // Size / motif / frame variant must be chosen on the product page.
       void navigate({ to: "/product/$id", params: { id: p.id } });
       return;
     }
