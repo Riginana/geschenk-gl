@@ -1,11 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { z } from "zod";
-import { useSuspenseQuery } from "@tanstack/react-query";
+import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
 import { useT } from "@/i18n";
 import { listProducts } from "@/lib/products.functions";
 import { ProductCard } from "@/components/product-card";
 import { Reveal } from "@/components/reveal";
+import { catalogFromPrice } from "@/lib/catalog-pricing";
+import { productConfigQueryOptions } from "@/lib/product-config.query";
+import { framePricesQueryOptions, holzplattePricesQueryOptions } from "@/lib/catalog-pricing.query";
 
 const searchSchema = z.object({
   occasion: z.string().optional(),
