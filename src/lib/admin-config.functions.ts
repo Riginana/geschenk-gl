@@ -215,6 +215,8 @@ export const adminSeedSchiebeboxDefaults = createServerFn({ method: "POST" })
         is_active: true,
         sort_order: m.number,
         preview_image_url: null,
+        // Wunschtext-Motiv kostet 4 € Aufpreis; jederzeit im Admin änderbar.
+        price_delta_cents: m.requires_custom_text ? 400 : 0,
       }));
     if (newMotifs.length) {
       const { error } = await supabaseAdmin.from("product_motifs").insert(newMotifs);
