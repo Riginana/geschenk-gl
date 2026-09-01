@@ -8,9 +8,11 @@ import { imageFor } from "@/lib/product-images";
 import { formatEUR, useT } from "@/i18n";
 import { useWishlist } from "@/contexts/wishlist";
 import { useCart } from "@/contexts/cart";
-import { calculateDiscountedPrice } from "@/lib/pricing";
-import { fromPriceCents, isConfigurableCategory } from "@/lib/product-config";
+import { isConfigurableCategory } from "@/lib/product-config";
 import { productConfigQueryOptions } from "@/lib/product-config.query";
+import { catalogFromPrice, isFrameCategory } from "@/lib/catalog-pricing";
+import { framePricesQueryOptions, holzplattePricesQueryOptions } from "@/lib/catalog-pricing.query";
+import { isHolzplatteCategory } from "@/lib/holzplatte-pricing";
 
 
 export function ProductCard({ p, eager }: { p: ProductRow; eager?: boolean }) {
@@ -25,16 +27,21 @@ export function ProductCard({ p, eager }: { p: ProductRow; eager?: boolean }) {
 
   const navigate = useNavigate();
   const configurable = isConfigurableCategory(p.category);
+  const isFrame = isFrameCategory(p.category);
+  const isHolzplatte = isHolzplatteCategory(p.category);
   const { data: config } = useQuery({ ...productConfigQueryOptions, enabled: configurable });
-  const sizeFrom = configurable
-    ? fromPriceCents(
-        (config?.sizes ?? []).filter((s) => s.product_id === p.id),
-        (config?.motifs ?? []).filter((m) => m.product_id === p.id),
-      )
-    : null;
-  const listCents = sizeFrom ?? p.base_price_cents;
-  const promoCents = calculateDiscountedPrice(listCents, p.discount_percent);
-  const hasDiscount = (p.discount_percent ?? 0) > 0;
+  const { data: framePrices } = useQuery({ ...framePricesQueryOptions, enabled: isFrame });
+  const { data: holzplattePrices } = useQuery({ ...holzplattePricesQueryOptions, enabled: isHolzplatte });
+
+  const price = catalogFromPrice(p, {
+    sizes: config?.sizes,
+    motifs: config?.motifs,
+    framePrices,
+    holzplattePrices,
+  });
+  const listCents = price.listCents;
+  const promoCents = price.finalCents;
+  const hasDiscount = price.discountPercent > 0;
 
   const onQuickAdd = (e: React.MouseEvent) => {
     e.preventDefault();
