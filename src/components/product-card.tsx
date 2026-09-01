@@ -27,7 +27,10 @@ export function ProductCard({ p, eager }: { p: ProductRow; eager?: boolean }) {
   const configurable = isConfigurableCategory(p.category);
   const { data: config } = useQuery({ ...productConfigQueryOptions, enabled: configurable });
   const sizeFrom = configurable
-    ? fromPriceCents((config?.sizes ?? []).filter((s) => s.product_id === p.id))
+    ? fromPriceCents(
+        (config?.sizes ?? []).filter((s) => s.product_id === p.id),
+        (config?.motifs ?? []).filter((m) => m.product_id === p.id),
+      )
     : null;
   const listCents = sizeFrom ?? p.base_price_cents;
   const promoCents = calculateDiscountedPrice(listCents, p.discount_percent);

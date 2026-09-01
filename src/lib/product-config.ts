@@ -19,6 +19,8 @@ export type Motif = {
   id: string;
   product_id: string;
   number: number;
+  /** Surcharge added on top of the chosen size price (in cents). */
+  price_delta_cents: number;
   title: string;
   description: string;
   predefined_text: string;
@@ -30,10 +32,12 @@ export type Motif = {
   sort_order: number;
 };
 
-export const CONFIGURABLE_CATEGORY = "schiebebox";
+/** Categories that use size variants + motifs. */
+export const CONFIGURABLE_CATEGORIES = ["schiebebox", "holzbox"] as const;
+export const CONFIGURABLE_CATEGORY = CONFIGURABLE_CATEGORIES[0];
 
 export function isConfigurableCategory(category?: string | null): boolean {
-  return (category ?? "").toLowerCase() === CONFIGURABLE_CATEGORY;
+  return (CONFIGURABLE_CATEGORIES as readonly string[]).includes((category ?? "").toLowerCase());
 }
 
 export function sortSizes<T extends { sort_order: number; label: string }>(list: T[]): T[] {
@@ -58,11 +62,24 @@ export function defaultSize(list: SizeVariant[]): SizeVariant | undefined {
   return act.find((s) => s.is_default) ?? act[0];
 }
 
-/** Lowest active size price, used for "Ab …" catalog labels. */
-export function fromPriceCents(list: SizeVariant[]): number | null {
+/** Price of one configuration: size price + motif surcharge. */
+export function unitPriceCents(
+  size?: Pick<SizeVariant, "price_cents"> | null,
+  motif?: Pick<Motif, "price_delta_cents"> | null,
+): number {
+  return (size?.price_cents ?? 0) + (motif?.price_delta_cents ?? 0);
+}
+
+/** Lowest active combination price, used for "Ab …" catalog labels. */
+export function fromPriceCents(list: SizeVariant[], motifs: Motif[] = []): number | null {
   const act = activeSizes(list);
   if (!act.length) return null;
-  return act.reduce((min, s) => Math.min(min, s.price_cents), act[0].price_cents);
+  const minSize = act.reduce((min, s) => Math.min(min, s.price_cents), act[0].price_cents);
+  const act2 = activeMotifs(motifs);
+  const minDelta = act2.length
+    ? act2.reduce((min, m) => Math.min(min, m.price_delta_cents ?? 0), act2[0].price_delta_cents ?? 0)
+    : 0;
+  return minSize + minDelta;
 }
 
 export function hasMixedPrices(list: SizeVariant[]): boolean {

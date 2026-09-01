@@ -13,7 +13,7 @@ async function requireAdmin(ctx: { supabase: { rpc: Function }; userId: string }
 
 const SIZE_COLS = "id,product_id,label,dimensions,price_cents,is_active,is_default,sort_order";
 const MOTIF_COLS =
-  "id,product_id,number,title,description,predefined_text,preview_image_url,allows_custom_text,requires_custom_text,custom_text_max_length,is_active,sort_order";
+  "id,product_id,number,title,description,predefined_text,preview_image_url,allows_custom_text,requires_custom_text,custom_text_max_length,is_active,sort_order,price_delta_cents";
 
 // ---------------- Size variants ----------------
 
@@ -102,6 +102,7 @@ const motifFields = {
   custom_text_max_length: z.number().int().min(10).max(2000),
   is_active: z.boolean(),
   sort_order: z.number().int().min(0).max(999),
+  price_delta_cents: z.number().int().min(0).max(1000000),
 };
 
 export const adminUpsertMotif = createServerFn({ method: "POST" })
@@ -214,6 +215,8 @@ export const adminSeedSchiebeboxDefaults = createServerFn({ method: "POST" })
         is_active: true,
         sort_order: m.number,
         preview_image_url: null,
+        // Wunschtext-Motiv kostet 4 € Aufpreis; jederzeit im Admin änderbar.
+        price_delta_cents: m.requires_custom_text ? 400 : 0,
       }));
     if (newMotifs.length) {
       const { error } = await supabaseAdmin.from("product_motifs").insert(newMotifs);

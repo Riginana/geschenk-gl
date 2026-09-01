@@ -50,7 +50,18 @@ export async function computeUnitPriceCents(
       .eq("id", sizeId)
       .maybeSingle();
     if (!data || !data.is_active || data.product_id !== productId) return null;
-    return discount(data.price_cents);
+    let cents = data.price_cents;
+    const motifId = personalization?.["motifId"];
+    if (motifId) {
+      const { data: motif } = await db
+        .from("product_motifs")
+        .select("price_delta_cents, product_id, is_active")
+        .eq("id", motifId)
+        .maybeSingle();
+      if (!motif || !motif.is_active || motif.product_id !== productId) return null;
+      cents += motif.price_delta_cents ?? 0;
+    }
+    return discount(cents);
   }
 
   // 1b. Holzplatte products: price from holzplatte_prices (override before global).

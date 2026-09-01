@@ -238,6 +238,7 @@ export type Database = {
           number: number
           predefined_text: string
           preview_image_url: string | null
+          price_delta_cents: number
           product_id: string
           requires_custom_text: boolean
           sort_order: number
@@ -254,6 +255,7 @@ export type Database = {
           number: number
           predefined_text?: string
           preview_image_url?: string | null
+          price_delta_cents?: number
           product_id: string
           requires_custom_text?: boolean
           sort_order?: number
@@ -270,6 +272,7 @@ export type Database = {
           number?: number
           predefined_text?: string
           preview_image_url?: string | null
+          price_delta_cents?: number
           product_id?: string
           requires_custom_text?: boolean
           sort_order?: number

@@ -153,6 +153,7 @@ export function ProductConfigEditor({ productId }: { productId: string }) {
                 custom_text_max_length: 150,
                 is_active: true,
                 sort_order: motifs.length + 1,
+                price_delta_cents: 0,
               })
             }
             className="inline-flex items-center gap-1 rounded-full bg-walnut px-3 py-1.5 text-xs text-cream"
@@ -294,7 +295,9 @@ function MotifRow({
     custom_text_max_length: motif.custom_text_max_length,
     is_active: motif.is_active,
     sort_order: motif.sort_order,
+    price_delta_cents: motif.price_delta_cents ?? 0,
   });
+  const [surcharge, setSurcharge] = useState(((motif.price_delta_cents ?? 0) / 100).toFixed(2));
   const [uploading, setUploading] = useState(false);
   const createUpload = useServerFn(adminCreateUploadUrl);
 
@@ -431,6 +434,19 @@ function MotifRow({
               type="number"
               value={d.custom_text_max_length}
               onChange={(e) => setD({ ...d, custom_text_max_length: Number(e.target.value) || 150 })}
+            />
+          </label>
+          <label className="block w-28">
+            <span className="text-[11px] text-muted-foreground">Aufpreis (€)</span>
+            <input
+              className={inputCls}
+              inputMode="decimal"
+              value={surcharge}
+              onChange={(e) => {
+                setSurcharge(e.target.value);
+                const n = Number(e.target.value.replace(",", "."));
+                if (Number.isFinite(n) && n >= 0) setD({ ...d, price_delta_cents: Math.round(n * 100) });
+              }}
             />
           </label>
           <label className="block w-24">
