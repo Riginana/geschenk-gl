@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import atelier from "@/assets/atelier.jpg";
+import atelierAsset from "@/assets/atelier-ueber-uns.jpg.asset.json";
 import { Reveal } from "@/components/reveal";
 import { useT } from "@/i18n";
 
@@ -49,7 +49,7 @@ function AboutPage() {
 
       <Reveal delay={0.1}>
         <div className="mt-14 overflow-hidden rounded-2xl shadow-xl ring-1 ring-border">
-          <img src={atelier} alt="Unsere Werkstatt" loading="lazy" width={1400} height={1000} className="block h-auto w-full" />
+          <img src={atelierAsset.url} alt="Unsere Werkstatt" loading="lazy" width={1400} height={1000} className="block h-auto w-full" />
         </div>
       </Reveal>
 
