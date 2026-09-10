@@ -28,7 +28,7 @@ export const Route = createFileRoute("/datenschutz")({
           </p>
           <p>
             Telefon: 017624299597<br />
-            E-Mail: diginutz.e@gmail.com
+            E-Mail: kontakt.diginutz@gmail.com
           </p>
 
           <h2>2. Hosting und Server-Logfiles</h2>
