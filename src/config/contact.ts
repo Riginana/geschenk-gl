@@ -1,6 +1,6 @@
 // Единая конфигурация контактов — используется на всех страницах.
 export const CONTACT = {
-  email: "diginutz.e@gmail.com",
+  email: "kontakt.diginutz@gmail.com",
   phoneDisplay: "+49 176 24299597",
   phoneTel: "+4917624299597",
   instagramHandle: "digi.nutz",
