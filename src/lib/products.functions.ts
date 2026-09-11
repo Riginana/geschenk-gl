@@ -30,6 +30,7 @@ export type ProductRow = {
   category?: string;
   material: string;
   material_label?: string;
+  frame_material?: string;
   formats: string[];
   images: string[];
   hoverImage?: string;
@@ -60,6 +61,7 @@ type DbProduct = {
   category: string | null;
   material: string;
   material_label: string | null;
+  frame_material: string | null;
   badge: string | null;
   hero_image: string | null;
   hover_image: string | null;
