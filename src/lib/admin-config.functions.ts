@@ -325,8 +325,79 @@ export const adminUpdateOrder = createServerFn({ method: "POST" })
       .select(ORDER_COLS)
       .maybeSingle();
     if (error) throw new Error(error.message);
-    return updated as unknown as AdminOrderRow;
+    const row = updated as unknown as AdminOrderRow;
+    if (becameShipped && row) {
+      await sendShippingEmail(row);
+      const { data: refreshed } = await supabaseAdmin
+        .from("orders")
+        .select(ORDER_COLS)
+        .eq("id", data.id)
+        .maybeSingle();
+      if (refreshed) return refreshed as unknown as AdminOrderRow;
+    }
+    return row;
   });
+
+/** Sends the shipping confirmation email and records the timestamp. */
+async function sendShippingEmail(order: AdminOrderRow, force = false) {
+  const { sendTemplateEmail } = await import("@/lib/email-templates/send-email");
+  const { carrierLabel, trackingUrl } = await import("@/lib/tracking");
+  const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+
+  const a = order.address ?? {};
+  const addressLines = [
+    [a.firstName, a.lastName].filter(Boolean).join(" "),
+    [a.street, a.houseNumber].filter(Boolean).join(" "),
+    [a.plz, a.city].filter(Boolean).join(" "),
+    a.country,
+  ].filter((l) => l && l.trim().length);
+
+  try {
+    const result = await sendTemplateEmail("order-shipped", order.email, {
+      idempotencyKey: force
+        ? `order-shipped-${order.id}-${Date.now()}`
+        : `order-shipped-${order.id}-${order.tracking_number ?? "none"}`,
+      templateData: {
+        customerName: a.firstName || "Kundin/Kunde",
+        orderId: order.id,
+        carrierLabel: carrierLabel(order.tracking_carrier),
+        trackingNumber: order.tracking_number ?? null,
+        trackingUrl: trackingUrl(order.tracking_carrier, order.tracking_number),
+        address: addressLines,
+        items: (order.items ?? []).map((it) => ({ name: it.name ?? "Artikel", qty: it.qty ?? 1 })),
+      },
+    });
+    if (result.sent) {
+      await supabaseAdmin
+        .from("orders")
+        .update({ shipping_email_sent_at: new Date().toISOString() })
+        .eq("id", order.id);
+    }
+    return result;
+  } catch (err) {
+    console.error("Versandmail fehlgeschlagen", err);
+    throw err;
+  }
+}
+
+/** Resend the shipping confirmation email for an order (admin only). */
+export const adminResendShippingEmail = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((d) => z.object({ id: z.string().uuid() }).parse(d))
+  .handler(async ({ data, context }) => {
+    await requireAdmin(context);
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { data: order, error } = await supabaseAdmin
+      .from("orders")
+      .select(ORDER_COLS)
+      .eq("id", data.id)
+      .maybeSingle();
+    if (error) throw new Error(error.message);
+    if (!order) throw new Error("Bestellung nicht gefunden");
+    const result = await sendShippingEmail(order as unknown as AdminOrderRow, true);
+    return { sent: result.sent };
+  });
+
 
 
 // ---------------- Holzbox: zentrale Preistabelle ----------------

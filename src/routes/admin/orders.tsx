@@ -7,6 +7,7 @@ import { Copy, ExternalLink } from "lucide-react";
 import {
   adminListOrders,
   adminUpdateOrder,
+  adminResendShippingEmail,
   type AdminOrderItem,
   type AdminOrderRow,
 } from "@/lib/admin-config.functions";
@@ -112,7 +113,9 @@ function OrderCard({ order }: { order: AdminOrderRow }) {
   const [carrier, setCarrier] = useState(order.tracking_carrier ?? "dhl");
   const [tracking, setTracking] = useState(order.tracking_number ?? "");
   const [saving, setSaving] = useState(false);
+  const [resending, setResending] = useState(false);
   const updateFn = useServerFn(adminUpdateOrder);
+  const resendFn = useServerFn(adminResendShippingEmail);
   const queryClient = useQueryClient();
   const a = order.address ?? {};
   const link = trackingUrl(order.tracking_carrier, order.tracking_number);
@@ -134,6 +137,19 @@ function OrderCard({ order }: { order: AdminOrderRow }) {
       toast.error((e as Error).message);
     } finally {
       setSaving(false);
+    }
+  }
+
+  async function resend() {
+    setResending(true);
+    try {
+      const res = await resendFn({ data: { id: order.id } });
+      await queryClient.invalidateQueries({ queryKey: ["admin-orders"] });
+      toast.success(res.sent ? "Versandbestätigung gesendet" : "Empfänger ist abgemeldet – keine E-Mail gesendet");
+    } catch (e) {
+      toast.error((e as Error).message);
+    } finally {
+      setResending(false);
     }
   }
 
@@ -233,6 +249,14 @@ function OrderCard({ order }: { order: AdminOrderRow }) {
                 className="rounded-md bg-walnut px-3 py-1.5 text-xs font-medium text-cream disabled:opacity-60"
               >
                 {saving ? "Speichert …" : "Speichern"}
+              </button>
+              <button
+                type="button"
+                onClick={resend}
+                disabled={resending}
+                className="rounded-md border border-border px-3 py-1.5 text-xs font-medium text-walnut disabled:opacity-60"
+              >
+                {resending ? "Sendet …" : "E-Mail erneut senden"}
               </button>
               {link && (
                 <a
