@@ -323,21 +323,41 @@ function FramePricesAdmin() {
                   <td className="px-4 py-2">{FRAME_VARIANT_LABELS[variant]}</td>
                   {FRAME_SIZES.map((size) => {
                     const key = `${size}|${variant}`;
+                    const priceRaw = draft[key] ?? "";
+                    const cents = priceRaw.trim() === "" ? null : euroToCents(priceRaw);
+                    const discRaw = (discounts[key] ?? "").trim().replace(",", ".");
+                    const disc = discRaw === "" ? 0 : Number(discRaw);
+                    const validDisc = Number.isFinite(disc) && disc >= 0 && disc <= 100;
+                    const finalCents =
+                      cents !== null && validDisc ? Math.round(cents * (1 - disc / 100)) : null;
                     return (
-                      <td key={key} className="px-4 py-2">
+                      <td key={key} className="px-4 py-2 align-top">
                         <div className="flex items-center gap-1.5">
                           <input
-                            value={draft[key] ?? ""}
+                            value={priceRaw}
                             onChange={(e) =>
                               setDraft((d) => ({ ...d, [key]: e.target.value }))
                             }
                             inputMode="decimal"
                             aria-label={`${FRAME_VARIANT_LABELS[variant]} ${size}`}
-                            className={`w-24 rounded-md border bg-background px-2 py-1.5 text-sm ${
+                            className={`w-20 rounded-md border bg-background px-2 py-1.5 text-sm ${
                               hasOverride(size, variant) ? "border-brass" : "border-border"
                             }`}
                           />
                           <span className="text-xs text-muted-foreground">€</span>
+                          <input
+                            value={discounts[key] ?? ""}
+                            onChange={(e) =>
+                              setDiscounts((d) => ({ ...d, [key]: e.target.value }))
+                            }
+                            inputMode="decimal"
+                            placeholder="0"
+                            aria-label={`Rabatt ${FRAME_VARIANT_LABELS[variant]} ${size}`}
+                            className={`w-14 rounded-md border bg-background px-2 py-1.5 text-sm ${
+                              validDisc ? "border-border" : "border-destructive"
+                            }`}
+                          />
+                          <span className="text-xs text-muted-foreground">%</span>
                           {hasOverride(size, variant) && (
                             <button
                               type="button"
@@ -349,6 +369,11 @@ function FramePricesAdmin() {
                             </button>
                           )}
                         </div>
+                        {finalCents !== null && (
+                          <p className="mt-1 text-xs text-muted-foreground">
+                            Endpreis: {centsToEuro(finalCents)} €
+                          </p>
+                        )}
                       </td>
                     );
                   })}
