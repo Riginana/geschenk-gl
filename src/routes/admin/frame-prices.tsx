@@ -14,7 +14,11 @@ import {
   FRAME_VARIANTS,
   FRAME_SIZE_LABELS,
   FRAME_VARIANT_LABELS,
+  FRAME_MATERIALS,
+  FRAME_MATERIAL_LABELS,
+  normalizeFrameMaterial,
   resolveFramePriceCents,
+  type FrameMaterial,
   type FramePriceRow,
 } from "@/lib/frame-pricing";
 import { HolzplattePriceTable } from "@/components/admin/holzplatte-price-table";
