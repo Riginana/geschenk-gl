@@ -136,6 +136,28 @@ export const adminBulkSetActive = createServerFn({ method: "POST" })
     return { ok: true, count: data.ids.length };
   });
 
+/** Bulk assign the Bilderrahmen subcategory (papier / holz / hdf). */
+export const adminSetFrameMaterial = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((d) =>
+    z
+      .object({
+        ids: z.array(z.string().uuid()).min(1).max(500),
+        frame_material: z.enum(["papier", "holz", "hdf"]),
+      })
+      .parse(d),
+  )
+  .handler(async ({ data, context }) => {
+    await requireAdmin(context);
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { error } = await supabaseAdmin
+      .from("products")
+      .update({ frame_material: data.frame_material } as any)
+      .in("id", data.ids);
+    if (error) throw new Error(error.message);
+    return { ok: true, count: data.ids.length };
+  });
+
 export const adminCreateProduct = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((d) =>
