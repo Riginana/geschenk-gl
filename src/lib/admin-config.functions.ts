@@ -262,7 +262,14 @@ export type AdminOrderRow = {
   created_at: string;
   payment_environment?: string | null;
   stripe_session_id?: string | null;
+  tracking_number?: string | null;
+  tracking_carrier?: string | null;
+  shipped_at?: string | null;
+  shipping_email_sent_at?: string | null;
 };
+
+const ORDER_COLS =
+  "id,email,address,items,shipping_method,payment_method,subtotal_cents,shipping_cents,total_cents,status,created_at,payment_environment,stripe_session_id,tracking_number,tracking_carrier,shipped_at,shipping_email_sent_at";
 
 export const adminListOrders = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
@@ -271,12 +278,56 @@ export const adminListOrders = createServerFn({ method: "GET" })
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     const { data, error } = await supabaseAdmin
       .from("orders")
-      .select("id,email,address,items,shipping_method,payment_method,subtotal_cents,shipping_cents,total_cents,status,created_at,payment_environment,stripe_session_id")
+      .select(ORDER_COLS)
       .order("created_at", { ascending: false })
       .limit(200);
     if (error) throw new Error(error.message);
     return (data ?? []) as unknown as AdminOrderRow[];
   });
+
+const ORDER_STATUSES = ["pending", "paid", "shipped", "done", "cancelled"] as const;
+
+/** Update order status and/or tracking info (admin only). */
+export const adminUpdateOrder = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((d) =>
+    z
+      .object({
+        id: z.string().uuid(),
+        status: z.enum(ORDER_STATUSES),
+        tracking_number: z.string().trim().max(60).nullable().optional(),
+        tracking_carrier: z.string().trim().max(30).nullable().optional(),
+      })
+      .parse(d),
+  )
+  .handler(async ({ data, context }): Promise<AdminOrderRow> => {
+    await requireAdmin(context);
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { data: current, error: e0 } = await supabaseAdmin
+      .from("orders")
+      .select("status,shipped_at")
+      .eq("id", data.id)
+      .maybeSingle();
+    if (e0) throw new Error(e0.message);
+    if (!current) throw new Error("Bestellung nicht gefunden");
+
+    const becameShipped = data.status === "shipped" && current.status !== "shipped";
+    const { data: updated, error } = await supabaseAdmin
+      .from("orders")
+      .update({
+        status: data.status,
+        tracking_number: data.tracking_number?.trim() ? data.tracking_number.trim() : null,
+        tracking_carrier: data.tracking_carrier ?? null,
+        shipped_at:
+          becameShipped && !current.shipped_at ? new Date().toISOString() : (current.shipped_at ?? null),
+      })
+      .eq("id", data.id)
+      .select(ORDER_COLS)
+      .maybeSingle();
+    if (error) throw new Error(error.message);
+    return updated as unknown as AdminOrderRow;
+  });
+
 
 // ---------------- Holzbox: zentrale Preistabelle ----------------
 
