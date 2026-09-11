@@ -35,6 +35,7 @@ const sizeFields = {
   label: z.string().trim().min(1).max(40),
   dimensions: z.string().trim().max(120),
   price_cents: z.number().int().min(0).max(1000000),
+  discount_percent: z.number().int().min(0).max(100).optional().default(0),
   is_active: z.boolean(),
   is_default: z.boolean(),
   sort_order: z.number().int().min(0).max(999),
