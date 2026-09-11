@@ -154,12 +154,16 @@ export type Database = {
           locale: string
           payment_environment: string
           payment_method: string
+          shipped_at: string | null
           shipping_cents: number
+          shipping_email_sent_at: string | null
           shipping_method: string
           status: Database["public"]["Enums"]["order_status"]
           stripe_session_id: string | null
           subtotal_cents: number
           total_cents: number
+          tracking_carrier: string | null
+          tracking_number: string | null
         }
         Insert: {
           address: Json
@@ -170,12 +174,16 @@ export type Database = {
           locale?: string
           payment_environment?: string
           payment_method: string
+          shipped_at?: string | null
           shipping_cents: number
+          shipping_email_sent_at?: string | null
           shipping_method: string
           status?: Database["public"]["Enums"]["order_status"]
           stripe_session_id?: string | null
           subtotal_cents: number
           total_cents: number
+          tracking_carrier?: string | null
+          tracking_number?: string | null
         }
         Update: {
           address?: Json
@@ -186,12 +194,16 @@ export type Database = {
           locale?: string
           payment_environment?: string
           payment_method?: string
+          shipped_at?: string | null
           shipping_cents?: number
+          shipping_email_sent_at?: string | null
           shipping_method?: string
           status?: Database["public"]["Enums"]["order_status"]
           stripe_session_id?: string | null
           subtotal_cents?: number
           total_cents?: number
+          tracking_carrier?: string | null
+          tracking_number?: string | null
         }
         Relationships: []
       }
