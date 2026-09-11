@@ -11,7 +11,7 @@ async function requireAdmin(ctx: { supabase: { rpc: Function }; userId: string }
   if (error || !data) throw new Error("Forbidden: admin only");
 }
 
-const SIZE_COLS = "id,product_id,label,dimensions,price_cents,is_active,is_default,sort_order";
+const SIZE_COLS = "id,product_id,label,dimensions,price_cents,discount_percent,is_active,is_default,sort_order";
 const MOTIF_COLS =
   "id,product_id,number,title,description,predefined_text,preview_image_url,allows_custom_text,requires_custom_text,custom_text_max_length,is_active,sort_order,price_delta_cents";
 
