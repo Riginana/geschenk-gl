@@ -29,7 +29,7 @@ export const listFramePrices = createServerFn({ method: "GET" }).handler(
     const sb = pub();
     const { data, error } = await sb
       .from("frame_prices")
-      .select("id,product_id,size,variant,price_cents");
+      .select("id,product_id,material,size,variant,price_cents");
     if (error) {
       console.error("[listFramePrices]", error.message);
       return [];
@@ -40,6 +40,7 @@ export const listFramePrices = createServerFn({ method: "GET" }).handler(
 
 const upsertSchema = z.object({
   productId: z.string().uuid().nullable(),
+  material: materialSchema.nullable().optional(),
   entries: z
     .array(
       z.object({
@@ -58,6 +59,7 @@ export const adminUpsertFramePrices = createServerFn({ method: "POST" })
   .handler(async ({ data, context }) => {
     await requireAdmin(context);
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const material = data.productId ? null : (data.material ?? null);
     for (const e of data.entries) {
       let q = supabaseAdmin
         .from("frame_prices")
@@ -65,6 +67,7 @@ export const adminUpsertFramePrices = createServerFn({ method: "POST" })
         .eq("size", e.size)
         .eq("variant", e.variant);
       q = data.productId ? q.eq("product_id", data.productId) : q.is("product_id", null);
+      q = material ? q.eq("material", material) : q.is("material", null);
       const { data: existing, error: selErr } = await q.maybeSingle();
       if (selErr) throw new Error(selErr.message);
       if (existing) {
@@ -76,6 +79,7 @@ export const adminUpsertFramePrices = createServerFn({ method: "POST" })
       } else {
         const { error } = await supabaseAdmin.from("frame_prices").insert({
           product_id: data.productId,
+          material,
           size: e.size,
           variant: e.variant,
           price_cents: e.priceCents,
@@ -85,6 +89,7 @@ export const adminUpsertFramePrices = createServerFn({ method: "POST" })
     }
     return { ok: true, count: data.entries.length };
   });
+
 
 const deleteSchema = z.object({
   productId: z.string().uuid(),
