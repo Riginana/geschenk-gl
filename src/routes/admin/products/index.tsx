@@ -6,10 +6,17 @@ import {
   adminListProducts,
   adminUpdateProduct,
   adminBulkSetActive,
+  adminSetFrameMaterial,
   adminCreateProduct,
   adminDeleteProduct,
   type AdminProductRow,
 } from "@/lib/admin.functions";
+
+const FRAME_MATERIAL_OPTIONS = [
+  { value: "papier", label: "Papier" },
+  { value: "holz", label: "Holz" },
+  { value: "hdf", label: "HDF" },
+] as const;
 
 const CATEGORY_OPTIONS = [
   "bilderrahmen",
