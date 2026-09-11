@@ -30,6 +30,7 @@ type CatalogProduct = {
   category?: string | null;
   base_price_cents: number;
   discount_percent?: number | null;
+  frame_material?: string | null;
 };
 
 export function isFrameCategory(category?: string | null): boolean {
