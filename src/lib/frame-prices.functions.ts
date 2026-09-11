@@ -3,10 +3,11 @@ import { createClient } from "@supabase/supabase-js";
 import { z } from "zod";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import type { Database } from "@/integrations/supabase/types";
-import { FRAME_SIZES, FRAME_VARIANTS, type FramePriceRow } from "@/lib/frame-pricing";
+import { FRAME_SIZES, FRAME_VARIANTS, FRAME_MATERIALS, type FramePriceRow } from "@/lib/frame-pricing";
 
 const sizeSchema = z.enum(FRAME_SIZES);
 const variantSchema = z.enum(FRAME_VARIANTS);
+const materialSchema = z.enum(FRAME_MATERIALS);
 
 function pub() {
   return createClient<Database>(process.env["SUPABASE_URL"]!, process.env["SUPABASE_PUBLISHABLE_KEY"]!, {
