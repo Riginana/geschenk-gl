@@ -349,6 +349,16 @@ function AdminProductsList() {
           <button className="rounded-md border border-border px-3 py-1" onClick={() => bulkToggle(false)}>
             Entwurf
           </button>
+          <span className="ml-2 text-xs text-muted-foreground">Unterkategorie:</span>
+          {FRAME_MATERIAL_OPTIONS.map((o) => (
+            <button
+              key={o.value}
+              className="rounded-md border border-border px-3 py-1"
+              onClick={() => bulkFrameMaterial(o.value)}
+            >
+              {o.label}
+            </button>
+          ))}
           <button className="ml-auto text-xs text-muted-foreground underline" onClick={() => setSelected(new Set())}>
             Zurücksetzen
           </button>
