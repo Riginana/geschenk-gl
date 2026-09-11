@@ -27,7 +27,7 @@ import {
   FRAME_VARIANTS,
   FRAME_SIZE_LABELS,
   FRAME_VARIANT_LABELS,
-  resolveFramePriceCents,
+  resolveFramePrice,
   normalizeFrameMaterial,
 } from "@/lib/frame-pricing";
 
