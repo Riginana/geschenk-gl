@@ -376,11 +376,12 @@ export const adminBulkUpsertHolzbox = createServerFn({ method: "POST" })
           (r) => r.product_id === pid && r.label.toLowerCase() === s.label.toLowerCase(),
         );
         if (row) {
-          const values: Record<string, unknown> = {
+          const values = {
             price_cents: s.priceCents,
             discount_percent: s.discountPercent,
+            ...(s.dimensions !== undefined ? { dimensions: s.dimensions } : {}),
           };
-          if (s.dimensions !== undefined) values["dimensions"] = s.dimensions;
+
           const { error } = await supabaseAdmin
             .from("product_size_variants")
             .update(values)
