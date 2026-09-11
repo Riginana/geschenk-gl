@@ -8,6 +8,13 @@
       "when": 1789123901127,
       "tag": "0000_frame_material_subcategories",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1789128716697,
+      "tag": "0001_frame_prices_discount",
+      "breakpoints": true
     }
   ]
 }

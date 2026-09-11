@@ -44,6 +44,7 @@ export type Database = {
       frame_prices: {
         Row: {
           created_at: string
+          discount_percent: number
           id: string
           material: string | null
           price_cents: number
@@ -54,6 +55,7 @@ export type Database = {
         }
         Insert: {
           created_at?: string
+          discount_percent?: number
           id?: string
           material?: string | null
           price_cents: number
@@ -64,6 +66,7 @@ export type Database = {
         }
         Update: {
           created_at?: string
+          discount_percent?: number
           id?: string
           material?: string | null
           price_cents?: number
