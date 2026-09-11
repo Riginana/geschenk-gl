@@ -24,6 +24,7 @@ import {
   type FramePriceRow,
 } from "@/lib/frame-pricing";
 import { HolzplattePriceTable } from "@/components/admin/holzplatte-price-table";
+import { HolzboxPriceTable } from "@/components/admin/holzbox-price-table";
 
 export const Route = createFileRoute("/admin/frame-prices")({
   head: () => ({
@@ -429,6 +430,17 @@ function FramePricesAdmin() {
         </p>
         <div className="mt-4">
           <HolzplattePriceTable productId={null} />
+        </div>
+      </section>
+
+      <section className="mt-12">
+        <h2 className="font-serif text-xl text-walnut">Holzbox-Preise</h2>
+        <p className="mt-1 text-sm text-muted-foreground">
+          Größen <strong>S, M, L</strong> mit Rabatt und Motiv-Aufpreisen — für alle Holzbox-Produkte
+          gemeinsam oder für ein einzelnes Produkt.
+        </p>
+        <div className="mt-4">
+          <HolzboxPriceTable />
         </div>
       </section>
     </div>

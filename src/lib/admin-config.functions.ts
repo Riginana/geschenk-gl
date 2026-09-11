@@ -11,7 +11,7 @@ async function requireAdmin(ctx: { supabase: { rpc: Function }; userId: string }
   if (error || !data) throw new Error("Forbidden: admin only");
 }
 
-const SIZE_COLS = "id,product_id,label,dimensions,price_cents,is_active,is_default,sort_order";
+const SIZE_COLS = "id,product_id,label,dimensions,price_cents,discount_percent,is_active,is_default,sort_order";
 const MOTIF_COLS =
   "id,product_id,number,title,description,predefined_text,preview_image_url,allows_custom_text,requires_custom_text,custom_text_max_length,is_active,sort_order,price_delta_cents";
 
@@ -35,6 +35,7 @@ const sizeFields = {
   label: z.string().trim().min(1).max(40),
   dimensions: z.string().trim().max(120),
   price_cents: z.number().int().min(0).max(1000000),
+  discount_percent: z.number().int().min(0).max(100).optional().default(0),
   is_active: z.boolean(),
   is_default: z.boolean(),
   sort_order: z.number().int().min(0).max(999),
@@ -275,4 +276,145 @@ export const adminListOrders = createServerFn({ method: "GET" })
       .limit(200);
     if (error) throw new Error(error.message);
     return (data ?? []) as unknown as AdminOrderRow[];
+  });
+
+// ---------------- Holzbox: zentrale Preistabelle ----------------
+
+export type HolzboxProduct = { id: string; name_de: string };
+export type HolzboxConfig = {
+  products: HolzboxProduct[];
+  sizes: SizeVariant[];
+  motifs: Motif[];
+};
+
+/** All Holzbox products with their sizes and motifs (admin price table). */
+export const adminListHolzboxConfig = createServerFn({ method: "GET" })
+  .middleware([requireSupabaseAuth])
+  .handler(async ({ context }): Promise<HolzboxConfig> => {
+    await requireAdmin(context);
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { data: products, error: e0 } = await supabaseAdmin
+      .from("products")
+      .select("id,name_de")
+      .eq("category", "holzbox")
+      .eq("is_active", true)
+      .order("name_de");
+    if (e0) throw new Error(e0.message);
+    const ids = (products ?? []).map((p) => p.id);
+    if (!ids.length) return { products: [], sizes: [], motifs: [] };
+    const [{ data: sizes, error: e1 }, { data: motifs, error: e2 }] = await Promise.all([
+      supabaseAdmin.from("product_size_variants").select(SIZE_COLS).in("product_id", ids),
+      supabaseAdmin.from("product_motifs").select(MOTIF_COLS).in("product_id", ids),
+    ]);
+    if (e1 || e2) throw new Error(e1?.message || e2?.message || "Laden fehlgeschlagen");
+    return {
+      products: (products ?? []) as HolzboxProduct[],
+      sizes: (sizes ?? []) as SizeVariant[],
+      motifs: (motifs ?? []) as Motif[],
+    };
+  });
+
+const holzboxSchema = z.object({
+  /** null = alle Holzbox-Produkte */
+  productId: z.string().uuid().nullable(),
+  sizes: z
+    .array(
+      z.object({
+        label: z.string().trim().min(1).max(40),
+        priceCents: z.number().int().min(0).max(1000000),
+        discountPercent: z.number().int().min(0).max(100),
+        dimensions: z.string().trim().max(120).optional(),
+      }),
+    )
+    .max(20),
+  motifs: z
+    .array(
+      z.object({
+        number: z.number().int().min(1).max(999),
+        surchargeCents: z.number().int().min(0).max(1000000),
+      }),
+    )
+    .max(50),
+});
+
+/** Writes size prices/discounts and motif surcharges for one or all Holzbox products. */
+export const adminBulkUpsertHolzbox = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((d) => holzboxSchema.parse(d))
+  .handler(async ({ data, context }) => {
+    await requireAdmin(context);
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+
+    let targets: string[] = [];
+    if (data.productId) {
+      targets = [data.productId];
+    } else {
+      const { data: rows, error } = await supabaseAdmin
+        .from("products")
+        .select("id")
+        .eq("category", "holzbox")
+        .eq("is_active", true);
+      if (error) throw new Error(error.message);
+      targets = (rows ?? []).map((r) => r.id);
+    }
+    if (!targets.length) throw new Error("Keine Holzbox-Produkte gefunden");
+
+    const { data: existingSizes } = await supabaseAdmin
+      .from("product_size_variants")
+      .select("id,product_id,label")
+      .in("product_id", targets);
+    const { data: existingMotifs } = await supabaseAdmin
+      .from("product_motifs")
+      .select("id,product_id,number")
+      .in("product_id", targets);
+
+    let updated = 0;
+    let created = 0;
+
+    for (const pid of targets) {
+      for (const [index, s] of data.sizes.entries()) {
+        const row = (existingSizes ?? []).find(
+          (r) => r.product_id === pid && r.label.toLowerCase() === s.label.toLowerCase(),
+        );
+        if (row) {
+          const { error } = await supabaseAdmin
+            .from("product_size_variants")
+            .update({
+              price_cents: s.priceCents,
+              discount_percent: s.discountPercent,
+            })
+            .eq("id", row.id);
+
+
+          if (error) throw new Error(error.message);
+          updated++;
+        } else {
+          const { error } = await supabaseAdmin.from("product_size_variants").insert({
+            product_id: pid,
+            label: s.label,
+            dimensions: s.dimensions ?? "",
+            price_cents: s.priceCents,
+            discount_percent: s.discountPercent,
+            is_active: true,
+            is_default: index === 0,
+            sort_order: index + 1,
+          });
+          if (error) throw new Error(error.message);
+          created++;
+        }
+      }
+
+      for (const m of data.motifs) {
+        const row = (existingMotifs ?? []).find((r) => r.product_id === pid && r.number === m.number);
+        if (!row) continue;
+        const { error } = await supabaseAdmin
+          .from("product_motifs")
+          .update({ price_delta_cents: m.surchargeCents })
+          .eq("id", row.id);
+        if (error) throw new Error(error.message);
+        updated++;
+      }
+    }
+
+    return { products: targets.length, updated, created };
   });

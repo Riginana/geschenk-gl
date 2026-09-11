@@ -10,6 +10,8 @@ export type SizeVariant = {
   label: string;
   dimensions: string;
   price_cents: number;
+  /** Discount in % applied to this size (Holzbox). 0 = no discount. */
+  discount_percent: number;
   is_active: boolean;
   is_default: boolean;
   sort_order: number;
@@ -35,10 +37,33 @@ export type Motif = {
 /** Categories that use size variants + motifs. */
 export const CONFIGURABLE_CATEGORIES = ["schiebebox", "holzbox"] as const;
 export const CONFIGURABLE_CATEGORY = CONFIGURABLE_CATEGORIES[0];
+export const HOLZBOX_CATEGORY = "holzbox";
+/** Default Holzbox sizes managed centrally in the admin price table. */
+export const HOLZBOX_SIZE_LABELS = ["S", "M", "L"] as const;
 
 export function isConfigurableCategory(category?: string | null): boolean {
   return (CONFIGURABLE_CATEGORIES as readonly string[]).includes((category ?? "").toLowerCase());
 }
+
+export function isHolzboxCategory(category?: string | null): boolean {
+  return (category ?? "").toLowerCase() === HOLZBOX_CATEGORY;
+}
+
+export function clampPercent(n: unknown): number {
+  const v = Math.round(Number(n ?? 0));
+  if (!Number.isFinite(v)) return 0;
+  return Math.max(0, Math.min(100, v));
+}
+
+/** Discount that applies to a Holzbox configuration; null for other categories. */
+export function sizeDiscountPercent(
+  category: string | null | undefined,
+  size?: Pick<SizeVariant, "discount_percent"> | null,
+): number | null {
+  if (!isHolzboxCategory(category) || !size) return null;
+  return clampPercent(size.discount_percent);
+}
+
 
 export function sortSizes<T extends { sort_order: number; label: string }>(list: T[]): T[] {
   return list.slice().sort((a, b) => a.sort_order - b.sort_order || a.label.localeCompare(b.label));
@@ -80,6 +105,34 @@ export function fromPriceCents(list: SizeVariant[], motifs: Motif[] = []): numbe
     ? act2.reduce((min, m) => Math.min(min, m.price_delta_cents ?? 0), act2[0].price_delta_cents ?? 0)
     : 0;
   return minSize + minDelta;
+}
+
+/**
+ * Cheapest active combination including per-size discounts (Holzbox).
+ * Returns null when the product has no active sizes.
+ */
+export function fromPriceDetail(
+  list: SizeVariant[],
+  motifs: Motif[] = [],
+  useSizeDiscount = false,
+  fallbackDiscountPercent = 0,
+): { listCents: number; finalCents: number; discountPercent: number } | null {
+  const act = activeSizes(list);
+  if (!act.length) return null;
+  const act2 = activeMotifs(motifs);
+  const minDelta = act2.length
+    ? act2.reduce((min, m) => Math.min(min, m.price_delta_cents ?? 0), act2[0].price_delta_cents ?? 0)
+    : 0;
+  let best: { listCents: number; finalCents: number; discountPercent: number } | null = null;
+  for (const s of act) {
+    const listCents = s.price_cents + minDelta;
+    const discountPercent = useSizeDiscount
+      ? clampPercent(s.discount_percent)
+      : clampPercent(fallbackDiscountPercent);
+    const finalCents = Math.round(listCents * (1 - discountPercent / 100));
+    if (!best || finalCents < best.finalCents) best = { listCents, finalCents, discountPercent };
+  }
+  return best;
 }
 
 export function hasMixedPrices(list: SizeVariant[]): boolean {

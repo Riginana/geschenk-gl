@@ -36,6 +36,7 @@ import {
   activeSizes,
   defaultSize,
   isConfigurableCategory,
+  sizeDiscountPercent,
   unitPriceCents,
 } from "@/lib/product-config";
 import { productConfigQueryOptions } from "@/lib/product-config.query";
@@ -203,16 +204,17 @@ function ProductPage() {
         (matchedVariant
           ? matchedVariant.price_cents
           : product.base_price_cents + (PRICE_BY_FORMAT_CENTS[format] ?? 0) + (PRICE_BY_FRAME_CENTS[frame] ?? 0));
+  const sizeDiscount = hasConfig ? sizeDiscountPercent(product.category, selectedSize) : null;
   const discountPercent = holzplatteRow
     ? holzplatteRow.discount_percent
     : framePrice
       ? framePrice.discountPercent
-      : product.discount_percent ?? 0;
+      : sizeDiscount ?? product.discount_percent ?? 0;
   const unitCents = holzplatteRow
     ? finalPriceCents(holzplatteRow.original_price, holzplatteRow.discount_percent)
     : framePrice
       ? framePrice.finalCents
-      : calculateDiscountedPrice(baseCents, product.discount_percent);
+      : calculateDiscountedPrice(baseCents, sizeDiscount ?? product.discount_percent);
   const hasDiscount = discountPercent > 0;
 
 

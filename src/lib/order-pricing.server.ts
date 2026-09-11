@@ -7,6 +7,7 @@ import {
 import type { Database } from "@/integrations/supabase/types";
 import { calculateDiscountedPrice, PRICE_BY_FORMAT_CENTS, PRICE_BY_FRAME_CENTS } from "@/lib/pricing";
 import { resolveFramePrice, normalizeFrameMaterial, type FramePriceRow } from "@/lib/frame-pricing";
+import { sizeDiscountPercent } from "@/lib/product-config";
 import {
   resolveHolzplattePrice,
   finalPriceCents,
@@ -41,12 +42,13 @@ export async function computeUnitPriceCents(
 
   const discount = (cents: number) => calculateDiscountedPrice(cents, product.discount_percent);
 
-  // 1. Configurable products (Schiebebox): price comes from the size variant.
+  // 1. Configurable products (Schiebebox / Holzbox): price comes from the size variant.
+  //    Holzbox: the discount lives on the size row, not on the product.
   const sizeId = personalization?.sizeId;
   if (sizeId) {
     const { data } = await db
       .from("product_size_variants")
-      .select("price_cents, product_id, is_active")
+      .select("price_cents, discount_percent, product_id, is_active")
       .eq("id", sizeId)
       .maybeSingle();
     if (!data || !data.is_active || data.product_id !== productId) return null;
@@ -61,8 +63,12 @@ export async function computeUnitPriceCents(
       if (!motif || !motif.is_active || motif.product_id !== productId) return null;
       cents += motif.price_delta_cents ?? 0;
     }
-    return discount(cents);
+    const sizeDiscount = sizeDiscountPercent((product as any).category, data as any);
+    return sizeDiscount !== null
+      ? calculateDiscountedPrice(cents, sizeDiscount)
+      : discount(cents);
   }
+
 
   // 1b. Holzplatte products: price from holzplatte_prices (override before global).
   const holzplatteSize = personalization?.["holzplatteSize"];
