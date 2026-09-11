@@ -47,6 +47,7 @@ function euroToCents(v: string): number | null {
 
 function FramePricesAdmin() {
   const [target, setTarget] = useState<string>(GLOBAL);
+  const [material, setMaterial] = useState<FrameMaterial>("papier");
   const [draft, setDraft] = useState<Record<string, string>>({});
   const [saving, setSaving] = useState(false);
 
@@ -66,6 +67,10 @@ function FramePricesAdmin() {
 
   const rows: FramePriceRow[] = pricesQ.data ?? [];
   const productId = target === GLOBAL ? null : target;
+  const selectedProduct = productId ? frameProducts.find((p) => p.id === productId) : undefined;
+  const effectiveMaterial: FrameMaterial = productId
+    ? normalizeFrameMaterial(selectedProduct?.frame_material)
+    : material;
 
   useEffect(() => {
     const next: Record<string, string> = {};
@@ -73,14 +78,23 @@ function FramePricesAdmin() {
       for (const variant of FRAME_VARIANTS) {
         const key = `${size}|${variant}`;
         const cents = productId
-          ? resolveFramePriceCents(rows, productId, size, variant)
-          : (rows.find((r) => r.product_id === null && r.size === size && r.variant === variant)
-              ?.price_cents ?? null);
+          ? resolveFramePriceCents(rows, productId, effectiveMaterial, size, variant)
+          : (rows.find(
+              (r) =>
+                r.product_id === null &&
+                (r.material ?? null) === material &&
+                r.size === size &&
+                r.variant === variant,
+            )?.price_cents ??
+            rows.find(
+              (r) => r.product_id === null && !r.material && r.size === size && r.variant === variant,
+            )?.price_cents ??
+            null);
         next[key] = cents === null ? "" : centsToEuro(cents);
       }
     }
     setDraft(next);
-  }, [target, pricesQ.data]);
+  }, [target, material, effectiveMaterial, pricesQ.data]);
 
   const hasOverride = (size: string, variant: string) =>
     !!productId && rows.some((r) => r.product_id === productId && r.size === size && r.variant === variant);
@@ -102,8 +116,14 @@ function FramePricesAdmin() {
     if (!entries.length) return;
     setSaving(true);
     try {
-      await adminUpsertFramePrices({ data: { productId, entries } });
-      toast.success("Preise gespeichert");
+      await adminUpsertFramePrices({
+        data: { productId, material: productId ? null : material, entries },
+      });
+      toast.success(
+        productId
+          ? "Produktpreise gespeichert"
+          : `Preise für ${FRAME_MATERIAL_LABELS[material]} gespeichert`,
+      );
       await pricesQ.refetch();
     } catch (e: any) {
       toast.error(e?.message ?? "Speichern fehlgeschlagen");
@@ -116,7 +136,7 @@ function FramePricesAdmin() {
     if (!productId) return;
     try {
       await adminDeleteFramePriceOverride({ data: { productId, size: size as any, variant: variant as any } });
-      toast.success("Override entfernt — globaler Preis gilt");
+      toast.success("Ausnahme entfernt — Preis der Unterkategorie gilt");
       await pricesQ.refetch();
     } catch (e: any) {
       toast.error(e?.message ?? "Fehlgeschlagen");
@@ -129,20 +149,43 @@ function FramePricesAdmin() {
     <div className="mx-auto max-w-5xl">
       <h1 className="font-serif text-2xl text-walnut">Rahmenpreise</h1>
       <p className="mt-1 text-sm text-muted-foreground">
-        Preise für Bilderrahmen-Produkte nach Größe und Rahmen-Variante. Produkt-Overrides
-        überschreiben die globalen Preise.
+        Preise für Bilderrahmen nach Unterkategorie (Papier / Holz / HDF), Größe und Rahmen-Variante.
+        Produktspezifische Ausnahmen überschreiben den Preis der Unterkategorie.
       </p>
 
-      <div className="mt-6 flex flex-wrap items-center gap-3">
+      <div className="mt-6 inline-flex rounded-lg border border-border bg-card p-1">
+        {FRAME_MATERIALS.map((m) => {
+          const active = effectiveMaterial === m;
+          return (
+            <button
+              key={m}
+              type="button"
+              onClick={() => {
+                setMaterial(m);
+                setTarget(GLOBAL);
+              }}
+              className={`rounded-md px-4 py-1.5 text-sm ${
+                active ? "bg-walnut text-cream" : "text-muted-foreground hover:bg-accent"
+              }`}
+            >
+              {FRAME_MATERIAL_LABELS[m]}
+            </button>
+          );
+        })}
+      </div>
+
+      <div className="mt-4 flex flex-wrap items-center gap-3">
         <select
           value={target}
           onChange={(e) => setTarget(e.target.value)}
           className="min-w-72 rounded-lg border border-border bg-card px-3 py-2 text-sm"
         >
-          <option value={GLOBAL}>Globale Standardpreise</option>
+          <option value={GLOBAL}>
+            Alle Produkte der Unterkategorie {FRAME_MATERIAL_LABELS[material]}
+          </option>
           {frameProducts.map((p) => (
             <option key={p.id} value={p.id}>
-              {p.name_de}
+              {p.name_de} ({FRAME_MATERIAL_LABELS[normalizeFrameMaterial(p.frame_material)]})
             </option>
           ))}
         </select>
@@ -155,6 +198,7 @@ function FramePricesAdmin() {
           Speichern
         </button>
       </div>
+
 
       {loading ? (
         <div className="mt-8 flex items-center gap-2 text-sm text-muted-foreground">
