@@ -1,5 +1,11 @@
 import { calculateDiscountedPrice } from "@/lib/pricing";
-import { fromPriceCents, isConfigurableCategory, type Motif, type SizeVariant } from "@/lib/product-config";
+import {
+  fromPriceDetail,
+  isConfigurableCategory,
+  isHolzboxCategory,
+  type Motif,
+  type SizeVariant,
+} from "@/lib/product-config";
 import { resolveFramePrice, normalizeFrameMaterial, FRAME_SIZES, FRAME_VARIANTS, type FramePriceRow } from "@/lib/frame-pricing";
 import {
   HOLZPLATTE_SIZES,
@@ -50,11 +56,17 @@ export function catalogFromPrice(product: CatalogProduct, src: CatalogPriceSourc
   });
 
   // 1. Configurable products (Schiebebox / Holzbox): size + motif surcharge.
+  //    Holzbox uses the discount stored on the size row instead of the product discount.
   if (isConfigurableCategory(product.category)) {
     const sizes = (src.sizes ?? []).filter((s) => s.product_id === product.id);
     const motifs = (src.motifs ?? []).filter((m) => m.product_id === product.id);
-    const cents = fromPriceCents(sizes, motifs);
-    if (cents != null) return withDiscount(cents);
+    const detail = fromPriceDetail(
+      sizes,
+      motifs,
+      isHolzboxCategory(product.category),
+      discountPercent,
+    );
+    if (detail) return detail;
   }
 
   // 2. Holzplatte: discount lives in the price table, not on the product.
