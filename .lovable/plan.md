@@ -1,35 +1,30 @@
-# Rahmenpreise nach Material trennen + Massenpreise für Holzbox
+# Rahmenpreise getrennt nach Papier und Holz
 
 ## Ziel
 
-1. Im Adminbereich "Rahmenpreise" werden Bilderrahmen-Produkte nach dem Innenmaterial getrennt: **Papier**, **Holz**, **HDF**. Preise lassen sich pro Material für alle Produkte dieses Materials auf einmal ändern.
-2. Neuer Adminbereich für **Holzbox** (und Schiebebox): Größen- und Motivpreise für alle Produkte der Kategorie auf einmal ändern.
+Die Rahmenvarianten und Größen bleiben genau wie jetzt auf der Website. Nur die Preise sollen sich unterscheiden: eine Preistabelle für Rahmen mit Papier-Einlage, eine für Holz. Beide lassen sich im Admin massenhaft ändern.
 
-## Teil 1 — Rahmen nach Material
+## So funktioniert es
 
-- Jedes Bilderrahmen-Produkt bekommt ein Feld "Innenmaterial" mit den Werten Papier / Holz / HDF (Standard: Papier). Im Produkt-Editor auswählbar.
-- Die Preistabelle bekommt eine Material-Ebene. Die Seite "Rahmenpreise" zeigt oben drei Reiter: Papier | Holz | HDF. Pro Reiter die bekannte Tabelle Größe (A5/A4/A3) × Rahmenvariante.
-- Eine Änderung im Reiter gilt sofort für alle Produkte mit diesem Innenmaterial.
-- Produktspezifische Ausnahmen bleiben möglich (Auswahl "Einzelnes Produkt" wie bisher); sie überschreiben den Materialpreis, der Zurücksetzen-Knopf entfernt die Ausnahme wieder.
-- Preisreihenfolge auf der Produktseite und beim Bezahlen: Produkt-Ausnahme → Materialpreis → bisheriger allgemeiner Preis.
-- Bestehende allgemeine Preise werden bei der Umstellung als Papier-Preise übernommen, damit sich nichts ändert, bis Sie neue Werte eintragen.
+1. Jedes Bilderrahmen-Produkt bekommt eine Materialangabe: **Papier** oder **Holz**.
+   - Die Zuordnung wird einmalig automatisch aus Produktname und Beschreibung abgeleitet (Stichworte wie "Papier", "Print", "Poster" → Papier; sonst Holz).
+   - Im Produkt-Editor lässt sich das Material jederzeit korrigieren; in der Produktliste gibt es eine Massenzuweisung für mehrere ausgewählte Produkte.
+2. Die Seite "Rahmenpreise" bekommt oben zwei Reiter: **Papier | Holz**.
+   - Darunter die gewohnte Tabelle Größe (A5/A4/A3) × Rahmenvariante.
+   - Eine Änderung gilt sofort für alle Rahmen-Produkte mit diesem Material.
+3. Produktspezifische Ausnahmen bleiben wie bisher möglich (Auswahl "Einzelnes Produkt") und haben Vorrang vor dem Materialpreis.
+4. Preisreihenfolge auf Produktseite, im Katalog und beim Bezahlen: Produkt-Ausnahme → Materialpreis → bisheriger allgemeiner Preis.
+5. Die heutigen allgemeinen Preise werden als Startwerte für beide Materialien übernommen, damit sich zunächst nichts ändert.
 
-## Teil 2 — Massenpreise Holzbox
-
-- Neue Adminseite "Holzbox-Preise" (im Menü neben Rahmenpreise), mit Umschalter Holzbox / Schiebebox.
-- Tabelle 1: Größen S / M / L mit Preis — gilt für alle Produkte der Kategorie.
-- Tabelle 2: Motive 1–4 mit Aufpreis (z. B. Wunschtext +4 €) — ebenfalls für alle Produkte der Kategorie.
-- Speichern schreibt die Werte in alle aktiven Produkte der Kategorie (nach Größen-Label bzw. Motiv-Nummer). Produkte ohne diese Größen/Motive werden dabei angelegt.
-- Die bestehende Einzelbearbeitung pro Produkt bleibt unverändert erhalten; wer dort abweichende Werte setzt, wird beim nächsten Massenspeichern überschrieben (Hinweis wird in der Oberfläche angezeigt).
+Nach der Umstellung prüfen Sie bitte kurz die automatische Zuordnung in der Produktliste und korrigieren einzelne Produkte, falls nötig.
 
 ## Technische Umsetzung
 
 - Migration:
-  - `products.frame_material text not null default 'papier'` (check: papier|holz|hdf).
-  - `frame_prices.material text null` + eindeutiger Index über (`product_id`, `material`, `size`, `variant`); bestehende globalen Zeilen auf `material = 'papier'` setzen und zusätzlich als Fallback-Kopie behalten.
-- `src/lib/frame-pricing.ts`: `FRAME_MATERIALS` + Labels; `resolveFramePriceCents(rows, productId, material, size, variant)` mit Kaskade Produkt → Material → global. Alle Aufrufer (PDP, `order-pricing.server.ts`, Katalogpreise) mitziehen.
-- `src/lib/frame-prices.functions.ts`: `material` in Upsert/Delete-Schema; Admin-Prüfung unverändert.
-- `src/routes/admin/frame-prices.tsx`: Material-Reiter über der Tabelle.
-- Neue Serverfunktion `adminBulkApplyConfig` in `src/lib/admin-config.functions.ts`: setzt Größenpreise und Motiv-Aufpreise für alle aktiven Produkte einer Kategorie (`product_size_variants`, `product_motifs`), inkl. Anlegen fehlender Zeilen.
-- Neue Route `src/routes/admin/box-prices.tsx` + Link in `src/routes/admin/route.tsx`.
-- Produkt-Editor `src/routes/admin/products/$id.tsx`: Auswahl Innenmaterial für Bilderrahmen.
+  - `products.frame_material text not null default 'holz'` (erlaubt: `papier`, `holz`), Backfill per Namens-/Beschreibungs-Heuristik.
+  - `frame_prices.material text null` + eindeutiger Index auf (`product_id`, `material`, `size`, `variant`) via `coalesce`; Bestandszeilen bleiben als globaler Fallback (`material = null`).
+- `src/lib/frame-pricing.ts`: `FRAME_MATERIALS` + Labels, `resolveFramePriceCents(rows, productId, material, size, variant)` mit Kaskade Produkt → Material → global.
+- Aufrufer nachziehen: `src/routes/product.$id.tsx`, `src/routes/shop.$slug.tsx`, `src/lib/catalog-pricing.ts` (+ `.query.ts`, `frame_material` mitladen), `src/lib/order-pricing.server.ts` (Material aus dem Produkt lesen, nicht aus der Client-Eingabe).
+- `src/lib/frame-prices.functions.ts`: `material` im Upsert-/Delete-Schema; Materialzeilen als Massenpreis.
+- `src/lib/admin.functions.ts`: `adminSetFrameMaterial(productIds, material)` für die Massenzuweisung.
+- `src/routes/admin/frame-prices.tsx`: Material-Reiter über der Tabelle; `src/routes/admin/products/$id.tsx` und `products/index.tsx`: Materialauswahl bzw. Massenzuweisung.
