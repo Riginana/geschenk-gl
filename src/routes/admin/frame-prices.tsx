@@ -51,6 +51,7 @@ function FramePricesAdmin() {
   const [material, setMaterial] = useState<FrameMaterial>("papier");
   const [draft, setDraft] = useState<Record<string, string>>({});
   const [saving, setSaving] = useState(false);
+  const queryClient = useQueryClient();
 
   const productsQ = useQuery({
     queryKey: ["admin", "products"],
@@ -126,6 +127,7 @@ function FramePricesAdmin() {
           : `Preise für ${FRAME_MATERIAL_LABELS[material]} gespeichert`,
       );
       await pricesQ.refetch();
+      await queryClient.invalidateQueries({ queryKey: ["frame-prices"] });
     } catch (e: any) {
       toast.error(e?.message ?? "Speichern fehlgeschlagen");
     } finally {
@@ -139,6 +141,40 @@ function FramePricesAdmin() {
       await adminDeleteFramePriceOverride({ data: { productId, size: size as any, variant: variant as any } });
       toast.success("Ausnahme entfernt — Preis der Unterkategorie gilt");
       await pricesQ.refetch();
+      await queryClient.invalidateQueries({ queryKey: ["frame-prices"] });
+    } catch (e: any) {
+      toast.error(e?.message ?? "Fehlgeschlagen");
+    }
+  };
+
+  /** Products that carry their own exception prices — mass changes skip them. */
+  const overrideProducts = useMemo(() => {
+    const ids = new Set(rows.filter((r) => r.product_id).map((r) => r.product_id as string));
+    return Array.from(ids).map((id) => ({
+      id,
+      name: frameProducts.find((p) => p.id === id)?.name_de ?? id,
+      count: rows.filter((r) => r.product_id === id).length,
+    }));
+  }, [rows, frameProducts]);
+
+  const materialStats = useMemo(() => {
+    const stats: Record<string, { own: number; products: number }> = {};
+    for (const m of FRAME_MATERIALS) {
+      stats[m] = {
+        own: rows.filter((r) => r.product_id === null && (r.material ?? null) === m).length,
+        products: frameProducts.filter((p) => normalizeFrameMaterial(p.frame_material) === m).length,
+      };
+    }
+    return stats;
+  }, [rows, frameProducts]);
+
+  const onClearOverrides = async (id: string) => {
+    if (!confirm("Alle Ausnahmepreise dieses Produkts entfernen?")) return;
+    try {
+      await adminDeleteAllFramePriceOverrides({ data: { productId: id } });
+      toast.success("Ausnahmen entfernt — Preise der Unterkategorie gelten");
+      await pricesQ.refetch();
+      await queryClient.invalidateQueries({ queryKey: ["frame-prices"] });
     } catch (e: any) {
       toast.error(e?.message ?? "Fehlgeschlagen");
     }
