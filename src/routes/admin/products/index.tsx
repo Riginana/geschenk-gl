@@ -135,6 +135,18 @@ function AdminProductsList() {
     }
   }
 
+  async function bulkFrameMaterial(v: "papier" | "holz" | "hdf") {
+    if (selected.size === 0) return;
+    try {
+      await setFrameMaterial({ data: { ids: Array.from(selected), frame_material: v } });
+      toast.success(`${selected.size} Produkte → ${v}`);
+      setSelected(new Set());
+      reload();
+    } catch (e: any) {
+      toast.error(e?.message ?? "Fehler");
+    }
+  }
+
   async function submitNew(e: React.FormEvent) {
     e.preventDefault();
     const price = Math.round(parseFloat(form.price.replace(",", ".")) * 100);
