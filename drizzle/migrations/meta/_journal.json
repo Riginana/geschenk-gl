@@ -15,6 +15,13 @@
       "when": 1789128716697,
       "tag": "0001_frame_prices_discount",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1789129358523,
+      "tag": "0002_size_variant_discount",
+      "breakpoints": true
     }
   ]
 }

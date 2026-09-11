@@ -299,6 +299,7 @@ export type Database = {
         Row: {
           created_at: string
           dimensions: string
+          discount_percent: number
           id: string
           is_active: boolean
           is_default: boolean
@@ -311,6 +312,7 @@ export type Database = {
         Insert: {
           created_at?: string
           dimensions?: string
+          discount_percent?: number
           id?: string
           is_active?: boolean
           is_default?: boolean
@@ -323,6 +325,7 @@ export type Database = {
         Update: {
           created_at?: string
           dimensions?: string
+          discount_percent?: number
           id?: string
           is_active?: boolean
           is_default?: boolean
