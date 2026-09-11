@@ -6,7 +6,7 @@ import {
 } from "@/lib/shipping";
 import type { Database } from "@/integrations/supabase/types";
 import { calculateDiscountedPrice, PRICE_BY_FORMAT_CENTS, PRICE_BY_FRAME_CENTS } from "@/lib/pricing";
-import { resolveFramePriceCents, type FramePriceRow } from "@/lib/frame-pricing";
+import { resolveFramePriceCents, normalizeFrameMaterial, type FramePriceRow } from "@/lib/frame-pricing";
 import {
   resolveHolzplattePrice,
   finalPriceCents,
@@ -34,7 +34,7 @@ export async function computeUnitPriceCents(
   const db = pub();
   const { data: product } = await db
     .from("products")
-    .select("id, category, base_price_cents, discount_percent, is_active")
+    .select("id, category, base_price_cents, discount_percent, is_active, frame_material")
     .eq("id", productId)
     .maybeSingle();
   if (!product || !product.is_active) return null;
@@ -92,10 +92,16 @@ export async function computeUnitPriceCents(
   if (frameSize && frameVariant) {
     const { data } = await db
       .from("frame_prices")
-      .select("id, product_id, size, variant, price_cents")
+      .select("id, product_id, material, size, variant, price_cents")
       .eq("size", frameSize)
       .eq("variant", frameVariant);
-    const cents = resolveFramePriceCents((data ?? []) as FramePriceRow[], productId, frameSize, frameVariant);
+    const cents = resolveFramePriceCents(
+      (data ?? []) as FramePriceRow[],
+      productId,
+      normalizeFrameMaterial((product as any).frame_material),
+      frameSize,
+      frameVariant,
+    );
     if (cents != null) return discount(cents);
   }
 

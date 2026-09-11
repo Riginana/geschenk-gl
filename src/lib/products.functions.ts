@@ -30,6 +30,7 @@ export type ProductRow = {
   category?: string;
   material: string;
   material_label?: string;
+  frame_material?: string;
   formats: string[];
   images: string[];
   hoverImage?: string;
@@ -60,6 +61,7 @@ type DbProduct = {
   category: string | null;
   material: string;
   material_label: string | null;
+  frame_material: string | null;
   badge: string | null;
   hero_image: string | null;
   hover_image: string | null;
@@ -130,6 +132,7 @@ function assemble(
     category: p.category ?? undefined,
     material: p.material,
     material_label: p.material_label ?? undefined,
+    frame_material: p.frame_material ?? undefined,
     formats,
     images,
     hoverImage: p.hover_image ?? undefined,
@@ -154,7 +157,7 @@ function assemble(
 }
 
 const PRODUCT_COLS =
-  "id,slug,name_de,name_en,description_de,description_en,base_price_cents,occasion,category,material,material_label,badge,hero_image,hover_image,is_bestseller,in_stock,tags,meta_description_de,meta_description_en,discount_percent,sort_order,product_video_url";
+  "id,slug,name_de,name_en,description_de,description_en,base_price_cents,occasion,category,material,material_label,frame_material,badge,hero_image,hover_image,is_bestseller,in_stock,tags,meta_description_de,meta_description_en,discount_percent,sort_order,product_video_url";
 
 
 export const listProducts = createServerFn({ method: "GET" }).handler(async (): Promise<ProductRow[]> => {

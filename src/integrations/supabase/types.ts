@@ -45,6 +45,7 @@ export type Database = {
         Row: {
           created_at: string
           id: string
+          material: string | null
           price_cents: number
           product_id: string | null
           size: string
@@ -54,6 +55,7 @@ export type Database = {
         Insert: {
           created_at?: string
           id?: string
+          material?: string | null
           price_cents: number
           product_id?: string | null
           size: string
@@ -63,6 +65,7 @@ export type Database = {
         Update: {
           created_at?: string
           id?: string
+          material?: string | null
           price_cents?: number
           product_id?: string | null
           size?: string
@@ -386,6 +389,7 @@ export type Database = {
           description_de: string
           description_en: string
           discount_percent: number
+          frame_material: string
           hero_image: string | null
           hover_image: string | null
           id: string
@@ -414,6 +418,7 @@ export type Database = {
           description_de: string
           description_en: string
           discount_percent?: number
+          frame_material?: string
           hero_image?: string | null
           hover_image?: string | null
           id?: string
@@ -442,6 +447,7 @@ export type Database = {
           description_de?: string
           description_en?: string
           discount_percent?: number
+          frame_material?: string
           hero_image?: string | null
           hover_image?: string | null
           id?: string

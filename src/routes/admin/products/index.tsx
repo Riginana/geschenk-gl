@@ -6,10 +6,17 @@ import {
   adminListProducts,
   adminUpdateProduct,
   adminBulkSetActive,
+  adminSetFrameMaterial,
   adminCreateProduct,
   adminDeleteProduct,
   type AdminProductRow,
 } from "@/lib/admin.functions";
+
+const FRAME_MATERIAL_OPTIONS = [
+  { value: "papier", label: "Papier" },
+  { value: "holz", label: "Holz" },
+  { value: "hdf", label: "HDF" },
+] as const;
 
 const CATEGORY_OPTIONS = [
   "bilderrahmen",
@@ -33,6 +40,7 @@ function AdminProductsList() {
   const list = useServerFn(adminListProducts);
   const update = useServerFn(adminUpdateProduct);
   const bulk = useServerFn(adminBulkSetActive);
+  const setFrameMaterial = useServerFn(adminSetFrameMaterial);
   const createProduct = useServerFn(adminCreateProduct);
   const deleteProduct = useServerFn(adminDeleteProduct);
 
@@ -42,6 +50,7 @@ function AdminProductsList() {
   const [search, setSearch] = useState("");
   const [fOccasion, setFOccasion] = useState("");
   const [fCategory, setFCategory] = useState("");
+  const [fFrameMaterial, setFFrameMaterial] = useState("");
   const [fActive, setFActive] = useState<"all" | "1" | "0">("all");
   const [showNew, setShowNew] = useState(false);
   const [creating, setCreating] = useState(false);
@@ -84,12 +93,13 @@ function AdminProductsList() {
     return rows.filter((r) => {
       if (fOccasion && r.occasion !== fOccasion) return false;
       if (fCategory && r.category !== fCategory) return false;
+      if (fFrameMaterial && (r.frame_material ?? "holz") !== fFrameMaterial) return false;
       if (fActive === "1" && !r.is_active) return false;
       if (fActive === "0" && r.is_active) return false;
       if (q && !(r.name_de?.toLowerCase().includes(q) || r.name_en?.toLowerCase().includes(q) || r.slug.toLowerCase().includes(q))) return false;
       return true;
     });
-  }, [rows, search, fOccasion, fCategory, fActive]);
+  }, [rows, search, fOccasion, fCategory, fFrameMaterial, fActive]);
 
   const allChecked = filtered.length > 0 && filtered.every((r) => selected.has(r.id));
 
@@ -118,6 +128,18 @@ function AdminProductsList() {
     try {
       await bulk({ data: { ids: Array.from(selected), is_active: v } });
       toast.success(`${selected.size} aktualisiert`);
+      setSelected(new Set());
+      reload();
+    } catch (e: any) {
+      toast.error(e?.message ?? "Fehler");
+    }
+  }
+
+  async function bulkFrameMaterial(v: "papier" | "holz" | "hdf") {
+    if (selected.size === 0) return;
+    try {
+      await setFrameMaterial({ data: { ids: Array.from(selected), frame_material: v } });
+      toast.success(`${selected.size} Produkte → ${v}`);
       setSelected(new Set());
       reload();
     } catch (e: any) {
@@ -299,6 +321,16 @@ function AdminProductsList() {
         </select>
         <select
           className="rounded-md border border-input bg-background px-3 py-2 text-sm"
+          value={fFrameMaterial}
+          onChange={(e) => setFFrameMaterial(e.target.value)}
+        >
+          <option value="">Alle Unterkategorien</option>
+          {FRAME_MATERIAL_OPTIONS.map((o) => (
+            <option key={o.value} value={o.value}>{o.label}</option>
+          ))}
+        </select>
+        <select
+          className="rounded-md border border-input bg-background px-3 py-2 text-sm"
           value={fActive}
           onChange={(e) => setFActive(e.target.value as any)}
         >
@@ -317,6 +349,16 @@ function AdminProductsList() {
           <button className="rounded-md border border-border px-3 py-1" onClick={() => bulkToggle(false)}>
             Entwurf
           </button>
+          <span className="ml-2 text-xs text-muted-foreground">Unterkategorie:</span>
+          {FRAME_MATERIAL_OPTIONS.map((o) => (
+            <button
+              key={o.value}
+              className="rounded-md border border-border px-3 py-1"
+              onClick={() => bulkFrameMaterial(o.value)}
+            >
+              {o.label}
+            </button>
+          ))}
           <button className="ml-auto text-xs text-muted-foreground underline" onClick={() => setSelected(new Set())}>
             Zurücksetzen
           </button>
@@ -334,6 +376,7 @@ function AdminProductsList() {
               <th className="px-3 py-2">Name</th>
               <th className="px-3 py-2">Anlass</th>
               <th className="px-3 py-2">Kategorie</th>
+              <th className="px-3 py-2">Unterkat.</th>
               <th className="px-3 py-2">Preis €</th>
               <th className="px-3 py-2">Rabatt %</th>
               <th className="px-3 py-2">Status</th>
@@ -346,10 +389,10 @@ function AdminProductsList() {
           </thead>
           <tbody>
             {loading && (
-              <tr><td colSpan={13} className="px-3 py-6 text-center text-muted-foreground">Wird geladen…</td></tr>
+              <tr><td colSpan={14} className="px-3 py-6 text-center text-muted-foreground">Wird geladen…</td></tr>
             )}
             {!loading && filtered.length === 0 && (
-              <tr><td colSpan={13} className="px-3 py-6 text-center text-muted-foreground">Keine Produkte</td></tr>
+              <tr><td colSpan={14} className="px-3 py-6 text-center text-muted-foreground">Keine Produkte</td></tr>
             )}
             {filtered.map((r) => (
               <tr key={r.id} className="border-t border-border">
@@ -369,6 +412,21 @@ function AdminProductsList() {
                 </td>
                 <td className="px-3 py-2">{r.occasion}</td>
                 <td className="px-3 py-2">{r.category ?? "—"}</td>
+                <td className="px-3 py-2">
+                  {r.category === "bilderrahmen" ? (
+                    <select
+                      className="rounded border border-input bg-background px-2 py-1 text-xs"
+                      value={r.frame_material ?? "holz"}
+                      onChange={(e) => patch(r.id, { frame_material: e.target.value })}
+                    >
+                      {FRAME_MATERIAL_OPTIONS.map((o) => (
+                        <option key={o.value} value={o.value}>{o.label}</option>
+                      ))}
+                    </select>
+                  ) : (
+                    "—"
+                  )}
+                </td>
                 <td className="px-3 py-2">{(r.base_price_cents / 100).toFixed(2)}</td>
                 <td className="px-3 py-2">{r.discount_percent}</td>
                 <td className="px-3 py-2">

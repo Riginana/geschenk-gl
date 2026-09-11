@@ -25,6 +25,7 @@ export type AdminProductRow = {
   category: string | null;
   material: string;
   material_label: string | null;
+  frame_material: string;
   hero_image: string | null;
   hover_image: string | null;
   is_active: boolean;
@@ -39,7 +40,8 @@ export type AdminProductRow = {
 };
 
 const PRODUCT_COLS =
-  "id,slug,name_de,name_en,description_de,description_en,base_price_cents,discount_percent,occasion,category,material,material_label,hero_image,hover_image,is_active,is_bestseller,is_featured,in_stock,sort_order,badge,meta_description_de,meta_description_en,product_video_url";
+  "id,slug,name_de,name_en,description_de,description_en,base_price_cents,discount_percent,occasion,category,material,material_label,frame_material,hero_image,hover_image,is_active,is_bestseller,is_featured,in_stock,sort_order,badge,meta_description_de,meta_description_en,product_video_url";
+
 
 
 export const adminListProducts = createServerFn({ method: "GET" })
@@ -88,6 +90,7 @@ const productUpdateSchema = z.object({
       category: z.string().max(100).nullable().optional(),
       material: z.string().max(100).optional(),
       material_label: z.string().max(200).nullable().optional(),
+      frame_material: z.enum(["papier", "holz", "hdf"]).optional(),
       hero_image: z.string().max(2000).nullable().optional(),
       hover_image: z.string().max(2000).nullable().optional(),
       badge: z.string().max(50).nullable().optional(),
@@ -128,6 +131,28 @@ export const adminBulkSetActive = createServerFn({ method: "POST" })
     const { error } = await supabaseAdmin
       .from("products")
       .update({ is_active: data.is_active })
+      .in("id", data.ids);
+    if (error) throw new Error(error.message);
+    return { ok: true, count: data.ids.length };
+  });
+
+/** Bulk assign the Bilderrahmen subcategory (papier / holz / hdf). */
+export const adminSetFrameMaterial = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((d) =>
+    z
+      .object({
+        ids: z.array(z.string().uuid()).min(1).max(500),
+        frame_material: z.enum(["papier", "holz", "hdf"]),
+      })
+      .parse(d),
+  )
+  .handler(async ({ data, context }) => {
+    await requireAdmin(context);
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { error } = await supabaseAdmin
+      .from("products")
+      .update({ frame_material: data.frame_material } as any)
       .in("id", data.ids);
     if (error) throw new Error(error.message);
     return { ok: true, count: data.ids.length };
