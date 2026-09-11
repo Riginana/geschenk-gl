@@ -50,6 +50,8 @@ function FramePricesAdmin() {
   const [target, setTarget] = useState<string>(GLOBAL);
   const [material, setMaterial] = useState<FrameMaterial>("papier");
   const [draft, setDraft] = useState<Record<string, string>>({});
+  const [discounts, setDiscounts] = useState<Record<string, string>>({});
+  const [bulkDiscount, setBulkDiscount] = useState<string>("");
   const [saving, setSaving] = useState(false);
   const queryClient = useQueryClient();
 
@@ -75,44 +77,72 @@ function FramePricesAdmin() {
     : material;
 
   useEffect(() => {
-    const next: Record<string, string> = {};
+    const nextPrice: Record<string, string> = {};
+    const nextDiscount: Record<string, string> = {};
     for (const size of FRAME_SIZES) {
       for (const variant of FRAME_VARIANTS) {
         const key = `${size}|${variant}`;
-        const cents = productId
-          ? resolveFramePriceCents(rows, productId, effectiveMaterial, size, variant)
+        const row = productId
+          ? resolveFramePriceRow(rows, productId, effectiveMaterial, size, variant)
           : (rows.find(
               (r) =>
                 r.product_id === null &&
                 (r.material ?? null) === material &&
                 r.size === size &&
                 r.variant === variant,
-            )?.price_cents ??
+            ) ??
             rows.find(
               (r) => r.product_id === null && !r.material && r.size === size && r.variant === variant,
-            )?.price_cents ??
+            ) ??
             null);
-        next[key] = cents === null ? "" : centsToEuro(cents);
+        nextPrice[key] = row ? centsToEuro(row.price_cents) : "";
+        nextDiscount[key] = row ? String(clampPercent(row.discount_percent)) : "";
       }
     }
-    setDraft(next);
+    setDraft(nextPrice);
+    setDiscounts(nextDiscount);
   }, [target, material, effectiveMaterial, pricesQ.data]);
 
   const hasOverride = (size: string, variant: string) =>
     !!productId && rows.some((r) => r.product_id === productId && r.size === size && r.variant === variant);
 
+  const applyBulkDiscount = () => {
+    const raw = bulkDiscount.trim().replace(",", ".");
+    const n = Number(raw);
+    if (raw === "" || !Number.isFinite(n) || n < 0 || n > 100) {
+      toast.error("Bitte einen Rabatt zwischen 0 und 100 angeben");
+      return;
+    }
+    const value = String(Math.round(n));
+    setDiscounts(() => {
+      const next: Record<string, string> = {};
+      for (const size of FRAME_SIZES) {
+        for (const variant of FRAME_VARIANTS) next[`${size}|${variant}`] = value;
+      }
+      return next;
+    });
+    toast.success(`Rabatt ${value} % in alle Felder eingetragen — jetzt speichern`);
+  };
+
   const onSave = async () => {
-    const entries: Array<{ size: any; variant: any; priceCents: number }> = [];
+    const entries: Array<{ size: any; variant: any; priceCents: number; discountPercent: number }> = [];
     for (const size of FRAME_SIZES) {
       for (const variant of FRAME_VARIANTS) {
-        const raw = draft[`${size}|${variant}`] ?? "";
+        const key = `${size}|${variant}`;
+        const raw = draft[key] ?? "";
         if (raw.trim() === "") continue;
         const cents = euroToCents(raw);
         if (cents === null) {
           toast.error(`Ungültiger Preis bei ${size} / ${FRAME_VARIANT_LABELS[variant]}`);
           return;
         }
-        entries.push({ size, variant, priceCents: cents });
+        const rawDiscount = (discounts[key] ?? "").trim().replace(",", ".");
+        const d = rawDiscount === "" ? 0 : Number(rawDiscount);
+        if (!Number.isFinite(d) || d < 0 || d > 100) {
+          toast.error(`Ungültiger Rabatt bei ${size} / ${FRAME_VARIANT_LABELS[variant]}`);
+          return;
+        }
+        entries.push({ size, variant, priceCents: cents, discountPercent: Math.round(d) });
       }
     }
     if (!entries.length) return;
