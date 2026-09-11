@@ -1,13 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { Loader2, Save, Undo2 } from "lucide-react";
+import { Loader2, Save, Undo2, Trash2 } from "lucide-react";
 import { adminListProducts } from "@/lib/admin.functions";
 import {
   listFramePrices,
   adminUpsertFramePrices,
   adminDeleteFramePriceOverride,
+  adminDeleteAllFramePriceOverrides,
 } from "@/lib/frame-prices.functions";
 import {
   FRAME_SIZES,
@@ -50,6 +51,7 @@ function FramePricesAdmin() {
   const [material, setMaterial] = useState<FrameMaterial>("papier");
   const [draft, setDraft] = useState<Record<string, string>>({});
   const [saving, setSaving] = useState(false);
+  const queryClient = useQueryClient();
 
   const productsQ = useQuery({
     queryKey: ["admin", "products"],
@@ -125,6 +127,7 @@ function FramePricesAdmin() {
           : `Preise für ${FRAME_MATERIAL_LABELS[material]} gespeichert`,
       );
       await pricesQ.refetch();
+      await queryClient.invalidateQueries({ queryKey: ["frame-prices"] });
     } catch (e: any) {
       toast.error(e?.message ?? "Speichern fehlgeschlagen");
     } finally {
@@ -138,6 +141,40 @@ function FramePricesAdmin() {
       await adminDeleteFramePriceOverride({ data: { productId, size: size as any, variant: variant as any } });
       toast.success("Ausnahme entfernt — Preis der Unterkategorie gilt");
       await pricesQ.refetch();
+      await queryClient.invalidateQueries({ queryKey: ["frame-prices"] });
+    } catch (e: any) {
+      toast.error(e?.message ?? "Fehlgeschlagen");
+    }
+  };
+
+  /** Products that carry their own exception prices — mass changes skip them. */
+  const overrideProducts = useMemo(() => {
+    const ids = new Set(rows.filter((r) => r.product_id).map((r) => r.product_id as string));
+    return Array.from(ids).map((id) => ({
+      id,
+      name: frameProducts.find((p) => p.id === id)?.name_de ?? id,
+      count: rows.filter((r) => r.product_id === id).length,
+    }));
+  }, [rows, frameProducts]);
+
+  const materialStats = useMemo(() => {
+    const stats: Record<string, { own: number; products: number }> = {};
+    for (const m of FRAME_MATERIALS) {
+      stats[m] = {
+        own: rows.filter((r) => r.product_id === null && (r.material ?? null) === m).length,
+        products: frameProducts.filter((p) => normalizeFrameMaterial(p.frame_material) === m).length,
+      };
+    }
+    return stats;
+  }, [rows, frameProducts]);
+
+  const onClearOverrides = async (id: string) => {
+    if (!confirm("Alle Ausnahmepreise dieses Produkts entfernen?")) return;
+    try {
+      await adminDeleteAllFramePriceOverrides({ data: { productId: id } });
+      toast.success("Ausnahmen entfernt — Preise der Unterkategorie gelten");
+      await pricesQ.refetch();
+      await queryClient.invalidateQueries({ queryKey: ["frame-prices"] });
     } catch (e: any) {
       toast.error(e?.message ?? "Fehlgeschlagen");
     }
@@ -169,10 +206,22 @@ function FramePricesAdmin() {
               }`}
             >
               {FRAME_MATERIAL_LABELS[m]}
+              <span className="ml-2 text-xs opacity-70">
+                {materialStats[m]?.products ?? 0}
+              </span>
             </button>
           );
         })}
       </div>
+
+      <p className="mt-2 text-xs text-muted-foreground">
+        {productId
+          ? `Produktspezifische Preise (Unterkategorie: ${FRAME_MATERIAL_LABELS[effectiveMaterial]})`
+          : (materialStats[material]?.own ?? 0) > 0
+            ? `${FRAME_MATERIAL_LABELS[material]}: eigene Preise hinterlegt · ${materialStats[material]?.products ?? 0} Produkte`
+            : `${FRAME_MATERIAL_LABELS[material]}: noch keine eigenen Preise — es gelten die allgemeinen Preise · ${materialStats[material]?.products ?? 0} Produkte`}
+      </p>
+
 
       <div className="mt-4 flex flex-wrap items-center gap-3">
         <select
@@ -264,6 +313,35 @@ function FramePricesAdmin() {
           Felder mit goldenem Rahmen sind produktspezifische Overrides. Leere Felder werden nicht
           gespeichert.
         </p>
+      )}
+
+      {overrideProducts.length > 0 && (
+        <section className="mt-8 rounded-xl border border-brass/40 bg-card p-4">
+          <h2 className="text-sm font-medium text-walnut">
+            Produkte mit eigenen Ausnahmepreisen
+          </h2>
+          <p className="mt-1 text-xs text-muted-foreground">
+            Bei diesen Produkten wirken Änderungen an den Unterkategorie-Preisen nicht. Ausnahmen
+            entfernen, damit wieder der Preis der Unterkategorie gilt.
+          </p>
+          <ul className="mt-3 space-y-2">
+            {overrideProducts.map((p) => (
+              <li key={p.id} className="flex items-center justify-between gap-3 text-sm">
+                <span>
+                  {p.name}{" "}
+                  <span className="text-xs text-muted-foreground">({p.count} Preisfelder)</span>
+                </span>
+                <button
+                  type="button"
+                  onClick={() => onClearOverrides(p.id)}
+                  className="inline-flex items-center gap-1.5 rounded-md border border-border px-2.5 py-1 text-xs text-muted-foreground hover:bg-accent"
+                >
+                  <Trash2 className="h-3.5 w-3.5" /> Ausnahmen entfernen
+                </button>
+              </li>
+            ))}
+          </ul>
+        </section>
       )}
 
       <section className="mt-12">

@@ -5,7 +5,7 @@ import { listHolzplattePrices } from "@/lib/holzplatte-prices.functions";
 export const framePricesQueryOptions = {
   queryKey: ["frame-prices"] as const,
   queryFn: () => listFramePrices(),
-  staleTime: 60_000,
+  staleTime: 0,
 };
 
 /** Shared query for Holzplatte prices (small table, cached once). */

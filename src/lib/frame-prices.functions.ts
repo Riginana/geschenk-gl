@@ -113,3 +113,18 @@ export const adminDeleteFramePriceOverride = createServerFn({ method: "POST" })
     if (error) throw new Error(error.message);
     return { ok: true };
   });
+
+/** Removes ALL per-product overrides so the subcategory prices apply again. */
+export const adminDeleteAllFramePriceOverrides = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((d) => z.object({ productId: z.string().uuid() }).parse(d))
+  .handler(async ({ data, context }) => {
+    await requireAdmin(context);
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { error } = await supabaseAdmin
+      .from("frame_prices")
+      .delete()
+      .eq("product_id", data.productId);
+    if (error) throw new Error(error.message);
+    return { ok: true };
+  });
