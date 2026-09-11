@@ -6,7 +6,7 @@ import {
 } from "@/lib/shipping";
 import type { Database } from "@/integrations/supabase/types";
 import { calculateDiscountedPrice, PRICE_BY_FORMAT_CENTS, PRICE_BY_FRAME_CENTS } from "@/lib/pricing";
-import { resolveFramePriceCents, normalizeFrameMaterial, type FramePriceRow } from "@/lib/frame-pricing";
+import { resolveFramePrice, normalizeFrameMaterial, type FramePriceRow } from "@/lib/frame-pricing";
 import {
   resolveHolzplattePrice,
   finalPriceCents,
@@ -87,22 +87,23 @@ export async function computeUnitPriceCents(
 
 
   // 2. Frame products: price grid (product override wins over the global row).
+  //    The discount already lives in the price table; product discount is not re-applied.
   const frameSize = personalization?.frameSize;
   const frameVariant = personalization?.frameVariant;
   if (frameSize && frameVariant) {
     const { data } = await db
       .from("frame_prices")
-      .select("id, product_id, material, size, variant, price_cents")
+      .select("id, product_id, material, size, variant, price_cents, discount_percent")
       .eq("size", frameSize)
       .eq("variant", frameVariant);
-    const cents = resolveFramePriceCents(
+    const price = resolveFramePrice(
       (data ?? []) as FramePriceRow[],
       productId,
       normalizeFrameMaterial((product as any).frame_material),
       frameSize,
       frameVariant,
     );
-    if (cents != null) return discount(cents);
+    if (price) return price.finalCents;
   }
 
   // 3. Explicit product variant for the chosen format + material.

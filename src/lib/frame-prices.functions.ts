@@ -29,7 +29,7 @@ export const listFramePrices = createServerFn({ method: "GET" }).handler(
     const sb = pub();
     const { data, error } = await sb
       .from("frame_prices")
-      .select("id,product_id,material,size,variant,price_cents");
+      .select("id,product_id,material,size,variant,price_cents,discount_percent");
     if (error) {
       console.error("[listFramePrices]", error.message);
       return [];
@@ -47,6 +47,7 @@ const upsertSchema = z.object({
         size: sizeSchema,
         variant: variantSchema,
         priceCents: z.number().int().min(0).max(1000000),
+        discountPercent: z.number().int().min(0).max(100).optional(),
       }),
     )
     .min(1)
@@ -61,6 +62,7 @@ export const adminUpsertFramePrices = createServerFn({ method: "POST" })
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     const material = data.productId ? null : (data.material ?? null);
     for (const e of data.entries) {
+      const discount = e.discountPercent ?? 0;
       let q = supabaseAdmin
         .from("frame_prices")
         .select("id")
@@ -73,7 +75,7 @@ export const adminUpsertFramePrices = createServerFn({ method: "POST" })
       if (existing) {
         const { error } = await supabaseAdmin
           .from("frame_prices")
-          .update({ price_cents: e.priceCents })
+          .update({ price_cents: e.priceCents, discount_percent: discount } as any)
           .eq("id", (existing as { id: string }).id);
         if (error) throw new Error(error.message);
       } else {
@@ -83,6 +85,7 @@ export const adminUpsertFramePrices = createServerFn({ method: "POST" })
           size: e.size,
           variant: e.variant,
           price_cents: e.priceCents,
+          discount_percent: discount,
         } as any);
         if (error) throw new Error(error.message);
       }
