@@ -263,6 +263,25 @@ function AdminProductEdit() {
               Nur Produkte der Kategorie <strong>bilderrahmen</strong> zeigen im Shop die Größen- und Rahmenauswahl.
             </p>
           </div>
+          {product.category === "bilderrahmen" && (
+            <div>
+              <label className="mb-1 block text-xs font-medium text-muted-foreground">
+                Unterkategorie (Rahmenpreise)
+              </label>
+              <select
+                value={product.frame_material ?? "holz"}
+                onChange={(e) => saveField("frame_material", e.target.value as any)}
+                className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm"
+              >
+                <option value="papier">Papier</option>
+                <option value="holz">Holz</option>
+                <option value="hdf">HDF</option>
+              </select>
+              <p className="mt-1 text-[11px] leading-snug text-muted-foreground">
+                Bestimmt, welche Preistabelle unter <strong>Rahmenpreise</strong> für dieses Produkt gilt.
+              </p>
+            </div>
+          )}
           <TextField label="Material" value={product.material} onSave={(v) => saveField("material", v)} />
           <TextField label="Material label" value={product.material_label ?? ""} onSave={(v) => saveField("material_label", (v || null) as any)} />
           <TextField label="Badge" value={product.badge ?? ""} onSave={(v) => saveField("badge", (v || null) as any)} />
