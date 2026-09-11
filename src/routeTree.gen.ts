@@ -34,6 +34,7 @@ import { Route as AdminLoginRouteImport } from './routes/admin/login'
 import { Route as AdminFramePricesRouteImport } from './routes/admin/frame-prices'
 import { Route as AdminProductsIndexRouteImport } from './routes/admin/products/index'
 import { Route as AdminProductsIdRouteImport } from './routes/admin/products/$id'
+import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
 import { Route as ApiPublicPaymentsWebhookRouteImport } from './routes/api/public/payments/webhook'
 
 const WunschlisteRoute = WunschlisteRouteImport.update({
@@ -161,6 +162,12 @@ const AdminProductsIdRoute = AdminProductsIdRouteImport.update({
   path: '/products/$id',
   getParentRoute: () => AdminRouteRoute,
 } as any)
+const LovableEmailTransactionalPreviewRoute =
+  LovableEmailTransactionalPreviewRouteImport.update({
+    id: '/lovable/email/transactional/preview',
+    path: '/lovable/email/transactional/preview',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ApiPublicPaymentsWebhookRoute =
   ApiPublicPaymentsWebhookRouteImport.update({
     id: '/api/public/payments/webhook',
@@ -195,6 +202,7 @@ export interface FileRoutesByFullPath {
   '/admin/products/$id': typeof AdminProductsIdRoute
   '/admin/products/': typeof AdminProductsIndexRoute
   '/api/public/payments/webhook': typeof ApiPublicPaymentsWebhookRoute
+  '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -222,6 +230,7 @@ export interface FileRoutesByTo {
   '/admin/products/$id': typeof AdminProductsIdRoute
   '/admin/products': typeof AdminProductsIndexRoute
   '/api/public/payments/webhook': typeof ApiPublicPaymentsWebhookRoute
+  '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -251,6 +260,7 @@ export interface FileRoutesById {
   '/admin/products/$id': typeof AdminProductsIdRoute
   '/admin/products/': typeof AdminProductsIndexRoute
   '/api/public/payments/webhook': typeof ApiPublicPaymentsWebhookRoute
+  '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -281,6 +291,7 @@ export interface FileRouteTypes {
     | '/admin/products/$id'
     | '/admin/products/'
     | '/api/public/payments/webhook'
+    | '/lovable/email/transactional/preview'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -308,6 +319,7 @@ export interface FileRouteTypes {
     | '/admin/products/$id'
     | '/admin/products'
     | '/api/public/payments/webhook'
+    | '/lovable/email/transactional/preview'
   id:
     | '__root__'
     | '/'
@@ -336,6 +348,7 @@ export interface FileRouteTypes {
     | '/admin/products/$id'
     | '/admin/products/'
     | '/api/public/payments/webhook'
+    | '/lovable/email/transactional/preview'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -359,6 +372,7 @@ export interface RootRouteChildren {
   ShopSlugRoute: typeof ShopSlugRoute
   ShopIndexRoute: typeof ShopIndexRoute
   ApiPublicPaymentsWebhookRoute: typeof ApiPublicPaymentsWebhookRoute
+  LovableEmailTransactionalPreviewRoute: typeof LovableEmailTransactionalPreviewRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -538,6 +552,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminProductsIdRouteImport
       parentRoute: typeof AdminRouteRoute
     }
+    '/lovable/email/transactional/preview': {
+      id: '/lovable/email/transactional/preview'
+      path: '/lovable/email/transactional/preview'
+      fullPath: '/lovable/email/transactional/preview'
+      preLoaderRoute: typeof LovableEmailTransactionalPreviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/payments/webhook': {
       id: '/api/public/payments/webhook'
       path: '/api/public/payments/webhook'
@@ -591,6 +612,7 @@ const rootRouteChildren: RootRouteChildren = {
   ShopSlugRoute: ShopSlugRoute,
   ShopIndexRoute: ShopIndexRoute,
   ApiPublicPaymentsWebhookRoute: ApiPublicPaymentsWebhookRoute,
+  LovableEmailTransactionalPreviewRoute: LovableEmailTransactionalPreviewRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
