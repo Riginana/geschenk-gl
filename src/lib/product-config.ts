@@ -37,10 +37,33 @@ export type Motif = {
 /** Categories that use size variants + motifs. */
 export const CONFIGURABLE_CATEGORIES = ["schiebebox", "holzbox"] as const;
 export const CONFIGURABLE_CATEGORY = CONFIGURABLE_CATEGORIES[0];
+export const HOLZBOX_CATEGORY = "holzbox";
+/** Default Holzbox sizes managed centrally in the admin price table. */
+export const HOLZBOX_SIZE_LABELS = ["S", "M", "L"] as const;
 
 export function isConfigurableCategory(category?: string | null): boolean {
   return (CONFIGURABLE_CATEGORIES as readonly string[]).includes((category ?? "").toLowerCase());
 }
+
+export function isHolzboxCategory(category?: string | null): boolean {
+  return (category ?? "").toLowerCase() === HOLZBOX_CATEGORY;
+}
+
+export function clampPercent(n: unknown): number {
+  const v = Math.round(Number(n ?? 0));
+  if (!Number.isFinite(v)) return 0;
+  return Math.max(0, Math.min(100, v));
+}
+
+/** Discount that applies to a Holzbox configuration; null for other categories. */
+export function sizeDiscountPercent(
+  category: string | null | undefined,
+  size?: Pick<SizeVariant, "discount_percent"> | null,
+): number | null {
+  if (!isHolzboxCategory(category) || !size) return null;
+  return clampPercent(size.discount_percent);
+}
+
 
 export function sortSizes<T extends { sort_order: number; label: string }>(list: T[]): T[] {
   return list.slice().sort((a, b) => a.sort_order - b.sort_order || a.label.localeCompare(b.label));
