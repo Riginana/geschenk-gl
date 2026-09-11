@@ -1,0 +1,2 @@
+ALTER TABLE public.frame_prices ADD COLUMN IF NOT EXISTS discount_percent integer NOT NULL DEFAULT 0;
+ALTER TABLE public.frame_prices ADD CONSTRAINT frame_prices_discount_percent_range CHECK (discount_percent >= 0 AND discount_percent <= 100);

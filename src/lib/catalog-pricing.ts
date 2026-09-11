@@ -1,6 +1,6 @@
 import { calculateDiscountedPrice } from "@/lib/pricing";
 import { fromPriceCents, isConfigurableCategory, type Motif, type SizeVariant } from "@/lib/product-config";
-import { resolveFramePriceCents, normalizeFrameMaterial, FRAME_SIZES, FRAME_VARIANTS, type FramePriceRow } from "@/lib/frame-pricing";
+import { resolveFramePrice, normalizeFrameMaterial, FRAME_SIZES, FRAME_VARIANTS, type FramePriceRow } from "@/lib/frame-pricing";
 import {
   HOLZPLATTE_SIZES,
   finalPriceCents,
@@ -74,17 +74,18 @@ export function catalogFromPrice(product: CatalogProduct, src: CatalogPriceSourc
   }
 
   // 3. Bilderrahmen: cheapest entry of the frame price grid.
+  //    The discount lives in the price table; the product discount is not applied.
   if (isFrameCategory(product.category) && src.framePrices?.length) {
     const material = normalizeFrameMaterial(product.frame_material);
-    let min: number | null = null;
+    let best: CatalogPrice | null = null;
     for (const size of FRAME_SIZES) {
       for (const variant of FRAME_VARIANTS) {
-        const cents = resolveFramePriceCents(src.framePrices, product.id, material, size, variant);
-        if (cents == null) continue;
-        if (min == null || cents < min) min = cents;
+        const p = resolveFramePrice(src.framePrices, product.id, material, size, variant);
+        if (!p) continue;
+        if (!best || p.finalCents < best.finalCents) best = p;
       }
     }
-    if (min != null) return withDiscount(min);
+    if (best) return best;
   }
 
   // 4. Fallback: product base price.

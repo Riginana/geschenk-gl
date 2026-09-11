@@ -18,7 +18,8 @@ import {
   FRAME_MATERIALS,
   FRAME_MATERIAL_LABELS,
   normalizeFrameMaterial,
-  resolveFramePriceCents,
+  resolveFramePriceRow,
+  clampPercent,
   type FrameMaterial,
   type FramePriceRow,
 } from "@/lib/frame-pricing";
@@ -50,6 +51,8 @@ function FramePricesAdmin() {
   const [target, setTarget] = useState<string>(GLOBAL);
   const [material, setMaterial] = useState<FrameMaterial>("papier");
   const [draft, setDraft] = useState<Record<string, string>>({});
+  const [discounts, setDiscounts] = useState<Record<string, string>>({});
+  const [bulkDiscount, setBulkDiscount] = useState<string>("");
   const [saving, setSaving] = useState(false);
   const queryClient = useQueryClient();
 
@@ -75,44 +78,72 @@ function FramePricesAdmin() {
     : material;
 
   useEffect(() => {
-    const next: Record<string, string> = {};
+    const nextPrice: Record<string, string> = {};
+    const nextDiscount: Record<string, string> = {};
     for (const size of FRAME_SIZES) {
       for (const variant of FRAME_VARIANTS) {
         const key = `${size}|${variant}`;
-        const cents = productId
-          ? resolveFramePriceCents(rows, productId, effectiveMaterial, size, variant)
+        const row = productId
+          ? resolveFramePriceRow(rows, productId, effectiveMaterial, size, variant)
           : (rows.find(
               (r) =>
                 r.product_id === null &&
                 (r.material ?? null) === material &&
                 r.size === size &&
                 r.variant === variant,
-            )?.price_cents ??
+            ) ??
             rows.find(
               (r) => r.product_id === null && !r.material && r.size === size && r.variant === variant,
-            )?.price_cents ??
+            ) ??
             null);
-        next[key] = cents === null ? "" : centsToEuro(cents);
+        nextPrice[key] = row ? centsToEuro(row.price_cents) : "";
+        nextDiscount[key] = row ? String(clampPercent(row.discount_percent)) : "";
       }
     }
-    setDraft(next);
+    setDraft(nextPrice);
+    setDiscounts(nextDiscount);
   }, [target, material, effectiveMaterial, pricesQ.data]);
 
   const hasOverride = (size: string, variant: string) =>
     !!productId && rows.some((r) => r.product_id === productId && r.size === size && r.variant === variant);
 
+  const applyBulkDiscount = () => {
+    const raw = bulkDiscount.trim().replace(",", ".");
+    const n = Number(raw);
+    if (raw === "" || !Number.isFinite(n) || n < 0 || n > 100) {
+      toast.error("Bitte einen Rabatt zwischen 0 und 100 angeben");
+      return;
+    }
+    const value = String(Math.round(n));
+    setDiscounts(() => {
+      const next: Record<string, string> = {};
+      for (const size of FRAME_SIZES) {
+        for (const variant of FRAME_VARIANTS) next[`${size}|${variant}`] = value;
+      }
+      return next;
+    });
+    toast.success(`Rabatt ${value} % in alle Felder eingetragen — jetzt speichern`);
+  };
+
   const onSave = async () => {
-    const entries: Array<{ size: any; variant: any; priceCents: number }> = [];
+    const entries: Array<{ size: any; variant: any; priceCents: number; discountPercent: number }> = [];
     for (const size of FRAME_SIZES) {
       for (const variant of FRAME_VARIANTS) {
-        const raw = draft[`${size}|${variant}`] ?? "";
+        const key = `${size}|${variant}`;
+        const raw = draft[key] ?? "";
         if (raw.trim() === "") continue;
         const cents = euroToCents(raw);
         if (cents === null) {
           toast.error(`Ungültiger Preis bei ${size} / ${FRAME_VARIANT_LABELS[variant]}`);
           return;
         }
-        entries.push({ size, variant, priceCents: cents });
+        const rawDiscount = (discounts[key] ?? "").trim().replace(",", ".");
+        const d = rawDiscount === "" ? 0 : Number(rawDiscount);
+        if (!Number.isFinite(d) || d < 0 || d > 100) {
+          toast.error(`Ungültiger Rabatt bei ${size} / ${FRAME_VARIANT_LABELS[variant]}`);
+          return;
+        }
+        entries.push({ size, variant, priceCents: cents, discountPercent: Math.round(d) });
       }
     }
     if (!entries.length) return;
@@ -248,6 +279,27 @@ function FramePricesAdmin() {
         </button>
       </div>
 
+      <div className="mt-4 flex flex-wrap items-center gap-2 rounded-lg border border-border bg-card px-3 py-2">
+        <span className="text-sm text-muted-foreground">Rabatt für alle Felder setzen:</span>
+        <input
+          value={bulkDiscount}
+          onChange={(e) => setBulkDiscount(e.target.value)}
+          inputMode="decimal"
+          placeholder="z. B. 30"
+          aria-label="Rabatt für alle Felder"
+          className="w-24 rounded-md border border-border bg-background px-2 py-1.5 text-sm"
+        />
+        <span className="text-xs text-muted-foreground">%</span>
+        <button
+          type="button"
+          onClick={applyBulkDiscount}
+          className="rounded-md border border-border px-3 py-1.5 text-sm hover:bg-accent"
+        >
+          Übernehmen
+        </button>
+        <span className="text-xs text-muted-foreground">Danach "Speichern" drücken.</span>
+      </div>
+
 
       {loading ? (
         <div className="mt-8 flex items-center gap-2 text-sm text-muted-foreground">
@@ -272,21 +324,41 @@ function FramePricesAdmin() {
                   <td className="px-4 py-2">{FRAME_VARIANT_LABELS[variant]}</td>
                   {FRAME_SIZES.map((size) => {
                     const key = `${size}|${variant}`;
+                    const priceRaw = draft[key] ?? "";
+                    const cents = priceRaw.trim() === "" ? null : euroToCents(priceRaw);
+                    const discRaw = (discounts[key] ?? "").trim().replace(",", ".");
+                    const disc = discRaw === "" ? 0 : Number(discRaw);
+                    const validDisc = Number.isFinite(disc) && disc >= 0 && disc <= 100;
+                    const finalCents =
+                      cents !== null && validDisc ? Math.round(cents * (1 - disc / 100)) : null;
                     return (
-                      <td key={key} className="px-4 py-2">
+                      <td key={key} className="px-4 py-2 align-top">
                         <div className="flex items-center gap-1.5">
                           <input
-                            value={draft[key] ?? ""}
+                            value={priceRaw}
                             onChange={(e) =>
                               setDraft((d) => ({ ...d, [key]: e.target.value }))
                             }
                             inputMode="decimal"
                             aria-label={`${FRAME_VARIANT_LABELS[variant]} ${size}`}
-                            className={`w-24 rounded-md border bg-background px-2 py-1.5 text-sm ${
+                            className={`w-20 rounded-md border bg-background px-2 py-1.5 text-sm ${
                               hasOverride(size, variant) ? "border-brass" : "border-border"
                             }`}
                           />
                           <span className="text-xs text-muted-foreground">€</span>
+                          <input
+                            value={discounts[key] ?? ""}
+                            onChange={(e) =>
+                              setDiscounts((d) => ({ ...d, [key]: e.target.value }))
+                            }
+                            inputMode="decimal"
+                            placeholder="0"
+                            aria-label={`Rabatt ${FRAME_VARIANT_LABELS[variant]} ${size}`}
+                            className={`w-14 rounded-md border bg-background px-2 py-1.5 text-sm ${
+                              validDisc ? "border-border" : "border-destructive"
+                            }`}
+                          />
+                          <span className="text-xs text-muted-foreground">%</span>
                           {hasOverride(size, variant) && (
                             <button
                               type="button"
@@ -298,6 +370,11 @@ function FramePricesAdmin() {
                             </button>
                           )}
                         </div>
+                        {finalCents !== null && (
+                          <p className="mt-1 text-xs text-muted-foreground">
+                            Endpreis: {centsToEuro(finalCents)} €
+                          </p>
+                        )}
                       </td>
                     );
                   })}
