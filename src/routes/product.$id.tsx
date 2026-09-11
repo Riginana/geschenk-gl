@@ -28,6 +28,7 @@ import {
   FRAME_SIZE_LABELS,
   FRAME_VARIANT_LABELS,
   resolveFramePriceCents,
+  normalizeFrameMaterial,
 } from "@/lib/frame-pricing";
 
 import {
@@ -181,7 +182,13 @@ function ProductPage() {
   const materialsForFormat = product.variants?.filter((v) => v.format === format) ?? [];
   const availableMaterials = Array.from(new Set(materialsForFormat.map((v) => v.material))).filter(Boolean) as string[];
   const framePriceCents = isFrameProduct
-    ? resolveFramePriceCents(framePrices, product.id, frameSize, frameVariant)
+    ? resolveFramePriceCents(
+        framePrices,
+        product.id,
+        normalizeFrameMaterial(product.frame_material),
+        frameSize,
+        frameVariant,
+      )
     : null;
   const holzplatteRow =
     isHolzplatteProduct && !hasConfig
