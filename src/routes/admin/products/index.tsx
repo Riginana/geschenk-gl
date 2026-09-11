@@ -93,12 +93,13 @@ function AdminProductsList() {
     return rows.filter((r) => {
       if (fOccasion && r.occasion !== fOccasion) return false;
       if (fCategory && r.category !== fCategory) return false;
+      if (fFrameMaterial && (r.frame_material ?? "holz") !== fFrameMaterial) return false;
       if (fActive === "1" && !r.is_active) return false;
       if (fActive === "0" && r.is_active) return false;
       if (q && !(r.name_de?.toLowerCase().includes(q) || r.name_en?.toLowerCase().includes(q) || r.slug.toLowerCase().includes(q))) return false;
       return true;
     });
-  }, [rows, search, fOccasion, fCategory, fActive]);
+  }, [rows, search, fOccasion, fCategory, fFrameMaterial, fActive]);
 
   const allChecked = filtered.length > 0 && filtered.every((r) => selected.has(r.id));
 
