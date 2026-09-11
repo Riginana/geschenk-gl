@@ -412,6 +412,21 @@ function AdminProductsList() {
                 </td>
                 <td className="px-3 py-2">{r.occasion}</td>
                 <td className="px-3 py-2">{r.category ?? "—"}</td>
+                <td className="px-3 py-2">
+                  {r.category === "bilderrahmen" ? (
+                    <select
+                      className="rounded border border-input bg-background px-2 py-1 text-xs"
+                      value={r.frame_material ?? "holz"}
+                      onChange={(e) => patch(r.id, { frame_material: e.target.value })}
+                    >
+                      {FRAME_MATERIAL_OPTIONS.map((o) => (
+                        <option key={o.value} value={o.value}>{o.label}</option>
+                      ))}
+                    </select>
+                  ) : (
+                    "—"
+                  )}
+                </td>
                 <td className="px-3 py-2">{(r.base_price_cents / 100).toFixed(2)}</td>
                 <td className="px-3 py-2">{r.discount_percent}</td>
                 <td className="px-3 py-2">
