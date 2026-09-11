@@ -382,9 +382,9 @@ export const adminBulkUpsertHolzbox = createServerFn({ method: "POST" })
             .update({
               price_cents: s.priceCents,
               discount_percent: s.discountPercent,
-              dimensions: s.dimensions ?? row.label,
             })
             .eq("id", row.id);
+
 
           if (error) throw new Error(error.message);
           updated++;
