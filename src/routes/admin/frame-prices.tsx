@@ -1,13 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { Loader2, Save, Undo2 } from "lucide-react";
+import { Loader2, Save, Undo2, Trash2 } from "lucide-react";
 import { adminListProducts } from "@/lib/admin.functions";
 import {
   listFramePrices,
   adminUpsertFramePrices,
   adminDeleteFramePriceOverride,
+  adminDeleteAllFramePriceOverrides,
 } from "@/lib/frame-prices.functions";
 import {
   FRAME_SIZES,
