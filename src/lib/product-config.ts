@@ -10,6 +10,8 @@ export type SizeVariant = {
   label: string;
   dimensions: string;
   price_cents: number;
+  /** Discount in % applied to this size (Holzbox). 0 = no discount. */
+  discount_percent: number;
   is_active: boolean;
   is_default: boolean;
   sort_order: number;
