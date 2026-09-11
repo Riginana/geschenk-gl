@@ -18,7 +18,8 @@ import {
   FRAME_MATERIALS,
   FRAME_MATERIAL_LABELS,
   normalizeFrameMaterial,
-  resolveFramePriceCents,
+  resolveFramePriceRow,
+  clampPercent,
   type FrameMaterial,
   type FramePriceRow,
 } from "@/lib/frame-pricing";
