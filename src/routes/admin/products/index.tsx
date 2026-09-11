@@ -321,6 +321,16 @@ function AdminProductsList() {
         </select>
         <select
           className="rounded-md border border-input bg-background px-3 py-2 text-sm"
+          value={fFrameMaterial}
+          onChange={(e) => setFFrameMaterial(e.target.value)}
+        >
+          <option value="">Alle Unterkategorien</option>
+          {FRAME_MATERIAL_OPTIONS.map((o) => (
+            <option key={o.value} value={o.value}>{o.label}</option>
+          ))}
+        </select>
+        <select
+          className="rounded-md border border-input bg-background px-3 py-2 text-sm"
           value={fActive}
           onChange={(e) => setFActive(e.target.value as any)}
         >
