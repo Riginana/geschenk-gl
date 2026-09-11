@@ -107,6 +107,34 @@ export function fromPriceCents(list: SizeVariant[], motifs: Motif[] = []): numbe
   return minSize + minDelta;
 }
 
+/**
+ * Cheapest active combination including per-size discounts (Holzbox).
+ * Returns null when the product has no active sizes.
+ */
+export function fromPriceDetail(
+  list: SizeVariant[],
+  motifs: Motif[] = [],
+  useSizeDiscount = false,
+  fallbackDiscountPercent = 0,
+): { listCents: number; finalCents: number; discountPercent: number } | null {
+  const act = activeSizes(list);
+  if (!act.length) return null;
+  const act2 = activeMotifs(motifs);
+  const minDelta = act2.length
+    ? act2.reduce((min, m) => Math.min(min, m.price_delta_cents ?? 0), act2[0].price_delta_cents ?? 0)
+    : 0;
+  let best: { listCents: number; finalCents: number; discountPercent: number } | null = null;
+  for (const s of act) {
+    const listCents = s.price_cents + minDelta;
+    const discountPercent = useSizeDiscount
+      ? clampPercent(s.discount_percent)
+      : clampPercent(fallbackDiscountPercent);
+    const finalCents = Math.round(listCents * (1 - discountPercent / 100));
+    if (!best || finalCents < best.finalCents) best = { listCents, finalCents, discountPercent };
+  }
+  return best;
+}
+
 export function hasMixedPrices(list: SizeVariant[]): boolean {
   const act = activeSizes(list);
   return new Set(act.map((s) => s.price_cents)).size > 1;
