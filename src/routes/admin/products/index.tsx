@@ -50,6 +50,7 @@ function AdminProductsList() {
   const [search, setSearch] = useState("");
   const [fOccasion, setFOccasion] = useState("");
   const [fCategory, setFCategory] = useState("");
+  const [fFrameMaterial, setFFrameMaterial] = useState("");
   const [fActive, setFActive] = useState<"all" | "1" | "0">("all");
   const [showNew, setShowNew] = useState(false);
   const [creating, setCreating] = useState(false);
