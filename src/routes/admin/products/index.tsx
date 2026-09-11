@@ -40,6 +40,7 @@ function AdminProductsList() {
   const list = useServerFn(adminListProducts);
   const update = useServerFn(adminUpdateProduct);
   const bulk = useServerFn(adminBulkSetActive);
+  const setFrameMaterial = useServerFn(adminSetFrameMaterial);
   const createProduct = useServerFn(adminCreateProduct);
   const deleteProduct = useServerFn(adminDeleteProduct);
 
