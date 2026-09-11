@@ -206,10 +206,22 @@ function FramePricesAdmin() {
               }`}
             >
               {FRAME_MATERIAL_LABELS[m]}
+              <span className="ml-2 text-xs opacity-70">
+                {materialStats[m]?.products ?? 0}
+              </span>
             </button>
           );
         })}
       </div>
+
+      <p className="mt-2 text-xs text-muted-foreground">
+        {productId
+          ? `Produktspezifische Preise (Unterkategorie: ${FRAME_MATERIAL_LABELS[effectiveMaterial]})`
+          : (materialStats[material]?.own ?? 0) > 0
+            ? `${FRAME_MATERIAL_LABELS[material]}: eigene Preise hinterlegt · ${materialStats[material]?.products ?? 0} Produkte`
+            : `${FRAME_MATERIAL_LABELS[material]}: noch keine eigenen Preise — es gelten die allgemeinen Preise · ${materialStats[material]?.products ?? 0} Produkte`}
+      </p>
+
 
       <div className="mt-4 flex flex-wrap items-center gap-3">
         <select
@@ -301,6 +313,35 @@ function FramePricesAdmin() {
           Felder mit goldenem Rahmen sind produktspezifische Overrides. Leere Felder werden nicht
           gespeichert.
         </p>
+      )}
+
+      {overrideProducts.length > 0 && (
+        <section className="mt-8 rounded-xl border border-brass/40 bg-card p-4">
+          <h2 className="text-sm font-medium text-walnut">
+            Produkte mit eigenen Ausnahmepreisen
+          </h2>
+          <p className="mt-1 text-xs text-muted-foreground">
+            Bei diesen Produkten wirken Änderungen an den Unterkategorie-Preisen nicht. Ausnahmen
+            entfernen, damit wieder der Preis der Unterkategorie gilt.
+          </p>
+          <ul className="mt-3 space-y-2">
+            {overrideProducts.map((p) => (
+              <li key={p.id} className="flex items-center justify-between gap-3 text-sm">
+                <span>
+                  {p.name}{" "}
+                  <span className="text-xs text-muted-foreground">({p.count} Preisfelder)</span>
+                </span>
+                <button
+                  type="button"
+                  onClick={() => onClearOverrides(p.id)}
+                  className="inline-flex items-center gap-1.5 rounded-md border border-border px-2.5 py-1 text-xs text-muted-foreground hover:bg-accent"
+                >
+                  <Trash2 className="h-3.5 w-3.5" /> Ausnahmen entfernen
+                </button>
+              </li>
+            ))}
+          </ul>
+        </section>
       )}
 
       <section className="mt-12">
