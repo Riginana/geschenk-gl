@@ -376,6 +376,7 @@ function AdminProductsList() {
               <th className="px-3 py-2">Name</th>
               <th className="px-3 py-2">Anlass</th>
               <th className="px-3 py-2">Kategorie</th>
+              <th className="px-3 py-2">Unterkat.</th>
               <th className="px-3 py-2">Preis €</th>
               <th className="px-3 py-2">Rabatt %</th>
               <th className="px-3 py-2">Status</th>
@@ -388,10 +389,10 @@ function AdminProductsList() {
           </thead>
           <tbody>
             {loading && (
-              <tr><td colSpan={13} className="px-3 py-6 text-center text-muted-foreground">Wird geladen…</td></tr>
+              <tr><td colSpan={14} className="px-3 py-6 text-center text-muted-foreground">Wird geladen…</td></tr>
             )}
             {!loading && filtered.length === 0 && (
-              <tr><td colSpan={13} className="px-3 py-6 text-center text-muted-foreground">Keine Produkte</td></tr>
+              <tr><td colSpan={14} className="px-3 py-6 text-center text-muted-foreground">Keine Produkte</td></tr>
             )}
             {filtered.map((r) => (
               <tr key={r.id} className="border-t border-border">
