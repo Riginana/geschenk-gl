@@ -339,7 +339,7 @@ export const adminUpdateOrder = createServerFn({ method: "POST" })
   });
 
 /** Sends the shipping confirmation email and records the timestamp. */
-async function sendShippingEmail(order: AdminOrderRow) {
+async function sendShippingEmail(order: AdminOrderRow, force = false) {
   const { sendTemplateEmail } = await import("@/lib/email-templates/send-email");
   const { carrierLabel, trackingUrl } = await import("@/lib/tracking");
   const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
@@ -354,7 +354,9 @@ async function sendShippingEmail(order: AdminOrderRow) {
 
   try {
     const result = await sendTemplateEmail("order-shipped", order.email, {
-      idempotencyKey: `order-shipped-${order.id}-${order.tracking_number ?? "none"}`,
+      idempotencyKey: force
+        ? `order-shipped-${order.id}-${Date.now()}`
+        : `order-shipped-${order.id}-${order.tracking_number ?? "none"}`,
       templateData: {
         customerName: a.firstName || "Kundin/Kunde",
         orderId: order.id,
@@ -392,7 +394,7 @@ export const adminResendShippingEmail = createServerFn({ method: "POST" })
       .maybeSingle();
     if (error) throw new Error(error.message);
     if (!order) throw new Error("Bestellung nicht gefunden");
-    const result = await sendShippingEmail(order as unknown as AdminOrderRow);
+    const result = await sendShippingEmail(order as unknown as AdminOrderRow, true);
     return { sent: result.sent };
   });
 
