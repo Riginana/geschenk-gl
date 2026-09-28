@@ -26,7 +26,7 @@ export const Route = createFileRoute("/impressum")({
 
           <h2>Kontakt</h2>
           <p>
-            Telefon: 017624299597<br />
+            Telefon: +49 179 5223320<br />
             E-Mail: kontakt.diginutz@gmail.com
           </p>
 
@@ -56,7 +56,7 @@ export const Route = createFileRoute("/impressum")({
 
           <h2>Contact</h2>
           <p>
-            Phone: +49 176 24299597<br />
+            Phone: +49 179 5223320<br />
             Email: diginutz.e@gmail.com
           </p>
 
