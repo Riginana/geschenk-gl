@@ -176,12 +176,12 @@ function FeaturedTrio() {
   const { t } = useT();
   const items = [
     { src: featuredHomeFrame.url, alt: "Personalisierter Home Sweet Home Bilderrahmen", aspect: "aspect-[4/5]" },
-    { src: featuredAdventure.url, alt: "Geldgeschenk im Eichenrahmen zum Geburtstag", aspect: "aspect-[4/3]" },
     {
       src: featuredWorldFrame.url,
       alt: "Personalisierte Weltkarte im Holzrahmen zur Hochzeit",
       aspect: "aspect-[4/3]",
     },
+    { src: featuredAdventure.url, alt: "Geldgeschenk im Eichenrahmen zum Geburtstag", aspect: "aspect-[4/3]" },
   ];
 
   return (
