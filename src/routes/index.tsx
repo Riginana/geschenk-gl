@@ -6,9 +6,9 @@ import useEmblaCarousel from "embla-carousel-react";
 import { ArrowLeft, ArrowRight, Check, Heart, Package, Sparkles } from "lucide-react";
 import heroNew2Asset from "@/assets/hero-new2.jpg.asset.json";
 import atelierImg from "@/assets/atelier.jpg";
-import featuredWedding from "@/assets/featured-wedding.webp.asset.json";
+import featuredHomeFrame from "@/assets/featured-home-frame.jpeg.asset.json";
 import featuredAdventure from "@/assets/featured-adventure.webp.asset.json";
-import featuredController from "@/assets/featured-controller.jpg.asset.json";
+import featuredWorldFrame from "@/assets/featured-world-frame.jpeg.asset.json";
 import { useT } from "@/i18n";
 import { listProducts } from "@/lib/products.functions";
 import { ProductCard, ProductCardSkeleton } from "@/components/product-card";
@@ -175,11 +175,11 @@ function TrustBar() {
 function FeaturedTrio() {
   const { t } = useT();
   const items = [
-    { src: featuredWedding.url, alt: "Personalisierter Holzteller zur Hochzeit", aspect: "aspect-[4/5]" },
+    { src: featuredHomeFrame.url, alt: "Personalisierter Home Sweet Home Bilderrahmen", aspect: "aspect-[4/5]" },
     { src: featuredAdventure.url, alt: "Geldgeschenk im Eichenrahmen zum Geburtstag", aspect: "aspect-[4/3]" },
     {
-      src: featuredController.url,
-      alt: "Geldgeschenk in Form eines Gaming-Controllers aus Holz",
+      src: featuredWorldFrame.url,
+      alt: "Personalisierte Weltkarte im Holzrahmen zur Hochzeit",
       aspect: "aspect-[4/3]",
     },
   ];
