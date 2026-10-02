@@ -12,6 +12,7 @@ import {
   type AdminOrderRow,
 } from "@/lib/admin-config.functions";
 import { CARRIERS, carrierLabel, trackingUrl } from "@/lib/tracking";
+import { FRAME_VARIANT_LABELS } from "@/lib/frame-pricing";
 import { formatEUR } from "@/i18n";
 
 
