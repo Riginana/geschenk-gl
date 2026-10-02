@@ -89,6 +89,17 @@ export const en: Dictionary = {
     cta: "Subscribe",
     success: "Thank you! Please confirm your email.",
   },
+  search: {
+    placeholder: "Search products…",
+    label: "Search products",
+    clear: "Clear search",
+    submit: "Search",
+    open: "Open search",
+    results: "results for",
+    none: "No results for",
+    reset: "Reset search",
+    showAll: "Show all results",
+  },
   shop: {
     title: "All money gifts",
     filterOccasion: "Occasion",
