@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { PersonalizationFields, type PersonalizationHandle } from "@/components/product/personalization-fields";
 import { toast } from "sonner";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { Heart, Minus, Plus, ShoppingBag, ArrowLeft, Play, X } from "lucide-react";
@@ -168,9 +169,7 @@ function ProductPage() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [videoOpen]);
-  const [persName, setPersName] = useState("");
-  const [persDate, setPersDate] = useState("");
-  const [persText, setPersText] = useState("");
+  const persRef = useRef<PersonalizationHandle>(null);
 
   if (!product) return <ProductNotFound />;
 
@@ -230,14 +229,16 @@ function ProductPage() {
       ? FRAME_VARIANT_LABELS[frameVariant] ?? frameVariant
       : frame;
 
-  const onAdd = () => {
+  const onAdd = async () => {
+    const pers = await persRef.current?.validate();
+    if (!pers) return;
+    const { names: persName, date: persDate, message: persText } = pers;
     if (hasConfig) {
       const next: typeof errors = {};
       if (!selectedSize) next.size = "Bitte wählen Sie eine Größe aus.";
       if (productMotifs.length && !selectedMotif) next.motif = "Bitte wählen Sie ein Motiv aus.";
       if (selectedMotif?.requires_custom_text && !customMotifText.trim())
         next.custom = "Bitte geben Sie Ihren Wunschtext ein.";
-      if (!persName.trim()) next.pers = "Bitte geben Sie Ihre Personalisierung ein.";
       setErrors(next);
       if (Object.keys(next).length) {
         toast.error(Object.values(next)[0]);
@@ -560,43 +561,7 @@ function ProductPage() {
           </div>
           )}
 
-          <div className="mt-6 space-y-4 rounded-2xl bg-card p-6 ring-1 ring-border/60">
-            <p className="eyebrow">Personalisierung</p>
-            <label className="block">
-              <span className="text-xs text-muted-foreground">Name(n)</span>
-              <input
-                type="text"
-                value={persName}
-                onChange={(e) => setPersName(e.target.value)}
-                maxLength={80}
-                placeholder="z. B. Julia & Max"
-                className="mt-1.5 w-full rounded-lg border border-border bg-cream px-4 py-2.5 text-sm outline-none focus:border-brass"
-              />
-              {errors.pers && <span className="mt-1 block text-[11px] text-destructive">{errors.pers}</span>}
-            </label>
-            <label className="block">
-              <span className="text-xs text-muted-foreground">Datum (optional)</span>
-              <input
-                type="text"
-                value={persDate}
-                onChange={(e) => setPersDate(e.target.value)}
-                maxLength={40}
-                placeholder="z. B. 24.12.2026"
-                className="mt-1.5 w-full rounded-lg border border-border bg-cream px-4 py-2.5 text-sm outline-none focus:border-brass"
-              />
-            </label>
-            <label className="block">
-              <span className="text-xs text-muted-foreground">Wunschtext (optional)</span>
-              <textarea
-                rows={3}
-                value={persText}
-                onChange={(e) => setPersText(e.target.value)}
-                maxLength={400}
-                placeholder="Persönliche Widmung, Grußworte…"
-                className="mt-1.5 w-full resize-none rounded-lg border border-border bg-cream px-4 py-2.5 text-sm outline-none focus:border-brass"
-              />
-            </label>
-          </div>
+          <PersonalizationFields ref={persRef} />
 
 
           <div className="mt-6 flex flex-wrap items-center gap-3">
