@@ -81,7 +81,6 @@ export const Route = createFileRoute("/shop/$slug")({
     };
   },
   component: ProductPage,
-  notFoundComponent: ProductNotFound,
 });
 
 
