@@ -95,7 +95,7 @@ function ShopPage() {
         break;
     }
     return arr;
-  }, [search, allProducts, config, framePrices, holzplattePrices]);
+  }, [search, activeQuery, allProducts, config, framePrices, holzplattePrices]);
 
   const update = (patch: Partial<typeof search>) => navigate({ search: (prev: typeof search) => ({ ...prev, ...patch }) });
 
