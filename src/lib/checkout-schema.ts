@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { dateSchema, messageSchema, nameSchema } from "@/lib/personalization-schema";
 import { SHIPPING_METHODS, SHIPPING_ZONES } from "@/lib/shipping";
 
 export const checkoutSchema = z.object({
@@ -19,7 +20,22 @@ export const checkoutSchema = z.object({
         slug: z.string().min(1).max(120),
         name: z.string().min(1).max(200),
         qty: z.number().int().min(1).max(50),
-        personalization: z.record(z.string(), z.string().max(500)).optional(),
+        personalization: z
+          .record(z.string(), z.string().max(500))
+          .optional()
+          .superRefine((p, ctx) => {
+            if (!p) return;
+            const checks: [string, z.ZodTypeAny][] = [
+              ["names", nameSchema],
+              ["date", dateSchema],
+              ["message", messageSchema],
+            ];
+            for (const [key, schema] of checks) {
+              if (p[key] === undefined) continue;
+              const r = schema.safeParse(p[key]);
+              if (!r.success) ctx.addIssue({ code: "custom", path: [key], message: `Ungültige Personalisierung (${key})` });
+            }
+          }),
       }),
     )
     .min(1)
