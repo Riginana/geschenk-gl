@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { z } from "zod";
 import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
+import { Search, X } from "lucide-react";
 import { useT } from "@/i18n";
 import { listProducts } from "@/lib/products.functions";
 import { ProductCard } from "@/components/product-card";
@@ -9,12 +10,17 @@ import { Reveal } from "@/components/reveal";
 import { catalogFromPrice } from "@/lib/catalog-pricing";
 import { productConfigQueryOptions } from "@/lib/product-config.query";
 import { framePricesQueryOptions, holzplattePricesQueryOptions } from "@/lib/catalog-pricing.query";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { useDebounce } from "@/hooks/use-debounce";
+import { matchesSearch } from "@/lib/product-search";
 
 const searchSchema = z.object({
   occasion: z.string().optional(),
   material: z.enum(["holz", "papier", "kraftpapier"]).optional(),
   format: z.enum(["A5", "A4", "A3"]).optional(),
   sort: z.enum(["popular", "new", "price_asc", "price_desc"]).optional(),
+  search: z.string().optional(),
 });
 
 const productsQueryOptions = {
@@ -49,8 +55,23 @@ function ShopPage() {
   const { data: framePrices } = useQuery(framePricesQueryOptions);
   const { data: holzplattePrices } = useQuery(holzplattePricesQueryOptions);
 
+  const [searchInput, setSearchInput] = useState(search.search ?? "");
+  const debounced = useDebounce(searchInput, 300);
+  useEffect(() => {
+    setSearchInput(search.search ?? "");
+  }, [search.search]);
+  useEffect(() => {
+    const next = debounced.trim() || undefined;
+    if (next !== (search.search || undefined)) {
+      navigate({ search: (prev: typeof search) => ({ ...prev, search: next }), replace: true });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debounced]);
+  const activeQuery = (search.search ?? "").trim();
+
   const filtered = useMemo(() => {
     let arr = allProducts.slice();
+    if (activeQuery) arr = arr.filter((p) => matchesSearch(p, activeQuery));
     if (search.occasion) arr = arr.filter((p) => p.occasion === search.occasion);
     if (search.material) arr = arr.filter((p) => p.material === search.material);
     if (search.format) arr = arr.filter((p) => (p.formats ?? []).includes(search.format!));
@@ -121,8 +142,34 @@ function ShopPage() {
         </aside>
 
         <div className="flex-1">
-          <div className="mb-6 flex items-center justify-between">
-            <p className="text-sm text-muted-foreground">{filtered.length} Produkte</p>
+          <div className="relative mb-4">
+            <Search size={16} className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-walnut/70" />
+            <Input
+              type="search"
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
+              onKeyDown={(e) => e.key === "Escape" && setSearchInput("")}
+              placeholder={t("search.placeholder")}
+              aria-label={t("search.label")}
+              className="h-11 rounded-full border-border bg-card pl-10 pr-10 text-sm text-walnut focus-visible:ring-brass [&::-webkit-search-cancel-button]:hidden"
+            />
+            {searchInput && (
+              <button
+                type="button"
+                aria-label={t("search.clear")}
+                onClick={() => setSearchInput("")}
+                className="absolute right-2 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-full text-muted-foreground transition hover:text-walnut"
+              >
+                <X size={14} />
+              </button>
+            )}
+          </div>
+          <div className="mb-6 flex items-center justify-between gap-3">
+            <p className="text-sm text-muted-foreground">
+              {activeQuery
+                ? `${filtered.length} ${t("search.results")} „${activeQuery}"`
+                : `${filtered.length} Produkte`}
+            </p>
             <select
               value={search.sort ?? "popular"}
               onChange={(e) => update({ sort: e.target.value as any })}
@@ -135,7 +182,20 @@ function ShopPage() {
             </select>
           </div>
 
-          {filtered.length === 0 ? (
+          {filtered.length === 0 && activeQuery ? (
+            <div className="rounded-2xl bg-linen px-6 py-12 text-center">
+              <p className="text-muted-foreground">
+                {t("search.none")} „{activeQuery}"
+              </p>
+              <Button
+                variant="outline"
+                onClick={() => setSearchInput("")}
+                className="mt-4 rounded-full border-walnut text-walnut"
+              >
+                {t("search.reset")}
+              </Button>
+            </div>
+          ) : filtered.length === 0 ? (
             <p className="rounded-2xl bg-linen px-6 py-12 text-center text-muted-foreground">{t("shop.empty")}</p>
           ) : (
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
