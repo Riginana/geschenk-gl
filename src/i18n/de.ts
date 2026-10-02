@@ -93,6 +93,17 @@ export const de = {
     cta: "Abonnieren",
     success: "Vielen Dank! Bitte bestätigen Sie Ihre E-Mail.",
   },
+  search: {
+    placeholder: "Produkte suchen…",
+    label: "Produkte suchen",
+    clear: "Suche leeren",
+    submit: "Suchen",
+    open: "Suche öffnen",
+    results: "Treffer für",
+    none: "Keine Ergebnisse für",
+    reset: "Suche zurücksetzen",
+    showAll: "Alle Ergebnisse anzeigen",
+  },
   shop: {
     title: "Alle Geldgeschenke",
     filterOccasion: "Anlass",

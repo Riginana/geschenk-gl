@@ -1,21 +1,26 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, Search, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useT } from "@/i18n";
 import { useCart } from "@/contexts/cart";
 import { useWishlist } from "@/contexts/wishlist";
 import logoAsset from "@/assets/diginutz-logo.jpeg.asset.json";
+import { HeaderSearch } from "@/components/header-search";
 
 export function Header() {
   const { t, locale, setLocale } = useT();
   const { count } = useCart();
   const { ids } = useWishlist();
   const [open, setOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
-  useEffect(() => setOpen(false), [pathname]);
+  useEffect(() => {
+    setOpen(false);
+    setSearchOpen(false);
+  }, [pathname]);
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
@@ -61,7 +66,19 @@ export function Header() {
           ))}
         </nav>
 
+        <div className="hidden w-56 md:block xl:w-64">
+          <HeaderSearch />
+        </div>
+
         <div className="flex items-center gap-1 sm:gap-2">
+          <button
+            onClick={() => setSearchOpen((v) => !v)}
+            aria-label={t("search.open")}
+            aria-expanded={searchOpen}
+            className="grid h-10 w-10 place-items-center rounded-full text-walnut transition hover:bg-linen md:hidden"
+          >
+            {searchOpen ? <X size={18} /> : <Search size={18} />}
+          </button>
           <button
             onClick={() => setLocale(locale === "de" ? "en" : "de")}
             aria-label="Sprache wechseln / Change language"
@@ -117,6 +134,12 @@ export function Header() {
           </button>
         </div>
       </div>
+
+      {searchOpen && (
+        <div className="border-t border-border/60 bg-cream/95 px-4 py-3 backdrop-blur md:hidden">
+          <HeaderSearch autoFocus onDone={() => setSearchOpen(false)} />
+        </div>
+      )}
 
       <AnimatePresence>
         {open && (
