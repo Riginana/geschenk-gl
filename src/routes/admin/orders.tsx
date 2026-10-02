@@ -63,6 +63,19 @@ function ItemCard({ item }: { item: AdminOrderItem }) {
         <p className="shrink-0 text-sm text-walnut">{formatEUR(unit * qty)}</p>
       </div>
       <div className="mt-2 space-y-1 text-xs text-muted-foreground">
+        {(p.frameVariant || (p.frameSize && p.material)) && (
+          <p>
+            <span className="font-medium text-walnut">RAHMEN-VARIANTE:</span>{" "}
+            {p.frameVariant ? FRAME_VARIANT_LABELS[p.frameVariant] ?? p.frameVariant : p.material}
+            {p.frameSize ? ` · Größe ${p.frameSize}` : ""}
+          </p>
+        )}
+        {!p.frameVariant && !p.frameSize && p.material && (
+          <p>
+            <span className="font-medium text-walnut">Material/Variante:</span> {p.material}
+            {p.format ? ` · ${p.format}` : ""}
+          </p>
+        )}
         {p.sizeLabel && (
           <p>
             <span className="font-medium text-walnut">Größe:</span> {p.sizeLabel}
