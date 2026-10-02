@@ -2,6 +2,7 @@ import { forwardRef, useImperativeHandle, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CalendarIcon } from "lucide-react";
+import { de, enUS } from "date-fns/locale";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -33,7 +34,7 @@ const fieldCls = (err: boolean) =>
   );
 
 export const PersonalizationFields = forwardRef<PersonalizationHandle>(function PersonalizationFields(_, ref) {
-  const { t } = useT();
+  const { t, locale } = useT();
   const [calOpen, setCalOpen] = useState(false);
   const form = useForm<FormIn, unknown, PersonalizationValues>({
     resolver: zodResolver(personalizationSchema),
@@ -133,6 +134,7 @@ export const PersonalizationFields = forwardRef<PersonalizationHandle>(function 
             </PopoverTrigger>
             <PopoverContent className="w-auto p-0" align="end">
               <Calendar
+                locale={locale === "de" ? de : enUS}
                 mode="single"
                 selected={selected}
                 defaultMonth={selected}
