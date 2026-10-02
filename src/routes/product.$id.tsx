@@ -101,7 +101,6 @@ export const Route = createFileRoute("/product/$id")({
     };
   },
   component: ProductPage,
-  notFoundComponent: ProductNotFound,
 });
 
 function ProductPage() {
