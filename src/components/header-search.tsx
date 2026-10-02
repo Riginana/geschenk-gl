@@ -131,7 +131,7 @@ export function HeaderSearch({ autoFocus, onDone }: { autoFocus?: boolean; onDon
       </form>
 
       {showDropdown && (
-        <div className="absolute left-0 right-0 top-full z-50 mt-2 overflow-hidden rounded-2xl bg-card shadow-lg ring-1 ring-border">
+        <div className="absolute right-0 top-full z-50 w-[26rem] max-w-[calc(100vw-2rem)] mt-2 overflow-hidden rounded-2xl bg-card shadow-lg ring-1 ring-border">
           {results.length === 0 ? (
             <p className="px-4 py-3 text-sm text-muted-foreground">
               {t("search.none")} „{q.trim()}"
