@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
@@ -58,9 +58,23 @@ function ItemCard({ item }: { item: AdminOrderItem }) {
   return (
     <li className="rounded-lg border border-border p-3">
       <div className="flex items-start justify-between gap-3">
-        <p className="font-medium text-walnut">
-          {qty}× {item.name}
-        </p>
+        {item.productId ? (
+          <Link
+            to="/product/$id"
+            params={{ id: item.productId }}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1 font-medium text-walnut underline underline-offset-2 hover:opacity-80"
+            aria-label={`${item.name ?? "Artikel"} auf der Produktseite öffnen`}
+          >
+            {qty}× {item.name}
+            <ExternalLink size={12} className="shrink-0" aria-hidden />
+          </Link>
+        ) : (
+          <p className="font-medium text-walnut">
+            {qty}× {item.name}
+          </p>
+        )}
         <p className="shrink-0 text-sm text-walnut">{formatEUR(unit * qty)}</p>
       </div>
       <div className="mt-2 space-y-1 text-xs text-muted-foreground">
