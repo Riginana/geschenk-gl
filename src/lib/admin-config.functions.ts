@@ -399,6 +399,43 @@ export const adminResendShippingEmail = createServerFn({ method: "POST" })
   });
 
 
+/** Marks an order as received ("done") and emails the customer a confirmation (admin only). */
+export const adminMarkOrderReceived = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((d) => z.object({ id: z.string().uuid(), resend: z.boolean().optional() }).parse(d))
+  .handler(async ({ data, context }) => {
+    await requireAdmin(context);
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { data: updated, error } = await supabaseAdmin
+      .from("orders")
+      .update({ status: "done" })
+      .eq("id", data.id)
+      .select(ORDER_COLS)
+      .maybeSingle();
+    if (error) throw new Error(error.message);
+    if (!updated) throw new Error("Bestellung nicht gefunden");
+    const order = updated as unknown as AdminOrderRow;
+    const { sendTemplateEmail } = await import("@/lib/email-templates/send-email");
+    const a = order.address ?? {};
+    const address = [
+      [a.firstName, a.lastName].filter(Boolean).join(" "),
+      [a.street, a.houseNumber].filter(Boolean).join(" "),
+      [a.plz, a.city].filter(Boolean).join(" "),
+      a.country,
+    ].filter((l) => l && l.trim().length);
+    const result = await sendTemplateEmail("order-received", order.email, {
+      idempotencyKey: data.resend ? `order-received-${order.id}-${Date.now()}` : `order-received-${order.id}`,
+      templateData: {
+        customerName: a.firstName || "Kundin/Kunde",
+        orderId: order.id,
+        address,
+        items: (order.items ?? []).map((it) => ({ name: it.name ?? "Artikel", qty: it.qty ?? 1 })),
+      },
+    });
+    return { sent: result.sent };
+  });
+
+
 
 // ---------------- Holzbox: zentrale Preistabelle ----------------
 

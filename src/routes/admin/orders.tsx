@@ -8,6 +8,7 @@ import {
   adminListOrders,
   adminUpdateOrder,
   adminResendShippingEmail,
+  adminMarkOrderReceived,
   type AdminOrderItem,
   type AdminOrderRow,
 } from "@/lib/admin-config.functions";
@@ -127,7 +128,7 @@ const STATUS_OPTIONS = [
   { value: "pending", label: "Zahlung offen" },
   { value: "paid", label: "Bezahlt" },
   { value: "shipped", label: "Versendet" },
-  { value: "done", label: "Abgeschlossen" },
+  { value: "done", label: "Erhalten" },
   { value: "cancelled", label: "Storniert" },
 ] as const;
 
@@ -144,6 +145,22 @@ function OrderCard({ order }: { order: AdminOrderRow }) {
   const [resending, setResending] = useState(false);
   const updateFn = useServerFn(adminUpdateOrder);
   const resendFn = useServerFn(adminResendShippingEmail);
+  const receivedFn = useServerFn(adminMarkOrderReceived);
+  const [receiving, setReceiving] = useState(false);
+
+  async function markReceived(resend = false) {
+    setReceiving(true);
+    try {
+      const res = await receivedFn({ data: { id: order.id, resend } });
+      setStatus("done");
+      await queryClient.invalidateQueries({ queryKey: ["admin-orders"] });
+      toast.success(res.sent ? "Bestellung als erhalten markiert – Bestätigung gesendet" : "Als erhalten markiert – Empfänger ist abgemeldet, keine E-Mail");
+    } catch (e) {
+      toast.error((e as Error).message);
+    } finally {
+      setReceiving(false);
+    }
+  }
   const queryClient = useQueryClient();
   const a = order.address ?? {};
   const link = trackingUrl(order.tracking_carrier, order.tracking_number);
@@ -285,6 +302,18 @@ function OrderCard({ order }: { order: AdminOrderRow }) {
                 className="rounded-md border border-border px-3 py-1.5 text-xs font-medium text-walnut disabled:opacity-60"
               >
                 {resending ? "Sendet …" : "E-Mail erneut senden"}
+              </button>
+              <button
+                type="button"
+                onClick={() => markReceived(order.status === "done")}
+                disabled={receiving}
+                className="rounded-md bg-brass px-3 py-1.5 text-xs font-medium text-walnut disabled:opacity-60"
+              >
+                {receiving
+                  ? "Sendet …"
+                  : order.status === "done"
+                    ? "Erhalt-E-Mail erneut senden"
+                    : "Bestellung erhalten"}
               </button>
               {link && (
                 <a
