@@ -343,6 +343,11 @@ function AdminProductEdit() {
       {/* Images */}
       <section className="mb-6 rounded-xl border border-border bg-card p-5">
         <h2 className="mb-3 font-serif text-lg">Galerie ({images.length})</h2>
+        {!product.hero_image && (
+          <p className="mb-3 rounded-lg border border-border bg-accent/40 p-3 text-xs text-muted-foreground">
+            Kein Hauptbild gesetzt – im Shop wird automatisch das erste Bild angezeigt. Mit „Als Hauptbild setzen" können Sie es festlegen.
+          </p>
+        )}
 
         <div
           onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
@@ -411,6 +416,11 @@ function AdminProductEdit() {
                 <div className="flex gap-1">
                   <button className="rounded border border-border px-2 py-1" onClick={() => moveImage(im.id, -1)} disabled={i === 0}>↑</button>
                   <button className="rounded border border-border px-2 py-1" onClick={() => moveImage(im.id, 1)} disabled={i === images.length - 1}>↓</button>
+                  {product.hero_image === im.url ? (
+                    <span className="rounded bg-accent px-2 py-1">Hauptbild</span>
+                  ) : (
+                    <button className="rounded border border-border px-2 py-1" onClick={() => saveField("hero_image", im.url as any)}>Als Hauptbild setzen</button>
+                  )}
                   <button className="ml-auto rounded border border-destructive px-2 py-1 text-destructive" onClick={() => onDeleteImage(im.id)}>Löschen</button>
                 </div>
               </div>

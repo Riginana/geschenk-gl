@@ -81,6 +81,22 @@ type DbVariant = { id: string; product_id: string; format: string; material: str
 
 const IMAGE_ROLE_ORDER: Record<string, number> = { hero: 0, product: 1, gallery: 2, thumbnail: 3 };
 
+/** Fetch every row of a query in pages of 1000 (the API's per-request cap). */
+async function fetchAll<T>(
+  page: (from: number, to: number) => PromiseLike<{ data: unknown[] | null; error: { message: string } | null }>,
+): Promise<{ data: T[]; error: { message: string } | null }> {
+  const size = 1000;
+  const out: T[] = [];
+  for (let from = 0; ; from += size) {
+    const { data, error } = await page(from, from + size - 1);
+    if (error) return { data: out, error };
+    const rows = (data ?? []) as T[];
+    out.push(...rows);
+    if (rows.length < size) break;
+  }
+  return { data: out, error: null };
+}
+
 function toTags(v: unknown): string[] {
   if (Array.isArray(v)) return v.filter((x): x is string => typeof x === "string");
   return [];
@@ -164,8 +180,8 @@ export const listProducts = createServerFn({ method: "GET" }).handler(async (): 
   const sb = pub();
   const [{ data: prods, error: e1 }, { data: imgs, error: e2 }, { data: vars, error: e3 }] = await Promise.all([
     sb.from("products").select(PRODUCT_COLS).eq("is_active", true).order("sort_order", { ascending: true, nullsFirst: false }).order("name_de", { ascending: true }),
-    sb.from("product_images").select("product_id,url,role,sort_order"),
-    sb.from("product_variants").select("id,product_id,format,material,price_cents,is_default,sort_order"),
+    fetchAll<DbImage>((a, b) => sb.from("product_images").select("product_id,url,role,sort_order").order("id").range(a, b)),
+    fetchAll<DbVariant>((a, b) => sb.from("product_variants").select("id,product_id,format,material,price_cents,is_default,sort_order").order("id").range(a, b)),
   ]);
   if (e1 || e2 || e3) {
     console.error("[listProducts]", e1?.message, e2?.message, e3?.message);
