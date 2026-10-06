@@ -1,38 +1,16 @@
-# Bestellung: E-Mail „Bestellung erhalten" beim Status „Abgeschlossen"
+# Кнопка «Заказ получен» в карточке заказа
 
-## Ziel
+## Что будет
+1. В карточке заказа в админке появится кнопка **«Bestellung erhalten»** (Заказ получен).
+2. При нажатии статус заказа меняется на новый статус **«Erhalten»** (Получен), сохраняется дата получения.
+3. Клиенту автоматически уходит письмо-подтверждение: «Deine Bestellung ist angekommen» — с именем, списком товаров, адресом и благодарностью (просьба оставить отзыв, контакт при вопросах).
+4. Если заказ уже получен, кнопка скрыта; вместо неё «Erhalten am …» и кнопка «E-Mail erneut senden».
+5. Статус «Erhalten» также доступен в выпадающем списке статусов и в фильтре.
 
-Zusätzlich zur Versandbestätigung bekommt der Kunde eine weitere E-Mail, sobald die
-Bestellung als „Abgeschlossen" (Zustellung erhalten) markiert wird. In der Admin-Ansicht
-gibt es dafür auch einen „E-Mail erneut senden"-Button.
+Письмо уходит один раз (повторное нажатие не дублирует), через уже настроенную почту notify.diginutz.de.
 
-## Was neu ist
-
-1. **Automatische E-Mail beim Status „Abgeschlossen"**
-   Beim ersten Wechsel des Status auf „Abgeschlossen" geht automatisch eine E-Mail an die
-   Bestell-E-Mail-Adresse: Betreff „Deine Bestellung wurde zugestellt", Anrede mit Namen,
-   Positionsliste, Lieferadresse und freundlicher Abschlusstext (Danke + Hinweis auf
-   Bewertung/Kontakt).
-
-2. **Erneut senden in der Admin**
-   Neuer Button „Zustell-E-Mail erneut senden" in der Bestellkarte, analog zum bestehenden
-   Button für die Versandbestätigung.
-
-3. **Zeitpunkt wird festgehalten**
-   In der Bestellung wird gespeichert, wann die Zustell-E-Mail verschickt wurde
-   (sichtbar in der Bestellkarte).
-
-## Technische Details
-
-- Migration: `orders` bekommt `delivery_email_sent_at timestamptz` (nullbar, additiv).
-- Neues Template `src/lib/email-templates/order-delivered.tsx` im gleichen Shop-Design
-  wie die Versandbestätigung; Registrierung in `registry.ts` als `order-delivered`.
-- `src/lib/admin-config.functions.ts`:
-  - `AdminOrderRow` + `ORDER_COLS` um `delivery_email_sent_at` erweitern.
-  - `adminUpdateOrder`: beim ersten Wechsel auf `done` E-Mail senden
-    (Idempotenzschlüssel `order-delivered-<orderId>`), Zeitstempel speichern.
-  - Neue Serverfunktion `adminResendDeliveryEmail` (analog `adminResendShippingEmail`).
-- `src/routes/admin/orders.tsx`: Button „Zustell-E-Mail erneut senden" + Anzeige des
-  Versanddatums der Zustell-E-Mail.
-- Versand läuft über die bestehende Lovable-E-Mail-Infrastruktur (notify.diginutz.de);
-  kein neues Setup nötig.
+## Технические детали
+- Миграция: `ALTER TYPE order_status ADD VALUE 'received'`; `orders.received_at timestamptz`, `orders.received_email_sent_at timestamptz` (nullable).
+- Шаблон `src/lib/email-templates/order-received.tsx` в стиле `order-shipped`, регистрация в `registry.ts`.
+- `admin-config.functions.ts`: добавить `received` в `ORDER_STATUSES`, поля в `ORDER_COLS`/`AdminOrderRow`; новая серверная функция `adminMarkOrderReceived` (admin-проверка, статус + `received_at`, отправка `order-received` с ключом `order-received-<id>`, запись `received_email_sent_at`); `adminUpdateOrder` при первом переходе в `received` делает то же; `adminResendReceivedEmail`.
+- `src/routes/admin/orders.tsx`: опция «Erhalten», кнопка, отображение даты, кнопка повторной отправки.
