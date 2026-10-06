@@ -170,6 +170,7 @@ export const adminCreateProduct = createServerFn({ method: "POST" })
         material: z.string().trim().max(100).optional(),
         base_price_cents: z.number().int().min(0).max(1000000),
         discount_percent: z.number().int().min(0).max(100).optional(),
+        frame_material: z.enum(["papier", "holz", "hdf"]).optional(),
       })
       .parse(d),
   )
@@ -204,6 +205,7 @@ export const adminCreateProduct = createServerFn({ method: "POST" })
         occasion: data.occasion,
         category: data.category || "other",
         material: data.material || "karton",
+        frame_material: data.frame_material ?? "papier",
         is_active: false,
       })
       .select("id")
