@@ -59,6 +59,7 @@ function AdminProductsList() {
     name_en: "",
     occasion: "",
     category: "other",
+    frame_material: "papier",
     price: "",
   });
 
@@ -161,12 +162,13 @@ function AdminProductsList() {
           name_en: form.name_en.trim() || undefined,
           occasion: form.occasion.trim(),
           category: form.category,
+          frame_material: form.category === "bilderrahmen" ? (form.frame_material as "papier" | "holz" | "hdf") : undefined,
           base_price_cents: price,
         },
       });
       toast.success("Produkt erstellt (Entwurf)");
       setShowNew(false);
-      setForm({ name_de: "", name_en: "", occasion: "", category: "other", price: "" });
+      setForm({ name_de: "", name_en: "", occasion: "", category: "other", frame_material: "papier", price: "" });
       navigate({ to: "/admin/products/$id", params: { id: res.id } });
     } catch (err: any) {
       toast.error(err?.message ?? "Fehler");
@@ -260,6 +262,20 @@ function AdminProductsList() {
                   ))}
                 </select>
               </div>
+              {form.category === "bilderrahmen" && (
+                <div>
+                  <label className="mb-1 block text-xs text-muted-foreground">Unterkategorie (Rahmenpreise)</label>
+                  <select
+                    className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                    value={form.frame_material}
+                    onChange={(e) => setForm({ ...form, frame_material: e.target.value })}
+                  >
+                    <option value="papier">Papier</option>
+                    <option value="holz">Holz</option>
+                    <option value="hdf">HDF</option>
+                  </select>
+                </div>
+              )}
               <div>
                 <label className="mb-1 block text-xs text-muted-foreground">Grundpreis € *</label>
                 <input
