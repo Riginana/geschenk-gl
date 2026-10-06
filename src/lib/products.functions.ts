@@ -180,8 +180,8 @@ export const listProducts = createServerFn({ method: "GET" }).handler(async (): 
   const sb = pub();
   const [{ data: prods, error: e1 }, { data: imgs, error: e2 }, { data: vars, error: e3 }] = await Promise.all([
     sb.from("products").select(PRODUCT_COLS).eq("is_active", true).order("sort_order", { ascending: true, nullsFirst: false }).order("name_de", { ascending: true }),
-    sb.from("product_images").select("product_id,url,role,sort_order"),
-    sb.from("product_variants").select("id,product_id,format,material,price_cents,is_default,sort_order"),
+    fetchAll<DbImage>((a, b) => sb.from("product_images").select("product_id,url,role,sort_order").order("id").range(a, b)),
+    fetchAll<DbVariant>((a, b) => sb.from("product_variants").select("id,product_id,format,material,price_cents,is_default,sort_order").order("id").range(a, b)),
   ]);
   if (e1 || e2 || e3) {
     console.error("[listProducts]", e1?.message, e2?.message, e3?.message);
