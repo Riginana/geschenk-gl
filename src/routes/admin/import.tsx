@@ -274,6 +274,16 @@ function ImportPage() {
           </button>
         )}
       </div>
+      <p className="mt-2 text-xs text-muted-foreground">
+        Lädt nicht in der Vorschau? Öffnen Sie /admin/import direkt auf diginutz.de oder kopieren Sie die Vorlage unten.
+      </p>
+      <details className="mt-2 max-w-3xl rounded-lg border border-border p-3 text-sm">
+        <summary className="cursor-pointer text-muted-foreground">Vorlage anzeigen</summary>
+        <pre className="mt-2 overflow-x-auto whitespace-pre rounded bg-muted p-2 text-xs">{TEMPLATE}</pre>
+        <button onClick={copyTemplate} className="mt-2 rounded-full border border-border px-3 py-1 text-xs hover:bg-accent">
+          In Zwischenablage kopieren
+        </button>
+      </details>
 
       {rows.length > 0 && (
         <p className="mt-4 text-sm">
