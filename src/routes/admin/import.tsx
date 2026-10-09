@@ -234,15 +234,13 @@ function ImportPage() {
     toast.success("Import abgeschlossen – Produkte sind als Entwurf gespeichert");
   };
 
-  const downloadTemplate = () => {
-    const url = URL.createObjectURL(new Blob(["\uFEFF" + TEMPLATE], { type: "text/csv;charset=utf-8" }));
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "products.csv";
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  const copyTemplate = async () => {
+    try {
+      await navigator.clipboard.writeText(TEMPLATE);
+      toast.success("Vorlage in die Zwischenablage kopiert");
+    } catch {
+      toast.error("Kopieren nicht möglich – bitte Text manuell markieren");
+    }
   };
 
   return (
@@ -253,9 +251,15 @@ function ImportPage() {
         Alle Produkte werden als <strong>Entwurf (inaktiv)</strong> angelegt – Veröffentlichung manuell unter Produkte.
       </p>
       <div className="mt-4 flex flex-wrap items-center gap-3">
-        <button onClick={downloadTemplate} className="rounded-full border border-border px-4 py-2 text-sm hover:bg-accent">
+        <a
+          href="/products-vorlage.csv"
+          download="products.csv"
+          target="_blank"
+          rel="noopener"
+          className="rounded-full border border-border px-4 py-2 text-sm hover:bg-accent"
+        >
           CSV-Vorlage herunterladen
-        </button>
+        </a>
         <label className="cursor-pointer rounded-full bg-walnut px-4 py-2 text-sm text-cream hover:bg-walnut/90">
           {loading ? "ZIP wird gelesen…" : "ZIP auswählen"}
           <input type="file" accept=".zip,application/zip" className="hidden" disabled={loading || running} onChange={(e) => e.target.files?.[0] && onFile(e.target.files[0])} />
@@ -270,6 +274,16 @@ function ImportPage() {
           </button>
         )}
       </div>
+      <p className="mt-2 text-xs text-muted-foreground">
+        Lädt nicht in der Vorschau? Öffnen Sie /admin/import direkt auf diginutz.de oder kopieren Sie die Vorlage unten.
+      </p>
+      <details className="mt-2 max-w-3xl rounded-lg border border-border p-3 text-sm">
+        <summary className="cursor-pointer text-muted-foreground">Vorlage anzeigen</summary>
+        <pre className="mt-2 overflow-x-auto whitespace-pre rounded bg-muted p-2 text-xs">{TEMPLATE}</pre>
+        <button onClick={copyTemplate} className="mt-2 rounded-full border border-border px-3 py-1 text-xs hover:bg-accent">
+          In Zwischenablage kopieren
+        </button>
+      </details>
 
       {rows.length > 0 && (
         <p className="mt-4 text-sm">
