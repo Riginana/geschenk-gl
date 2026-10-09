@@ -27,6 +27,7 @@ import { Route as WiderrufRouteImport } from './routes/widerruf'
 import { Route as WunschlisteRouteImport } from './routes/wunschliste'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as AdminFramePricesRouteImport } from './routes/admin/frame-prices'
+import { Route as AdminImportRouteImport } from './routes/admin/import'
 import { Route as AdminLoginRouteImport } from './routes/admin/login'
 import { Route as AdminOrdersRouteImport } from './routes/admin/orders'
 import { Route as ProductIdRouteImport } from './routes/product.$id'
@@ -127,6 +128,11 @@ const AdminFramePricesRoute = AdminFramePricesRouteImport.update({
   path: '/frame-prices',
   getParentRoute: () => AdminRouteRoute,
 } as any)
+const AdminImportRoute = AdminImportRouteImport.update({
+  id: '/import',
+  path: '/import',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
 const AdminLoginRoute = AdminLoginRouteImport.update({
   id: '/login',
   path: '/login',
@@ -193,6 +199,7 @@ export interface FileRoutesByFullPath {
   '/widerruf': typeof WiderrufRoute
   '/wunschliste': typeof WunschlisteRoute
   '/admin/frame-prices': typeof AdminFramePricesRoute
+  '/admin/import': typeof AdminImportRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/orders': typeof AdminOrdersRoute
   '/product/$id': typeof ProductIdRoute
@@ -221,6 +228,7 @@ export interface FileRoutesByTo {
   '/widerruf': typeof WiderrufRoute
   '/wunschliste': typeof WunschlisteRoute
   '/admin/frame-prices': typeof AdminFramePricesRoute
+  '/admin/import': typeof AdminImportRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/orders': typeof AdminOrdersRoute
   '/product/$id': typeof ProductIdRoute
@@ -251,6 +259,7 @@ export interface FileRoutesById {
   '/widerruf': typeof WiderrufRoute
   '/wunschliste': typeof WunschlisteRoute
   '/admin/frame-prices': typeof AdminFramePricesRoute
+  '/admin/import': typeof AdminImportRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/orders': typeof AdminOrdersRoute
   '/product/$id': typeof ProductIdRoute
@@ -282,6 +291,7 @@ export interface FileRouteTypes {
     | '/widerruf'
     | '/wunschliste'
     | '/admin/frame-prices'
+    | '/admin/import'
     | '/admin/login'
     | '/admin/orders'
     | '/product/$id'
@@ -310,6 +320,7 @@ export interface FileRouteTypes {
     | '/widerruf'
     | '/wunschliste'
     | '/admin/frame-prices'
+    | '/admin/import'
     | '/admin/login'
     | '/admin/orders'
     | '/product/$id'
@@ -339,6 +350,7 @@ export interface FileRouteTypes {
     | '/widerruf'
     | '/wunschliste'
     | '/admin/frame-prices'
+    | '/admin/import'
     | '/admin/login'
     | '/admin/orders'
     | '/product/$id'
@@ -503,6 +515,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminFramePricesRouteImport
       parentRoute: typeof AdminRouteRoute
     }
+    '/admin/import': {
+      id: '/admin/import'
+      path: '/import'
+      fullPath: '/admin/import'
+      preLoaderRoute: typeof AdminImportRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
     '/admin/login': {
       id: '/admin/login'
       path: '/login'
@@ -571,6 +590,7 @@ declare module '@tanstack/react-router' {
 
 interface AdminRouteRouteChildren {
   AdminFramePricesRoute: typeof AdminFramePricesRoute
+  AdminImportRoute: typeof AdminImportRoute
   AdminLoginRoute: typeof AdminLoginRoute
   AdminOrdersRoute: typeof AdminOrdersRoute
   AdminIndexRoute: typeof AdminIndexRoute
@@ -580,6 +600,7 @@ interface AdminRouteRouteChildren {
 
 const AdminRouteRouteChildren: AdminRouteRouteChildren = {
   AdminFramePricesRoute: AdminFramePricesRoute,
+  AdminImportRoute: AdminImportRoute,
   AdminLoginRoute: AdminLoginRoute,
   AdminOrdersRoute: AdminOrdersRoute,
   AdminIndexRoute: AdminIndexRoute,

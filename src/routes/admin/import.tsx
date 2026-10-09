@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import JSZip from "jszip";
 import Papa from "papaparse";
 import { toast } from "sonner";
@@ -332,6 +332,11 @@ function ImportPage() {
 
 function Thumb({ file }: { file?: MediaFile }) {
   const [src, setSrc] = useState<string | null>(null);
-  if (file && !src) file.entry.async("blob").then((b) => setSrc(URL.createObjectURL(b)));
+  useEffect(() => {
+    if (!file) return;
+    let url: string | null = null;
+    file.entry.async("blob").then((b) => setSrc((url = URL.createObjectURL(b))));
+    return () => { if (url) URL.revokeObjectURL(url); };
+  }, [file]);
   return src ? <img src={src} alt="" className="h-12 w-12 rounded object-cover" /> : <div className="h-12 w-12 rounded bg-muted" />;
 }
