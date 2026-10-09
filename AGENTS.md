@@ -8,3 +8,4 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+- Bulk product import lives at /admin/import (client-side ZIP+CSV parsing, drafts only via admin-import.functions.ts); it never publishes products.
