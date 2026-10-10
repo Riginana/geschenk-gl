@@ -149,7 +149,12 @@ function AdminProductEdit() {
       const { error: upErr } = await supabase.storage
         .from(signed.bucket)
         .uploadToSignedUrl(signed.path, signed.token, file, { contentType: file.type });
-      if (upErr) throw new Error(upErr.message);
+      if (upErr) {
+        const msg = /maximum allowed size|exceeded/i.test(upErr.message)
+          ? "Datei zu groß für den Speicher (Limit 100 MB). Bitte komprimieren."
+          : upErr.message;
+        throw new Error(msg);
+      }
       setUploading({ name: file.name, progress: 100 });
       if (kind === "video") {
         await saveField("product_video_url", signed.publicUrl as any);
