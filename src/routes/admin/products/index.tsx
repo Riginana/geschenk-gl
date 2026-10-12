@@ -65,6 +65,51 @@ function AdminProductsList() {
     frame_material: "papier",
     price: "",
   });
+  const createUpload = useServerFn(adminCreateUploadUrl);
+  const addImg = useServerFn(adminAddImage);
+  const [photos, setPhotos] = useState<{ file: File; url: string }[]>([]);
+  const [heroIndex, setHeroIndex] = useState(0);
+  const [photoProgress, setPhotoProgress] = useState("");
+
+  function addPhotos(list: FileList | File[] | null) {
+    if (!list) return;
+    const ok: { file: File; url: string }[] = [];
+    for (const f of Array.from(list)) {
+      if (!["image/jpeg", "image/png", "image/webp"].includes(f.type)) {
+        toast.error(`${f.name}: nur JPG, PNG, WebP`);
+        continue;
+      }
+      if (f.size > 20 * 1024 * 1024) {
+        toast.error(`${f.name}: größer als 20 MB`);
+        continue;
+      }
+      ok.push({ file: f, url: URL.createObjectURL(f) });
+    }
+    setPhotos((p) => [...p, ...ok]);
+  }
+  function removePhoto(i: number) {
+    setPhotos((p) => {
+      URL.revokeObjectURL(p[i].url);
+      return p.filter((_, j) => j !== i);
+    });
+    setHeroIndex((h) => (i === h ? 0 : i < h ? h - 1 : h));
+  }
+  function movePhoto(i: number, dir: -1 | 1) {
+    const j = i + dir;
+    if (j < 0 || j >= photos.length) return;
+    setPhotos((p) => {
+      const n = [...p];
+      [n[i], n[j]] = [n[j], n[i]];
+      return n;
+    });
+    setHeroIndex((h) => (h === i ? j : h === j ? i : h));
+  }
+  function clearPhotos() {
+    photos.forEach((p) => URL.revokeObjectURL(p.url));
+    setPhotos([]);
+    setHeroIndex(0);
+    setPhotoProgress("");
+  }
 
 
   async function reload() {
