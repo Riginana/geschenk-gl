@@ -7,7 +7,8 @@ import { useT } from "@/i18n";
 import { listProducts } from "@/lib/products.functions";
 import { ProductCard } from "@/components/product-card";
 import { Reveal } from "@/components/reveal";
-import { catalogFromPrice } from "@/lib/catalog-pricing";
+import { catalogFromPrice, isFrameCategory } from "@/lib/catalog-pricing";
+import { normalizeFrameMaterial } from "@/lib/frame-pricing";
 import { productConfigQueryOptions } from "@/lib/product-config.query";
 import { framePricesQueryOptions, holzplattePricesQueryOptions } from "@/lib/catalog-pricing.query";
 import { Input } from "@/components/ui/input";
@@ -15,10 +16,47 @@ import { Button } from "@/components/ui/button";
 import { useDebounce } from "@/hooks/use-debounce";
 import { matchesSearch } from "@/lib/product-search";
 
+const MATERIAL_VALUES = ["papier", "holzplatte", "eichedekorplatte", "holz-schiebebox", "holzbuch"] as const;
+
+type MaterialValue = (typeof MATERIAL_VALUES)[number];
+
+type MaterialFilter = {
+  value: MaterialValue;
+  label: string;
+  test: (p: { category?: string; frame_material?: string }) => boolean;
+};
+
+const MATERIALS: MaterialFilter[] = [
+  {
+    value: "papier",
+    label: "shop.matPapier",
+    test: (p) => isFrameCategory(p.category) && normalizeFrameMaterial(p.frame_material) === "papier",
+  },
+  {
+    value: "holzplatte",
+    label: "shop.matHolzplatte",
+    test: (p) => (p.category ?? "").toLowerCase() === "holzplatte",
+  },
+  {
+    value: "eichedekorplatte",
+    label: "shop.matEichedekorplatte",
+    test: (p) => isFrameCategory(p.category) && normalizeFrameMaterial(p.frame_material) === "hdf",
+  },
+  {
+    value: "holz-schiebebox",
+    label: "shop.matHolzSchiebebox",
+    test: (p) => (p.category ?? "").toLowerCase() === "schiebebox",
+  },
+  {
+    value: "holzbuch",
+    label: "shop.matHolzbuch",
+    test: (p) => (p.category ?? "").toLowerCase() === "holzbox",
+  },
+];
+
 const searchSchema = z.object({
   occasion: z.string().optional(),
-  material: z.enum(["holz", "papier", "kraftpapier"]).optional(),
-  format: z.enum(["A5", "A4", "A3"]).optional(),
+  material: z.enum(MATERIAL_VALUES).optional(),
   sort: z.enum(["popular", "new", "price_asc", "price_desc"]).optional(),
   search: z.string().optional(),
 });
@@ -73,8 +111,10 @@ function ShopPage() {
     let arr = allProducts.slice();
     if (activeQuery) arr = arr.filter((p) => matchesSearch(p, activeQuery));
     if (search.occasion) arr = arr.filter((p) => p.occasion === search.occasion);
-    if (search.material) arr = arr.filter((p) => p.material === search.material);
-    if (search.format) arr = arr.filter((p) => (p.formats ?? []).includes(search.format!));
+    if (search.material) {
+      const rule = MATERIALS.find((m) => m.value === search.material);
+      if (rule) arr = arr.filter((p) => rule.test(p));
+    }
     const priceOf = (p: (typeof arr)[number]) =>
       catalogFromPrice(p, {
         sizes: config?.sizes,
@@ -127,15 +167,14 @@ function ShopPage() {
             </FilterGroup>
             <FilterGroup label={t("shop.filterMaterial")}>
               <FilterChip active={!search.material} onClick={() => update({ material: undefined })}>{t("shop.all")}</FilterChip>
-              <FilterChip active={search.material === "holz"} onClick={() => update({ material: "holz" })}>{t("shop.holz")}</FilterChip>
-              <FilterChip active={search.material === "papier"} onClick={() => update({ material: "papier" })}>{t("shop.papier")}</FilterChip>
-              <FilterChip active={search.material === "kraftpapier"} onClick={() => update({ material: "kraftpapier" })}>{t("shop.kraftpapier")}</FilterChip>
-            </FilterGroup>
-
-            <FilterGroup label={t("shop.filterFormat")}>
-              <FilterChip active={!search.format} onClick={() => update({ format: undefined })}>{t("shop.all")}</FilterChip>
-              {(["A5", "A4", "A3"] as const).map((f) => (
-                <FilterChip key={f} active={search.format === f} onClick={() => update({ format: f })}>{f}</FilterChip>
+              {MATERIALS.map((m) => (
+                <FilterChip
+                  key={m.value}
+                  active={search.material === m.value}
+                  onClick={() => update({ material: m.value })}
+                >
+                  {t(m.label)}
+                </FilterChip>
               ))}
             </FilterGroup>
           </div>
