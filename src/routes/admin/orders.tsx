@@ -52,6 +52,19 @@ function CopyField({ label, value }: { label: string; value: string }) {
   );
 }
 
+const KNOWN_KEYS = new Set(["names", "date", "message", "customMotifText", "persLabels"]);
+function extraAnswers(p: Record<string, string>): [string, string, string][] {
+  let labels: Record<string, string> = {};
+  try {
+    labels = p.persLabels ? JSON.parse(p.persLabels) : {};
+  } catch {
+    labels = {};
+  }
+  return Object.keys(labels)
+    .filter((k) => !KNOWN_KEYS.has(k) && p[k])
+    .map((k) => [k, labels[k], p[k]]);
+}
+
 function ItemCard({ item }: { item: AdminOrderItem }) {
   const p = item.personalization ?? {};
   const unit = item.unitPriceCents ?? 0;
@@ -119,6 +132,9 @@ function ItemCard({ item }: { item: AdminOrderItem }) {
         {p.names && <CopyField label="Name(n)" value={p.names} />}
         {p.date && <CopyField label="Datum" value={p.date} />}
         {p.message && <CopyField label="Nachricht" value={p.message} />}
+        {extraAnswers(p).map(([k, label, v]) => (
+          <CopyField key={k} label={label} value={v} />
+        ))}
       </div>
     </li>
   );
