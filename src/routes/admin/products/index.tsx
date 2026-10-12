@@ -9,8 +9,11 @@ import {
   adminSetFrameMaterial,
   adminCreateProduct,
   adminDeleteProduct,
+  adminCreateUploadUrl,
+  adminAddImage,
   type AdminProductRow,
 } from "@/lib/admin.functions";
+import { supabase } from "@/integrations/supabase/client";
 
 const FRAME_MATERIAL_OPTIONS = [
   { value: "papier", label: "Papier" },
@@ -166,7 +169,34 @@ function AdminProductsList() {
           base_price_cents: price,
         },
       });
+      const failed: string[] = [];
+      let heroUrl: string | null = null;
+      for (let i = 0; i < photos.length; i++) {
+        const f = photos[i].file;
+        setPhotoProgress(`${i + 1} / ${photos.length} Fotos`);
+        try {
+          const signed = await createUpload({
+            data: { product_id: res.id, filename: f.name, content_type: f.type, kind: "image", size: f.size },
+          });
+          const { error: upErr } = await supabase.storage
+            .from(signed.bucket)
+            .uploadToSignedUrl(signed.path, signed.token, f, { contentType: f.type });
+          if (upErr) throw upErr;
+          const isHero = i === heroIndex;
+          await addImg({
+            data: { product_id: res.id, url: signed.publicUrl, role: isHero ? "hero" : "gallery", sort_order: i },
+          });
+          if (isHero) heroUrl = signed.publicUrl;
+        } catch {
+          failed.push(f.name);
+        }
+      }
+      if (heroUrl) {
+        try { await update({ data: { id: res.id, patch: { hero_image: heroUrl } as any } }); } catch { /* ignore */ }
+      }
+      if (failed.length) toast.error(`Nicht hochgeladen: ${failed.join(", ")}`);
       toast.success("Produkt erstellt (Entwurf)");
+      clearPhotos();
       setShowNew(false);
       setForm({ name_de: "", name_en: "", occasion: "", category: "other", frame_material: "papier", price: "" });
       navigate({ to: "/admin/products/$id", params: { id: res.id } });
