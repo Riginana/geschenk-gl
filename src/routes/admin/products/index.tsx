@@ -290,7 +290,7 @@ function AdminProductsList() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
           <form
             onSubmit={submitNew}
-            className="w-full max-w-md rounded-xl border border-border bg-card p-5 shadow-xl"
+            className="max-h-[90vh] w-full max-w-md overflow-y-auto rounded-xl border border-border bg-card p-5 shadow-xl"
           >
             <h2 className="mb-4 font-serif text-xl text-walnut">Neues Produkt</h2>
             <div className="space-y-3">
@@ -362,11 +362,53 @@ function AdminProductsList() {
                 />
               </div>
             </div>
+            <div className="mt-3">
+              <label className="mb-1 block text-xs text-muted-foreground">Fotos (JPG, PNG, WebP, max. 20 MB)</label>
+              <label
+                className="flex cursor-pointer items-center justify-center rounded-md border border-dashed border-input bg-background px-3 py-4 text-sm text-muted-foreground"
+                onDragOver={(e) => e.preventDefault()}
+                onDrop={(e) => { e.preventDefault(); addPhotos(e.dataTransfer.files); }}
+              >
+                Fotos auswählen oder hierher ziehen
+                <input
+                  type="file"
+                  multiple
+                  accept="image/jpeg,image/png,image/webp"
+                  className="sr-only"
+                  aria-label="Fotos auswählen"
+                  onChange={(e) => { addPhotos(e.target.files); e.target.value = ""; }}
+                />
+              </label>
+              {photos.length > 0 && (
+                <div className="mt-2 grid grid-cols-4 gap-2">
+                  {photos.map((p, i) => (
+                    <div key={p.url} className="relative">
+                      <button
+                        type="button"
+                        title="Als Hauptbild setzen"
+                        onClick={() => setHeroIndex(i)}
+                        className={`block aspect-square w-full overflow-hidden rounded-md border-2 ${i === heroIndex ? "border-walnut" : "border-transparent"}`}
+                      >
+                        <img src={p.url} alt={p.file.name} className="h-full w-full object-cover" />
+                      </button>
+                      {i === heroIndex && (
+                        <span className="absolute left-1 top-1 rounded bg-walnut px-1 text-[10px] text-cream">★ Haupt</span>
+                      )}
+                      <div className="mt-1 flex justify-between text-xs">
+                        <button type="button" aria-label="Nach links" onClick={() => movePhoto(i, -1)}>←</button>
+                        <button type="button" aria-label="Entfernen" onClick={() => removePhoto(i)}>×</button>
+                        <button type="button" aria-label="Nach rechts" onClick={() => movePhoto(i, 1)}>→</button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
             <div className="mt-5 flex justify-end gap-2">
               <button
                 type="button"
                 className="rounded-md border border-border px-4 py-2 text-sm"
-                onClick={() => setShowNew(false)}
+                onClick={() => { clearPhotos(); setShowNew(false); }}
               >
                 Abbrechen
               </button>
@@ -375,7 +417,7 @@ function AdminProductsList() {
                 disabled={creating}
                 className="rounded-md bg-walnut px-4 py-2 text-sm text-cream disabled:opacity-60"
               >
-                {creating ? "Wird angelegt…" : "Anlegen & bearbeiten"}
+                {creating ? (photoProgress ? `Lädt ${photoProgress}…` : "Wird angelegt…") : "Anlegen & bearbeiten"}
               </button>
             </div>
           </form>
