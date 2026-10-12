@@ -8,7 +8,7 @@ import {
 } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { Package, Home, Settings, ShoppingBag, LogOut, Euro, Upload } from "lucide-react";
+import { Package, Home, Settings, ShoppingBag, LogOut, Euro, Upload, PenLine } from "lucide-react";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/admin")({
@@ -40,6 +40,7 @@ const nav = [
   { to: "/admin/products", label: "Produkte", icon: Package },
   { to: "/admin/import", label: "Import", icon: Upload },
   { to: "/admin/frame-prices", label: "Rahmenpreise", icon: Euro },
+  { to: "/admin/personalization", label: "Personalisierung", icon: PenLine },
   { to: "/admin/homepage", label: "Startseite", icon: Home },
   { to: "/admin/settings", label: "Einstellungen", icon: Settings },
   { to: "/admin/orders", label: "Bestellungen", icon: ShoppingBag },
