@@ -15,6 +15,9 @@ export type CartItem = {
   unitPriceCents: number;
   qty: number;
   personalization: {
+    /** Dynamic personalization answers keyed by block field_key; persLabels = JSON {key: title}. */
+    [key: string]: string | undefined;
+    persLabels?: string;
     names?: string;
     date?: string;
     message?: string;
