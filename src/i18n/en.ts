@@ -99,6 +99,10 @@ export const en: Dictionary = {
     message: "Custom text (optional)",
     messagePlaceholder: "Personal dedication, wishes…",
     errors: {
+      required: "This field is required",
+      option: "Please choose an option",
+      tooShort: "The text is too short",
+      tooLong: "The text is too long",
       nameMin: "Please enter at least 2 characters",
       nameMax: "Maximum 50 characters allowed",
       nameChars: "Only letters, spaces and - & + are allowed",

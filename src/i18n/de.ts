@@ -103,6 +103,10 @@ export const de = {
     message: "Wunschtext (optional)",
     messagePlaceholder: "Persönliche Widmung, Grußworte…",
     errors: {
+      required: "Dieses Feld ist erforderlich",
+      option: "Bitte wählen Sie eine Option aus",
+      tooShort: "Der Text ist zu kurz",
+      tooLong: "Der Text ist zu lang",
       nameMin: "Bitte geben Sie mindestens 2 Zeichen ein",
       nameMax: "Maximal 50 Zeichen erlaubt",
       nameChars: "Nur Buchstaben, Leerzeichen und - & + sind erlaubt",

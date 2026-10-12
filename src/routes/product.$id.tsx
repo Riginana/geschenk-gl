@@ -170,6 +170,10 @@ function ProductPage() {
     return () => window.removeEventListener("keydown", onKey);
   }, [videoOpen]);
   const persRef = useRef<PersonalizationHandle>(null);
+  const persScope = useMemo(
+    () => ({ id: product?.id ?? "", occasion: product?.occasion, category: product?.category }),
+    [product?.id, product?.occasion, product?.category],
+  );
 
   if (!product) return <ProductNotFound />;
 
@@ -232,7 +236,12 @@ function ProductPage() {
   const onAdd = async () => {
     const pers = await persRef.current?.validate();
     if (!pers) return;
-    const { names: persName, date: persDate, message: persText } = pers;
+    const persName = pers.answers.names ?? "";
+    const persDate = pers.answers.date ?? "";
+    const persExtra = Object.entries(pers.answers)
+      .filter(([k]) => k !== "names" && k !== "date")
+      .map(([, v]) => v)
+      .join("|");
     if (hasConfig) {
       const next: typeof errors = {};
       if (!selectedSize) next.size = "Bitte wählen Sie eine Größe aus.";
@@ -248,7 +257,7 @@ function ProductPage() {
 
     const motifPart = selectedMotif ? `-m${selectedMotif.number}-${customMotifText.trim()}` : "";
     add({
-      id: `${product.id}-${chosenFormat}-${chosenMaterial}${motifPart}-${persName}-${persDate}`.slice(0, 200),
+      id: `${product.id}-${chosenFormat}-${chosenMaterial}${motifPart}-${persName}-${persDate}-${persExtra}`.slice(0, 200),
       productId: product.id,
       slug: product.slug,
       name: title,
@@ -258,9 +267,8 @@ function ProductPage() {
       personalization: {
         format: chosenFormat,
         material: chosenMaterial,
-        names: persName,
-        date: persDate,
-        message: persText,
+        ...pers.answers,
+        persLabels: JSON.stringify(pers.labels).slice(0, 500),
         ...(isFrameProduct ? { frameSize, frameVariant } : {}),
         ...(holzplatteRow
           ? {
@@ -561,7 +569,7 @@ function ProductPage() {
           </div>
           )}
 
-          <PersonalizationFields ref={persRef} />
+          <PersonalizationFields ref={persRef} product={persScope} />
 
 
           <div className="mt-6 flex flex-wrap items-center gap-3">
