@@ -521,7 +521,7 @@ function BlockEditor({ block, onChange, onSave, onClose }: { block: Editable; on
           </div>
           <div>
             <p className="mb-1 text-xs font-medium text-muted-foreground">Vorschau (so sieht es der Kunde)</p>
-            <PersonalizationFields product={{ id: "" }} previewBlocks={[{ ...preview, source: "product" }]} />
+            <PersonalizationFields product={{ id: "" }} previewBlocks={[preview]} />
           </div>
         </div>
         <DialogFooter>
