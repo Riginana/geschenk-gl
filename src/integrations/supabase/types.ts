@@ -144,6 +144,33 @@ export type Database = {
         }
         Relationships: []
       }
+      occasions: {
+        Row: {
+          created_at: string
+          id: string
+          name_de: string
+          name_en: string
+          slug: string
+          sort_order: number
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          name_de: string
+          name_en?: string
+          slug: string
+          sort_order?: number
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          name_de?: string
+          name_en?: string
+          slug?: string
+          sort_order?: number
+        }
+        Relationships: []
+      }
       orders: {
         Row: {
           address: Json
@@ -204,6 +231,128 @@ export type Database = {
           total_cents?: number
           tracking_carrier?: string | null
           tracking_number?: string | null
+        }
+        Relationships: []
+      }
+      personalization_blocks: {
+        Row: {
+          created_at: string
+          description_de: string
+          description_en: string
+          error_de: string
+          error_en: string
+          field_key: string
+          field_type: string
+          hidden: boolean
+          hint_de: string
+          hint_en: string
+          id: string
+          internal_name: string
+          is_active: boolean
+          max_length: number
+          min_length: number
+          options: Json
+          overrides_block_id: string | null
+          placeholder_de: string
+          placeholder_en: string
+          required: boolean
+          scope: string
+          scope_value: string
+          sort_order: number
+          title_de: string
+          title_en: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description_de?: string
+          description_en?: string
+          error_de?: string
+          error_en?: string
+          field_key: string
+          field_type?: string
+          hidden?: boolean
+          hint_de?: string
+          hint_en?: string
+          id?: string
+          internal_name: string
+          is_active?: boolean
+          max_length?: number
+          min_length?: number
+          options?: Json
+          overrides_block_id?: string | null
+          placeholder_de?: string
+          placeholder_en?: string
+          required?: boolean
+          scope?: string
+          scope_value?: string
+          sort_order?: number
+          title_de?: string
+          title_en?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description_de?: string
+          description_en?: string
+          error_de?: string
+          error_en?: string
+          field_key?: string
+          field_type?: string
+          hidden?: boolean
+          hint_de?: string
+          hint_en?: string
+          id?: string
+          internal_name?: string
+          is_active?: boolean
+          max_length?: number
+          min_length?: number
+          options?: Json
+          overrides_block_id?: string | null
+          placeholder_de?: string
+          placeholder_en?: string
+          required?: boolean
+          scope?: string
+          scope_value?: string
+          sort_order?: number
+          title_de?: string
+          title_en?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "personalization_blocks_overrides_block_id_fkey"
+            columns: ["overrides_block_id"]
+            isOneToOne: false
+            referencedRelation: "personalization_blocks"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      personalization_sections: {
+        Row: {
+          heading_de: string
+          heading_en: string
+          id: string
+          scope: string
+          scope_value: string
+          updated_at: string
+        }
+        Insert: {
+          heading_de?: string
+          heading_en?: string
+          id?: string
+          scope: string
+          scope_value?: string
+          updated_at?: string
+        }
+        Update: {
+          heading_de?: string
+          heading_en?: string
+          id?: string
+          scope?: string
+          scope_value?: string
+          updated_at?: string
         }
         Relationships: []
       }

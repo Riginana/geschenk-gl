@@ -26,6 +26,31 @@ export const createCartCheckoutSession = createServerFn({ method: "POST" })
     const { priceCart, pub } = await import("@/lib/order-pricing.server");
     const { createStripeClient, getStripeErrorMessage } = await import("@/lib/stripe.server");
 
+    // Re-validate dynamic personalization answers against the product's resolved blocks.
+    try {
+      const { resolveBlocks, toBlock, cleanAnswer, validateAnswer } = await import("@/lib/personalization-blocks");
+      const db = pub();
+      const ids = [...new Set(data.items.map((i) => i.productId))];
+      const [{ data: prods }, { data: rows }] = await Promise.all([
+        db.from("products").select("id, occasion, category").in("id", ids),
+        db.from("personalization_blocks").select("*").eq("is_active", true),
+      ]);
+      const blocks = (rows ?? []).map((r) => toBlock(r as Record<string, unknown>));
+      for (const item of data.items) {
+        const prod = prods?.find((x) => x.id === item.productId);
+        if (!prod) continue;
+        const p = item.personalization ?? {};
+        // Legacy carts (created before configurable blocks) carry no persLabels; keep accepting them.
+        if (!p.persLabels) continue;
+        for (const b of resolveBlocks(blocks, prod)) {
+          const err = validateAnswer(b, cleanAnswer(b, p[b.field_key] ?? ""));
+          if (err) return { error: `Ungültige Personalisierung bei „${item.name}": ${b.title_de || b.field_key}` };
+        }
+      }
+    } catch (e) {
+      console.error("personalization check failed", e);
+    }
+
     let priced: Awaited<ReturnType<typeof priceCart>>;
     try {
       priced = await priceCart(data.items, data.shippingMethod, data.shippingZone);
