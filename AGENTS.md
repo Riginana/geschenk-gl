@@ -9,3 +9,5 @@
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
 - Bulk product import lives at /admin/import (client-side ZIP+CSV parsing, drafts only via admin-import.functions.ts); it never publishes products.
+
+- Product personalization fields come from admin-managed personalization_blocks (resolver in src/lib/personalization-blocks.ts, shared by storefront and checkout); never hardcode block texts in components.
