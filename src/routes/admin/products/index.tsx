@@ -9,8 +9,11 @@ import {
   adminSetFrameMaterial,
   adminCreateProduct,
   adminDeleteProduct,
+  adminCreateUploadUrl,
+  adminAddImage,
   type AdminProductRow,
 } from "@/lib/admin.functions";
+import { supabase } from "@/integrations/supabase/client";
 
 const FRAME_MATERIAL_OPTIONS = [
   { value: "papier", label: "Papier" },
@@ -62,6 +65,51 @@ function AdminProductsList() {
     frame_material: "papier",
     price: "",
   });
+  const createUpload = useServerFn(adminCreateUploadUrl);
+  const addImg = useServerFn(adminAddImage);
+  const [photos, setPhotos] = useState<{ file: File; url: string }[]>([]);
+  const [heroIndex, setHeroIndex] = useState(0);
+  const [photoProgress, setPhotoProgress] = useState("");
+
+  function addPhotos(list: FileList | File[] | null) {
+    if (!list) return;
+    const ok: { file: File; url: string }[] = [];
+    for (const f of Array.from(list)) {
+      if (!["image/jpeg", "image/png", "image/webp"].includes(f.type)) {
+        toast.error(`${f.name}: nur JPG, PNG, WebP`);
+        continue;
+      }
+      if (f.size > 20 * 1024 * 1024) {
+        toast.error(`${f.name}: größer als 20 MB`);
+        continue;
+      }
+      ok.push({ file: f, url: URL.createObjectURL(f) });
+    }
+    setPhotos((p) => [...p, ...ok]);
+  }
+  function removePhoto(i: number) {
+    setPhotos((p) => {
+      URL.revokeObjectURL(p[i].url);
+      return p.filter((_, j) => j !== i);
+    });
+    setHeroIndex((h) => (i === h ? 0 : i < h ? h - 1 : h));
+  }
+  function movePhoto(i: number, dir: -1 | 1) {
+    const j = i + dir;
+    if (j < 0 || j >= photos.length) return;
+    setPhotos((p) => {
+      const n = [...p];
+      [n[i], n[j]] = [n[j], n[i]];
+      return n;
+    });
+    setHeroIndex((h) => (h === i ? j : h === j ? i : h));
+  }
+  function clearPhotos() {
+    photos.forEach((p) => URL.revokeObjectURL(p.url));
+    setPhotos([]);
+    setHeroIndex(0);
+    setPhotoProgress("");
+  }
 
 
   async function reload() {
@@ -166,7 +214,34 @@ function AdminProductsList() {
           base_price_cents: price,
         },
       });
+      const failed: string[] = [];
+      let heroUrl: string | null = null;
+      for (let i = 0; i < photos.length; i++) {
+        const f = photos[i].file;
+        setPhotoProgress(`${i + 1} / ${photos.length} Fotos`);
+        try {
+          const signed = await createUpload({
+            data: { product_id: res.id, filename: f.name, content_type: f.type, kind: "image", size: f.size },
+          });
+          const { error: upErr } = await supabase.storage
+            .from(signed.bucket)
+            .uploadToSignedUrl(signed.path, signed.token, f, { contentType: f.type });
+          if (upErr) throw upErr;
+          const isHero = i === heroIndex;
+          await addImg({
+            data: { product_id: res.id, url: signed.publicUrl, role: isHero ? "hero" : "gallery", sort_order: i },
+          });
+          if (isHero) heroUrl = signed.publicUrl;
+        } catch {
+          failed.push(f.name);
+        }
+      }
+      if (heroUrl) {
+        try { await update({ data: { id: res.id, patch: { hero_image: heroUrl } as any } }); } catch { /* ignore */ }
+      }
+      if (failed.length) toast.error(`Nicht hochgeladen: ${failed.join(", ")}`);
       toast.success("Produkt erstellt (Entwurf)");
+      clearPhotos();
       setShowNew(false);
       setForm({ name_de: "", name_en: "", occasion: "", category: "other", frame_material: "papier", price: "" });
       navigate({ to: "/admin/products/$id", params: { id: res.id } });
@@ -215,7 +290,7 @@ function AdminProductsList() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
           <form
             onSubmit={submitNew}
-            className="w-full max-w-md rounded-xl border border-border bg-card p-5 shadow-xl"
+            className="max-h-[90vh] w-full max-w-md overflow-y-auto rounded-xl border border-border bg-card p-5 shadow-xl"
           >
             <h2 className="mb-4 font-serif text-xl text-walnut">Neues Produkt</h2>
             <div className="space-y-3">
@@ -287,11 +362,53 @@ function AdminProductsList() {
                 />
               </div>
             </div>
+            <div className="mt-3">
+              <label className="mb-1 block text-xs text-muted-foreground">Fotos (JPG, PNG, WebP, max. 20 MB)</label>
+              <label
+                className="flex cursor-pointer items-center justify-center rounded-md border border-dashed border-input bg-background px-3 py-4 text-sm text-muted-foreground"
+                onDragOver={(e) => e.preventDefault()}
+                onDrop={(e) => { e.preventDefault(); addPhotos(e.dataTransfer.files); }}
+              >
+                Fotos auswählen oder hierher ziehen
+                <input
+                  type="file"
+                  multiple
+                  accept="image/jpeg,image/png,image/webp"
+                  className="sr-only"
+                  aria-label="Fotos auswählen"
+                  onChange={(e) => { addPhotos(e.target.files); e.target.value = ""; }}
+                />
+              </label>
+              {photos.length > 0 && (
+                <div className="mt-2 grid grid-cols-4 gap-2">
+                  {photos.map((p, i) => (
+                    <div key={p.url} className="relative">
+                      <button
+                        type="button"
+                        title="Als Hauptbild setzen"
+                        onClick={() => setHeroIndex(i)}
+                        className={`block aspect-square w-full overflow-hidden rounded-md border-2 ${i === heroIndex ? "border-walnut" : "border-transparent"}`}
+                      >
+                        <img src={p.url} alt={p.file.name} className="h-full w-full object-cover" />
+                      </button>
+                      {i === heroIndex && (
+                        <span className="absolute left-1 top-1 rounded bg-walnut px-1 text-[10px] text-cream">★ Haupt</span>
+                      )}
+                      <div className="mt-1 flex justify-between text-xs">
+                        <button type="button" aria-label="Nach links" onClick={() => movePhoto(i, -1)}>←</button>
+                        <button type="button" aria-label="Entfernen" onClick={() => removePhoto(i)}>×</button>
+                        <button type="button" aria-label="Nach rechts" onClick={() => movePhoto(i, 1)}>→</button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
             <div className="mt-5 flex justify-end gap-2">
               <button
                 type="button"
                 className="rounded-md border border-border px-4 py-2 text-sm"
-                onClick={() => setShowNew(false)}
+                onClick={() => { clearPhotos(); setShowNew(false); }}
               >
                 Abbrechen
               </button>
@@ -300,7 +417,7 @@ function AdminProductsList() {
                 disabled={creating}
                 className="rounded-md bg-walnut px-4 py-2 text-sm text-cream disabled:opacity-60"
               >
-                {creating ? "Wird angelegt…" : "Anlegen & bearbeiten"}
+                {creating ? (photoProgress ? `Lädt ${photoProgress}…` : "Wird angelegt…") : "Anlegen & bearbeiten"}
               </button>
             </div>
           </form>
