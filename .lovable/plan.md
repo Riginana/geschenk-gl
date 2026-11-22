@@ -1,18 +1,18 @@
-# Benachrichtigung bei neuer Bestellung
+# Новый товар: Geschenkbox aus Kraftpapier (Weihnachten)
 
-## Heute
-Es gibt keine automatische Nachricht an Sie. Neue Bestellungen sieht man nur, wenn man Admin → Bestellungen öffnet (und ggf. in der Stripe-Übersicht / Stripe-App).
+Данные взяты со страницы Etsy: коробка 12 x 16 см, сухоцветы, стеклянная колба с пробкой, имя получателя на крышке, доставка 3,90 €.
 
-## Vorschlag
-1. **E-Mail an den Shop** sobald eine Zahlung erfolgreich ist: an kontakt.diginutz@gmail.com, Betreff „Neue Bestellung #XXXXXXXX – 34,00 €", mit Kundenname, Adresse, Artikeln inkl. Personalisierung und einem Knopf „Im Admin öffnen". Wird pro Bestellung nur einmal gesendet.
-2. **Zähler im Admin-Menü**: neben „Bestellungen" eine Zahl mit offenen (neuen, noch nicht versendeten) Bestellungen.
+## Что будет сделано
+1. **Новый вид товара «Geschenkbox»** — как Holzbox/Schiebebox, с выбором варианта на странице товара и редактируемыми ценами в админке.
+2. **Два варианта «Inhalt der Box»** (цены — обычные, акция −30% магазина применится сама):
+   - Kraftpapier-Box Set — 22,00 € (со скидкой ≈ 15,40 €, как на Etsy 15,84 €)
+   - Nur Trockenblumen — 13,00 € (со скидкой 9,10 €, как на Etsy 9,36 €)
+3. **Персонализация** (через раздел Personalisierung в админке, только для этого товара):
+   - «Vorname des Beschenkten» — обязательное поле, 2–30 букв
+   - Обычные блоки Datum/Wunschtext для этого товара скрыты
+4. **Черновик товара** с немецким и английским названием и описанием из Etsy, повод Weihnachten. Не публикуется — фото и видео вы загрузите сами, потом включите товар.
+5. В фильтре Material на /shop товар виден под «Alle» и в поводе Weihnachten (новую кнопку не добавляю, если не скажете).
 
-## Hinweis
-Der E-Mail-Versand läuft über notify.diginutz.de — die DNS-Einträge dafür sind noch nicht vollständig. Bis dahin können Sie zusätzlich in der Stripe-App Push-Nachrichten für Zahlungen aktivieren (sofort möglich, ohne Änderung am Shop).
-
-## Technisch
-- Neues Template `order-new-admin` in src/lib/email-templates, im Registry registriert.
-- Versand im bestehenden Stripe-Webhook nach Status „paid", Idempotenzschlüssel `order-new-admin-<orderId>`.
-- Empfänger aus src/config/contact.ts.
-- Admin-Menü (src/routes/admin/route.tsx): Zählabfrage auf orders mit Status „paid"/neu.
-- Keine Datenbankänderung.
+## Технически
+- Категория `geschenkbox` добавляется в CONFIGURABLE_CATEGORIES (src/lib/product-config.ts); цены вариантов в существующей таблице product_size_variants, проверка цены на сервере при оплате уже есть.
+- Только добавление строк (товар, 2 варианта, 1 блок персонализации) — без изменения структуры базы.
