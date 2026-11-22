@@ -57,6 +57,9 @@ export const OPTION_TYPES: PersFieldType[] = ["select", "font", "image"];
  * (so e.g. Christmas products never inherit wedding or global blocks once Christmas blocks exist).
  * Product blocks then add to, override (overrides_block_id) or hide (hidden) base blocks.
  */
+/** Categories whose own blocks beat occasion blocks (e.g. Geschenkbox at Christmas). */
+const CATEGORY_FIRST = new Set(["geschenkbox"]);
+
 export function resolveBlocks(all: PersBlock[], p: ProductScopeInfo): ResolvedBlock[] {
   const active = all.filter((b) => b.is_active);
   const of = (scope: PersScope, value: string) =>
@@ -64,7 +67,9 @@ export function resolveBlocks(all: PersBlock[], p: ProductScopeInfo): ResolvedBl
   const occ = p.occasion ? of("occasion", p.occasion) : [];
   const cat = p.category ? of("category", p.category) : [];
   let base: ResolvedBlock[];
-  if (occ.length) base = occ.map((b) => ({ ...b, source: "occasion" as const }));
+  if (cat.length && CATEGORY_FIRST.has((p.category ?? "").toLowerCase()))
+    base = cat.map((b) => ({ ...b, source: "category" as const }));
+  else if (occ.length) base = occ.map((b) => ({ ...b, source: "occasion" as const }));
   else if (cat.length) base = cat.map((b) => ({ ...b, source: "category" as const }));
   else base = of("global", "").map((b) => ({ ...b, source: "global" as const }));
 

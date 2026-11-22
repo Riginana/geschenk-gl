@@ -136,6 +136,7 @@ export const de = {
     matEichedekorplatte: "Eichedekorplatte",
     matHolzSchiebebox: "Holz-Schiebebox",
     matHolzbuch: "Holzbuch",
+    matGeschenkbox: "Geschenkbox",
     sort: "Sortieren",
     sortPopular: "Beliebt",
     sortNew: "Neu",

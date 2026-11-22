@@ -16,7 +16,7 @@ import { Button } from "@/components/ui/button";
 import { useDebounce } from "@/hooks/use-debounce";
 import { matchesSearch } from "@/lib/product-search";
 
-const MATERIAL_VALUES = ["papier", "holzplatte", "eichedekorplatte", "holz-schiebebox", "holzbuch"] as const;
+const MATERIAL_VALUES = ["papier", "holzplatte", "eichedekorplatte", "holz-schiebebox", "holzbuch", "geschenkbox"] as const;
 
 type MaterialValue = (typeof MATERIAL_VALUES)[number];
 
@@ -51,6 +51,11 @@ const MATERIALS: MaterialFilter[] = [
     value: "holzbuch",
     label: "shop.matHolzbuch",
     test: (p) => (p.category ?? "").toLowerCase() === "holzbox",
+  },
+  {
+    value: "geschenkbox",
+    label: "shop.matGeschenkbox",
+    test: (p) => (p.category ?? "").toLowerCase() === "geschenkbox",
   },
 ];
 

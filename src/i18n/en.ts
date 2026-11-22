@@ -132,6 +132,7 @@ export const en: Dictionary = {
     matEichedekorplatte: "Oak decor plate",
     matHolzSchiebebox: "Wood sliding box",
     matHolzbuch: "Wood book",
+    matGeschenkbox: "Gift box",
     sort: "Sort",
     sortPopular: "Popular",
     sortNew: "Newest",

@@ -211,6 +211,13 @@ export const adminCreateProduct = createServerFn({ method: "POST" })
       .select("id")
       .single();
     if (error || !created) throw new Error(error?.message ?? "Anlegen fehlgeschlagen");
+    if ((data.category || "") === "geschenkbox") {
+      // Standard-Varianten für Geschenkboxen (im Admin pro Produkt änderbar)
+      await supabaseAdmin.from("product_size_variants").insert([
+        { product_id: created.id, label: "Kraftpapier-Box Set", dimensions: "", price_cents: 2000, discount_percent: 28, is_default: true, sort_order: 0 },
+        { product_id: created.id, label: "Nur Trockenblumen", dimensions: "", price_cents: 1300, discount_percent: 30, is_default: false, sort_order: 1 },
+      ]);
+    }
     return { id: created.id as string, slug };
   });
 

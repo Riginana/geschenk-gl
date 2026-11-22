@@ -334,7 +334,7 @@ function AdminProductsList() {
                   onChange={(e) => setForm({ ...form, category: e.target.value })}
                 >
                   {CATEGORY_OPTIONS.map((c) => (
-                    <option key={c} value={c}>{c}</option>
+                    <option key={c} value={c}>{c === "geschenkbox" ? "geschenkbox (Kraftpapier)" : c}</option>
                   ))}
                 </select>
               </div>
