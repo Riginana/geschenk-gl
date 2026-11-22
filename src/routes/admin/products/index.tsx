@@ -26,6 +26,7 @@ const CATEGORY_OPTIONS = [
   "holzbox",
   "holzschild",
   "schiebebox",
+  "geschenkbox",
   "holzplatte",
   "sculpture",
   "other",

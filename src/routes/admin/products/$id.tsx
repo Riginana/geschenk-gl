@@ -24,6 +24,7 @@ const PRODUCT_CATEGORIES: string[] = [
   "holzbox",
   "holzschild",
   "schiebebox",
+  "geschenkbox",
   "holzplatte",
   "sculpture",
   "other",

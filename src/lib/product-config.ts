@@ -35,7 +35,7 @@ export type Motif = {
 };
 
 /** Categories that use size variants + motifs. */
-export const CONFIGURABLE_CATEGORIES = ["schiebebox", "holzbox"] as const;
+export const CONFIGURABLE_CATEGORIES = ["schiebebox", "holzbox", "geschenkbox"] as const;
 export const CONFIGURABLE_CATEGORY = CONFIGURABLE_CATEGORIES[0];
 export const HOLZBOX_CATEGORY = "holzbox";
 /** Default Holzbox sizes managed centrally in the admin price table. */
