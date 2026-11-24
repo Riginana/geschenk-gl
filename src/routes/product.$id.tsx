@@ -131,6 +131,7 @@ function ProductPage() {
   }, [product, title, description]);
 
   const isFrameProduct = product?.category === "bilderrahmen";
+  const isGeschenkbox = product?.category === "geschenkbox";
   const isHolzplatteProduct = isHolzplatteCategory(product?.category);
   const isConfigurable = isConfigurableCategory(product?.category);
   const productSizes = useMemo(
@@ -523,7 +524,7 @@ function ProductPage() {
             </div>
           )}
 
-          {!isFrameProduct && !holzplatteRow && !hasConfig && (
+          {!isFrameProduct && !isGeschenkbox && !holzplatteRow && !hasConfig && (
 
           <div className="mt-8 space-y-5 rounded-2xl bg-card p-6 ring-1 ring-border/60">
             {formats.length > 1 && (
